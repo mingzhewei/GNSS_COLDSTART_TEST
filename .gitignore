@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+.mypy_cache/
+
+# 本地环境与缓存
+.codebuddy/
+.vscode/
+.idea/
+
+# 临时文件
+*.tmp
+~$*
