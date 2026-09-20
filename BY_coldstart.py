@@ -315,12 +315,26 @@ def setup_mpl():
     return plt
 
 
+def sort_for_report(data):
+    """报告排序：同一次启动相邻（北云01、华测01、北云02、华测02……）。
+    单产品退化为按文件名排序。键 = (启动序号, 产品序)。"""
+    def key(d):
+        seg = d.get('segment') or {}
+        idx = seg.get('index', 0)
+        prod = 0 if '北云' in d['file'] else (1 if '华测' in d['file'] else 2)
+        return (idx, prod, d['file'])
+    # 若所有段都无 segment.index，则退回纯文件名排序（单产品兼容）
+    if all(not (d.get('segment') or {}).get('index') for d in data):
+        return sorted(data, key=lambda d: d['file'])
+    return sorted(data, key=key)
+
+
 def make_images(data, out_dir, title_prefix=None):
     plt = setup_mpl()
     paths = {}
 
     # 图1：四个关键时刻（按文件名排序，每个文件一根）
-    order = sorted(data, key=lambda d: d['file'])
+    order = sort_for_report(data)
     labels = [short_label(d['file'], 13) for d in order]
     fig, ax = plt.subplots(figsize=(11, 4.6))
     xs = range(len(order))
@@ -388,7 +402,7 @@ def make_images(data, out_dir, title_prefix=None):
     ncol = 1
     nrow = len(data)
     fig, axes = plt.subplots(nrow, ncol, figsize=(14, 5.4 * nrow), squeeze=False)
-    for idx, d in enumerate(sorted(data, key=lambda d: d['file'])):
+    for idx, d in enumerate(sort_for_report(data)):
         ax = axes[idx // ncol][idx % ncol]
         el = d['series']['el']
         ax.plot(el, d['series']['svs'], color='#2563eb', lw=1.4, label='跟踪卫星数 #SVs', drawstyle='steps-post')
