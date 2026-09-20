@@ -37,6 +37,8 @@ import collections
 import statistics
 import webbrowser
 
+from coldstart_split import split_coldstart
+
 # ----------------------------------------------------------------------
 # 路径与常量（相对脚本所在目录解析，便于迁移）
 # ----------------------------------------------------------------------
@@ -73,10 +75,9 @@ def crc32b(data):
     return crc & 0xFFFFFFFF
 
 
-def load(path):
-    """读取 COM1 ASCII 日志；返回 (raw, {报文名:[(报头字段, 数据字段)]}, 其他报文计数, CRC失败行数)。
+def load_raw(raw):
+    """解析 COM1 ASCII 字节流；返回 (raw, {报文名:[(报头字段, 数据字段)]}, 其他报文计数, CRC失败行数)。
     # 开头 '#' 用 32 位 CRC（华测手册报文格式说明），'$' 用 NMEA 异或；校验失败行在此计数。"""
-    raw = open(path, 'rb').read()
     H = collections.defaultdict(list)
     other = collections.Counter()
     bad = 0
@@ -168,9 +169,16 @@ def first_idx(pred, seq):
 
 
 def build(path):
-    """分析一份日志，返回全部指标（字段命名沿用原 gen_report_0909.py 的 JSON 结构）。"""
-    name = os.path.basename(path)
-    raw, H, other, bad = load(path)
+    """分析一份日志文件，返回全部指标。"""
+    with open(path, 'rb') as fp:
+        return build_raw(fp.read(), os.path.basename(path))
+
+
+def build_raw(raw, name='<segment>', byte_offset=0, t0_shift=0.0):
+    """分析一段 COM1 ASCII 字节流（整文件或切片），返回全部指标。
+    byte_offset 为该片段在原文件中的起始字节（用于标注来源）；
+    t0_shift>0 时把时间轴整体左移 t0_shift 秒，并丢弃 t<0 的帧（室内模式对齐共同 t0）。"""
+    raw, H, other, bad = load_raw(raw)
     rows, tl = [], []
     for hf, bf in H['BESTPOSA']:
         t = htime(hf)
@@ -184,7 +192,21 @@ def build(path):
             tl.append(t)
         except Exception:
             continue
+    if not rows:
+        raise ValueError('未解析到任何有效 BESTPOSA 定位帧（%s）：'
+                         '请确认该文件/片段是否为本产品的 COM1 ASCII 日志，且含 BESTPOSA 报文' % name)
     el, gaps, reb, nominal = build_elapsed(tl)
+    if t0_shift > 0:
+        el = [x - t0_shift for x in el]
+        keep = [k for k in range(len(rows)) if el[k] >= -1e-9]
+        rows = [rows[k] for k in keep]
+        el = [el[k] for k in keep]
+        # 重新从 0 起算（丢弃 t0 之前的数据）
+        base = el[0] if el else 0.0
+        el = [x - base for x in el]
+        gaps = [g for g in gaps if g['elapsed'] - t0_shift - base >= 0]
+        reb = [r for r in reb if r['elapsed'] - t0_shift - base >= 0]
+        tl = tl[len(tl) - len(rows):] if rows else tl[:0]
     pts = [r['pt'] for r in rows]
     cats = [3 if p in CAT3 else 2 if p in CAT2 else 1 if p in CAT1 else 0 for p in pts]
 
@@ -229,18 +251,22 @@ def build(path):
         events.append([r['elapsed'], '冷启动 GPS 周重定标（按连续处理）', '#dc2626'])
     events.sort()
 
-    # 定位类型分段统计
+    # 定位类型分段统计（时长=段内帧数×标称周期；与连续区间口径一致且无边界空集）
     segs = []
     for lab, a, b, c in runs(el, pts):
         idx = [k for k in range(len(rows)) if a - 1e-6 <= el[k] <= b + 1e-6]
         sub = [rows[k] for k in idx]
-        segs.append([lab, a, b, round(b - a, 1), c,
-                     round(statistics.mean([r['svs'] for r in sub]), 1),
-                     round(statistics.mean([r['soln'] for r in sub]), 1),
-                     round(statistics.mean([r['multi'] for r in sub]), 1)])
+        dur = round(c * nominal, 1)
+        if sub:
+            segs.append([lab, a, b, dur, c,
+                         round(statistics.mean([r['svs'] for r in sub]), 1),
+                         round(statistics.mean([r['soln'] for r in sub]), 1),
+                         round(statistics.mean([r['multi'] for r in sub]), 1)])
+        else:
+            segs.append([lab, a, b, dur, c, 0, 0, 0])
 
     return dict(
-        file=name, span=round(el[-1], 1), n=len(rows),
+        file=name, byte_offset=byte_offset, span=round(el[-1], 1), n=len(rows),
         rate=round(1.0 / nominal, 1), nominal=round(nominal, 3), crc_bad=bad,
         counts={k: len(v) for k, v in H.items()}, other=dict(other),
         gaps=gaps, rebases=reb,
@@ -264,10 +290,6 @@ def short_label(name, width=16):
     if len(base) <= width:
         return base
     return base[:width] + '\n' + base[width:width * 2 - 3] + '…'
-
-
-def env_cn(d):
-    return '室内' if 'indoor' in d['file'].lower() else '室外'
 
 
 def seg_of(d, lab):
@@ -297,13 +319,13 @@ def setup_mpl():
     return plt
 
 
-def make_images(data, out_dir):
+def make_images(data, out_dir, title_prefix=None):
     plt = setup_mpl()
     paths = {}
 
     # 图1：四个关键时刻（按文件名排序，每个文件一根）
     order = sorted(data, key=lambda d: d['file'])
-    labels = [short_label(d['file'], 14) for d in order]
+    labels = [short_label(d['file'], 13) for d in order]
     fig, ax = plt.subplots(figsize=(11, 4.6))
     xs = range(len(order))
     marks = [('valid', '获得卫星时间', '#0ea5e9', 'o'),
@@ -322,7 +344,7 @@ def make_images(data, out_dir):
     ax.set_xticks(list(xs))
     ax.set_xticklabels(labels, fontsize=8, rotation=14, ha='right')
     ax.set_ylabel('时刻（秒）')
-    ax.set_title('华测冷启动关键时刻对比（t=0 为日志起点）', fontsize=13)
+    ax.set_title((title_prefix or '华测') + '冷启动关键时刻对比（t=0 为日志起点）', fontsize=13)
     ax.grid(axis='y', ls='--', alpha=0.4)
     ax.legend(loc='upper left', ncols=4, fontsize=9, framealpha=0.95)
     fig.tight_layout()
@@ -331,7 +353,7 @@ def make_images(data, out_dir):
     plt.close(fig)
 
     # 图2：冷启动耗时分解（堆叠条形，每个文件一根）
-    fig, ax = plt.subplots(figsize=(13.5, 5.2))
+    fig, ax = plt.subplots(figsize=(14.5, 5.6))
     stage_def = [('no_time', '无时间(UNKNOWN)', '#dc2626'),
                  ('time_to_single', '时间→单点', '#f59e0b'),
                  ('single_to_float', '单点→浮点', '#3b82f6'),
@@ -356,11 +378,12 @@ def make_images(data, out_dir):
     ax.set_yticklabels(labels, fontsize=8)
     ax.invert_yaxis()
     ax.set_xlabel('时间（秒）')
-    ax.set_title('华测冷启动耗时分解（无时间 / 时间→单点 / 单点→浮点 / 浮点→固定）', fontsize=13)
+    ax.set_title((title_prefix or '华测') + '冷启动耗时分解（无时间 / 时间→单点 / 单点→浮点 / 浮点→固定）', fontsize=13)
     ax.grid(axis='x', ls='--', alpha=0.4)
     handles = [plt.Rectangle((0, 0), 1, 1, color=c) for _, _, c in stage_def]
     ax.legend(handles, [l for _, l, _ in stage_def], loc='lower right', ncols=4, fontsize=9)
     fig.tight_layout()
+    fig.subplots_adjust(left=0.16)
     paths['stages'] = os.path.join(out_dir, 'img_阶段耗时.png')
     fig.savefig(paths['stages'], dpi=150)
     plt.close(fig)
@@ -392,7 +415,7 @@ def make_images(data, out_dir):
                 ax.annotate('', xy=(t, ymax), xytext=(t, ay - ymax*0.02),
                             arrowprops=dict(arrowstyle='-', color=col, lw=0.6, ls=':'),
                             annotation_clip=False)
-        ax.set_title(f"{d['file']}（{env_cn(d)}冷启动，全程 {d['span']}s）", fontsize=10.5)
+        ax.set_title(f"{d['file']}（冷启动，全程 {d['span']}s）", fontsize=10.5)
         ax.set_xlabel('经过时间（秒）')
         ax.set_ylabel('卫星数（颗）')
         ax.grid(ls='--', alpha=0.35)
@@ -410,7 +433,6 @@ def img64(path):
     return 'data:image/png;base64,' + base64.b64encode(open(path, 'rb').read()).decode('ascii')
 
 # ----------------------------------------------------------------------
-# 结论（数据驱动，覆盖 indoor/outdoor 两种场景）
 # ----------------------------------------------------------------------
 
 
@@ -468,7 +490,7 @@ HTML = """<!DOCTYPE html>
 <style>__CSS__</style>
 </head>
 <body><div class="wrap">
-<h1>华测（HUACE M720）GNSS 冷启动策略分析（室内 / 室外冷启动）</h1>
+<h1>华测（HUACE M720）GNSS 冷启动策略分析</h1>
 <div class="sub">数据源：__SRCLIST__（COM1 ASCII 日志，#BESTPOSA）｜口径依据：__MANUAL__｜分析维度：时标状态 / 解算状态 / 定位类型 / 卫星数｜本报告不含 INS</div>
 
 <h2>一、数据完整性与报文构成</h2>
@@ -591,7 +613,7 @@ def build_outputs(data, imgs, src_desc=None):
 
     # ---------- Markdown ----------
     md = []
-    md.append('# 华测（HUACE M720）GNSS 冷启动策略分析（室内 / 室外冷启动）')
+    md.append('# 华测（HUACE M720）GNSS 冷启动策略分析')
     md.append('')
     md.append('- 数据源：' + '、'.join(f'`{d["file"]}`' for d in data) + '（COM1 ASCII 日志，#BESTPOSA）')
     md.append(f'- 口径依据：{MANUAL}（`huace_manual\\M7系列模组用户指令及协议手册_V2.7.pdf`）')
@@ -673,7 +695,44 @@ def build_outputs(data, imgs, src_desc=None):
     return html, '\n'.join(md)
 
 
-def run(paths, out_dir=None, open_browser=False):
+
+def split_segments(path, min_frames=50):
+    """把连续录制文件切成有效冷启动段，返回 [(index, raw_fragment, Segment), ...]（从 1 连续编号）。"""
+    with open(path, 'rb') as fp:
+        raw = fp.read()
+    segs, _ = split_coldstart(raw, 'BESTPOSA', 'time_gap', min_frames=min_frames)
+    cold = [s for s in segs if s.is_coldstart]
+    return [(n, raw[s.start:s.end], s) for n, s in enumerate(cold, 1)]
+
+
+def analyze_file(path, split=False, min_frames=50, indoor_t0=None):
+    """分析一份日志。
+    split=False（默认）：按独立冷启动包逐文件分析（每文件 = 一次启动）。
+    split=True      ：一次性录制了 N 次冷启动，先静态切片识别启动次数，再逐段分析。
+    indoor_t0：室内模式时，按段提供共同 t0 左移秒数（两家最早拿时标时刻）。
+    返回 list[dict]（每段一个指标集，file 字段带 _coldNN 后缀与原字节偏移）。"""
+    with open(path, 'rb') as fp:
+        raw = fp.read()
+    base = os.path.basename(path)
+    if not split:
+        return [build_raw(raw, base, 0)]
+    segs, nominal = split_coldstart(raw, 'BESTPOSA', 'time_gap', min_frames=min_frames)
+    cold = [s for s in segs if s.is_coldstart]
+    if not cold:                       # 未识别到有效冷启动段 → 回退为整文件分析
+        return [build_raw(raw, base, 0)]
+    out = []
+    for n, s in enumerate(cold, 1):          # 有效冷启动从 cold01 连续编号
+        frag = raw[s.start:s.end]
+        shift = 0.0
+        if indoor_t0 is not None and n <= len(indoor_t0):
+            shift = indoor_t0[n - 1] or 0.0
+        d = build_raw(frag, f'{base}_cold{n:02d}', s.start, t0_shift=shift)
+        d['segment'] = dict(index=n, frames=s.frames, start_week=s.start_week,
+                            start_tstat=s.start_tstat, byte_offset=s.start, t0_shift=shift)
+        out.append(d)
+    return out
+
+def run(paths, out_dir=None, open_browser=False, split=False):
     """分析一组华测 COM1 ASCII 日志（#BESTPOSA），输出 HTML/MD/PNG/JSON 到 out_dir。
     返回 (html_path, md_path)。"""
     if not paths:
@@ -681,7 +740,9 @@ def run(paths, out_dir=None, open_browser=False):
     if out_dir is None:
         out_dir = DEFAULT_OUT
     os.makedirs(out_dir, exist_ok=True)
-    data = [build(p) for p in sorted(paths)]
+    data = []
+    for p in sorted(paths):
+        data.extend(analyze_file(p, split=split))
     imgs = make_images(data, out_dir)
     html, md = build_outputs(data, imgs)
 
@@ -706,13 +767,17 @@ def run(paths, out_dir=None, open_browser=False):
 
 
 def main():
-    if len(sys.argv) < 3:
+    args = [a for a in sys.argv[1:]]
+    split = '--split' in args
+    args = [a for a in args if a != '--split']
+    if len(args) < 2:
         print(__doc__)
-        print('用法: python BY_coldstart.py <输出目录> <日志1> [日志2 ...]')
+        print('用法: python HUACE_coldstart.py <输出目录> [--split] <日志1> [日志2 ...]')
+        print('  --split  一次性录制了 N 次冷启动：自动识别启动次数并切片后逐段分析')
         raise SystemExit(2)
-    out_dir = sys.argv[1]
-    paths = [a for a in sys.argv[2:] if os.path.isfile(a)]
-    run(paths, out_dir, open_browser=False)
+    out_dir = args[0]
+    paths = [a for a in args[1:] if os.path.isfile(a)]
+    run(paths, out_dir, open_browser=False, split=split)
 
 
 if __name__ == '__main__':

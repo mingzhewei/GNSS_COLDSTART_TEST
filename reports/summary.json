@@ -1,328 +1,353 @@
 [
  {
-  "file": "20260909_163217_gnss_com1_indoor_01.log",
-  "span": 441.0,
-  "n": 2206,
+  "file": "com3.dat_cold01",
+  "byte_offset": 752,
+  "span": 20.0,
+  "n": 101,
   "rate": 5.0,
   "nominal": 0.2,
-  "crc_bad": 4397,
+  "crc_bad": 0,
   "counts": {
-   "INSPVAXA": 44139,
-   "BESTPOSA": 4414,
-   "BESTGNSSPOSA": 2206,
-   "HEADINGA": 2206
+   "BESTGNSSPOSA": 101,
+   "HEADINGA": 100,
+   "INSPVAXA": 200,
+   "BESTPOSA": 100
   },
   "other": {
-   "GPIMU": 44139,
-   "KSXT": 18
-  },
-  "gaps": [],
-  "rebases": [
-   {
-    "idx": 292,
-    "elapsed": 58.4,
-    "dt": 652868978.8
-   }
-  ],
-  "tstat_dist": {
-   "UNKNOWN": 292,
-   "COARSE": 329,
-   "FINESTEERING": 1585
-  },
-  "ptype_dist": {
-   "NONE": 586,
-   "SINGLE": 459,
-   "NARROW_FLOAT": 710,
-   "NARROW_INT": 451
-  },
-  "cat_pct": {
-   "0": 26.6,
-   "1": 20.8,
-   "2": 32.2,
-   "3": 20.4
-  },
-  "first": {
-   "valid": 58.4,
-   "coarse": 58.4,
-   "fine": 124.2,
-   "single": 117.2,
-   "float": 209.0,
-   "fixed": 351.0,
-   "stn": 208.0,
-   "sol": 117.2
-  },
-  "stages": {
-   "no_time": 58.4,
-   "time_to_single": 58.8,
-   "single_to_float": 91.8,
-   "float_to_fixed": 142.0,
-   "diff_wait": 149.6,
-   "single_to_fixed": 233.8
-  },
-  "events": [
-   [
-    58.4,
-    "冷启动 GPS 周重定标（按连续处理）",
-    "#dc2626"
-   ],
-   [
-    58.4,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
-    "#0ea5e9"
-   ],
-   [
-    117.2,
-    "首次单点解 SINGLE",
-    "#3b82f6"
-   ],
-   [
-    124.2,
-    "时标进入 FINESTEERING",
-    "#6b7280"
-   ],
-   [
-    208.0,
-    "差分改正可用（基站 1793）",
-    "#7c3aed"
-   ],
-   [
-    209.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
-    "#f59e0b"
-   ],
-   [
-    351.0,
-    "首次 RTK 固定解 NARROW_INT",
-    "#16a34a"
-   ]
-  ],
-  "segs": [
-   [
-    "NONE",
-    0.0,
-    117.0,
-    117.0,
-    586,
-    7.3,
-    0,
-    0
-   ],
-   [
-    "SINGLE",
-    117.2,
-    208.8,
-    91.6,
-    459,
-    28.7,
-    9.2,
-    9.2
-   ],
-   [
-    "NARROW_FLOAT",
-    209.0,
-    350.8,
-    141.8,
-    710,
-    30.4,
-    19.9,
-    19.9
-   ],
-   [
-    "NARROW_INT",
-    351.0,
-    441.0,
-    90.0,
-    451,
-    31.0,
-    22.7,
-    22.7
-   ]
-  ],
-  "svs": {
-   "min": 0,
-   "max": 32,
-   "mean": 24.1
-  }
- },
- {
-  "file": "20260909_164439_gnss_com1_outdoor_01.log",
-  "span": 369.4,
-  "n": 1848,
-  "rate": 5.0,
-  "nominal": 0.2,
-  "crc_bad": 3684,
-  "counts": {
-   "INSPVAXA": 36953,
-   "BESTPOSA": 3696,
-   "BESTGNSSPOSA": 1848,
-   "HEADINGA": 1848
-  },
-  "other": {
-   "GPIMU": 36953,
-   "KSXT": 13
+   "TRACKSTATA": 100,
+   "GPIMU": 2000,
+   "GPGGA": 100,
+   "GPGSV": 100,
+   "GLGSV": 99,
+   "GAGSV": 97,
+   "GBGSV": 144,
+   "GPGSA": 100,
+   "GPGST": 100,
+   "GQGSV": 86
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "FINESTEERING": 1848
+   "FREEWHEELING": 41,
+   "FINESTEERING": 60
   },
   "ptype_dist": {
-   "NARROW_INT": 1848
+   "NONE": 38,
+   "SINGLE": 63
   },
   "cat_pct": {
-   "3": 100.0
+   "0": 37.6,
+   "1": 62.4
   },
   "first": {
    "valid": 0.0,
    "coarse": null,
-   "fine": 0.0,
-   "single": null,
+   "fine": 4.4,
+   "single": 3.2,
    "float": null,
-   "fixed": 0.0,
-   "stn": 0.0,
-   "sol": 0.0
+   "fixed": null,
+   "stn": 3.2,
+   "sol": 3.2
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": null,
+   "time_to_single": 3.2,
    "single_to_float": null,
    "float_to_fixed": null,
-   "diff_wait": 0.0,
+   "diff_wait": 3.2,
    "single_to_fixed": null
   },
   "events": [
    [
     0.0,
-    "差分改正可用（基站 1793）",
-    "#7c3aed"
-   ],
-   [
-    0.0,
-    "时标进入 FINESTEERING",
-    "#6b7280"
-   ],
-   [
-    0.0,
     "获得卫星时间（时标脱离UNKNOWN→COARSE）",
     "#0ea5e9"
    ],
    [
-    0.0,
-    "首次 RTK 固定解 NARROW_INT",
-    "#16a34a"
-   ]
-  ],
-  "segs": [
-   [
-    "NARROW_INT",
-    0.0,
-    369.4,
-    369.4,
-    1848,
-    34.1,
-    26.4,
-    26.4
-   ]
-  ],
-  "svs": {
-   "min": 33,
-   "max": 36,
-   "mean": 34.1
-  }
- },
- {
-  "file": "20260909_165759_gnss_com1_indoor_02.log",
-  "span": 455.6,
-  "n": 2279,
-  "rate": 5.0,
-  "nominal": 0.2,
-  "crc_bad": 4540,
-  "counts": {
-   "INSPVAXA": 45599,
-   "BESTPOSA": 4560,
-   "BESTGNSSPOSA": 2279,
-   "HEADINGA": 2279
-  },
-  "other": {
-   "GPIMU": 45598,
-   "KSXT": 21
-  },
-  "gaps": [],
-  "rebases": [
-   {
-    "idx": 247,
-    "elapsed": 49.4,
-    "dt": 652870455.2
-   }
-  ],
-  "tstat_dist": {
-   "UNKNOWN": 247,
-   "COARSE": 99,
-   "FINESTEERING": 1933
-  },
-  "ptype_dist": {
-   "NONE": 313,
-   "SINGLE": 17,
-   "NARROW_FLOAT": 1913,
-   "NARROW_INT": 36
-  },
-  "cat_pct": {
-   "0": 13.7,
-   "1": 0.7,
-   "2": 83.9,
-   "3": 1.6
-  },
-  "first": {
-   "valid": 49.4,
-   "coarse": 49.4,
-   "fine": 69.2,
-   "single": 62.6,
-   "float": 66.0,
-   "fixed": 144.0,
-   "stn": 62.6,
-   "sol": 62.6
-  },
-  "stages": {
-   "no_time": 49.4,
-   "time_to_single": 13.2,
-   "single_to_float": 3.4,
-   "float_to_fixed": 78.0,
-   "diff_wait": 13.2,
-   "single_to_fixed": 81.4
-  },
-  "events": [
-   [
-    49.4,
-    "冷启动 GPS 周重定标（按连续处理）",
-    "#dc2626"
-   ],
-   [
-    49.4,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
-    "#0ea5e9"
-   ],
-   [
-    62.6,
+    3.2,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    62.6,
+    3.2,
     "首次单点解 SINGLE",
     "#3b82f6"
    ],
    [
-    66.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
-    "#f59e0b"
+    4.4,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    3.0,
+    3.2,
+    16,
+    11.3,
+    0,
+    0
    ],
    [
-    69.2,
+    "SINGLE",
+    3.2,
+    10.4,
+    7.4,
+    37,
+    12.1,
+    9.7,
+    9.7
+   ],
+   [
+    "NONE",
+    10.6,
+    10.6,
+    0.2,
+    1,
+    12,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    10.8,
+    11.2,
+    0.6,
+    3,
+    12,
+    8,
+    8
+   ],
+   [
+    "NONE",
+    11.4,
+    11.6,
+    0.4,
+    2,
+    12,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    11.8,
+    13.0,
+    1.4,
+    7,
+    12,
+    6.4,
+    6.4
+   ],
+   [
+    "NONE",
+    13.2,
+    13.8,
+    0.8,
+    4,
+    12,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    14.0,
+    14.0,
+    0.2,
+    1,
+    12,
+    6,
+    6
+   ],
+   [
+    "NONE",
+    14.2,
+    14.2,
+    0.2,
+    1,
+    12,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    14.4,
+    14.8,
+    0.6,
+    3,
+    12,
+    6,
+    6
+   ],
+   [
+    "NONE",
+    15.0,
+    15.6,
+    0.8,
+    4,
+    12,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    15.8,
+    16.2,
+    0.6,
+    3,
+    12,
+    6,
+    6
+   ],
+   [
+    "NONE",
+    16.4,
+    16.6,
+    0.4,
+    2,
+    12,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    16.8,
+    18.4,
+    1.8,
+    9,
+    12,
+    6,
+    6
+   ],
+   [
+    "NONE",
+    18.6,
+    20.0,
+    1.6,
+    8,
+    7.1,
+    0,
+    0
+   ]
+  ],
+  "svs": {
+   "min": 1,
+   "max": 13,
+   "mean": 11.5
+  },
+  "segment": {
+   "index": 1,
+   "frames": 101,
+   "start_week": 2437,
+   "start_tstat": "FREEWHEELING",
+   "byte_offset": 752
+  }
+ },
+ {
+  "file": "com3.dat_cold02",
+  "byte_offset": 573776,
+  "span": 296.8,
+  "n": 1485,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 1485,
+   "HEADINGA": 1484,
+   "INSPVAXA": 2968,
+   "BESTPOSA": 1484
+  },
+  "other": {
+   "TRACKSTATA": 1484,
+   "GPIMU": 29683,
+   "GPGGA": 1484,
+   "GPGSV": 1690,
+   "GPGSA": 1484,
+   "GPGST": 1484,
+   "GLGSV": 988,
+   "GBGSV": 2167,
+   "GAGSV": 958,
+   "GQGSV": 627
+  },
+  "gaps": [],
+  "rebases": [
+   {
+    "idx": 735,
+    "elapsed": 147.0,
+    "dt": 653812745.8
+   }
+  ],
+  "tstat_dist": {
+   "UNKNOWN": 735,
+   "COARSE": 450,
+   "FINESTEERING": 280,
+   "FREEWHEELING": 20
+  },
+  "ptype_dist": {
+   "NONE": 1140,
+   "SINGLE": 75,
+   "NARROW_FLOAT": 125,
+   "NARROW_INT": 137,
+   "PSRDIFF": 8
+  },
+  "cat_pct": {
+   "0": 76.8,
+   "1": 5.6,
+   "2": 8.4,
+   "3": 9.2
+  },
+  "first": {
+   "valid": 147.0,
+   "coarse": 147.0,
+   "fine": 237.0,
+   "single": 223.2,
+   "float": 237.8,
+   "fixed": 262.8,
+   "stn": 224.6,
+   "sol": 223.2
+  },
+  "stages": {
+   "no_time": 147.0,
+   "time_to_single": 76.2,
+   "single_to_float": 14.6,
+   "float_to_fixed": 25.0,
+   "diff_wait": 77.6,
+   "single_to_fixed": 39.6
+  },
+  "events": [
+   [
+    147.0,
+    "冷启动 GPS 周重定标（按连续处理）",
+    "#dc2626"
+   ],
+   [
+    147.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    223.2,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    224.6,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    237.0,
     "时标进入 FINESTEERING",
     "#6b7280"
    ],
    [
-    144.0,
+    237.8,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    262.8,
     "首次 RTK 固定解 NARROW_INT",
     "#16a34a"
    ]
@@ -331,144 +356,1416 @@
    [
     "NONE",
     0.0,
-    62.4,
-    62.4,
-    313,
-    2.2,
+    223.0,
+    223.2,
+    1116,
+    5.0,
     0,
     0
    ],
    [
     "SINGLE",
-    62.6,
-    65.8,
-    3.2,
-    17,
-    17,
-    9.7,
-    9.7
+    223.2,
+    237.6,
+    14.6,
+    73,
+    27.4,
+    10.5,
+    10.5
    ],
    [
     "NARROW_FLOAT",
-    66.0,
-    143.8,
-    77.8,
-    390,
-    26.7,
-    18.0,
-    18.0
+    237.8,
+    262.6,
+    25.0,
+    125,
+    33.4,
+    13.6,
+    13.6
    ],
    [
     "NARROW_INT",
-    144.0,
-    151.0,
-    7.0,
-    36,
-    31.4,
-    21.9,
-    21.9
+    262.8,
+    290.0,
+    27.4,
+    137,
+    36.4,
+    21.7,
+    21.7
+   ],
+   [
+    "PSRDIFF",
+    290.2,
+    291.6,
+    1.6,
+    8,
+    30.8,
+    17.9,
+    17.9
+   ],
+   [
+    "SINGLE",
+    291.8,
+    292.0,
+    0.4,
+    2,
+    20,
+    8.5,
+    8.5
+   ],
+   [
+    "NONE",
+    292.2,
+    296.8,
+    4.8,
+    24,
+    4.6,
+    0,
+    0
+   ]
+  ],
+  "svs": {
+   "min": 0,
+   "max": 38,
+   "mean": 11.5
+  },
+  "segment": {
+   "index": 2,
+   "frames": 1485,
+   "start_week": 1356,
+   "start_tstat": "UNKNOWN",
+   "byte_offset": 573776
+  }
+ },
+ {
+  "file": "com3.dat_cold03",
+  "byte_offset": 9882947,
+  "span": 151.2,
+  "n": 757,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 757,
+   "HEADINGA": 756,
+   "INSPVAXA": 1513,
+   "BESTPOSA": 756
+  },
+  "other": {
+   "TRACKSTATA": 756,
+   "GPIMU": 15132,
+   "GPGGA": 756,
+   "GPGSV": 1021,
+   "GPGSA": 756,
+   "GPGST": 756,
+   "GLGSV": 773,
+   "GAGSV": 820,
+   "GQGSV": 557,
+   "GBGSV": 1841
+  },
+  "gaps": [],
+  "rebases": [
+   {
+    "idx": 198,
+    "elapsed": 39.6,
+    "dt": 653813237.8
+   }
+  ],
+  "tstat_dist": {
+   "UNKNOWN": 198,
+   "COARSE": 250,
+   "FINESTEERING": 305,
+   "FREEWHEELING": 4
+  },
+  "ptype_dist": {
+   "NONE": 398,
+   "SINGLE": 155,
+   "NARROW_FLOAT": 90,
+   "NARROW_INT": 103,
+   "PSRDIFF": 11
+  },
+  "cat_pct": {
+   "0": 52.6,
+   "1": 21.9,
+   "2": 11.9,
+   "3": 13.6
+  },
+  "first": {
+   "valid": 39.6,
+   "coarse": 39.6,
+   "fine": 89.6,
+   "single": 78.4,
+   "float": 109.4,
+   "fixed": 127.4,
+   "stn": 89.0,
+   "sol": 78.4
+  },
+  "stages": {
+   "no_time": 39.6,
+   "time_to_single": 38.8,
+   "single_to_float": 31.0,
+   "float_to_fixed": 18.0,
+   "diff_wait": 49.4,
+   "single_to_fixed": 49.0
+  },
+  "events": [
+   [
+    39.6,
+    "冷启动 GPS 周重定标（按连续处理）",
+    "#dc2626"
+   ],
+   [
+    39.6,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    78.4,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    89.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    89.6,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    109.4,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    127.4,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    78.2,
+    78.4,
+    392,
+    9.4,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    78.4,
+    109.2,
+    31.0,
+    155,
+    27.7,
+    11.9,
+    11.9
    ],
    [
     "NARROW_FLOAT",
+    109.4,
+    127.2,
+    18.0,
+    90,
+    31.9,
+    15.8,
+    15.8
+   ],
+   [
+    "NARROW_INT",
+    127.4,
+    147.8,
+    20.6,
+    103,
+    33.4,
+    20.8,
+    20.8
+   ],
+   [
+    "PSRDIFF",
+    148.0,
+    150.0,
+    2.2,
+    11,
+    27.3,
+    15.5,
+    15.5
+   ],
+   [
+    "NONE",
+    150.2,
     151.2,
-    455.6,
-    304.4,
-    1523,
-    33.0,
-    24.9,
-    24.9
+    1.2,
+    6,
+    8.2,
+    0,
+    0
    ]
   ],
   "svs": {
    "min": 0,
    "max": 34,
-   "mean": 27.5
+   "mean": 19.3
+  },
+  "segment": {
+   "index": 3,
+   "frames": 757,
+   "start_week": 1356,
+   "start_tstat": "UNKNOWN",
+   "byte_offset": 9882947
   }
  },
  {
-  "file": "20260909_171057_gnss_com1_outdoor_02.log",
-  "span": 359.2,
-  "n": 1797,
+  "file": "com3.dat_cold04",
+  "byte_offset": 15737752,
+  "span": 134.8,
+  "n": 675,
   "rate": 5.0,
   "nominal": 0.2,
-  "crc_bad": 3581,
+  "crc_bad": 0,
   "counts": {
-   "INSPVAXA": 35936,
-   "BESTPOSA": 3594,
-   "BESTGNSSPOSA": 1797,
-   "HEADINGA": 1797
+   "BESTGNSSPOSA": 675,
+   "HEADINGA": 674,
+   "INSPVAXA": 1347,
+   "BESTPOSA": 674
   },
   "other": {
-   "GPIMU": 35936,
-   "KSXT": 14
+   "TRACKSTATA": 674,
+   "GPIMU": 13478,
+   "GPGGA": 674,
+   "GPGSV": 860,
+   "GPGSA": 674,
+   "GPGST": 674,
+   "GLGSV": 786,
+   "GBGSV": 1417,
+   "GAGSV": 551,
+   "GQGSV": 460
   },
   "gaps": [],
-  "rebases": [],
+  "rebases": [
+   {
+    "idx": 188,
+    "elapsed": 37.6,
+    "dt": 653813617.6
+   }
+  ],
   "tstat_dist": {
-   "FINESTEERING": 1797
+   "UNKNOWN": 188,
+   "COARSE": 136,
+   "FINESTEERING": 351
   },
   "ptype_dist": {
-   "NARROW_INT": 1797
+   "NONE": 267,
+   "SINGLE": 16,
+   "NARROW_FLOAT": 35,
+   "NARROW_INT": 357
   },
   "cat_pct": {
-   "3": 100.0
+   "0": 39.6,
+   "1": 2.4,
+   "2": 5.2,
+   "3": 52.9
   },
   "first": {
-   "valid": 0.0,
-   "coarse": null,
-   "fine": 0.0,
-   "single": null,
-   "float": null,
-   "fixed": 0.0,
-   "stn": 0.0,
-   "sol": 0.0
+   "valid": 37.6,
+   "coarse": 37.6,
+   "fine": 64.8,
+   "single": 53.4,
+   "float": 56.6,
+   "fixed": 63.6,
+   "stn": 55.4,
+   "sol": 53.4
   },
   "stages": {
-   "no_time": 0.0,
-   "time_to_single": null,
-   "single_to_float": null,
-   "float_to_fixed": null,
-   "diff_wait": 0.0,
-   "single_to_fixed": null
+   "no_time": 37.6,
+   "time_to_single": 15.8,
+   "single_to_float": 3.2,
+   "float_to_fixed": 7.0,
+   "diff_wait": 17.8,
+   "single_to_fixed": 10.2
   },
   "events": [
    [
-    0.0,
-    "差分改正可用（基站 1793）",
-    "#7c3aed"
+    37.6,
+    "冷启动 GPS 周重定标（按连续处理）",
+    "#dc2626"
    ],
    [
-    0.0,
-    "时标进入 FINESTEERING",
-    "#6b7280"
-   ],
-   [
-    0.0,
+    37.6,
     "获得卫星时间（时标脱离UNKNOWN→COARSE）",
     "#0ea5e9"
    ],
    [
+    53.4,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    55.4,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    56.6,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    63.6,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ],
+   [
+    64.8,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
     0.0,
+    53.2,
+    53.4,
+    267,
+    3.2,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    53.4,
+    56.4,
+    3.2,
+    16,
+    18.2,
+    11.6,
+    11.6
+   ],
+   [
+    "NARROW_FLOAT",
+    56.6,
+    63.4,
+    7.0,
+    35,
+    20,
+    14,
+    14
+   ],
+   [
+    "NARROW_INT",
+    63.6,
+    134.8,
+    71.4,
+    357,
+    26.3,
+    16.4,
+    16.4
+   ]
+  ],
+  "svs": {
+   "min": 0,
+   "max": 33,
+   "mean": 16.6
+  },
+  "segment": {
+   "index": 4,
+   "frames": 675,
+   "start_week": 1356,
+   "start_tstat": "UNKNOWN",
+   "byte_offset": 15737752
+  }
+ },
+ {
+  "file": "com3.dat_cold05",
+  "byte_offset": 20632755,
+  "span": 121.6,
+  "n": 609,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 609,
+   "HEADINGA": 608,
+   "INSPVAXA": 1216,
+   "BESTPOSA": 608
+  },
+  "other": {
+   "TRACKSTATA": 608,
+   "GPIMU": 12152,
+   "GPGGA": 608,
+   "GPGSV": 756,
+   "GPGSA": 608,
+   "GPGST": 608,
+   "GLGSV": 694,
+   "GAGSV": 580,
+   "GBGSV": 1342,
+   "GQGSV": 413
+  },
+  "gaps": [],
+  "rebases": [
+   {
+    "idx": 135,
+    "elapsed": 27.0,
+    "dt": 653813916.0
+   }
+  ],
+  "tstat_dist": {
+   "UNKNOWN": 135,
+   "COARSE": 170,
+   "FINESTEERING": 304
+  },
+  "ptype_dist": {
+   "NONE": 235,
+   "SINGLE": 14,
+   "NARROW_FLOAT": 324,
+   "PSRDIFF": 1,
+   "NARROW_INT": 35
+  },
+  "cat_pct": {
+   "0": 38.6,
+   "1": 2.5,
+   "2": 53.2,
+   "3": 5.7
+  },
+  "first": {
+   "valid": 27.0,
+   "coarse": 27.0,
+   "fine": 61.0,
+   "single": 47.0,
+   "float": 49.8,
+   "fixed": 114.8,
+   "stn": 48.6,
+   "sol": 47.0
+  },
+  "stages": {
+   "no_time": 27.0,
+   "time_to_single": 20.0,
+   "single_to_float": 2.8,
+   "float_to_fixed": 65.0,
+   "diff_wait": 21.6,
+   "single_to_fixed": 67.8
+  },
+  "events": [
+   [
+    27.0,
+    "冷启动 GPS 周重定标（按连续处理）",
+    "#dc2626"
+   ],
+   [
+    27.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    47.0,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    48.6,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    49.8,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    61.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    114.8,
     "首次 RTK 固定解 NARROW_INT",
     "#16a34a"
    ]
   ],
   "segs": [
    [
-    "NARROW_INT",
+    "NONE",
     0.0,
-    359.2,
-    359.2,
-    1797,
-    36,
-    32.5,
-    32.5
+    46.8,
+    47.0,
+    235,
+    5.4,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    47.0,
+    49.6,
+    2.8,
+    14,
+    19.9,
+    11.8,
+    11.8
+   ],
+   [
+    "NARROW_FLOAT",
+    49.8,
+    61.2,
+    11.6,
+    58,
+    21.1,
+    14.1,
+    14.1
+   ],
+   [
+    "PSRDIFF",
+    61.4,
+    61.4,
+    0.2,
+    1,
+    22,
+    14,
+    14
+   ],
+   [
+    "NARROW_FLOAT",
+    61.6,
+    114.6,
+    53.2,
+    266,
+    26.9,
+    15.7,
+    15.7
+   ],
+   [
+    "NARROW_INT",
+    114.8,
+    121.6,
+    7.0,
+    35,
+    33.7,
+    19.5,
+    19.5
    ]
   ],
   "svs": {
-   "min": 36,
+   "min": 0,
+   "max": 34,
+   "mean": 18.3
+  },
+  "segment": {
+   "index": 5,
+   "frames": 609,
+   "start_week": 1356,
+   "start_tstat": "UNKNOWN",
+   "byte_offset": 20632755
+  }
+ },
+ {
+  "file": "com3.dat_cold06",
+  "byte_offset": 25163196,
+  "span": 134.8,
+  "n": 675,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 675,
+   "HEADINGA": 674,
+   "BESTPOSA": 674,
+   "INSPVAXA": 1345
+  },
+  "other": {
+   "TRACKSTATA": 674,
+   "GPGGA": 674,
+   "GPGSV": 850,
+   "GPGSA": 674,
+   "GPGST": 674,
+   "GPIMU": 13466,
+   "GLGSV": 838,
+   "GAGSV": 688,
+   "GBGSV": 1569,
+   "GQGSV": 459
+  },
+  "gaps": [],
+  "rebases": [
+   {
+    "idx": 155,
+    "elapsed": 31.0,
+    "dt": 653814244.0
+   }
+  ],
+  "tstat_dist": {
+   "UNKNOWN": 155,
+   "COARSE": 160,
+   "FINESTEERING": 360
+  },
+  "ptype_dist": {
+   "NONE": 249,
+   "SINGLE": 25,
+   "NARROW_FLOAT": 110,
+   "NARROW_INT": 291
+  },
+  "cat_pct": {
+   "0": 36.9,
+   "1": 3.7,
+   "2": 16.3,
+   "3": 43.1
+  },
+  "first": {
+   "valid": 31.0,
+   "coarse": 31.0,
+   "fine": 63.0,
+   "single": 49.8,
+   "float": 54.8,
+   "fixed": 76.8,
+   "stn": 53.4,
+   "sol": 49.8
+  },
+  "stages": {
+   "no_time": 31.0,
+   "time_to_single": 18.8,
+   "single_to_float": 5.0,
+   "float_to_fixed": 22.0,
+   "diff_wait": 22.4,
+   "single_to_fixed": 27.0
+  },
+  "events": [
+   [
+    31.0,
+    "冷启动 GPS 周重定标（按连续处理）",
+    "#dc2626"
+   ],
+   [
+    31.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    49.8,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    53.4,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    54.8,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    63.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    76.8,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    49.6,
+    49.8,
+    249,
+    4.1,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    49.8,
+    54.6,
+    5.0,
+    25,
+    17.2,
+    10.3,
+    10.3
+   ],
+   [
+    "NARROW_FLOAT",
+    54.8,
+    76.6,
+    22.0,
+    110,
+    21.3,
+    15.7,
+    15.7
+   ],
+   [
+    "NARROW_INT",
+    76.8,
+    134.8,
+    58.2,
+    291,
+    30.2,
+    19.1,
+    19.1
+   ]
+  ],
+  "svs": {
+   "min": 0,
    "max": 36,
-   "mean": 36
+   "mean": 18.6
+  },
+  "segment": {
+   "index": 6,
+   "frames": 675,
+   "start_week": 1356,
+   "start_tstat": "UNKNOWN",
+   "byte_offset": 25163196
+  }
+ },
+ {
+  "file": "com3.dat_cold07",
+  "byte_offset": 30229788,
+  "span": 111.8,
+  "n": 560,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 560,
+   "HEADINGA": 559,
+   "INSPVAXA": 1117,
+   "BESTPOSA": 559
+  },
+  "other": {
+   "TRACKSTATA": 559,
+   "GPIMU": 11172,
+   "GPGGA": 559,
+   "GPGSV": 699,
+   "GPGSA": 559,
+   "GPGST": 559,
+   "GLGSV": 853,
+   "GBGSV": 1453,
+   "GAGSV": 636,
+   "GQGSV": 439
+  },
+  "gaps": [],
+  "rebases": [
+   {
+    "idx": 86,
+    "elapsed": 17.2,
+    "dt": 653814540.2
+   }
+  ],
+  "tstat_dist": {
+   "UNKNOWN": 86,
+   "COARSE": 149,
+   "FINESTEERING": 325
+  },
+  "ptype_dist": {
+   "NONE": 144,
+   "SINGLE": 40,
+   "NARROW_FLOAT": 95,
+   "NARROW_INT": 281
+  },
+  "cat_pct": {
+   "0": 25.7,
+   "1": 7.1,
+   "2": 17.0,
+   "3": 50.2
+  },
+  "first": {
+   "valid": 17.2,
+   "coarse": 17.2,
+   "fine": 47.0,
+   "single": 28.8,
+   "float": 36.8,
+   "fixed": 55.8,
+   "stn": 35.6,
+   "sol": 28.8
+  },
+  "stages": {
+   "no_time": 17.2,
+   "time_to_single": 11.6,
+   "single_to_float": 8.0,
+   "float_to_fixed": 19.0,
+   "diff_wait": 18.4,
+   "single_to_fixed": 27.0
+  },
+  "events": [
+   [
+    17.2,
+    "冷启动 GPS 周重定标（按连续处理）",
+    "#dc2626"
+   ],
+   [
+    17.2,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    28.8,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    35.6,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    36.8,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    47.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    55.8,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    28.6,
+    28.8,
+    144,
+    3.3,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    28.8,
+    36.6,
+    8.0,
+    40,
+    18.1,
+    11.7,
+    11.7
+   ],
+   [
+    "NARROW_FLOAT",
+    36.8,
+    55.6,
+    19.0,
+    95,
+    23.6,
+    17.7,
+    17.7
+   ],
+   [
+    "NARROW_INT",
+    55.8,
+    111.8,
+    56.2,
+    281,
+    29.8,
+    18.8,
+    18.8
+   ]
+  ],
+  "svs": {
+   "min": 0,
+   "max": 33,
+   "mean": 21.1
+  },
+  "segment": {
+   "index": 7,
+   "frames": 560,
+   "start_week": 1356,
+   "start_tstat": "UNKNOWN",
+   "byte_offset": 30229788
+  }
+ },
+ {
+  "file": "com3.dat_cold08",
+  "byte_offset": 34664096,
+  "span": 120.4,
+  "n": 603,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 603,
+   "HEADINGA": 602,
+   "INSPVAXA": 1205,
+   "BESTPOSA": 602
+  },
+  "other": {
+   "TRACKSTATA": 602,
+   "GPIMU": 12051,
+   "GPGGA": 602,
+   "GPGSV": 774,
+   "GPGSA": 602,
+   "GPGST": 602,
+   "GBGSV": 1418,
+   "GAGSV": 610,
+   "GLGSV": 828,
+   "GQGSV": 408
+  },
+  "gaps": [],
+  "rebases": [
+   {
+    "idx": 105,
+    "elapsed": 21.0,
+    "dt": 653814809.0
+   }
+  ],
+  "tstat_dist": {
+   "UNKNOWN": 105,
+   "COARSE": 149,
+   "FINESTEERING": 349
+  },
+  "ptype_dist": {
+   "NONE": 161,
+   "SINGLE": 87,
+   "NARROW_FLOAT": 170,
+   "NARROW_INT": 185
+  },
+  "cat_pct": {
+   "0": 26.7,
+   "1": 14.4,
+   "2": 28.2,
+   "3": 30.7
+  },
+  "first": {
+   "valid": 21.0,
+   "coarse": 21.0,
+   "fine": 50.8,
+   "single": 32.2,
+   "float": 49.6,
+   "fixed": 83.6,
+   "stn": 38.6,
+   "sol": 32.2
+  },
+  "stages": {
+   "no_time": 21.0,
+   "time_to_single": 11.2,
+   "single_to_float": 17.4,
+   "float_to_fixed": 34.0,
+   "diff_wait": 17.6,
+   "single_to_fixed": 51.4
+  },
+  "events": [
+   [
+    21.0,
+    "冷启动 GPS 周重定标（按连续处理）",
+    "#dc2626"
+   ],
+   [
+    21.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    32.2,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    38.6,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    49.6,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    50.8,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    83.6,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    32.0,
+    32.2,
+    161,
+    2.3,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    32.2,
+    49.4,
+    17.4,
+    87,
+    17.6,
+    11.1,
+    11.1
+   ],
+   [
+    "NARROW_FLOAT",
+    49.6,
+    83.4,
+    34.0,
+    170,
+    22.4,
+    17.6,
+    17.6
+   ],
+   [
+    "NARROW_INT",
+    83.6,
+    120.4,
+    37.0,
+    185,
+    31.2,
+    18.1,
+    18.1
+   ]
+  ],
+  "svs": {
+   "min": 0,
+   "max": 34,
+   "mean": 19.0
+  },
+  "segment": {
+   "index": 8,
+   "frames": 603,
+   "start_week": 1356,
+   "start_tstat": "UNKNOWN",
+   "byte_offset": 34664096
+  }
+ },
+ {
+  "file": "com3.dat_cold09",
+  "byte_offset": 39196273,
+  "span": 120.6,
+  "n": 604,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 604,
+   "HEADINGA": 603,
+   "INSPVAXA": 1206,
+   "BESTPOSA": 603
+  },
+  "other": {
+   "TRACKSTATA": 603,
+   "GPIMU": 12052,
+   "GPGGA": 603,
+   "GPGSV": 791,
+   "GPGSA": 603,
+   "GPGST": 603,
+   "GLGSV": 882,
+   "GBGSV": 1442,
+   "GQGSV": 438,
+   "GAGSV": 485
+  },
+  "gaps": [],
+  "rebases": [
+   {
+    "idx": 134,
+    "elapsed": 26.8,
+    "dt": 653815099.4
+   }
+  ],
+  "tstat_dist": {
+   "UNKNOWN": 134,
+   "COARSE": 178,
+   "FINESTEERING": 292
+  },
+  "ptype_dist": {
+   "NONE": 193,
+   "SINGLE": 113,
+   "NARROW_FLOAT": 135,
+   "NARROW_INT": 163
+  },
+  "cat_pct": {
+   "0": 32.0,
+   "1": 18.7,
+   "2": 22.4,
+   "3": 27.0
+  },
+  "first": {
+   "valid": 26.8,
+   "coarse": 26.8,
+   "fine": 62.4,
+   "single": 38.6,
+   "float": 61.2,
+   "fixed": 88.2,
+   "stn": 59.8,
+   "sol": 38.6
+  },
+  "stages": {
+   "no_time": 26.8,
+   "time_to_single": 11.8,
+   "single_to_float": 22.6,
+   "float_to_fixed": 27.0,
+   "diff_wait": 33.0,
+   "single_to_fixed": 49.6
+  },
+  "events": [
+   [
+    26.8,
+    "冷启动 GPS 周重定标（按连续处理）",
+    "#dc2626"
+   ],
+   [
+    26.8,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    38.6,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    59.8,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    61.2,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    62.4,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    88.2,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    38.4,
+    38.6,
+    193,
+    2.5,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    38.6,
+    61.0,
+    22.6,
+    113,
+    19.8,
+    13.5,
+    13.5
+   ],
+   [
+    "NARROW_FLOAT",
+    61.2,
+    88.0,
+    27.0,
+    135,
+    25.4,
+    18,
+    18
+   ],
+   [
+    "NARROW_INT",
+    88.2,
+    120.6,
+    32.6,
+    163,
+    34.0,
+    20.2,
+    20.2
+   ]
+  ],
+  "svs": {
+   "min": 0,
+   "max": 36,
+   "mean": 19.4
+  },
+  "segment": {
+   "index": 9,
+   "frames": 604,
+   "start_week": 1356,
+   "start_tstat": "UNKNOWN",
+   "byte_offset": 39196273
+  }
+ },
+ {
+  "file": "com3.dat_cold10",
+  "byte_offset": 43784038,
+  "span": 130.0,
+  "n": 651,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 651,
+   "HEADINGA": 650,
+   "INSPVAXA": 1300,
+   "BESTPOSA": 650
+  },
+  "other": {
+   "TRACKSTATA": 650,
+   "GPIMU": 13000,
+   "GPGGA": 650,
+   "GPGSV": 920,
+   "GPGSA": 650,
+   "GPGST": 650,
+   "GBGSV": 1510,
+   "GLGSV": 934,
+   "GQGSV": 461,
+   "GAGSV": 558
+  },
+  "gaps": [],
+  "rebases": [
+   {
+    "idx": 152,
+    "elapsed": 30.4,
+    "dt": 653815371.2
+   }
+  ],
+  "tstat_dist": {
+   "UNKNOWN": 152,
+   "COARSE": 127,
+   "FINESTEERING": 372
+  },
+  "ptype_dist": {
+   "NONE": 199,
+   "SINGLE": 74,
+   "NARROW_FLOAT": 250,
+   "NARROW_INT": 128
+  },
+  "cat_pct": {
+   "0": 30.6,
+   "1": 11.4,
+   "2": 38.4,
+   "3": 19.7
+  },
+  "first": {
+   "valid": 30.4,
+   "coarse": 30.4,
+   "fine": 55.8,
+   "single": 39.8,
+   "float": 54.6,
+   "fixed": 104.6,
+   "stn": 41.2,
+   "sol": 39.8
+  },
+  "stages": {
+   "no_time": 30.4,
+   "time_to_single": 9.4,
+   "single_to_float": 14.8,
+   "float_to_fixed": 50.0,
+   "diff_wait": 10.8,
+   "single_to_fixed": 64.8
+  },
+  "events": [
+   [
+    30.4,
+    "冷启动 GPS 周重定标（按连续处理）",
+    "#dc2626"
+   ],
+   [
+    30.4,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    39.8,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    41.2,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    54.6,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    55.8,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    104.6,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    39.6,
+    39.8,
+    199,
+    1.8,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    39.8,
+    54.4,
+    14.8,
+    74,
+    17.3,
+    12.4,
+    12.4
+   ],
+   [
+    "NARROW_FLOAT",
+    54.6,
+    104.4,
+    50.0,
+    250,
+    25.3,
+    17.9,
+    17.9
+   ],
+   [
+    "NARROW_INT",
+    104.6,
+    130.0,
+    25.6,
+    128,
+    34.3,
+    19.0,
+    19.0
+   ]
+  ],
+  "svs": {
+   "min": 0,
+   "max": 36,
+   "mean": 19.0
+  },
+  "segment": {
+   "index": 10,
+   "frames": 651,
+   "start_week": 1356,
+   "start_tstat": "UNKNOWN",
+   "byte_offset": 43784038
   }
  }
 ]

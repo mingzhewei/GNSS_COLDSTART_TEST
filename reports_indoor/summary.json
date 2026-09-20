@@ -1,0 +1,3044 @@
+[
+ {
+  "file": "北云_cold01",
+  "byte_offset": 0,
+  "span": 232.8,
+  "n": 1165,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 1485,
+   "HEADINGA": 1484,
+   "INSPVAXA": 2968,
+   "BESTPOSA": 1484
+  },
+  "other": {
+   "TRACKSTATA": 1484,
+   "GPIMU": 29683,
+   "GPGGA": 1484,
+   "GPGSV": 1690,
+   "GPGSA": 1484,
+   "GPGST": 1484,
+   "GLGSV": 988,
+   "GBGSV": 2167,
+   "GAGSV": 958,
+   "GQGSV": 627
+  },
+  "gaps": [],
+  "rebases": [
+   {
+    "idx": 735,
+    "elapsed": 147.0,
+    "dt": 653812745.8
+   }
+  ],
+  "tstat_dist": {
+   "UNKNOWN": 415,
+   "COARSE": 450,
+   "FINESTEERING": 280,
+   "FREEWHEELING": 20
+  },
+  "ptype_dist": {
+   "NONE": 820,
+   "SINGLE": 75,
+   "NARROW_FLOAT": 125,
+   "NARROW_INT": 137,
+   "PSRDIFF": 8
+  },
+  "cat_pct": {
+   "0": 70.4,
+   "1": 7.1,
+   "2": 10.7,
+   "3": 11.8
+  },
+  "first": {
+   "valid": 83.0,
+   "coarse": 83.0,
+   "fine": 173.0,
+   "single": 159.2,
+   "float": 173.8,
+   "fixed": 198.8,
+   "stn": 160.6,
+   "sol": 159.2
+  },
+  "stages": {
+   "no_time": 83.0,
+   "time_to_single": 76.2,
+   "single_to_float": 14.6,
+   "float_to_fixed": 25.0,
+   "diff_wait": 77.6,
+   "single_to_fixed": 39.6
+  },
+  "events": [
+   [
+    83.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    147.0,
+    "冷启动 GPS 周重定标（按连续处理）",
+    "#dc2626"
+   ],
+   [
+    159.2,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    160.6,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    173.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    173.8,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    198.8,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    159.0,
+    159.2,
+    796,
+    7.0,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    159.2,
+    173.6,
+    14.6,
+    73,
+    27.4,
+    10.5,
+    10.5
+   ],
+   [
+    "NARROW_FLOAT",
+    173.8,
+    198.6,
+    25.0,
+    125,
+    33.4,
+    13.6,
+    13.6
+   ],
+   [
+    "NARROW_INT",
+    198.8,
+    226.0,
+    27.4,
+    137,
+    36.4,
+    21.7,
+    21.7
+   ],
+   [
+    "PSRDIFF",
+    226.2,
+    227.6,
+    1.6,
+    8,
+    30.8,
+    17.9,
+    17.9
+   ],
+   [
+    "SINGLE",
+    227.8,
+    228.0,
+    0.4,
+    2,
+    20,
+    8.5,
+    8.5
+   ],
+   [
+    "NONE",
+    228.2,
+    232.8,
+    4.8,
+    24,
+    4.6,
+    0,
+    0
+   ]
+  ],
+  "svs": {
+   "min": 0,
+   "max": 38,
+   "mean": 14.7
+  },
+  "product": "北云",
+  "segment": {
+   "index": 1,
+   "t0_shift": 63.86500000953674,
+   "by_off": 653812892.6,
+   "hc_off": 63.86500000953674
+  }
+ },
+ {
+  "file": "华测_cold01",
+  "byte_offset": 0,
+  "span": 244.0,
+  "n": 245,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 0,
+  "counts": {
+   "BESTPOSA": 310
+  },
+  "other": {
+   "BESTPA": 3079,
+   "GNGGA": 3079,
+   "BESTVA": 3079,
+   "RTKPA": 3079,
+   "RTKVA": 3079,
+   "RANGEA": 309,
+   "ENVSTATUSA": 2835,
+   "GPGSV": 4716,
+   "SATVIS2A": 2472,
+   "GNGSA": 8444,
+   "GNGST": 3079,
+   "BESTDOPSA": 3079,
+   "GLGSV": 1715,
+   "GBGSV": 4050,
+   "GQGSV": 2031,
+   "GAGSV": 1952,
+   "GIGSV": 948
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSESTEERING": 124,
+   "FINESTEERING": 121
+  },
+  "ptype_dist": {
+   "NONE": 126,
+   "SINGLE": 1,
+   "PSRDIFF": 8,
+   "NARROW_FLOAT": 7,
+   "NARROW_INT": 103
+  },
+  "cat_pct": {
+   "0": 51.4,
+   "1": 3.7,
+   "2": 2.9,
+   "3": 42.0
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": null,
+   "fine": 120.0,
+   "single": 126.0,
+   "float": 128.0,
+   "fixed": 142.0,
+   "stn": 127.0,
+   "sol": 126.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 126.0,
+   "single_to_float": 2.0,
+   "float_to_fixed": 14.0,
+   "diff_wait": 127.0,
+   "single_to_fixed": 16.0
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    120.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    126.0,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    127.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    128.0,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    142.0,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    125.0,
+    126.0,
+    126,
+    4.6,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    126.0,
+    126.0,
+    1.0,
+    1,
+    14,
+    13,
+    11
+   ],
+   [
+    "PSRDIFF",
+    127.0,
+    127.0,
+    1.0,
+    1,
+    14,
+    13,
+    12
+   ],
+   [
+    "NARROW_FLOAT",
+    128.0,
+    130.0,
+    3.0,
+    3,
+    16,
+    14,
+    12.3
+   ],
+   [
+    "PSRDIFF",
+    131.0,
+    137.0,
+    7.0,
+    7,
+    17.6,
+    16,
+    13.4
+   ],
+   [
+    "NARROW_FLOAT",
+    138.0,
+    141.0,
+    4.0,
+    4,
+    19.5,
+    17.5,
+    15.2
+   ],
+   [
+    "NARROW_INT",
+    142.0,
+    244.0,
+    103.0,
+    103,
+    36.5,
+    30.9,
+    25.3
+   ]
+  ],
+  "svs": {
+   "min": 4,
+   "max": 44,
+   "mean": 18.8
+  },
+  "product": "华测",
+  "segment": {
+   "index": 1,
+   "t0_shift": 63.86500000953674,
+   "by_off": 653812892.6,
+   "hc_off": 63.86500000953674
+  }
+ },
+ {
+  "file": "北云_cold02",
+  "byte_offset": 0,
+  "span": 89.6,
+  "n": 449,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 757,
+   "HEADINGA": 756,
+   "INSPVAXA": 1513,
+   "BESTPOSA": 756
+  },
+  "other": {
+   "TRACKSTATA": 756,
+   "GPIMU": 15132,
+   "GPGGA": 756,
+   "GPGSV": 1021,
+   "GPGSA": 756,
+   "GPGST": 756,
+   "GLGSV": 773,
+   "GAGSV": 820,
+   "GQGSV": 557,
+   "GBGSV": 1841
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 140,
+   "FINESTEERING": 305,
+   "FREEWHEELING": 4
+  },
+  "ptype_dist": {
+   "NONE": 90,
+   "SINGLE": 155,
+   "NARROW_FLOAT": 90,
+   "NARROW_INT": 103,
+   "PSRDIFF": 11
+  },
+  "cat_pct": {
+   "0": 20.0,
+   "1": 37.0,
+   "2": 20.0,
+   "3": 22.9
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 28.0,
+   "single": 16.8,
+   "float": 47.8,
+   "fixed": 65.8,
+   "stn": 27.4,
+   "sol": 16.8
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 16.8,
+   "single_to_float": 31.0,
+   "float_to_fixed": 18.0,
+   "diff_wait": 27.4,
+   "single_to_fixed": 49.0
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    16.8,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    27.4,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    28.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    47.8,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    65.8,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    16.6,
+    16.8,
+    84,
+    21.5,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    16.8,
+    47.6,
+    31.0,
+    155,
+    27.7,
+    11.9,
+    11.9
+   ],
+   [
+    "NARROW_FLOAT",
+    47.8,
+    65.6,
+    18.0,
+    90,
+    31.9,
+    15.8,
+    15.8
+   ],
+   [
+    "NARROW_INT",
+    65.8,
+    86.2,
+    20.6,
+    103,
+    33.4,
+    20.8,
+    20.8
+   ],
+   [
+    "PSRDIFF",
+    86.4,
+    88.4,
+    2.2,
+    11,
+    27.3,
+    15.5,
+    15.5
+   ],
+   [
+    "NONE",
+    88.6,
+    89.6,
+    1.2,
+    6,
+    8.2,
+    0,
+    0
+   ]
+  ],
+  "svs": {
+   "min": 3,
+   "max": 34,
+   "mean": 28.4
+  },
+  "product": "北云",
+  "segment": {
+   "index": 2,
+   "t0_shift": 61.5,
+   "by_off": 653813277.2,
+   "hc_off": 61.5
+  }
+ },
+ {
+  "file": "华测_cold02",
+  "byte_offset": 0,
+  "span": 122.0,
+  "n": 123,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 3,
+  "counts": {
+   "BESTPOSA": 184
+  },
+  "other": {
+   "BESTPA": 1835,
+   "GNGGA": 1835,
+   "BESTVA": 1835,
+   "RTKPA": 1835,
+   "RTKVA": 1835,
+   "RANGEA": 183,
+   "ENVSTATUSA": 1713,
+   "GPGSV": 3138,
+   "SATVIS2A": 1464,
+   "GNGSA": 6951,
+   "GNGST": 1835,
+   "BESTDOPSA": 1835,
+   "GLGSV": 1558,
+   "GBGSV": 3930,
+   "GAGSV": 1618,
+   "GQGSV": 1792,
+   "GIGSV": 1001
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSESTEERING": 12,
+   "FINESTEERING": 111
+  },
+  "ptype_dist": {
+   "NONE": 13,
+   "SINGLE": 1,
+   "PSRDIFF": 1,
+   "NARROW_FLOAT": 6,
+   "NARROW_INT": 102
+  },
+  "cat_pct": {
+   "0": 10.6,
+   "1": 1.6,
+   "2": 4.9,
+   "3": 82.9
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": null,
+   "fine": 12.0,
+   "single": 12.0,
+   "float": 15.0,
+   "fixed": 21.0,
+   "stn": 14.0,
+   "sol": 12.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 12.0,
+   "single_to_float": 3.0,
+   "float_to_fixed": 6.0,
+   "diff_wait": 14.0,
+   "single_to_fixed": 9.0
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    12.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    12.0,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    14.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    15.0,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    21.0,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    11.0,
+    12.0,
+    12,
+    4.2,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    12.0,
+    12.0,
+    1.0,
+    1,
+    13,
+    12,
+    9
+   ],
+   [
+    "NONE",
+    13.0,
+    13.0,
+    1.0,
+    1,
+    14,
+    0,
+    0
+   ],
+   [
+    "PSRDIFF",
+    14.0,
+    14.0,
+    1.0,
+    1,
+    14,
+    12,
+    11
+   ],
+   [
+    "NARROW_FLOAT",
+    15.0,
+    20.0,
+    6.0,
+    6,
+    19.3,
+    16.3,
+    12.5
+   ],
+   [
+    "NARROW_INT",
+    21.0,
+    122.0,
+    102.0,
+    102,
+    34.7,
+    28.3,
+    22.5
+   ]
+  ],
+  "svs": {
+   "min": 3,
+   "max": 43,
+   "mean": 30.5
+  },
+  "product": "华测",
+  "segment": {
+   "index": 2,
+   "t0_shift": 61.5,
+   "by_off": 653813277.2,
+   "hc_off": 61.5
+  }
+ },
+ {
+  "file": "北云_cold03",
+  "byte_offset": 0,
+  "span": 95.2,
+  "n": 477,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 675,
+   "HEADINGA": 674,
+   "INSPVAXA": 1347,
+   "BESTPOSA": 674
+  },
+  "other": {
+   "TRACKSTATA": 674,
+   "GPIMU": 13478,
+   "GPGGA": 674,
+   "GPGSV": 860,
+   "GPGSA": 674,
+   "GPGST": 674,
+   "GLGSV": 786,
+   "GBGSV": 1417,
+   "GAGSV": 551,
+   "GQGSV": 460
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 126,
+   "FINESTEERING": 351
+  },
+  "ptype_dist": {
+   "NONE": 69,
+   "SINGLE": 16,
+   "NARROW_FLOAT": 35,
+   "NARROW_INT": 357
+  },
+  "cat_pct": {
+   "0": 14.5,
+   "1": 3.4,
+   "2": 7.3,
+   "3": 74.8
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 25.2,
+   "single": 13.8,
+   "float": 17.0,
+   "fixed": 24.0,
+   "stn": 15.8,
+   "sol": 13.8
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 13.8,
+   "single_to_float": 3.2,
+   "float_to_fixed": 7.0,
+   "diff_wait": 15.8,
+   "single_to_fixed": 10.2
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    13.8,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    15.8,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    17.0,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    24.0,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ],
+   [
+    25.2,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    13.6,
+    13.8,
+    69,
+    11.6,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    13.8,
+    16.8,
+    3.2,
+    16,
+    18.2,
+    11.6,
+    11.6
+   ],
+   [
+    "NARROW_FLOAT",
+    17.0,
+    23.8,
+    7.0,
+    35,
+    20,
+    14,
+    14
+   ],
+   [
+    "NARROW_INT",
+    24.0,
+    95.2,
+    71.4,
+    357,
+    26.3,
+    16.4,
+    16.4
+   ]
+  ],
+  "svs": {
+   "min": 5,
+   "max": 33,
+   "mean": 23.4
+  },
+  "product": "北云",
+  "segment": {
+   "index": 3,
+   "t0_shift": 39.5,
+   "by_off": 653813655.0,
+   "hc_off": 39.5
+  }
+ },
+ {
+  "file": "华测_cold03",
+  "byte_offset": 0,
+  "span": 96.0,
+  "n": 97,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 1,
+  "counts": {
+   "BESTPOSA": 136
+  },
+  "other": {
+   "BESTPA": 1355,
+   "GNGGA": 1355,
+   "BESTVA": 1355,
+   "RTKPA": 1355,
+   "RTKVA": 1355,
+   "RANGEA": 135,
+   "ENVSTATUSA": 1258,
+   "GPGSV": 2515,
+   "SATVIS2A": 1080,
+   "GNGSA": 5280,
+   "GNGST": 1355,
+   "BESTDOPSA": 1355,
+   "GLGSV": 1319,
+   "GAGSV": 1327,
+   "GBGSV": 3072,
+   "GQGSV": 1451,
+   "GIGSV": 821
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "FINESTEERING": 97
+  },
+  "ptype_dist": {
+   "PSRDIFF": 2,
+   "NONE": 8,
+   "NARROW_FLOAT": 2,
+   "NARROW_INT": 85
+  },
+  "cat_pct": {
+   "1": 2.1,
+   "0": 8.2,
+   "2": 2.1,
+   "3": 87.6
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": null,
+   "fine": 0.0,
+   "single": 0.0,
+   "float": 10.0,
+   "fixed": 12.0,
+   "stn": 0.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": 10.0,
+   "float_to_fixed": 2.0,
+   "diff_wait": 0.0,
+   "single_to_fixed": 12.0
+  },
+  "events": [
+   [
+    0.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    0.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    0.0,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    10.0,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    12.0,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "PSRDIFF",
+    0.0,
+    0.0,
+    1.0,
+    1,
+    13,
+    11,
+    8
+   ],
+   [
+    "NONE",
+    1.0,
+    8.0,
+    8.0,
+    8,
+    16.5,
+    0,
+    0
+   ],
+   [
+    "PSRDIFF",
+    9.0,
+    9.0,
+    1.0,
+    1,
+    20,
+    17,
+    12
+   ],
+   [
+    "NARROW_FLOAT",
+    10.0,
+    11.0,
+    2.0,
+    2,
+    21,
+    17,
+    12
+   ],
+   [
+    "NARROW_INT",
+    12.0,
+    96.0,
+    85.0,
+    85,
+    32.8,
+    26.8,
+    21.3
+   ]
+  ],
+  "svs": {
+   "min": 13,
+   "max": 40,
+   "mean": 30.9
+  },
+  "product": "华测",
+  "segment": {
+   "index": 3,
+   "t0_shift": 39.5,
+   "by_off": 653813655.0,
+   "hc_off": 39.5
+  }
+ },
+ {
+  "file": "北云_cold04",
+  "byte_offset": 0,
+  "span": 89.8,
+  "n": 450,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 609,
+   "HEADINGA": 608,
+   "INSPVAXA": 1216,
+   "BESTPOSA": 608
+  },
+  "other": {
+   "TRACKSTATA": 608,
+   "GPIMU": 12152,
+   "GPGGA": 608,
+   "GPGSV": 756,
+   "GPGSA": 608,
+   "GPGST": 608,
+   "GLGSV": 694,
+   "GAGSV": 580,
+   "GBGSV": 1342,
+   "GQGSV": 413
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 146,
+   "FINESTEERING": 304
+  },
+  "ptype_dist": {
+   "NONE": 76,
+   "SINGLE": 14,
+   "NARROW_FLOAT": 324,
+   "PSRDIFF": 1,
+   "NARROW_INT": 35
+  },
+  "cat_pct": {
+   "0": 16.9,
+   "1": 3.3,
+   "2": 72.0,
+   "3": 7.8
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 29.2,
+   "single": 15.2,
+   "float": 18.0,
+   "fixed": 83.0,
+   "stn": 16.8,
+   "sol": 15.2
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 15.2,
+   "single_to_float": 2.8,
+   "float_to_fixed": 65.0,
+   "diff_wait": 16.8,
+   "single_to_fixed": 67.8
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    15.2,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    16.8,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    18.0,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    29.2,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    83.0,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    15.0,
+    15.2,
+    76,
+    14.0,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    15.2,
+    17.8,
+    2.8,
+    14,
+    19.9,
+    11.8,
+    11.8
+   ],
+   [
+    "NARROW_FLOAT",
+    18.0,
+    29.4,
+    11.6,
+    58,
+    21.1,
+    14.1,
+    14.1
+   ],
+   [
+    "PSRDIFF",
+    29.6,
+    29.6,
+    0.2,
+    1,
+    22,
+    14,
+    14
+   ],
+   [
+    "NARROW_FLOAT",
+    29.8,
+    82.8,
+    53.2,
+    266,
+    26.9,
+    15.7,
+    15.7
+   ],
+   [
+    "NARROW_INT",
+    83.0,
+    89.8,
+    7.0,
+    35,
+    33.7,
+    19.5,
+    19.5
+   ]
+  ],
+  "svs": {
+   "min": 10,
+   "max": 34,
+   "mean": 24.3
+  },
+  "product": "北云",
+  "segment": {
+   "index": 4,
+   "t0_shift": 31.61400008201599,
+   "by_off": 653813942.8000001,
+   "hc_off": 31.61400008201599
+  }
+ },
+ {
+  "file": "华测_cold04",
+  "byte_offset": 0,
+  "span": 97.0,
+  "n": 98,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTPOSA": 130
+  },
+  "other": {
+   "BESTPA": 1287,
+   "GNGGA": 1287,
+   "BESTVA": 1287,
+   "RTKPA": 1287,
+   "RTKVA": 1287,
+   "RANGEA": 129,
+   "ENVSTATUSA": 1190,
+   "GPGSV": 2508,
+   "SATVIS2A": 1032,
+   "GNGSA": 5363,
+   "GNGST": 1287,
+   "BESTDOPSA": 1287,
+   "GBGSV": 2971,
+   "GLGSV": 1270,
+   "GAGSV": 1208,
+   "GQGSV": 1465,
+   "GIGSV": 818
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSESTEERING": 4,
+   "FINESTEERING": 94
+  },
+  "ptype_dist": {
+   "NONE": 5,
+   "SINGLE": 1,
+   "PSRDIFF": 8,
+   "NARROW_FLOAT": 4,
+   "NARROW_INT": 80
+  },
+  "cat_pct": {
+   "0": 5.1,
+   "1": 9.2,
+   "2": 4.1,
+   "3": 81.6
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": null,
+   "fine": 4.0,
+   "single": 4.0,
+   "float": 14.0,
+   "fixed": 18.0,
+   "stn": 6.0,
+   "sol": 4.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 4.0,
+   "single_to_float": 10.0,
+   "float_to_fixed": 4.0,
+   "diff_wait": 6.0,
+   "single_to_fixed": 14.0
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    4.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    4.0,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    6.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    14.0,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    18.0,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    3.0,
+    4.0,
+    4,
+    5.2,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    4.0,
+    4.0,
+    1.0,
+    1,
+    14,
+    11,
+    8
+   ],
+   [
+    "NONE",
+    5.0,
+    5.0,
+    1.0,
+    1,
+    16,
+    0,
+    0
+   ],
+   [
+    "PSRDIFF",
+    6.0,
+    13.0,
+    8.0,
+    8,
+    17.8,
+    14.8,
+    10.4
+   ],
+   [
+    "NARROW_FLOAT",
+    14.0,
+    17.0,
+    4.0,
+    4,
+    19.8,
+    16.2,
+    11
+   ],
+   [
+    "NARROW_INT",
+    18.0,
+    97.0,
+    80.0,
+    80,
+    33.3,
+    26.7,
+    20.4
+   ]
+  ],
+  "svs": {
+   "min": 4,
+   "max": 41,
+   "mean": 30.0
+  },
+  "product": "华测",
+  "segment": {
+   "index": 4,
+   "t0_shift": 31.61400008201599,
+   "by_off": 653813942.8000001,
+   "hc_off": 31.61400008201599
+  }
+ },
+ {
+  "file": "北云_cold05",
+  "byte_offset": 0,
+  "span": 107.6,
+  "n": 539,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 675,
+   "HEADINGA": 674,
+   "BESTPOSA": 674,
+   "INSPVAXA": 1345
+  },
+  "other": {
+   "TRACKSTATA": 674,
+   "GPGGA": 674,
+   "GPGSV": 850,
+   "GPGSA": 674,
+   "GPGST": 674,
+   "GPIMU": 13466,
+   "GLGSV": 838,
+   "GAGSV": 688,
+   "GBGSV": 1569,
+   "GQGSV": 459
+  },
+  "gaps": [],
+  "rebases": [
+   {
+    "idx": 155,
+    "elapsed": 31.0,
+    "dt": 653814244.0
+   }
+  ],
+  "tstat_dist": {
+   "UNKNOWN": 19,
+   "COARSE": 160,
+   "FINESTEERING": 360
+  },
+  "ptype_dist": {
+   "NONE": 113,
+   "SINGLE": 25,
+   "NARROW_FLOAT": 110,
+   "NARROW_INT": 291
+  },
+  "cat_pct": {
+   "0": 21.0,
+   "1": 4.6,
+   "2": 20.4,
+   "3": 54.0
+  },
+  "first": {
+   "valid": 3.8,
+   "coarse": 3.8,
+   "fine": 35.8,
+   "single": 22.6,
+   "float": 27.6,
+   "fixed": 49.6,
+   "stn": 26.2,
+   "sol": 22.6
+  },
+  "stages": {
+   "no_time": 3.8,
+   "time_to_single": 18.8,
+   "single_to_float": 5.0,
+   "float_to_fixed": 22.0,
+   "diff_wait": 22.4,
+   "single_to_fixed": 27.0
+  },
+  "events": [
+   [
+    3.8,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    22.6,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    26.2,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    27.6,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    31.0,
+    "冷启动 GPS 周重定标（按连续处理）",
+    "#dc2626"
+   ],
+   [
+    35.8,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    49.6,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    22.4,
+    22.6,
+    113,
+    9.0,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    22.6,
+    27.4,
+    5.0,
+    25,
+    17.2,
+    10.3,
+    10.3
+   ],
+   [
+    "NARROW_FLOAT",
+    27.6,
+    49.4,
+    22.0,
+    110,
+    21.3,
+    15.7,
+    15.7
+   ],
+   [
+    "NARROW_INT",
+    49.6,
+    107.6,
+    58.2,
+    291,
+    30.2,
+    19.1,
+    19.1
+   ]
+  ],
+  "svs": {
+   "min": 0,
+   "max": 36,
+   "mean": 23.3
+  },
+  "product": "北云",
+  "segment": {
+   "index": 5,
+   "t0_shift": 27.091000080108643,
+   "by_off": 653814274.8000001,
+   "hc_off": 27.091000080108643
+  }
+ },
+ {
+  "file": "华测_cold05",
+  "byte_offset": 0,
+  "span": 109.0,
+  "n": 110,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 1,
+  "counts": {
+   "BESTPOSA": 138
+  },
+  "other": {
+   "BESTPA": 1361,
+   "GNGGA": 1361,
+   "BESTVA": 1361,
+   "RTKPA": 1361,
+   "RTKVA": 1361,
+   "RANGEA": 137,
+   "ENVSTATUSA": 1251,
+   "GPGSV": 2790,
+   "SATVIS2A": 1096,
+   "GNGSA": 6147,
+   "GNGST": 1361,
+   "BESTDOPSA": 1361,
+   "GLGSV": 1481,
+   "GAGSV": 1523,
+   "GBGSV": 3526,
+   "GQGSV": 1636,
+   "GIGSV": 881
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "FINESTEERING": 110
+  },
+  "ptype_dist": {
+   "NONE": 3,
+   "SINGLE": 1,
+   "PSRDIFF": 6,
+   "NARROW_FLOAT": 18,
+   "NARROW_INT": 82
+  },
+  "cat_pct": {
+   "0": 2.7,
+   "1": 6.4,
+   "2": 16.4,
+   "3": 74.5
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": null,
+   "fine": 0.0,
+   "single": 3.0,
+   "float": 9.0,
+   "fixed": 28.0,
+   "stn": 4.0,
+   "sol": 3.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 3.0,
+   "single_to_float": 6.0,
+   "float_to_fixed": 19.0,
+   "diff_wait": 4.0,
+   "single_to_fixed": 25.0
+  },
+  "events": [
+   [
+    0.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    3.0,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    4.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    9.0,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    28.0,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    2.0,
+    3.0,
+    3,
+    12.7,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    3.0,
+    3.0,
+    1.0,
+    1,
+    14,
+    11,
+    9
+   ],
+   [
+    "PSRDIFF",
+    4.0,
+    8.0,
+    5.0,
+    5,
+    16.2,
+    12.6,
+    9.2
+   ],
+   [
+    "NARROW_FLOAT",
+    9.0,
+    9.0,
+    1.0,
+    1,
+    18,
+    14,
+    10
+   ],
+   [
+    "PSRDIFF",
+    10.0,
+    10.0,
+    1.0,
+    1,
+    17,
+    13,
+    10
+   ],
+   [
+    "NARROW_FLOAT",
+    11.0,
+    27.0,
+    17.0,
+    17,
+    21.2,
+    16.3,
+    12.2
+   ],
+   [
+    "NARROW_INT",
+    28.0,
+    109.0,
+    82.0,
+    82,
+    35.7,
+    29.2,
+    23.3
+   ]
+  ],
+  "svs": {
+   "min": 8,
+   "max": 43,
+   "mean": 31.4
+  },
+  "product": "华测",
+  "segment": {
+   "index": 5,
+   "t0_shift": 27.091000080108643,
+   "by_off": 653814274.8000001,
+   "hc_off": 27.091000080108643
+  }
+ },
+ {
+  "file": "北云_cold06",
+  "byte_offset": 0,
+  "span": 88.6,
+  "n": 444,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 560,
+   "HEADINGA": 559,
+   "INSPVAXA": 1117,
+   "BESTPOSA": 559
+  },
+  "other": {
+   "TRACKSTATA": 559,
+   "GPIMU": 11172,
+   "GPGGA": 559,
+   "GPGSV": 699,
+   "GPGSA": 559,
+   "GPGST": 559,
+   "GLGSV": 853,
+   "GBGSV": 1453,
+   "GAGSV": 636,
+   "GQGSV": 439
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 119,
+   "FINESTEERING": 325
+  },
+  "ptype_dist": {
+   "NONE": 28,
+   "SINGLE": 40,
+   "NARROW_FLOAT": 95,
+   "NARROW_INT": 281
+  },
+  "cat_pct": {
+   "0": 6.3,
+   "1": 9.0,
+   "2": 21.4,
+   "3": 63.3
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 23.8,
+   "single": 5.6,
+   "float": 13.6,
+   "fixed": 32.6,
+   "stn": 12.4,
+   "sol": 5.6
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 5.6,
+   "single_to_float": 8.0,
+   "float_to_fixed": 19.0,
+   "diff_wait": 12.4,
+   "single_to_fixed": 27.0
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    5.6,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    12.4,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    13.6,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    23.8,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    32.6,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    5.4,
+    5.6,
+    28,
+    11.1,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    5.6,
+    13.4,
+    8.0,
+    40,
+    18.1,
+    11.7,
+    11.7
+   ],
+   [
+    "NARROW_FLOAT",
+    13.6,
+    32.4,
+    19.0,
+    95,
+    23.6,
+    17.7,
+    17.7
+   ],
+   [
+    "NARROW_INT",
+    32.6,
+    88.6,
+    56.2,
+    281,
+    29.8,
+    18.8,
+    18.8
+   ]
+  ],
+  "svs": {
+   "min": 9,
+   "max": 33,
+   "mean": 26.2
+  },
+  "product": "北云",
+  "segment": {
+   "index": 6,
+   "t0_shift": 23.09999990463257,
+   "by_off": 653814557.2,
+   "hc_off": 23.09999990463257
+  }
+ },
+ {
+  "file": "华测_cold06",
+  "byte_offset": 0,
+  "span": 98.0,
+  "n": 99,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTPOSA": 122
+  },
+  "other": {
+   "BESTPA": 1211,
+   "GNGGA": 1211,
+   "BESTVA": 1211,
+   "RTKPA": 1211,
+   "RTKVA": 1211,
+   "RANGEA": 121,
+   "ENVSTATUSA": 1113,
+   "GPGSV": 2432,
+   "SATVIS2A": 967,
+   "GNGSA": 5065,
+   "GNGST": 1211,
+   "BESTDOPSA": 1211,
+   "GBGSV": 3026,
+   "GLGSV": 1319,
+   "GAGSV": 1333,
+   "GQGSV": 1403,
+   "GIGSV": 791
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSESTEERING": 8,
+   "FINESTEERING": 91
+  },
+  "ptype_dist": {
+   "NONE": 13,
+   "SINGLE": 1,
+   "NARROW_FLOAT": 2,
+   "NARROW_INT": 83
+  },
+  "cat_pct": {
+   "0": 13.1,
+   "1": 1.0,
+   "2": 2.0,
+   "3": 83.8
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": null,
+   "fine": 8.0,
+   "single": 13.0,
+   "float": 14.0,
+   "fixed": 15.0,
+   "stn": 14.0,
+   "sol": 13.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 13.0,
+   "single_to_float": 1.0,
+   "float_to_fixed": 1.0,
+   "diff_wait": 14.0,
+   "single_to_fixed": 2.0
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    8.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    13.0,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    14.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    14.0,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    15.0,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    12.0,
+    13.0,
+    13,
+    8.7,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    13.0,
+    13.0,
+    1.0,
+    1,
+    18,
+    15,
+    11
+   ],
+   [
+    "NARROW_FLOAT",
+    14.0,
+    14.0,
+    1.0,
+    1,
+    17,
+    14,
+    11
+   ],
+   [
+    "NARROW_INT",
+    15.0,
+    34.0,
+    20.0,
+    20,
+    24.6,
+    19.4,
+    14.1
+   ],
+   [
+    "NARROW_FLOAT",
+    35.0,
+    35.0,
+    1.0,
+    1,
+    27,
+    22,
+    17
+   ],
+   [
+    "NARROW_INT",
+    36.0,
+    98.0,
+    63.0,
+    63,
+    37.9,
+    30.7,
+    24.5
+   ]
+  ],
+  "svs": {
+   "min": 2,
+   "max": 43,
+   "mean": 30.8
+  },
+  "product": "华测",
+  "segment": {
+   "index": 6,
+   "t0_shift": 23.09999990463257,
+   "by_off": 653814557.2,
+   "hc_off": 23.09999990463257
+  }
+ },
+ {
+  "file": "北云_cold07",
+  "byte_offset": 0,
+  "span": 90.2,
+  "n": 452,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 603,
+   "HEADINGA": 602,
+   "INSPVAXA": 1205,
+   "BESTPOSA": 602
+  },
+  "other": {
+   "TRACKSTATA": 602,
+   "GPIMU": 12051,
+   "GPGGA": 602,
+   "GPGSV": 774,
+   "GPGSA": 602,
+   "GPGST": 602,
+   "GBGSV": 1418,
+   "GAGSV": 610,
+   "GLGSV": 828,
+   "GQGSV": 408
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 103,
+   "FINESTEERING": 349
+  },
+  "ptype_dist": {
+   "NONE": 10,
+   "SINGLE": 87,
+   "NARROW_FLOAT": 170,
+   "NARROW_INT": 185
+  },
+  "cat_pct": {
+   "0": 2.2,
+   "1": 19.2,
+   "2": 37.6,
+   "3": 40.9
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 20.6,
+   "single": 2.0,
+   "float": 19.4,
+   "fixed": 53.4,
+   "stn": 8.4,
+   "sol": 2.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 2.0,
+   "single_to_float": 17.4,
+   "float_to_fixed": 34.0,
+   "diff_wait": 8.4,
+   "single_to_fixed": 51.4
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    2.0,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    8.4,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    19.4,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    20.6,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    53.4,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    1.8,
+    2.0,
+    10,
+    10.1,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    2.0,
+    19.2,
+    17.4,
+    87,
+    17.6,
+    11.1,
+    11.1
+   ],
+   [
+    "NARROW_FLOAT",
+    19.4,
+    53.2,
+    34.0,
+    170,
+    22.4,
+    17.6,
+    17.6
+   ],
+   [
+    "NARROW_INT",
+    53.4,
+    90.2,
+    37.0,
+    185,
+    31.2,
+    18.1,
+    18.1
+   ]
+  ],
+  "svs": {
+   "min": 9,
+   "max": 34,
+   "mean": 24.8
+  },
+  "product": "北云",
+  "segment": {
+   "index": 7,
+   "t0_shift": 30.015000104904175,
+   "by_off": 653814829.8000001,
+   "hc_off": 30.015000104904175
+  }
+ },
+ {
+  "file": "华测_cold07",
+  "byte_offset": 0,
+  "span": 99.0,
+  "n": 100,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 0,
+  "counts": {
+   "BESTPOSA": 131
+  },
+  "other": {
+   "BESTPA": 1291,
+   "GNGGA": 1291,
+   "BESTVA": 1291,
+   "RTKPA": 1291,
+   "RTKVA": 1291,
+   "RANGEA": 130,
+   "ENVSTATUSA": 1191,
+   "GPGSV": 2543,
+   "SATVIS2A": 1040,
+   "GNGSA": 5569,
+   "GNGST": 1291,
+   "BESTDOPSA": 1291,
+   "GLGSV": 1337,
+   "GBGSV": 3218,
+   "GAGSV": 1260,
+   "GQGSV": 1700,
+   "GIGSV": 760
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSESTEERING": 1,
+   "FINESTEERING": 99
+  },
+  "ptype_dist": {
+   "NONE": 4,
+   "SINGLE": 1,
+   "PSRDIFF": 7,
+   "NARROW_FLOAT": 10,
+   "NARROW_INT": 78
+  },
+  "cat_pct": {
+   "0": 4.0,
+   "1": 8.0,
+   "2": 10.0,
+   "3": 78.0
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": null,
+   "fine": 1.0,
+   "single": 4.0,
+   "float": 7.0,
+   "fixed": 22.0,
+   "stn": 5.0,
+   "sol": 4.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 4.0,
+   "single_to_float": 3.0,
+   "float_to_fixed": 15.0,
+   "diff_wait": 5.0,
+   "single_to_fixed": 18.0
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    1.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    4.0,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    5.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    7.0,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    22.0,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    3.0,
+    4.0,
+    4,
+    13.2,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    4.0,
+    4.0,
+    1.0,
+    1,
+    16,
+    12,
+    10
+   ],
+   [
+    "PSRDIFF",
+    5.0,
+    6.0,
+    2.0,
+    2,
+    17.5,
+    13.5,
+    11
+   ],
+   [
+    "NARROW_FLOAT",
+    7.0,
+    7.0,
+    1.0,
+    1,
+    18,
+    14,
+    11
+   ],
+   [
+    "PSRDIFF",
+    8.0,
+    8.0,
+    1.0,
+    1,
+    18,
+    14,
+    11
+   ],
+   [
+    "NARROW_FLOAT",
+    9.0,
+    9.0,
+    1.0,
+    1,
+    19,
+    15,
+    11
+   ],
+   [
+    "PSRDIFF",
+    10.0,
+    13.0,
+    4.0,
+    4,
+    20.2,
+    16.2,
+    11.2
+   ],
+   [
+    "NARROW_FLOAT",
+    14.0,
+    21.0,
+    8.0,
+    8,
+    22.5,
+    18.5,
+    13
+   ],
+   [
+    "NARROW_INT",
+    22.0,
+    99.0,
+    78.0,
+    78,
+    35.1,
+    29.6,
+    22.1
+   ]
+  ],
+  "svs": {
+   "min": 8,
+   "max": 44,
+   "mean": 31.6
+  },
+  "product": "华测",
+  "segment": {
+   "index": 7,
+   "t0_shift": 30.015000104904175,
+   "by_off": 653814829.8000001,
+   "hc_off": 30.015000104904175
+  }
+ },
+ {
+  "file": "北云_cold08",
+  "byte_offset": 0,
+  "span": 87.4,
+  "n": 438,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 604,
+   "HEADINGA": 603,
+   "INSPVAXA": 1206,
+   "BESTPOSA": 603
+  },
+  "other": {
+   "TRACKSTATA": 603,
+   "GPIMU": 12052,
+   "GPGGA": 603,
+   "GPGSV": 791,
+   "GPGSA": 603,
+   "GPGST": 603,
+   "GLGSV": 882,
+   "GBGSV": 1442,
+   "GQGSV": 438,
+   "GAGSV": 485
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 146,
+   "FINESTEERING": 292
+  },
+  "ptype_dist": {
+   "NONE": 27,
+   "SINGLE": 113,
+   "NARROW_FLOAT": 135,
+   "NARROW_INT": 163
+  },
+  "cat_pct": {
+   "0": 6.2,
+   "1": 25.8,
+   "2": 30.8,
+   "3": 37.2
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 29.2,
+   "single": 5.4,
+   "float": 28.0,
+   "fixed": 55.0,
+   "stn": 26.6,
+   "sol": 5.4
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 5.4,
+   "single_to_float": 22.6,
+   "float_to_fixed": 27.0,
+   "diff_wait": 26.6,
+   "single_to_fixed": 49.6
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    5.4,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    26.6,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    28.0,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    29.2,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    55.0,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    5.2,
+    5.4,
+    27,
+    10.9,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    5.4,
+    27.8,
+    22.6,
+    113,
+    19.8,
+    13.5,
+    13.5
+   ],
+   [
+    "NARROW_FLOAT",
+    28.0,
+    54.8,
+    27.0,
+    135,
+    25.4,
+    18,
+    18
+   ],
+   [
+    "NARROW_INT",
+    55.0,
+    87.4,
+    32.6,
+    163,
+    34.0,
+    20.2,
+    20.2
+   ]
+  ],
+  "svs": {
+   "min": 9,
+   "max": 36,
+   "mean": 26.3
+  },
+  "product": "北云",
+  "segment": {
+   "index": 8,
+   "t0_shift": 33.08400011062622,
+   "by_off": 653815125.9999999,
+   "hc_off": 33.08400011062622
+  }
+ },
+ {
+  "file": "华测_cold08",
+  "byte_offset": 0,
+  "span": 95.0,
+  "n": 96,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 0,
+  "counts": {
+   "BESTPOSA": 130
+  },
+  "other": {
+   "BESTPA": 1281,
+   "GNGGA": 1281,
+   "BESTVA": 1281,
+   "RTKPA": 1281,
+   "RTKVA": 1281,
+   "RANGEA": 129,
+   "ENVSTATUSA": 1185,
+   "GPGSV": 2731,
+   "SATVIS2A": 1032,
+   "GNGSA": 5549,
+   "GNGST": 1281,
+   "BESTDOPSA": 1281,
+   "GLGSV": 1450,
+   "GAGSV": 1251,
+   "GBGSV": 3210,
+   "GQGSV": 941,
+   "GIGSV": 814
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSESTEERING": 1,
+   "FINESTEERING": 95
+  },
+  "ptype_dist": {
+   "NONE": 4,
+   "SINGLE": 1,
+   "PSRDIFF": 2,
+   "NARROW_FLOAT": 3,
+   "NARROW_INT": 86
+  },
+  "cat_pct": {
+   "0": 4.2,
+   "1": 3.1,
+   "2": 3.1,
+   "3": 89.6
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": null,
+   "fine": 1.0,
+   "single": 4.0,
+   "float": 7.0,
+   "fixed": 10.0,
+   "stn": 5.0,
+   "sol": 4.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 4.0,
+   "single_to_float": 3.0,
+   "float_to_fixed": 3.0,
+   "diff_wait": 5.0,
+   "single_to_fixed": 6.0
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    1.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    4.0,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    5.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    7.0,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    10.0,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    3.0,
+    4.0,
+    4,
+    11.5,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    4.0,
+    4.0,
+    1.0,
+    1,
+    16,
+    14,
+    9
+   ],
+   [
+    "PSRDIFF",
+    5.0,
+    6.0,
+    2.0,
+    2,
+    17,
+    15,
+    9.5
+   ],
+   [
+    "NARROW_FLOAT",
+    7.0,
+    9.0,
+    3.0,
+    3,
+    19.3,
+    16.7,
+    11.3
+   ],
+   [
+    "NARROW_INT",
+    10.0,
+    95.0,
+    86.0,
+    86,
+    34.8,
+    29.6,
+    22.2
+   ]
+  ],
+  "svs": {
+   "min": 6,
+   "max": 43,
+   "mean": 32.8
+  },
+  "product": "华测",
+  "segment": {
+   "index": 8,
+   "t0_shift": 33.08400011062622,
+   "by_off": 653815125.9999999,
+   "hc_off": 33.08400011062622
+  }
+ },
+ {
+  "file": "北云_cold09",
+  "byte_offset": 0,
+  "span": 90.4,
+  "n": 453,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "BESTGNSSPOSA": 651,
+   "HEADINGA": 650,
+   "INSPVAXA": 1300,
+   "BESTPOSA": 650
+  },
+  "other": {
+   "TRACKSTATA": 650,
+   "GPIMU": 13000,
+   "GPGGA": 650,
+   "GPGSV": 920,
+   "GPGSA": 650,
+   "GPGST": 650,
+   "GBGSV": 1510,
+   "GLGSV": 934,
+   "GQGSV": 461,
+   "GAGSV": 558
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 81,
+   "FINESTEERING": 372
+  },
+  "ptype_dist": {
+   "NONE": 1,
+   "SINGLE": 74,
+   "NARROW_FLOAT": 250,
+   "NARROW_INT": 128
+  },
+  "cat_pct": {
+   "0": 0.2,
+   "1": 16.3,
+   "2": 55.2,
+   "3": 28.3
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 16.2,
+   "single": 0.2,
+   "float": 15.0,
+   "fixed": 65.0,
+   "stn": 1.6,
+   "sol": 0.2
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 0.2,
+   "single_to_float": 14.8,
+   "float_to_fixed": 50.0,
+   "diff_wait": 1.6,
+   "single_to_fixed": 64.8
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    0.2,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    1.6,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    15.0,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    16.2,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    65.0,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    0.0,
+    0.2,
+    1,
+    12,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    0.2,
+    14.8,
+    14.8,
+    74,
+    17.3,
+    12.4,
+    12.4
+   ],
+   [
+    "NARROW_FLOAT",
+    15.0,
+    64.8,
+    50.0,
+    250,
+    25.3,
+    17.9,
+    17.9
+   ],
+   [
+    "NARROW_INT",
+    65.0,
+    90.4,
+    25.6,
+    128,
+    34.3,
+    19.0,
+    19.0
+   ]
+  ],
+  "svs": {
+   "min": 12,
+   "max": 36,
+   "mean": 26.5
+  },
+  "product": "北云",
+  "segment": {
+   "index": 9,
+   "t0_shift": 39.431999921798706,
+   "by_off": 653815401.4,
+   "hc_off": 39.431999921798706
+  }
+ },
+ {
+  "file": "华测_cold09",
+  "byte_offset": 0,
+  "span": 106.0,
+  "n": 107,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 1,
+  "counts": {
+   "BESTPOSA": 147
+  },
+  "other": {
+   "BESTPA": 1455,
+   "GNGGA": 1455,
+   "BESTVA": 1455,
+   "RTKPA": 1455,
+   "RTKVA": 1455,
+   "RANGEA": 146,
+   "ENVSTATUSA": 1349,
+   "GPGSV": 2816,
+   "SATVIS2A": 1168,
+   "GNGSA": 6013,
+   "GNGST": 1455,
+   "BESTDOPSA": 1455,
+   "GBGSV": 3490,
+   "GQGSV": 1007,
+   "GLGSV": 1619,
+   "GAGSV": 1360,
+   "GIGSV": 913
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSESTEERING": 6,
+   "FINESTEERING": 101
+  },
+  "ptype_dist": {
+   "NONE": 9,
+   "SINGLE": 1,
+   "PSRDIFF": 6,
+   "NARROW_FLOAT": 5,
+   "NARROW_INT": 86
+  },
+  "cat_pct": {
+   "0": 8.4,
+   "1": 6.5,
+   "2": 4.7,
+   "3": 80.4
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": null,
+   "fine": 6.0,
+   "single": 9.0,
+   "float": 14.0,
+   "fixed": 21.0,
+   "stn": 10.0,
+   "sol": 9.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 9.0,
+   "single_to_float": 5.0,
+   "float_to_fixed": 7.0,
+   "diff_wait": 10.0,
+   "single_to_fixed": 12.0
+  },
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "#0ea5e9"
+   ],
+   [
+    6.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    9.0,
+    "首次单点解 SINGLE",
+    "#3b82f6"
+   ],
+   [
+    10.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    14.0,
+    "首次 RTK 浮点解 NARROW_FLOAT",
+    "#f59e0b"
+   ],
+   [
+    21.0,
+    "首次 RTK 固定解 NARROW_INT",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    8.0,
+    9.0,
+    9,
+    7.3,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    9.0,
+    9.0,
+    1.0,
+    1,
+    15,
+    13,
+    9
+   ],
+   [
+    "PSRDIFF",
+    10.0,
+    13.0,
+    4.0,
+    4,
+    15.5,
+    13.5,
+    10.2
+   ],
+   [
+    "NARROW_FLOAT",
+    14.0,
+    14.0,
+    1.0,
+    1,
+    18,
+    16,
+    10
+   ],
+   [
+    "PSRDIFF",
+    15.0,
+    16.0,
+    2.0,
+    2,
+    20.5,
+    17.5,
+    12.5
+   ],
+   [
+    "NARROW_FLOAT",
+    17.0,
+    20.0,
+    4.0,
+    4,
+    22,
+    19,
+    13.5
+   ],
+   [
+    "NARROW_INT",
+    21.0,
+    106.0,
+    86.0,
+    86,
+    35.5,
+    30.8,
+    23.7
+   ]
+  ],
+  "svs": {
+   "min": 4,
+   "max": 42,
+   "mean": 31.3
+  },
+  "product": "华测",
+  "segment": {
+   "index": 9,
+   "t0_shift": 39.431999921798706,
+   "by_off": 653815401.4,
+   "hc_off": 39.431999921798706
+  }
+ }
+]
