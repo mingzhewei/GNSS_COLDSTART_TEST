@@ -87,3 +87,20 @@ if __name__ == '__main__':
     test_segment_boundary_without_week_rollback()
     test_huace_stream_selection_prefers_continuous_bestpa()
     print('all tests passed')
+
+
+def test_huace_approximate_startup_is_not_full_time():
+    # APPROXIMATE is documented as approximate time, not valid/fine time. The
+    # first FINESTEERING frame is the "valid time" boundary used by reports.
+    frames = []
+    off = 0
+    for i in range(35):
+        frames.append(frame(1000.0 + i * 0.1, 'APPROXIMATE', 'NONE', '', off)); off += 100
+    for i in range(15):
+        frames.append(frame(1003.5 + i * 0.1, 'FINESTEERING', 'SINGLE', '', off)); off += 100
+    segs = segment_position_frames(frames, min_frames=10, min_duration_s=1.0)
+    assert len(segs) == 1
+    assert segs[0].start_tstat == 'APPROXIMATE'
+    # Segment start is a valid cold-start candidate even when approximate time
+    # has already been restored by the receiver clock.
+    assert segs[0].is_coldstart

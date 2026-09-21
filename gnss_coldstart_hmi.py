@@ -18,6 +18,7 @@ import queue
 import subprocess
 
 from gnss_recovery import detect_product
+import comparison_report
 import sys
 import threading
 from dataclasses import dataclass, field
@@ -385,6 +386,18 @@ class ColdstartHMI:
                         open_path(report)
                 else:
                     self.ui_queue.put(("log", f"{prod.display_name} 分析失败，返回码 {rc}\n", "error"))
+            # Outdoor mode with both products also generates a joint comparison report.
+            if not indoor and ("beiyun" in groups and "huace" in groups):
+                by_summary = Path(out_dir) / "beiyun" / "summary.json"
+                hc_summary = Path(out_dir) / "huace" / "summary.json"
+                if by_summary.is_file() and hc_summary.is_file():
+                    cmp_html, cmp_md = comparison_report.build(by_summary, hc_summary, Path(out_dir))
+                    self.ui_queue.put(("log", f"联合对比报告生成完成：{cmp_html}\n", "success"))
+                    reports.append(str(cmp_html))
+                    if auto_open:
+                        open_path(str(cmp_html))
+                else:
+                    self.ui_queue.put(("log", "缺少北云或华测 summary.json，未生成联合对比报告。\n", "error"))
         finally:
             self.ui_queue.put(("done", reports[-1] if reports else ""))
 

@@ -81,7 +81,9 @@ def build_elapsed(times, nominal=None):
             # Sub-frame positive jitter can occur when interleaved streams are
             # merged or receiver output is jittered. Collapse it to the measured
             # nominal period; larger gaps remain visible in the elapsed axis.
-            el.append(el[-1] + (dt if dt >= nominal * 0.5 else nominal))
+            # Preserve the receiver timestamp axis. Positive dt is used directly;
+            # non-positive/duplicate timestamps are collapsed by one nominal period.
+            el.append(el[-1] + (dt if dt > 0 else nominal))
     return el, gaps, rebase, nominal
 
 

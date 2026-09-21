@@ -86,7 +86,9 @@ def build_elapsed(times, nominal=None):
             # Sub-frame positive jitter can occur when interleaved streams are
             # merged or receiver output is jittered. Collapse it to the measured
             # nominal period; larger gaps remain visible in the elapsed axis.
-            el.append(el[-1] + (dt if dt >= nominal * 0.5 else nominal))
+            # Preserve the receiver timestamp axis. Positive dt is used directly;
+            # non-positive/duplicate timestamps are collapsed by one nominal period.
+            el.append(el[-1] + (dt if dt > 0 else nominal))
     return el, gaps, rebase, nominal
 
 
@@ -234,6 +236,14 @@ def build_raw(raw, name='<segment>', byte_offset=0, t0_shift=0.0, frames=None, r
         ptype_dist=dict(collections.Counter(pts)),
         cat_pct={str(k): round(100 * v / len(cats), 1) for k, v in collections.Counter(cats).items()},
         first=f, stages=stages, stage_order_valid=order_valid, events=events, segs=segs,
+        stages_express=dict(
+            no_time=stages['no_time'],
+            time_to_single=stages['time_to_single'],
+            single_to_float=stages['single_to_float'],
+            float_to_fixed=stages['float_to_fixed'],
+            single_to_fixed=(None if f['float'] is not None and f['fixed'] is not None
+                             else stages['single_to_fixed']),
+        ),
         svs=dict(min=min(r['svs'] for r in rows), max=max(r['svs'] for r in rows),
                  mean=round(statistics.mean([r['svs'] for r in rows]), 1)),
         series=dict(el=[round(x, 1) for x in el], svs=[r['svs'] for r in rows],
@@ -335,7 +345,7 @@ def make_images(data, out_dir, title_prefix=None):
     for i, d in enumerate(order):
         left = 0.0
         for key, lab, col in stage_def:
-            v = d['stages'][key] or 0
+            v = d.get('stages_express', d['stages'])[key] or 0
             if v > 0:
                 ax.barh(i, v, left=left, color=col, edgecolor='white', height=0.55)
                 if v >= 14:
@@ -547,7 +557,7 @@ def build_outputs(data, imgs, src_desc=None):
     STAGE_COLORS = ['#dc2626', '#f59e0b', '#3b82f6', '#16a34a']
     bars = []
     for d in data:
-        st = d['stages']
+        st = d.get('stages_express', d['stages'])
         seg = [('无时间', st['no_time'] or 0), ('时间→单点', st['time_to_single'] or 0),
                ('单点→浮点', st['single_to_float'] or 0), ('浮点→固定', st['float_to_fixed'] or 0)]
         tot = sum(v for _, v in seg) or 1
@@ -630,13 +640,32 @@ def build_outputs(data, imgs, src_desc=None):
     md.append('')
     md.append('## 三、冷启动耗时分解')
     md.append('')
-    md.append('| 文件 | 无时间 | 时间→单点 | 单点→浮点 | 浮点→固定 | 合计到首固定 | 差分数据可用 |')
+    md.append('### 表1：四阶段严格分解')
+    md.append('')
+    md.append('| 文件 | 无时间 | 时间→单点 | 单点→浮点 | 浮点→固定 | 首固定 | 差分数据可用 |')
     md.append('|---|---|---|---|---|---|---|')
     for d in data:
         st = d['stages']
         md.append(f"| `{d['file']}` | {V(st['no_time'])} | {V(st['time_to_single'])} "
                   f"| {V(st['single_to_float'])} | {V(st['float_to_fixed'])} "
                   f"| **{V(d['first']['fixed'])}** | {V(d['first']['stn'])} |")
+    md.append('')
+    md.append('### 表2：图示使用的路径汇总（支持无浮点直达固定）')
+    md.append('')
+    md.append('| 文件 | 无时间 | 时间→单点 | 单点→浮点 | 浮点→固定 | 单点→固定 | 合计到首固定 |')
+    md.append('|---|---|---|---|---|---|---|')
+    for d in data:
+        st = d.get('stages_express', d['stages'])
+        total = round(st['no_time'] or 0, 1) + round(st['time_to_single'] or 0, 1)
+        if st['single_to_float'] is not None:
+            total += round(st['single_to_float'], 1)
+        if st['float_to_fixed'] is not None:
+            total += round(st['float_to_fixed'], 1)
+        elif st['single_to_fixed'] is not None:
+            total += round(st['single_to_fixed'], 1)
+        md.append(f"| `{d['file']}` | {V(st['no_time'])} | {V(st['time_to_single'])} "
+                  f"| {V(st['single_to_float'])} | {V(st['float_to_fixed'])} "
+                  f"| {V(st['single_to_fixed'])} | {total}s |")
     md.append('')
     md.append(f"![冷启动耗时分解]({os.path.basename(imgs['stages'])})")
     md.append('')
