@@ -6,8 +6,8 @@ GNSS 冷启动定位收敛分析工具，支持 **北云 BY（UG016 组合惯导
 
 - **HMI 图形界面**：下拉先选产品类型（北云/华测），再多选文件加入分析组；文件列表两列显示（文件名 / 产品类型）；添加时用报文特征自动校验类型（不符跳过并提示）。支持室内/室外冷启动模式与"一次性录制 N 次冷启动"切片模式选择。
 - **冷启动切片**（`coldstart_split.py`，静态确定性函数）：连续录制文件自动识别多次冷启动并逐段分析。
-  - 北云：以 GPS 周回落（默认周→真实周）识别启动；有效冷启动要求首帧 Time Status = UNKNOWN（时钟全丢）。
-  - 华测：以录制间断（>5×标称周期）识别启动；有效冷启动要求首帧 Time Status ∈ {UNKNOWN, APPROXIMATE}。
+  - 北云/华测共用动态边界：优先使用“差分/固定或已有基站 → 时标未完全建立且无解/单点/近似时间”的状态丢失，并结合实测周期的动态间断；不依赖固定时长、固定 5×周期或 GPS 周回落。
+  - 华测定位流在 `BESTPA`、`BESTPOSA`、`RTKPA` 中动态选择覆盖完整且有效帧数最多的流；GMF 与 NovAtel 头部时间字段分别解析。
 - **室内 / 室外两种口径**：
   - 室外冷启动：t=0 为启动时刻（日志起点），全程计入评估。
   - 室内冷启动：同序号北云段+华测段配对，取两家最早"拿到时标"的时刻为共同 t0，t0 前数据（室内移动过程）丢弃，各自统计四阶段，出一份联合对比报告（`indoor_coldstart.py`）。
@@ -44,8 +44,8 @@ python indoor_coldstart.py <输出目录> [--split] <北云文件> <华测文件
 
 ## 字段口径（均核对各自手册原文，非猜测）
 
-- **北云**：报文 `#BESTGNSSPOSA`；Time Status（UNKNOWN/COARSE/FINESTEERING）；定位类型表 4-2（SINGLE=16 / NARROW_FLOAT=34 / NARROW_INT=50）；卫星 #SVs/#solnSVs/#solnMultiSVs（4.2.2 字段 15/16/18）；差分可用 = Stn ID ≠ "0"
-- **华测**：报文 `#BESTPOSA`（Message ID 3020，3.2.14）；Time Status 表 3-19（UNKNOWN=0 / APPROXIMATE=1 / COARSE=3 / COARSESTEERING=4 / FINE=7 / FINESTEERING=9）；定位类型表 3-40（SINGLE=1 / NARROW_FLOAT=5 / NARROW_INT=4）；卫星字段 3.2.14 字段 15/16/17；Stn ID 字段 24（单点时为空串）
+- **北云**：主定位报文 `#BESTGNSSPOSA`；Time Status（UNKNOWN/COARSE/FINESTEERING）；定位类型表 4-2（SINGLE=16 / NARROW_FLOAT=34 / NARROW_INT=50）；卫星 #SVs/#solnSVs/#solnMultiSVs（4.2.2 字段 15/16/18）；差分可用 = Stn ID ≠ "0"
+- **华测**：动态选择 `#BESTPA` / `#BESTPOSA` / `#RTKPA`（BESTP/RTKP 语义按 M7 V2.7；GMF 头部 TOW 为 ms，NovAtel 风格为 s）；Time Status 表 3-19（UNKNOWN=0 / APPROXIMATE=1 / COARSE=3 / COARSESTEERING=4 / FINE=7 / FINESTEERING=9）；定位类型表 3-40（SINGLE=1 / NARROW_FLOAT=5 / NARROW_INT=4）；卫星字段 3.2.14 字段 15/16/17；Stn ID 字段 24（单点时为空串）
 - 两产品卫星字段含义与单位一致；CRC 均为 "#"=32 位 CRC、"$"=NMEA 异或
 - 周期判定：标称周期 = 全部相邻帧报头时间差的中位数（不假设）；>3600s 判定为周重定标（按连续处理），2.5×周期~3600s 判定为真实间断（保留）
 - "拿到时标"（室内模式 t0 判定）：北云 Time Status 首次 ≠ UNKNOWN；华测 首次 ∉ {UNKNOWN, APPROXIMATE}

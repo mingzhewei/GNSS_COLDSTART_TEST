@@ -32,7 +32,9 @@ import collections
 import statistics
 import webbrowser
 
-from coldstart_split import split_coldstart
+from coldstart_split import split_beiyun, split_huace
+from gnss_recovery import (RecoveryResult, recover_ascii_messages, parse_beiyun_positions,
+                           parse_huace_positions, select_huace_positions)
 
 # ----------------------------------------------------------------------
 # 路径与常量（相对脚本所在目录解析，便于迁移）
@@ -57,68 +59,7 @@ PT_CN = {'NONE': '无解', 'SINGLE': '单点', 'NARROW_FLOAT': 'RTK浮点', 'NAR
 CAT_CN = ['无解', '单点', 'RTK浮点', 'RTK固定']
 
 # ----------------------------------------------------------------------
-# 报文解析（与 analyze_0909.py 一致：按行校验 CRC，失败行丢弃）
-# ----------------------------------------------------------------------
-HDR_MSGS = ('BESTGNSSPOSA', 'BESTPOSA', 'INSPVAXA', 'HEADINGA')
-
-def crc32b(data):
-    crc = 0
-    for b in data:
-        crc ^= b
-        for _ in range(8):
-            crc = (crc >> 1) ^ 0xEDB88320 if crc & 1 else crc >> 1
-    return crc & 0xFFFFFFFF
-
-
-def load_raw(raw):
-    """解析 COM1 ASCII 字节流；返回 (raw, {报文名:[(报头字段, 数据字段)]}, 其他报文计数, CRC失败行数)。
-    # 开头 '#' 用 32 位 CRC（UG016 表 4-6），'$' 用 NMEA 异或；
-    # $KSXT 为自定义 8 位 CRC32，按 NMEA 异或校验会判失败并在此计数（非故障）。"""
-    H = collections.defaultdict(list)
-    other = collections.Counter()
-    bad = 0
-    for line in raw.split(b'\n'):
-        line = line.rstrip(b'\r')
-        if not line or line[0] not in (0x23, 0x24):
-            continue
-        star = line.rfind(b'*')
-        if star <= 0:
-            bad += 1
-            continue
-        body = line[1:star]
-        try:
-            if line[0] == 0x23:
-                ok = crc32b(body) == int(line[star + 1:star + 9], 16)
-            else:
-                c = 0
-                for bb in body:
-                    c ^= bb
-                ok = c == int(line[star + 1:star + 3], 16)
-        except ValueError:
-            ok = False
-        if not ok:
-            bad += 1
-            continue
-        txt = body.decode('ascii', errors='ignore')
-        if line[0] == 0x23:
-            head, _, bpart = txt.partition(';')
-            hf = head.split(',')
-            if hf[0] in HDR_MSGS:
-                H[hf[0]].append((hf, bpart.split(',')))
-            else:
-                other[hf[0]] += 1
-        else:
-            other[txt.split(',')[0]] += 1
-    return raw, H, other, bad
-
-
-def htime(hf):
-    """报头 GPS 时间（周, 周内秒）-> 绝对秒。hf[5]=Week, hf[6]=Seconds。"""
-    try:
-        return int(hf[5]) * 604800 + float(hf[6])
-    except Exception:
-        return None
-
+# Legacy line parser retained only as a reference; active parsing is gnss_recovery.py.
 
 def build_elapsed(times, nominal=None):
     """由报头时间构造经过时间轴（t=0 起于首条记录）。周期不假设，按时间戳自判：
@@ -137,7 +78,10 @@ def build_elapsed(times, nominal=None):
         else:
             if dt > nominal * 2.5:
                 gaps.append(dict(elapsed=round(el[-1], 1), dt=round(dt, 2)))
-            el.append(el[-1] + max(dt, 0.0))
+            # Sub-frame positive jitter can occur when interleaved streams are
+            # merged or receiver output is jittered. Collapse it to the measured
+            # nominal period; larger gaps remain visible in the elapsed axis.
+            el.append(el[-1] + (dt if dt >= nominal * 0.5 else nominal))
     return el, gaps, rebase, nominal
 
 
@@ -170,34 +114,41 @@ def build(path):
         return build_raw(fp.read(), os.path.basename(path))
 
 
-def build_raw(raw, name='<segment>', byte_offset=0, t0_shift=0.0):
-    """分析一段 COM1 ASCII 字节流（整文件或切片），返回全部指标。
-    byte_offset 为该片段在原文件中的起始字节（用于标注来源）；
-    t0_shift>0 时把时间轴整体左移 t0_shift 秒，并丢弃 t<0 的帧（室内模式对齐共同 t0）。"""
-    raw, H, other, bad = load_raw(raw)
+def build_raw(raw, name='<segment>', byte_offset=0, t0_shift=0.0, frames=None, recovery=None):
+    """分析一段原始字节流或已恢复的定位帧序列。
+
+    解析不再按换行切块，而是先在字节流中寻找 #/$ 报文锚点并按协议校验；
+    因此混合二进制+ASCII 日志中的完整 ASCII 报文也能恢复。frames/recovery
+    可传入已按切片边界过滤的序列，避免重复扫描大文件。
+    """
+    rec_messages: list = []
+    if not frames:
+        recovery = recover_ascii_messages(raw)
+        rec_messages = recovery.messages
+        frames = parse_beiyun_positions(rec_messages)
+    elif recovery is not None:
+        rec_messages = recovery.messages
+    if recovery is None:
+        recovery = RecoveryResult(messages=[], bad_offsets=[])
+    counts = collections.Counter(m.name for m in rec_messages if m.kind == 'hash')
+    other = collections.Counter(m.name for m in rec_messages if m.kind == 'nmea')
+    bad = recovery.bad
+
     rows, tl = [], []
-    for hf, bf in H['BESTGNSSPOSA']:
-        t = htime(hf)
-        if t is None or len(bf) < 21:
-            continue
-        try:
-            rows.append(dict(ts=hf[4], sol=bf[0], pt=bf[1],
-                             lstd=float(bf[7]), stn=bf[10].strip('"'),
-                             age=float(bf[11]), svs=int(bf[13]), soln=int(bf[14]),
-                             l1=int(bf[15]), multi=int(bf[16])))
-            tl.append(t)
-        except Exception:
-            continue
+    for pf in frames:
+        rows.append(dict(ts=pf.ts, sol=pf.sol, pt=pf.pt,
+                         lstd=0.0, stn=pf.stn, age=pf.age,
+                         svs=pf.svs, soln=pf.soln, multi=pf.multi))
+        tl.append(pf.t)
     if not rows:
-        raise ValueError('未解析到任何有效 BESTGNSSPOSA 定位帧（%s）：'
-                         '请确认该文件/片段是否为本产品的 COM1 ASCII 日志，且含 BESTGNSSPOSA 报文' % name)
+        raise ValueError('未恢复到任何有效 BESTGNSSPOSA 定位帧（%s）：'
+                         '请确认该文件/片段是否为北云日志，且含 BESTGNSSPOSA 报文' % name)
     el, gaps, reb, nominal = build_elapsed(tl)
     if t0_shift > 0:
         el = [x - t0_shift for x in el]
         keep = [k for k in range(len(rows)) if el[k] >= -1e-9]
         rows = [rows[k] for k in keep]
         el = [el[k] for k in keep]
-        # 重新从 0 起算（丢弃 t0 之前的数据）
         base = el[0] if el else 0.0
         el = [x - base for x in el]
         gaps = [g for g in gaps if g['elapsed'] - t0_shift - base >= 0]
@@ -206,70 +157,76 @@ def build_raw(raw, name='<segment>', byte_offset=0, t0_shift=0.0):
     pts = [r['pt'] for r in rows]
     cats = [3 if p in CAT3 else 2 if p in CAT2 else 1 if p in CAT1 else 0 for p in pts]
 
-    f = dict(
-        valid=first_idx(lambda r: r['ts'] != 'UNKNOWN', rows),      # 获得卫星时间（脱离 UNKNOWN）
+    valid_idx = first_idx(lambda r: r['ts'] != 'UNKNOWN', rows)
+    f_idx = dict(
+        valid=valid_idx,
         coarse=first_idx(lambda r: r['ts'] == 'COARSE', rows),
         fine=first_idx(lambda r: r['ts'] == 'FINESTEERING', rows),
-        single=first_idx(lambda p: p in CAT1, pts),                 # 首个单点解
-        float=first_idx(lambda p: p in CAT2, pts),                  # 首个 RTK 浮点解
-        fixed=first_idx(lambda p: p in CAT3, pts),                  # 首个 RTK 固定解
-        stn=first_idx(lambda r: r['stn'] not in ('', '0'), rows),   # 差分改正可用
+        single=first_idx(lambda p: p in CAT1, pts),
+        float=first_idx(lambda p: p in CAT2, pts),
+        fixed=first_idx(lambda p: p in CAT3, pts),
+        stn=first_idx(lambda r: r['stn'] not in ('', '0'), rows),
         sol=first_idx(lambda r: r['sol'] == 'SOL_COMPUTED', rows),
     )
-    f = {k: (None if v is None else round(el[v], 1)) for k, v in f.items()}
+    f = {k: (None if v is None else round(el[v], 1)) for k, v in f_idx.items()}
 
     def dur(a, b):
         return None if (a is None or b is None) else round(b - a, 1)
 
-    # 冷启动耗时四阶段分解
     stages = dict(no_time=f['valid'],
-                  time_to_single=dur(f['valid'], f['single']),
+                  time_to_single=(None if f['single'] is None else round(max(0.0, f['single'] - (f['valid'] or 0.0)), 1)),
                   single_to_float=dur(f['single'], f['float']),
                   float_to_fixed=dur(f['float'], f['fixed']),
                   diff_wait=dur(f['valid'], f['stn']),
                   single_to_fixed=dur(f['single'], f['fixed']))
+    order_valid = all(v is None or v >= 0 for k, v in stages.items() if k != 'no_time')
+    if f['single'] is not None and f['fixed'] is not None:
+        order_valid = order_valid and f['single'] <= f['fixed']
+    if f['float'] is not None and f['fixed'] is not None:
+        order_valid = order_valid and f['float'] <= f['fixed']
 
     events = []
     if f['valid'] is not None:
-        events.append([f['valid'], '获得卫星时间（时标脱离UNKNOWN→COARSE）', '#0ea5e9'])
+        events.append([f['valid'], '获得卫星时间（时标脱离UNKNOWN）', '#0ea5e9'])
     if f['stn'] is not None:
-        i_stn = first_idx(lambda r: r['stn'] not in ('', '0'), rows)
+        i_stn = f_idx['stn']
         events.append([f['stn'], f"差分改正可用（基站 {rows[i_stn]['stn']}）", '#7c3aed'])
     if f['single'] is not None:
-        events.append([f['single'], '首次单点解 SINGLE', '#3b82f6'])
+        events.append([f['single'], '首次单点类解', '#3b82f6'])
     if f['fine'] is not None:
         events.append([f['fine'], '时标进入 FINESTEERING', '#6b7280'])
     if f['float'] is not None:
-        events.append([f['float'], '首次 RTK 浮点解 NARROW_FLOAT', '#f59e0b'])
+        events.append([f['float'], '首次 RTK 浮点解', '#f59e0b'])
     if f['fixed'] is not None:
-        events.append([f['fixed'], '首次 RTK 固定解 NARROW_INT', '#16a34a'])
+        events.append([f['fixed'], '首次 RTK 固定解', '#16a34a'])
     for r in reb:
-        events.append([r['elapsed'], '冷启动 GPS 周重定标（按连续处理）', '#dc2626'])
+        events.append([r['elapsed'], 'GPS 时间轴跳变（按连续处理）', '#dc2626'])
     events.sort()
 
-    # 定位类型分段统计（时长=段内帧数×标称周期；与连续区间口径一致且无边界空集）
     segs = []
     for lab, a, b, c in runs(el, pts):
         idx = [k for k in range(len(rows)) if a - 1e-6 <= el[k] <= b + 1e-6]
         sub = [rows[k] for k in idx]
-        dur = round(c * nominal, 1)
+        seg_duration = round(c * nominal, 1)
         if sub:
-            segs.append([lab, a, b, dur, c,
+            segs.append([lab, a, b, seg_duration, c,
                          round(statistics.mean([r['svs'] for r in sub]), 1),
                          round(statistics.mean([r['soln'] for r in sub]), 1),
                          round(statistics.mean([r['multi'] for r in sub]), 1)])
         else:
-            segs.append([lab, a, b, dur, c, 0, 0, 0])
+            segs.append([lab, a, b, seg_duration, c, 0, 0, 0])
 
     return dict(
         file=name, byte_offset=byte_offset, span=round(el[-1], 1), n=len(rows),
-        rate=round(1.0 / nominal, 1), nominal=round(nominal, 3), crc_bad=bad,
-        counts={k: len(v) for k, v in H.items()}, other=dict(other),
+        rate=round(1.0 / max(nominal, 1e-9), 1), nominal=round(nominal, 3), crc_bad=bad,
+        counts=dict(counts), other=dict(other),
+        recovery=dict(valid_messages=len(rec_messages), embedded=recovery.embedded,
+                      checksum_failed=recovery.bad, method='byte-anchor+checksum'),
         gaps=gaps, rebases=reb,
         tstat_dist=dict(collections.Counter(r['ts'] for r in rows)),
         ptype_dist=dict(collections.Counter(pts)),
         cat_pct={str(k): round(100 * v / len(cats), 1) for k, v in collections.Counter(cats).items()},
-        first=f, stages=stages, events=events, segs=segs,
+        first=f, stages=stages, stage_order_valid=order_valid, events=events, segs=segs,
         svs=dict(min=min(r['svs'] for r in rows), max=max(r['svs'] for r in rows),
                  mean=round(statistics.mean([r['svs'] for r in rows]), 1)),
         series=dict(el=[round(x, 1) for x in el], svs=[r['svs'] for r in rows],
@@ -554,7 +511,7 @@ def build_outputs(data, imgs, src_desc=None):
     for d in data:
         ov_html.append(
             f"<tr><td class='mono'>{d['file']}</td><td>{d['span']}s</td>"
-            f"<td>BESTGNSSPOSA {d['n']}条<br>BESTPOSA {d['counts'].get('BESTPOSA', 0)}条</td>"
+            f"<td>BESTGNSSPOSA {d['n']}条</td>"
             f"<td>{d['nominal']}s/{d['rate']}Hz</td>"
             f"<td class='mono'>{d['tstat_dist']}</td><td class='mono'>{d['ptype_dist']}</td>"
             f"<td>{len(d['gaps'])} / {len(d['rebases'])}</td></tr>")
@@ -636,7 +593,7 @@ def build_outputs(data, imgs, src_desc=None):
     md.append('|---|---|---|---|---|---|---|')
     for d in data:
         md.append(f"| `{d['file']}` | {d['span']}s | BESTGNSSPOSA {d['n']}条；"
-                  f"BESTPOSA {d['counts'].get('BESTPOSA', 0)}条 | {d['nominal']}s/{d['rate']}Hz | `{d['tstat_dist']}` | `{d['ptype_dist']}` "
+                  f"{d['nominal']}s/{d['rate']}Hz | `{d['tstat_dist']}` | `{d['ptype_dist']}` "
                   f"| {len(d['gaps'])} / {len(d['rebases'])} |")
     md.append('')
     md.append('> 口径（UG016）：报文按行做 CRC 校验（`#` 开头为 32 位 CRC，`$` 开头为 NMEA 异或）；'
@@ -709,41 +666,54 @@ def build_outputs(data, imgs, src_desc=None):
 
 
 
-def split_segments(path, min_frames=50):
-    """把连续录制文件切成有效冷启动段，返回 [(index, raw_fragment, Segment), ...]（从 1 连续编号）。"""
+def split_segments(path, min_frames=50, min_duration_s=20.0):
+    """识别动态冷启动段，返回 (序号, 帧子序列, Segment, RecoveryResult)。"""
     with open(path, 'rb') as fp:
         raw = fp.read()
-    segs, _ = split_coldstart(raw, 'BESTGNSSPOSA', 'week_reset', min_frames=min_frames)
+    segs, _source, rows, _nominal, recovery = split_beiyun(raw, min_frames=min_frames, min_duration_s=min_duration_s)
     cold = [s for s in segs if s.is_coldstart]
-    return [(n, raw[s.start:s.end], s) for n, s in enumerate(cold, 1)]
+    return [(n, [r for r in rows if r.start >= s.start and r.end <= s.end], s)
+            for n, s in enumerate(cold, 1)]
 
 
-def analyze_file(path, split=False, min_frames=50, indoor_t0=None):
-    """分析一份日志。
-    split=False（默认）：按独立冷启动包逐文件分析（每文件 = 一次启动）。
-    split=True      ：一次性录制了 N 次冷启动，先静态切片识别启动次数，再逐段分析。
-    indoor_t0：室内模式时，按段提供共同 t0 左移秒数（两家最早拿时标时刻）。
-    返回 list[dict]（每段一个指标集，file 字段带 _coldNN 后缀与原字节偏移）。"""
+def analyze_file(path, split=False, min_frames=50, indoor_t0=None, min_duration_s=20.0):
+    """分析一个日志文件。
+
+    split=False：按独立冷启动包逐文件分析；
+    split=True：动态识别 N 次冷启动段。边界由“状态丢失+动态间断”给出，
+    不依赖固定时长、固定 GPS 周回落或固定 5×周期阈值。
+    """
     with open(path, 'rb') as fp:
         raw = fp.read()
     base = os.path.basename(path)
     if not split:
         return [build_raw(raw, base, 0)]
-    segs, nominal = split_coldstart(raw, 'BESTGNSSPOSA', 'week_reset', min_frames=min_frames)
+
+    segs, source, rows, nominal, recovery = split_beiyun(raw, min_frames=min_frames, min_duration_s=min_duration_s)
     cold = [s for s in segs if s.is_coldstart]
-    if not cold:                       # 未识别到有效冷启动段 → 回退为整文件分析
-        return [build_raw(raw, base, 0)]
+    if not cold:
+        raise ValueError(f'{base}: 未识别到有效冷启动段（检查到的分段数={len(segs)}，'
+                         f'定位流={source}，有效帧={len(rows)}）。请确认文件确实包含多段冷启动；'
+                         '如文件是单次冷启动，请取消勾选自动切片。')
+
     out = []
-    for n, s in enumerate(cold, 1):          # 有效冷启动从 cold01 连续编号
-        frag = raw[s.start:s.end]
+    for n, s in enumerate(cold, 1):
+        selected = [r for r in rows if r.start >= s.start and r.end <= s.end]
         shift = 0.0
         if indoor_t0 is not None and n <= len(indoor_t0):
             shift = indoor_t0[n - 1] or 0.0
-        d = build_raw(frag, f'{base}_cold{n:02d}', s.start, t0_shift=shift)
+        d = build_raw(raw, f'{base}_cold{n:02d}', s.start, t0_shift=shift, frames=selected,
+                      recovery=recovery)
         d['segment'] = dict(index=n, frames=s.frames, start_week=s.start_week,
-                            start_tstat=s.start_tstat, byte_offset=s.start, t0_shift=shift)
+                            start_tstat=s.start_tstat, start_pos_type=s.start_pos_type,
+                            byte_offset=s.start, end_offset=s.end, t0_shift=shift,
+                            source=source, span=s.span,
+                            discontinuity_before=s.discontinuity_before,
+                            start_elapsed=s.start_elapsed, end_elapsed=s.end_elapsed,
+                            is_coldstart=s.is_coldstart)
         out.append(d)
     return out
+
 
 def run(paths, out_dir=None, open_browser=False, split=False):
     """分析一组北云 COM1 ASCII 日志，输出 HTML/MD/PNG/JSON 到 out_dir。

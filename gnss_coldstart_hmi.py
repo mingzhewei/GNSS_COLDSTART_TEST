@@ -16,6 +16,8 @@ from __future__ import annotations
 import os
 import queue
 import subprocess
+
+from gnss_recovery import detect_product
 import sys
 import threading
 from dataclasses import dataclass, field
@@ -38,7 +40,6 @@ class ProductConfig:
     color: str = "#34495e"
     enabled: bool = True
     note: str = ""
-    magic: str = ""        # 必须含有的报文特征（如 #BESTGNSSPOSA）
     forbid: str = ""       # 必须不含的报文特征（如华测文件不应有 #BESTGNSSPOSA）
 
 
@@ -51,17 +52,15 @@ PRODUCTS: dict[str, ProductConfig] = {
         filetypes=(("北云 COM1 日志", "*.log;*.dat"), ("所有文件", "*.*")),
         color="#1a5276",
         enabled=True,
-        magic="#BESTGNSSPOSA",
     ),
     "huace": ProductConfig(
         key="huace",
-        display_name="华测 HUACE（M720，COM1 ASCII #BESTPOSA .log）",
+        display_name="华测 HUACE（M720，BESTPA/BESTPOSA/RTKPA，混合二进制+ASCII）",
         script="HUACE_coldstart.py",
         filetypes=(("华测 COM1 日志", "*.log;*.dat"), ("所有文件", "*.*")),
         color="#b03a2e",
         enabled=True,
-        magic="#BESTPOSA",
-        forbid="#BESTGNSSPOSA",   # 北云文件同时含 BESTGNSSPOSA，用它区分
+        forbid="",   # 北云文件同时含 BESTGNSSPOSA，用它区分
     ),
 }
 
@@ -196,18 +195,16 @@ class ColdstartHMI:
             self.product_var.set(PRODUCTS["beiyun"].display_name)
 
     def _check_file_type(self, path: str, prod: ProductConfig) -> bool:
-        """用报文特征校验文件是否属于所选产品（读首条匹配行，最多扫 2MB）。
-        返回 True=匹配 / False=不匹配。"""
+        """按报文内容识别产品，而不是只看文件名或头部片段。
+
+        HUACE 日志可为混合二进制+ASCII，且 BESTPA/BESTPOSA/RTKPA 都可能作为
+        有效定位流，因此不能把 #BESTPOSA 是否出现在头部作为唯一判据。
+        """
         try:
-            with open(path, 'rb') as fp:
-                head = fp.read(2 * 1024 * 1024)
+            detected = detect_product(path)
         except OSError:
             return False
-        if prod.magic and prod.magic.encode('ascii') not in head:
-            return False
-        if prod.forbid and prod.forbid.encode('ascii') in head:
-            return False
-        return True
+        return detected == prod.key
 
     def browse_files(self) -> None:
         prod = self._current_product()
@@ -224,7 +221,7 @@ class ColdstartHMI:
                 continue
             if not self._check_file_type(path, prod):
                 skipped += 1
-                self._log(f"跳过（类型不符，未检出 {prod.magic}）：{os.path.basename(path)}\n", "error")
+                self._log(f"跳过（报文识别不是所选产品）：{os.path.basename(path)}\n", "error")
                 continue
             self.files.append((path, prod.key))
             self.file_list.insert("", tk.END, values=(os.path.basename(path), prod.display_name))
@@ -234,7 +231,7 @@ class ColdstartHMI:
             self._log(f"添加 {added} 个{prod.display_name}文件\n", "info")
         if skipped:
             messagebox.showwarning(APP_TITLE,
-                f"{skipped} 个文件与所选类型「{prod.display_name}」不符（未检出 {prod.magic} 报文），已跳过。\n"
+                f"{skipped} 个文件按校验通过的报文识别后不是「{prod.display_name}」，已跳过。\n"
                 "如需分析，请先将下拉菜单切换到对应产品再添加。")
 
     def remove_selected(self) -> None:
