@@ -338,22 +338,29 @@ def make_images(data, out_dir, title_prefix=None):
 
     # 图2：冷启动耗时分解（堆叠条形，每个文件一根）
     fig, ax = plt.subplots(figsize=(14.5, 5.6))
-    stage_def = [('no_time', '无时间(UNKNOWN)', '#dc2626'),
-                 ('time_to_single', '时间→单点', '#f59e0b'),
-                 ('single_to_float', '单点→浮点', '#3b82f6'),
-                 ('float_to_fixed', '浮点→固定', '#16a34a')]
+    stage_colors = {'无时间': '#dc2626', '时间→单点': '#f59e0b',
+                    '单点→浮点': '#3b82f6', '浮点→固定': '#16a34a',
+                    '单点→固定': '#16a34a'}
     for i, d in enumerate(order):
+        st = d.get('stages_express', d['stages'])
+        seg = [('无时间', st['no_time'] or 0), ('时间→单点', st['time_to_single'] or 0)]
+        if st['single_to_float'] is not None:
+            seg.append(('单点→浮点', st['single_to_float']))
+        if st['float_to_fixed'] is not None:
+            seg.append(('浮点→固定', st['float_to_fixed']))
+        elif st.get('single_to_fixed') is not None:
+            seg.append(('单点→固定', st['single_to_fixed']))
         left = 0.0
-        for key, lab, col in stage_def:
-            v = d.get('stages_express', d['stages'])[key] or 0
+        for lab, v in seg:
             if v > 0:
+                col = stage_colors[lab]
                 ax.barh(i, v, left=left, color=col, edgecolor='white', height=0.55)
                 if v >= 14:
                     ax.text(left + v / 2, i, f'{lab} {v:.1f}s', ha='center', va='center',
                             color='white', fontsize=8.5)
-                elif v > 0:
-                    ax.text(left + v / 2, i - 0.42, f'{v:.1f}s', ha='center', va='bottom',
-                            color=col, fontsize=7.5)
+                else:
+                    ax.text(left + v / 2, i - 0.42, f'{lab} {v:.1f}s', ha='center', va='bottom',
+                            color=col, fontsize=7.2)
                 left += v
         if d['first']['fixed'] is not None:
             ax.text(left + 3, i, f"首固定 {d['first']['fixed']:.1f}s", va='center', fontsize=9,
@@ -362,10 +369,13 @@ def make_images(data, out_dir, title_prefix=None):
     ax.set_yticklabels(labels, fontsize=8)
     ax.invert_yaxis()
     ax.set_xlabel('时间（秒）')
-    ax.set_title((title_prefix or '华测') + '冷启动耗时分解（无时间 / 时间→单点 / 单点→浮点 / 浮点→固定）', fontsize=13)
+    ax.set_title((title_prefix or ('北云' if 'BY_' in __file__ else '华测')) +
+                 '冷启动耗时分解（无时间 / 时间→单点 / 单点→浮点或单点→固定）', fontsize=13)
     ax.grid(axis='x', ls='--', alpha=0.4)
-    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for _, _, c in stage_def]
-    ax.legend(handles, [l for _, l, _ in stage_def], loc='lower right', ncols=4, fontsize=9)
+    legend_items = [('无时间', '#dc2626'), ('时间→单点', '#f59e0b'),
+                    ('单点→浮点', '#3b82f6'), ('浮点/直达固定', '#16a34a')]
+    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for _, c in legend_items]
+    ax.legend(handles, [n for n, _ in legend_items], loc='lower right', ncols=4, fontsize=9)
     fig.tight_layout()
     fig.subplots_adjust(left=0.16)
     paths['stages'] = os.path.join(out_dir, 'img_阶段耗时.png')
