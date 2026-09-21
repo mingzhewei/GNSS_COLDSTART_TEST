@@ -558,11 +558,20 @@ def build_outputs(data, imgs, src_desc=None):
     bars = []
     for d in data:
         st = d.get('stages_express', d['stages'])
-        seg = [('无时间', st['no_time'] or 0), ('时间→单点', st['time_to_single'] or 0),
-               ('单点→浮点', st['single_to_float'] or 0), ('浮点→固定', st['float_to_fixed'] or 0)]
+        # 阶段条必须表示完整路径：缺失浮点时，用单点→固定补足；否则旧代码只画无时间/时间→单点。
+        seg = [('无时间', st['no_time'] or 0), ('时间→单点', st['time_to_single'] or 0)]
+        if st['single_to_float'] is not None:
+            seg.append(('单点→浮点', st['single_to_float']))
+        if st['float_to_fixed'] is not None:
+            seg.append(('浮点→固定', st['float_to_fixed']))
+        elif st.get('single_to_fixed') is not None:
+            seg.append(('单点→固定', st['single_to_fixed']))
         tot = sum(v for _, v in seg) or 1
-        parts = ''.join(f"<div style='width:{v/tot*100:.2f}%;background:{STAGE_COLORS[i]}'>{n} {v}s</div>"
-                        for i, (n, v) in enumerate(seg) if v > 0)
+        color_map = {'无时间': STAGE_COLORS[0], '时间→单点': STAGE_COLORS[1],
+                     '单点→浮点': STAGE_COLORS[2], '浮点→固定': STAGE_COLORS[3],
+                     '单点→固定': STAGE_COLORS[3]}
+        parts = ''.join(f"<div style='width:{v/tot*100:.2f}%;background:{color_map[n]}'>{n} {v}s</div>"
+                        for n, v in seg if v > 0)
         remain = round(d['span'] - (d['first']['fixed'] if d['first']['fixed'] is not None else d['span']), 1)
         tail = f"｜首固定后剩余 {remain}s" if d['first']['fixed'] is not None else "｜全程未固定"
         bars.append(f"<h3>{d['file']}</h3><div class='bar'>{parts}</div>"
