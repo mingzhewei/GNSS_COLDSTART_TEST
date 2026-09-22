@@ -82,13 +82,6 @@ def test_huace_stream_selection_prefers_continuous_bestpa():
         assert recovery.embedded >= 1
 
 
-if __name__ == '__main__':
-    test_embedded_ascii_recovery()
-    test_segment_boundary_without_week_rollback()
-    test_huace_stream_selection_prefers_continuous_bestpa()
-    print('all tests passed')
-
-
 def test_huace_approximate_startup_is_not_full_time():
     # APPROXIMATE is documented as approximate time, not valid/fine time. The
     # first FINESTEERING frame is the "valid time" boundary used by reports.
@@ -104,3 +97,63 @@ def test_huace_approximate_startup_is_not_full_time():
     # Segment start is a valid cold-start candidate even when approximate time
     # has already been restored by the receiver clock.
     assert segs[0].is_coldstart
+
+
+def test_beiyun_frames_preserve_recording_order_across_week_reset():
+    # Week 1356 is the receiver default observed during cold starts.  The true
+    # week is restored later.  A timestamp sort would move later recorded
+    # default-week frames before earlier true-week frames.
+    frames = [
+        frame(1_473_000_000.0, 'FINESTEERING', 'NARROW_INT', '1793', 0),
+        frame(820_108_819.4, 'UNKNOWN', 'NONE', '', 200),
+        frame(820_108_819.6, 'UNKNOWN', 'NONE', '', 400),
+    ]
+    assert [r.start for r in sorted(frames, key=lambda r: r.start)] == [0, 200, 400]
+    segs = segment_position_frames(frames, min_frames=1, min_duration_s=0.0)
+    assert len(segs) == 2
+    assert not segs[0].is_coldstart
+    assert segs[1].is_coldstart
+
+
+def test_segmentation_uses_recording_order_not_timestamp_order():
+    # Later default-week frames can have timestamps that sort before earlier
+    # true-week frames.  Segmentation must not use those default-week offsets
+    # as segment bounds in a way that makes an in-order segment empty.
+    frames = []
+    off = 0
+    # Previous running tail.
+    for i in range(60):
+        frames.append(frame(1_473_000_000.0 + i * 0.2, 'FINESTEERING', 'NARROW_INT', '1793', off)); off += 100
+    # New cold start: default week, later in the file, but numerically early.
+    for i in range(60):
+        frames.append(frame(820_108_819.0 + i * 0.2, 'UNKNOWN', 'NONE', '', off)); off += 100
+    segs = segment_position_frames(frames, min_frames=50, min_duration_s=10.0)
+    assert len(segs) == 2
+    assert not segs[0].is_coldstart
+    assert segs[1].is_coldstart
+    assert segs[1].frames == 60
+
+
+def test_timestamp_reset_from_freewheeling_is_a_boundary():
+    # The first three BeiYun 0920 indoor starts changed from FREEWHEELING/NONE
+    # to UNKNOWN/default-week.  They did not follow a fixed solution, but the
+    # GPS timestamp reset is still a cold-start boundary.
+    frames = [
+        frame(1_473_000_000.0, 'FREEWHEELING', 'NONE', '', 0),
+        frame(820_108_819.0, 'UNKNOWN', 'NONE', '', 100),
+    ]
+    segs = segment_position_frames(frames, min_frames=1, min_duration_s=0.0)
+    assert len(segs) == 2
+    assert segs[1].start == 100
+    assert segs[1].is_coldstart
+
+
+if __name__ == '__main__':
+    test_embedded_ascii_recovery()
+    test_segment_boundary_without_week_rollback()
+    test_huace_stream_selection_prefers_continuous_bestpa()
+    test_huace_approximate_startup_is_not_full_time()
+    test_beiyun_frames_preserve_recording_order_across_week_reset()
+    test_segmentation_uses_recording_order_not_timestamp_order()
+    test_timestamp_reset_from_freewheeling_is_a_boundary()
+    print('all tests passed')

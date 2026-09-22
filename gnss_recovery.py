@@ -237,7 +237,11 @@ def parse_beiyun_positions(messages: Iterable[RecoveredMessage]) -> list[PosFram
         rows.append(PosFrame(t=t, ts=m.hf[4], sol=sol, pt=pt, stn=stn, age=age,
                              svs=svs, soln=soln, multi=multi, source=m.name,
                              message_index=idx, start=m.start, end=m.end))
-    rows.sort(key=lambda r: (r.t, r.start))
+    # Preserve the receiver's recording byte order.  BeiYun cold starts can
+    # report a default GPS week (for example week 1356) before navigation data
+    # restores the true week; sorting by timestamp would interleave independent
+    # restarts and make byte-offset segments non-monotonic.
+    rows.sort(key=lambda r: r.start)
     return rows
 
 
@@ -265,8 +269,11 @@ def parse_huace_positions(messages: Iterable[RecoveredMessage]) -> dict[str, lis
             age=age, svs=svs, soln=soln, multi=multi, source=source,
             message_index=idx, start=m.start, end=m.end
         ))
+    # Keep the physical recording order in every candidate stream.  This is
+    # consistent with BeiYun and avoids interleaving frames after a GPS-week
+    # reset when two adjacent messages happen to carry equal timestamps.
     for rows in candidates.values():
-        rows.sort(key=lambda r: (r.t, r.start))
+        rows.sort(key=lambda r: r.start)
     return candidates
 
 

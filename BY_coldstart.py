@@ -478,7 +478,7 @@ HTML = """<!DOCTYPE html>
 </head>
 <body><div class="wrap">
 <h1>北云（UG016）GNSS 冷启动策略分析</h1>
-<div class="sub">数据源：__SRCLIST__（COM1 ASCII 日志，BESTGNSSPOSA 5Hz）｜口径依据：__MANUAL__｜分析维度：时标状态 / 解算状态 / 定位类型 / 卫星数｜本报告不含 INS</div>
+<div class="sub">数据源：__SRCLIST__（定位流来源见下表）｜口径依据：__MANUAL__｜分析维度：时标状态 / 解算状态 / 定位类型 / 卫星数｜本报告不含 INS</div>
 
 <h2>一、数据完整性与报文构成</h2>
 <div class="card"><table>
@@ -531,7 +531,7 @@ def build_outputs(data, imgs, src_desc=None):
     for d in data:
         ov_html.append(
             f"<tr><td class='mono'>{d['file']}</td><td>{d['span']}s</td>"
-            f"<td>BESTGNSSPOSA {d['n']}条</td>"
+            f"<td>{(d.get('segment') or {}).get('source', 'BESTGNSSPOSA')} {d['n']}条</td>"
             f"<td>{d['nominal']}s/{d['rate']}Hz</td>"
             f"<td class='mono'>{d['tstat_dist']}</td><td class='mono'>{d['ptype_dist']}</td>"
             f"<td>{len(d['gaps'])} / {len(d['rebases'])}</td></tr>")
@@ -612,7 +612,7 @@ def build_outputs(data, imgs, src_desc=None):
     md = []
     md.append('# 北云（UG016）GNSS 冷启动策略分析')
     md.append('')
-    md.append('- 数据源：' + '、'.join(f'`{d["file"]}`' for d in data) + '（COM1 ASCII 日志，BESTGNSSPOSA 5Hz）')
+    md.append('- 数据源：' + '、'.join(f'`{d["file"]}`' for d in data) + '（定位流来源见下表）')
     md.append(f'- 口径依据：{MANUAL}（文本转录：`by_manual\\UG016.md`）')
     md.append('- 分析维度：时标状态 / 解算状态 / 定位类型 / 卫星数；本报告不含 INS')
     md.append('')
@@ -621,7 +621,7 @@ def build_outputs(data, imgs, src_desc=None):
     md.append('| 文件 | 时长 | 定位报文 | 实测周期 | 时标分布(条) | 定位类型分布(条) | 间断/重定标 |')
     md.append('|---|---|---|---|---|---|---|')
     for d in data:
-        md.append(f"| `{d['file']}` | {d['span']}s | BESTGNSSPOSA {d['n']}条；"
+        md.append(f"| `{d['file']}` | {d['span']}s | {(d.get('segment') or {}).get('source', 'BESTGNSSPOSA')} {d['n']}条；"
                   f"{d['nominal']}s/{d['rate']}Hz | `{d['tstat_dist']}` | `{d['ptype_dist']}` "
                   f"| {len(d['gaps'])} / {len(d['rebases'])} |")
     md.append('')

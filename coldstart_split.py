@@ -11,19 +11,21 @@ durations:
   no-time/approximate/no-solution/single-point starting state;
 * a segment must have enough frames (absolute minimum, independent of rate);
 * a segment must cover a duration threshold, not a fixed number of seconds;
-* a discontinuity is dynamic: > max(minimum_gap, gap_factor * measured nominal
-  period), and is also required for a boundary when the state transition alone
-  is ambiguous;
+* a discontinuity is dynamic on the recording-order elapsed axis:
+  > max(minimum_gap, gap_factor * measured nominal period).  GPS-week resets
+  (for example BeiYun default week 1356 -> true week) are time-axis resets and
+  are collapsed to one nominal period, not treated as recording gaps;
 * the first segment can be a valid cold start if it starts in the required
   starting state; a leading tail of a previous run is not treated as cold start;
-* segment end is the message offset just before the next segment start, so
-  bytes are not discarded between segments (the next segment starts exactly at
-  the previous segment's end boundary in message order).
+* segment end is one byte after the last frame in that segment.  The next
+  segment starts at its own first frame offset; when another stream happens to
+  occupy bytes between two selected position frames, those bytes are not part
+  of either position-segment selection.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Iterable, Sequence
+from typing import Sequence
 
 from gnss_recovery import (PosFrame, RecoveryResult, parse_beiyun_positions,
                            parse_huace_positions, recover_ascii_messages,
@@ -55,10 +57,32 @@ class Segment:
 
 
 def _nominal(frames: Sequence[PosFrame], default: float = 1.0) -> float:
-    dts = sorted(b.t - a.t for a, b in zip(frames, frames[1:]) if b.t > a.t)
+    dts = sorted(b.t - a.t for a, b in zip(frames, frames[1:]) if 0 < b.t - a.t <= 3600.0)
     if not dts:
         return default
     return dts[len(dts) // 2]
+
+
+def _elapsed_axis(times: Sequence[float], nominal: float) -> list[float]:
+    """Build a recording-order elapsed axis, collapsing GPS-week resets.
+
+    BeiYun cold starts can first report a default GPS week and later restore
+    the true week.  Such raw timestamp jumps/reversals are protocol time-axis
+    resets, not physical recording gaps.  They are collapsed to one nominal
+    period, matching the elapsed-axis convention used by the reports.
+    """
+    elapsed = [0.0]
+    for prev_t, cur_t in zip(times, times[1:]):
+        dt = cur_t - prev_t
+        if abs(dt) > 3600.0:
+            elapsed.append(elapsed[-1] + nominal)
+        elif dt > 0.0:
+            elapsed.append(elapsed[-1] + dt)
+        else:
+            # Duplicate or slightly reversed timestamps are collapsed to one
+            # nominal period, as in BY/HUACE build_elapsed().
+            elapsed.append(elapsed[-1] + nominal)
+    return elapsed
 
 
 def _startup_state(r: PosFrame) -> bool:
@@ -90,31 +114,35 @@ def segment_position_frames(
     if not frames:
         return []
     nominal = _nominal(frames)
+    elapsed = _elapsed_axis([f.t for f in frames], nominal)
     gap_threshold = max(minimum_gap_s, gap_factor * nominal)
     boundary_indexes: list[int] = []
     discontinuities: dict[int, float] = {}
 
-    prev = frames[0]
     for i in range(1, len(frames)):
-        cur = frames[i]
-        dt = cur.t - prev.t
+        dt = elapsed[i] - elapsed[i - 1]
+        raw_dt = frames[i].t - frames[i - 1].t
         recording_gap = dt > gap_threshold
-        state_boundary = _was_differential_or_fixed(prev) and _startup_state(cur)
-        if recording_gap or state_boundary:
+        time_axis_reset = (
+            abs(raw_dt) > 3600.0 and
+            _startup_state(frames[i]) and not _startup_state(frames[i - 1])
+        )
+        state_boundary = (
+            _was_differential_or_fixed(frames[i - 1]) and _startup_state(frames[i])
+        )
+        if recording_gap or time_axis_reset or state_boundary:
             boundary_indexes.append(i)
             discontinuities[i] = dt
-        prev = cur
 
     bounds = sorted(set([0] + boundary_indexes + [len(frames)]))
     # A boundary at len(frames) would create no segment and is not needed.
     bounds = [b for b in bounds if b < len(frames)] + [len(frames)]
-    base_time = frames[0].t
     all_segments: list[Segment] = []
     for a, b in zip(bounds, bounds[1:]):
         rows = frames[a:b]
         if not rows:
             continue
-        duration = rows[-1].t - rows[0].t
+        duration = elapsed[b - 1] - elapsed[a]
         dt_before = discontinuities.get(a, 0.0)
         is_cold = (
             len(rows) >= min_frames and
@@ -132,8 +160,8 @@ def segment_position_frames(
             span=round(duration, 3),
             is_coldstart=is_cold,
             source=rows[0].source,
-            start_elapsed=round(rows[0].t - base_time, 3),
-            end_elapsed=round(rows[-1].t - base_time, 3),
+            start_elapsed=round(elapsed[a], 3),
+            end_elapsed=round(elapsed[b - 1], 3),
             discontinuity_before=round(dt_before, 3),
         ))
 

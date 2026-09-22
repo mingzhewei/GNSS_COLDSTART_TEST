@@ -34,10 +34,14 @@ def paired_segments(by_path, hc_path, split):
     if split:
         by_rows = BY.split_segments(by_path)
         hc_rows = HC.split_segments(hc_path)
-        return [(n, by_frames, hc_frames, by_seg, hc_seg)
-                for n, by_frames, by_seg, hc_frames, hc_seg in
-                [(n, bf, bs, hf, hs)
-                 for (n, bf, bs), (n2, hf, hs) in zip(by_rows, hc_rows) if n == n2]]
+        # Pair by cold-start index and fail explicitly instead of silently
+        # truncating to the shorter recording.
+        if len(by_rows) != len(hc_rows):
+            print(f'错误：北云与华测自动切片数量不一致：北云={len(by_rows)}段，华测={len(hc_rows)}段；'
+                  '请复核两侧物理启动次数或日志起止范围。')
+            raise SystemExit(1)
+        return [(n, bf, hf, bs, hs)
+                for (n, bf, bs), (_n2, hf, hs) in zip(by_rows, hc_rows)]
     with open(by_path, 'rb') as fp:
         by_raw = fp.read()
     with open(hc_path, 'rb') as fp:
@@ -49,8 +53,8 @@ def paired_segments(by_path, hc_path, split):
     # 单次模式取首个有效段；若没有有效段，回退完整流并明确不作为多段切割结果。
     bs = next((x for x in by_segs if x.is_coldstart), by_segs[0])
     hs = next((x for x in hc_segs if x.is_coldstart), hc_segs[0])
-    by_sel = [r for r in by_frames if r.start >= bs.start and r.end <= bs.end]
-    hc_sel = [r for r in hc_frames if r.start >= hs.start and r.end <= hs.end]
+    by_sel = [r for r in by_frames if bs.start <= r.start < bs.end]
+    hc_sel = [r for r in hc_frames if hs.start <= r.start < hs.end]
     return [(1, by_sel, hc_sel, bs, hs)]
 
 def run(by_path, hc_path, out_dir, split=True, open_browser=False):
@@ -62,10 +66,17 @@ def run(by_path, hc_path, out_dir, split=True, open_browser=False):
     data = []
     for n, by_frames, hc_frames, by_seg, hc_seg in pairs:
         # 共同 t0 = 两家最早"拿到时标"的时刻（各自片段内的相对秒数，取较小者）
-        by_t0 = by_frames[0].t if by_frames else 0.0
-        hc_t0 = hc_frames[0].t if hc_frames else 0.0
-        by_off = next((r.t - by_t0 for r in by_frames if r.ts != 'UNKNOWN'), None)
-        hc_off = next((r.t - hc_t0 for r in hc_frames if r.ts not in ('UNKNOWN', 'APPROXIMATE')), None)
+        # Use the same elapsed-axis convention as build_raw(). BeiYun can reset
+        # from default week 1356 to the true week, so raw timestamp differences
+        # would be wrong by about 653.8 million seconds.
+        def valid_offset(frames, valid):
+            if not frames:
+                return None
+            elapsed, _gaps, _rebases, _nominal = BY.build_elapsed([f.t for f in frames])
+            return next((elapsed[i] for i, frame in enumerate(frames) if valid(frame)), None)
+
+        by_off = valid_offset(by_frames, lambda r: r.ts != 'UNKNOWN')
+        hc_off = valid_offset(hc_frames, lambda r: r.ts not in ('UNKNOWN', 'APPROXIMATE'))
         offsets = [x for x in (by_off, hc_off) if x is not None]
         common_offset = min(offsets) if offsets else 0.0
         by_shift = by_off if by_off is not None else common_offset

@@ -724,7 +724,7 @@ def split_segments(path, min_frames=50, min_duration_s=20.0):
         raw = fp.read()
     segs, _source, rows, _nominal, recovery = split_huace(raw, min_frames=min_frames, min_duration_s=min_duration_s)
     cold = [s for s in segs if s.is_coldstart]
-    return [(n, [r for r in rows if r.start >= s.start and r.end <= s.end], s)
+    return [(n, [r for r in rows if s.start <= r.start < s.end], s)
             for n, s in enumerate(cold, 1)]
 
 
@@ -750,7 +750,7 @@ def analyze_file(path, split=False, min_frames=50, indoor_t0=None, min_duration_
 
     out = []
     for n, s in enumerate(cold, 1):
-        selected = [r for r in rows if r.start >= s.start and r.end <= s.end]
+        selected = [r for r in rows if s.start <= r.start < s.end]
         shift = 0.0
         if indoor_t0 is not None and n <= len(indoor_t0):
             shift = indoor_t0[n - 1] or 0.0
