@@ -27,9 +27,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Sequence
 
-from gnss_recovery import (PosFrame, RecoveryResult, parse_beiyun_positions,
-                           parse_huace_positions, recover_ascii_messages,
-                           select_huace_positions)
+from gnss_recovery import (PosFrame, RecoveryResult, parse_beidou_positions,
+                           parse_beiyun_positions, parse_huace_positions,
+                           recover_ascii_messages, select_huace_positions)
 
 UNKNOWN_START = {'UNKNOWN', 'APPROXIMATE', 'COARSE', 'COARSESTEERING'}
 NONE_OR_SINGLE = {'NONE', 'SINGLE', 'SPPDIFF', 'PSRDIFF'}
@@ -85,8 +85,22 @@ def _elapsed_axis(times: Sequence[float], nominal: float) -> list[float]:
     return elapsed
 
 
-def _startup_state(r: PosFrame) -> bool:
-    return r.ts in UNKNOWN_START and r.pt in NONE_OR_SINGLE and r.stn in ('', '0')
+def _startup_state(r: PosFrame, time_required: bool = True) -> bool:
+    """Startup-state frame test.
+
+    BeiYun/HUACE cold starts lose the time solution, so the default rule
+    requires a not-yet-established Time Status in addition to a no-solution /
+    single-point state without a station ID.  UM980 keeps GPS time across a
+    power cycle (battery-backed receiver clock; observed as FINE/true-week
+    frames right after a restart), so for UM980 the essential cold-start
+    evidence is a failed solution status instead: sol != SOL_COMPUTED together
+    with a NONE/single-point position type and no station ID.
+    """
+    if r.pt not in NONE_OR_SINGLE or r.stn not in ('', '0'):
+        return False
+    if time_required:
+        return r.ts in UNKNOWN_START
+    return r.sol != 'SOL_COMPUTED'
 
 
 def _was_differential_or_fixed(r: PosFrame) -> bool:
@@ -100,6 +114,7 @@ def segment_position_frames(
     min_duration_s: float = 20.0,
     gap_factor: float = 5.0,
     minimum_gap_s: float = 2.0,
+    time_required: bool = True,
 ) -> list[Segment]:
     """Return all segments, including a leading tail segment when present.
 
@@ -110,6 +125,10 @@ def segment_position_frames(
        NONE/SINGLE).
     The second condition is necessary because files can retain valid GPS time
     during a restart and therefore have no week rollback.
+
+    ``time_required=False`` relaxes the startup-state test for receivers that
+    keep a valid time across power cycles (UM980): the startup evidence is the
+    failed solution status, not a lost Time Status.
     """
     if not frames:
         return []
@@ -125,10 +144,12 @@ def segment_position_frames(
         recording_gap = dt > gap_threshold
         time_axis_reset = (
             abs(raw_dt) > 3600.0 and
-            _startup_state(frames[i]) and not _startup_state(frames[i - 1])
+            _startup_state(frames[i], time_required) and
+            not _startup_state(frames[i - 1], time_required)
         )
         state_boundary = (
-            _was_differential_or_fixed(frames[i - 1]) and _startup_state(frames[i])
+            _was_differential_or_fixed(frames[i - 1]) and
+            _startup_state(frames[i], time_required)
         )
         if recording_gap or time_axis_reset or state_boundary:
             boundary_indexes.append(i)
@@ -147,7 +168,7 @@ def segment_position_frames(
         is_cold = (
             len(rows) >= min_frames and
             duration >= min_duration_s and
-            _startup_state(rows[0])
+            _startup_state(rows[0], time_required)
         )
         all_segments.append(Segment(
             index=0,
@@ -196,6 +217,14 @@ def _frames_from_huace(raw: bytes) -> tuple[str, list[PosFrame], RecoveryResult]
     return source, rows, recovered
 
 
+def _frames_from_beidou(raw: bytes) -> tuple[str, list[PosFrame], RecoveryResult]:
+    recovered = recover_ascii_messages(raw)
+    rows = parse_beidou_positions(recovered.messages)
+    if not rows:
+        raise ValueError('未恢复到任何北斗 BESTNAVA 有效定位帧')
+    return 'BESTNAVA', rows, recovered
+
+
 def split_beiyun(raw: bytes, **kwargs) -> tuple[list[Segment], str, list[PosFrame], float, RecoveryResult]:
     source, rows, recovery = _frames_from_beiyun(raw)
     return segment_position_frames(rows, **kwargs), source, rows, _nominal(rows), recovery
@@ -203,4 +232,16 @@ def split_beiyun(raw: bytes, **kwargs) -> tuple[list[Segment], str, list[PosFram
 
 def split_huace(raw: bytes, **kwargs) -> tuple[list[Segment], str, list[PosFrame], float, RecoveryResult]:
     source, rows, recovery = _frames_from_huace(raw)
+    return segment_position_frames(rows, **kwargs), source, rows, _nominal(rows), recovery
+
+
+def split_beidou(raw: bytes, **kwargs) -> tuple[list[Segment], str, list[PosFrame], float, RecoveryResult]:
+    """Split a UM980 (Unicore N4) BESTNAVA stream into cold-start segments.
+
+    UM980 keeps valid GPS time across power cycles, so the startup-state test
+    is driven by the failed solution status (``time_required=False``) unless
+    the caller overrides it.
+    """
+    kwargs.setdefault('time_required', False)
+    source, rows, recovery = _frames_from_beidou(raw)
     return segment_position_frames(rows, **kwargs), source, rows, _nominal(rows), recovery

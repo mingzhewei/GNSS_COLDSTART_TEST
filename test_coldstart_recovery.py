@@ -8,8 +8,9 @@ from pathlib import Path
 import tempfile
 
 from coldstart_split import (coldstart_segments, segment_position_frames,
-                             split_beiyun, split_huace)
-from gnss_recovery import PosFrame, recover_ascii_messages, parse_huace_positions
+                             split_beidou, split_beiyun, split_huace)
+from gnss_recovery import (PosFrame, parse_beidou_positions,
+                           recover_ascii_messages, parse_huace_positions)
 
 
 def crc32b(data: bytes) -> int:
@@ -30,8 +31,8 @@ def binary_noise() -> bytes:
     return bytes.fromhex('aa447200' + '00112233445566778899aabbccddeeff')
 
 
-def frame(t, ts, pt, stn, offset):
-    return PosFrame(t=t, ts=ts, sol='SOL_COMPUTED', pt=pt, stn=stn, age=0.0,
+def frame(t, ts, pt, stn, offset, sol='SOL_COMPUTED'):
+    return PosFrame(t=t, ts=ts, sol=sol, pt=pt, stn=stn, age=0.0,
                     svs=30, soln=30, multi=30, source='TEST', message_index=0,
                     start=offset, end=offset + 100)
 
@@ -148,6 +149,74 @@ def test_timestamp_reset_from_freewheeling_is_a_boundary():
     assert segs[1].is_coldstart
 
 
+def test_beidou_bestnav_parse_fields():
+    # UM980 BESTNAVA follows N4 table 7-51 (header) and table 7-70 (body):
+    # GPS time = Wn * 604800 + Ms/1000; stn id is quoted; body has #SVs and
+    # #solnSVs but no #solnMultiSVs (IDs 17-19 are Reserved) -> multi is None.
+    payload = ('BESTNAVA,90,GPS,FINE,2441,439199000,25621,0,18,10;'
+               'SOL_COMPUTED,SINGLE,31.16403013005,121.45297515453,23.7548,11.6652,WGS84,'
+               '14.6964,5.3719,11.1554,"1793",0.000,1.000,23,7,7,7,129,12,56,f7,'
+               'SOL_COMPUTED,DOPPLER_VELOCITY,0.000,0.000,0.1749,117.001047,0.2436,1.3231,1.0495')
+    raw = binary_noise() + hash_sentence(payload) + binary_noise()
+    recovered = recover_ascii_messages(raw)
+    assert len(recovered.messages) == 1
+    rows = parse_beidou_positions(recovered.messages)
+    assert len(rows) == 1
+    r = rows[0]
+    assert r.ts == 'FINE'
+    assert abs(r.t - (2441 * 604800.0 + 439199.0)) < 1e-6
+    assert r.sol == 'SOL_COMPUTED'
+    assert r.pt == 'SINGLE'
+    assert r.stn == '1793'
+    assert abs(r.age - 0.0) < 1e-9
+    assert r.svs == 23
+    assert r.soln == 7
+    assert r.multi is None
+
+
+def test_beidou_retained_time_restart_is_coldstart():
+    # UM980 keeps GPS time across a power cycle (battery-backed clock): the
+    # restart segment begins with FINE + INSUFFICIENT_OBS/NONE frames and has
+    # no week rollback.  With the solution-status startup rule this is a cold
+    # start; the default BeiYun/HUACE rule (lost Time Status required) must
+    # stay unchanged and not flag it.
+    frames = []
+    off = 0
+    for i in range(60):
+        frames.append(frame(1_476_755_000.0 + i, 'FINE', 'NARROW_INT', '1793', off)); off += 100
+    for i in range(60):
+        frames.append(frame(1_476_755_800.0 + i, 'FINE', 'NONE', '', off,
+                            sol='INSUFFICIENT_OBS')); off += 100
+    segs = segment_position_frames(frames, min_frames=50, min_duration_s=10.0,
+                                   time_required=False)
+    assert len(segs) == 2
+    assert not segs[0].is_coldstart
+    assert segs[1].is_coldstart
+    assert segs[1].start == frames[60].start
+    segs_default = segment_position_frames(frames, min_frames=50, min_duration_s=10.0)
+    assert len(segs_default) == 2
+    assert not segs_default[1].is_coldstart
+
+
+def test_beidou_week_reset_inside_startup_is_not_boundary():
+    # UM980 cold starts can report default week 1 before navigation data
+    # restores the true week (observed in the 1023 indoor log).  The reset
+    # happens while the receiver is still in the startup state, so it is a
+    # protocol time-axis reset and must not split the segment.
+    frames = []
+    off = 0
+    for i in range(30):
+        frames.append(frame(604800.0 + 1 + i, 'UNKNOWN', 'NONE', '', off,
+                            sol='INSUFFICIENT_OBS')); off += 100
+    for i in range(30):
+        frames.append(frame(2441 * 604800.0 + 439155.0 + i, 'UNKNOWN', 'NONE', '', off,
+                            sol='INSUFFICIENT_OBS')); off += 100
+    segs = segment_position_frames(frames, min_frames=10, min_duration_s=5.0,
+                                   time_required=False)
+    assert len(segs) == 1
+    assert segs[0].is_coldstart
+
+
 if __name__ == '__main__':
     test_embedded_ascii_recovery()
     test_segment_boundary_without_week_rollback()
@@ -156,4 +225,7 @@ if __name__ == '__main__':
     test_beiyun_frames_preserve_recording_order_across_week_reset()
     test_segmentation_uses_recording_order_not_timestamp_order()
     test_timestamp_reset_from_freewheeling_is_a_boundary()
+    test_beidou_bestnav_parse_fields()
+    test_beidou_retained_time_restart_is_coldstart()
+    test_beidou_week_reset_inside_startup_is_not_boundary()
     print('all tests passed')

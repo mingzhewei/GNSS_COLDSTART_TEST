@@ -288,7 +288,7 @@ def sort_for_report(data):
     def key(d):
         seg = d.get('segment') or {}
         idx = seg.get('index', 0)
-        prod = 0 if '北云' in d['file'] else (1 if '华测' in d['file'] else 2)
+        prod = 0 if '北云' in d['file'] else (1 if '华测' in d['file'] else (2 if '北斗' in d['file'] else 3))
         return (idx, prod, d['file'])
     # 若所有段都无 segment.index，则退回纯文件名排序（单产品兼容）
     if all(not (d.get('segment') or {}).get('index') for d in data):
@@ -384,7 +384,9 @@ def make_images(data, out_dir, title_prefix=None):
         el = d['series']['el']
         ax.plot(el, d['series']['svs'], color='#2563eb', lw=1.4, label='跟踪卫星数 #SVs', drawstyle='steps-post')
         ax.plot(el, d['series']['soln'], color='#16a34a', lw=1.2, label='参与解算 #solnSVs', drawstyle='steps-post')
-        ax.plot(el, d['series']['multi'], color='#9333ea', lw=1.2, label='多频解算 #solnMultiSVs', drawstyle='steps-post')
+        # 多频解算字段不适用的产品（如北斗 BESTNAV 表 7-70 无 #solnMultiSVs）为 None，不绘制该曲线
+        if any(v is not None for v in d['series']['multi']):
+            ax.plot(el, d['series']['multi'], color='#9333ea', lw=1.2, label='多频解算 #solnMultiSVs', drawstyle='steps-post')
         ymax = max(d['series']['svs']) + 2
         ax.set_ylim(0, ymax * 1.42)
         prev_x = -1e9
@@ -590,7 +592,7 @@ def build_outputs(data, imgs, src_desc=None):
         for lab, a, b, dur, c, svs, soln, multi in d['segs']:
             seg_rows.append(f"<tr><td><span class='tag {tag_of(lab)}'>{lab}</span></td>"
                             f"<td class='mono'>{a}–{b}</td><td>{dur}</td><td>{c}</td>"
-                            f"<td>{svs}</td><td>{soln}</td><td>{multi}</td></tr>")
+                            f"<td>{svs}</td><td>{soln}</td><td>{'—' if multi is None else multi}</td></tr>")
         samp_html.append(f"<h3>{d['file']}</h3>"
                          f"<div class='card'><table>{''.join(seg_rows)}</table></div>")
     samp = ''.join(samp_html)
@@ -692,7 +694,7 @@ def build_outputs(data, imgs, src_desc=None):
         md.append('| 定位类型段 | 起–止(s) | 时长(s) | 条数 | 跟踪星 | 解算星 | 多频解算 |')
         md.append('|---|---|---|---|---|---|---|')
         for lab, a, b, dur, c, svs, soln, multi in d['segs']:
-            md.append(f"| {lab} | {a}–{b} | {dur} | {c} | {svs} | {soln} | {multi} |")
+            md.append(f"| {lab} | {a}–{b} | {dur} | {c} | {svs} | {soln} | {'—' if multi is None else multi} |")
         md.append('')
     md.append(f"![卫星数量时间轴]({os.path.basename(imgs['svs'])})")
     md.append('')

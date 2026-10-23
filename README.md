@@ -1,6 +1,6 @@
 # GNSS_COLDSTART_TEST
 
-GNSS 冷启动定位收敛分析工具，支持 **北云 BY（UG016）** 与 **华测 HUACE（M720 / M7 系列）**。工具面向连续录制日志、混合二进制 + ASCII 日志、多次冷启动自动切片，以及室内/室外两种分析口径，输出自包含 HTML、Markdown、PNG 与 JSON。
+GNSS 冷启动定位收敛分析工具，支持 **北云 BY（UG016）**、**华测 HUACE（M720 / M7 系列）** 与 **北斗 UM980（和芯星通 N4）**。工具面向连续录制日志、混合二进制 + ASCII 日志、多次冷启动自动切片，以及室内/室外两种分析口径，输出自包含 HTML、Markdown、PNG 与 JSON。
 
 ## 1. 功能概览
 
@@ -19,13 +19,21 @@ GNSS 冷启动定位收敛分析工具，支持 **北云 BY（UG016）** 与 **�
 - **华测定位流动态选择**
   - 在 `BESTPA`、`BESTPOSA`、`RTKPA` 中选择覆盖完整且有效帧数最多的定位流；
   - 分别解析 GMF 与 NovAtel 风格报文头，避免混用时间字段。
+- **北斗 UM980 支持**
+  - 主定位流 `#BESTNAVA`（N4 表 7-51 报头 / 表 7-70 数据段）；
+  - 冷启动判据为**解算状态失效**（解状态≠SOL_COMPUTED + NONE/单点类 + 无基站），
+    时标不作必要条件——UM980 断电后 GPS 时间可由内部电池保持（FINE/真实周）；
+  - 时标未丢失的段，“获得卫星时间”输出 `—`，不参与对比；
+  - 表 7-70 无 `#solnMultiSVs`（字段 17-19 为 Reserved），多频解算维度输出 `—`，不解析保留字段。
 - **HMI 自动识别**
   - 不再只看文件名或文件前 2 MB；
   - 对完整文件做协议级恢复后识别北云 / 华测；
   - 混合二进制 + ASCII 日志可正确识别。
 - **室内 / 室外两种模式**
   - 室外：各产品独立分析，输出产品报告；
-  - 室内：北云与华测按启动序号配对，取共同 t0 后输出联合对比报告。
+  - 室内：任意 ≥2 个产品按启动序号配对（如 北斗×北云、北云+华测，或三产品联合），
+    取共同 t0 后输出一份联合对比报告；产品由报文自动识别，新增产品只需在
+    `indoor_coldstart.py` 的 `PRODUCTS` 注册表登记即可参与任意组合配对。
 - **报告与图件**
   - 数据完整性与报文恢复统计；
   - 四个关键时刻；
@@ -40,13 +48,14 @@ GNSS 冷启动定位收敛分析工具，支持 **北云 BY（UG016）** 与 **�
 
 | 文件 | 说明 |
 |---|---|
-| `gnss_recovery.py` | 协议级字节流恢复、CRC/XOR 校验、北云/华测定位帧解析、华测定位流动态选择、产品识别 |
-| `coldstart_split.py` | 动态冷启动边界识别与分段 |
+| `gnss_recovery.py` | 协议级字节流恢复、CRC/XOR 校验、北云/华测/北斗定位帧解析、华测定位流动态选择、产品识别 |
+| `coldstart_split.py` | 动态冷启动边界识别与分段（北云/华测按时标丢失判启动，北斗按解算状态失效判启动） |
 | `BY_coldstart.py` | 北云冷启动指标计算、报告与图件生成 |
 | `HUACE_coldstart.py` | 华测冷启动指标计算、报告与图件生成 |
-| `indoor_coldstart.py` | 室内模式北云/华测配对与联合报告 |
+| `BEIDOU_coldstart.py` | 北斗 UM980 冷启动指标计算、报告与图件生成 |
+| `indoor_coldstart.py` | 室内模式多产品配对与联合报告（可扩展接口） |
 | `gnss_coldstart_hmi.py` | tkinter HMI |
-| `test_coldstart_recovery.py` | 混合日志恢复、动态切割、华测定位流选择测试 |
+| `test_coldstart_recovery.py` | 混合日志恢复、动态切割、华测定位流选择、北斗解析/判据测试 |
 
 ---
 
@@ -107,13 +116,25 @@ python HUACE_coldstart.py <输出目录> <华测日志>
 python HUACE_coldstart.py <输出目录> --split <华测日志>
 ```
 
+#### 北斗
+
+```bash
+# 单个独立冷启动文件
+python BEIDOU_coldstart.py <输出目录> <北斗日志>
+
+# 一次性录制的多次冷启动
+python BEIDOU_coldstart.py <输出目录> --split <北斗日志>
+```
+
 #### 室内联合模式
 
 ```bash
-python indoor_coldstart.py <输出目录> --split <北云日志> <华测日志>
+python indoor_coldstart.py <输出目录> --split <日志1> <日志2> [...]
 ```
 
-不加 `--split` 时，按单次冷启动包分析。
+- 产品类型由报文自动识别（北云 / 华测 / 北斗），至少 2 个不同产品、每个产品 1 个文件；
+- 两两对比（如 北斗×北云）与三产品及以上联合对比使用同一配对接口；
+- 不加 `--split` 时，按单次冷启动包分析。
 
 ---
 
@@ -144,6 +165,15 @@ python indoor_coldstart.py <输出目录> --split <北云日志> <华测日志>
 - 差分解；
 - 固定解；
 - 已有基站 ID。
+
+**北斗 UM980 例外（时标不作必要条件）**：UM980 断电后 GPS 时间可由内部电池保持
+（实测第 2~9 次启动段首即为 FINE/真实周）。北斗的启动状态判据为：
+
+- 解状态 ≠ `SOL_COMPUTED`（如 `INSUFFICIENT_OBS`）；
+- Stn ID 为空或 `0`；
+- 定位类型处于无解或单点类。
+
+即冷启动以**解算状态失效**为准，不要求 Time Status 丢失（用户确认口径 2026-10-23）。
 
 #### 证据二：GPS 时间轴重置
 
@@ -227,18 +257,41 @@ dt > max(2 s, 5 × 实测中位周期)
 
 两种头部格式分别解析，不做统一假设。
 
+### 5.3 北斗
+
+主定位报文：
+
+```text
+#BESTNAVA
+```
+
+字段依据：和芯星通《N4 Products Commands and Logs Reference Book R1.15》。
+
+#### 北斗 ASCII 报头（表 7-51）与 BESTNAV 数据段（表 7-70）
+
+| 项 | 内容 |
+|---|---|
+| 报头 | `CPUIDle, TimeRef, TimeStatus, Wn, Ms, Version, Reserved, 闰秒, 输出延迟` |
+| GPS 时间 | `Wn × 604800 + Ms / 1000`（Ms 为周内毫秒） |
+| Time Status | 仅 `UNKNOWN` / `FINE` 两态 |
+| 数据段 | 解状态、位置类型、经纬高、三向 σ、Stn ID、diff_age、sol_age、#SVs、#solnSVs… |
+| 多频解算 | 表 7-70 无 `#solnMultiSVs`（字段 17-19 为 Reserved），不解析保留字段 |
+
+冷启动初期可能输出默认 GPS 周（实测周 1）并以毫秒计数，解出导航电文后跳回真实周；
+该原始时间戳跳变按协议时间轴重置折叠处理，与北云默认周 1356 的处理方式一致。
+
 ---
 
 ## 6. 指标口径
 
 ### 6.1 四个关键时刻
 
-| 指标 | 北云口径 | 华测口径 |
-|---|---|---|
-| 获得卫星时间 | Time Status 首次脱离 `UNKNOWN` | Time Status 首次脱离 `UNKNOWN` / `APPROXIMATE` |
-| 首单点 | 定位类型首次进入单点类 | 定位类型首次进入单点类 |
-| 首浮点 | 定位类型首次进入浮点类 | 定位类型首次进入浮点类 |
-| 首固定 | 定位类型首次进入固定类 | 定位类型首次进入固定类 |
+| 指标 | 北云口径 | 华测口径 | 北斗 UM980 口径 |
+|---|---|---|---|
+| 获得卫星时间 | Time Status 首次脱离 `UNKNOWN` | Time Status 首次脱离 `UNKNOWN` / `APPROXIMATE` | Time Status 首次脱离 `UNKNOWN`；时标未丢失的段输出 `—`，不参与对比 |
+| 首单点 | 定位类型首次进入单点类 | 定位类型首次进入单点类 | 定位类型首次进入单点类 |
+| 首浮点 | 定位类型首次进入浮点类 | 定位类型首次进入浮点类 | 定位类型首次进入浮点类 |
+| 首固定 | 定位类型首次进入固定类 | 定位类型首次进入固定类 | 定位类型首次进入固定类 |
 
 单点类包括：
 
@@ -246,6 +299,7 @@ dt > max(2 s, 5 × 实测中位周期)
 SINGLE
 SPPDIFF
 PSRDIFF
+SBAS
 ```
 
 浮点类包括：
@@ -253,6 +307,7 @@ PSRDIFF
 ```text
 NARROW_FLOAT
 L1_FLOAT
+IONOFREE_FLOAT
 ```
 
 固定类包括：
@@ -262,6 +317,12 @@ NARROW_INT
 WIDE_INT
 L1_INT
 ```
+
+“—”规则（用户确认口径 2026-10-23）：
+
+1. 北斗段首已持有效时标（断电后 GPS 时间由 UM980 内部电池保持）时，
+   “获得卫星时间 / 时标进入 FINE”输出 `—`，不参与对比；
+2. 北斗报告的“多频解算”维度恒为 `—`（报文无 `#solnMultiSVs` 字段）。
 
 ### 6.2 阶段顺序
 
@@ -324,6 +385,9 @@ python test_coldstart_recovery.py
 3. 华测存在多条定位流时，可选择连续且有效帧数最多的流。
 4. 北云默认周与真实周交替时，帧序列保持录制顺序，GPS 时间轴重置可识别为启动边界；
 5. `FREEWHEELING/NONE -> UNKNOWN/NONE` 的 GPS 时间轴重置也是启动边界，即使前一帧不是固定/差分解。
+6. 北斗 `#BESTNAVA` 按表 7-51/7-70 解析（Wn/Ms 时间、Stn ID、#SVs、#solnSVs，multi=None）；
+7. 北斗时标保持（FINE）的断电重启段按解算状态失效判定为冷启动，且不改变北云/华测原判据；
+8. 北斗默认周 1 -> 真实周的时间轴重置发生在启动状态内时，不切割段。
 
 当前预期输出：
 
@@ -340,6 +404,10 @@ all tests passed
 | 北云 `BESTGNSSPOSA`、Time Status、定位类型、卫星数、Stn ID | `by_manual/UG016.md` |
 | 华测 GMF 二进制同步字、ASCII `#` 报文、CRC、Time Status | `huace_manual/M7系列模组用户指令及协议手册_V2.7.pdf` |
 | 华测 `BESTP_1` 字段、定位类型、卫星数、基站 ID | `huace_manual/M7系列模组用户指令及协议手册_V2.7.pdf` |
+| 北斗 ASCII 报头（CPUIDle/TimeRef/TimeStatus/Wn/Ms/闰秒）、32 位 CRC | `beidou_manual/Unicore Reference Commands Manual For N4 ..._R1.15.pdf` 表 7-51 |
+| 北斗 `BESTNAVA` 字段（解状态、位置类型、Stn ID、diff_age、#SVs、#solnSVs） | 同上，7.3.19 BESTNAV，表 7-70 |
+| 北斗解状态枚举、位置或速度类型枚举 | 同上，表 0-6 / 表 0-5 |
+| 北斗刷机采集配置（消息与频率对照北云） | `beidou_manual/UM980_北云指令对照表.md` |
 
 ---
 

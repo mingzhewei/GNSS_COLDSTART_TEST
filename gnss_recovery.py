@@ -14,6 +14,14 @@ ASCII header layouts documented in the M7 V2.7 manual: NovAtel-style messages
 (for example BESTPOSA) use week field 6 and seconds field 7, while GMF messages
 (for example BESTPA/RTKPA) use week field 7 and TOW-ms field 8 (one-based field
 numbers).  These layouts are kept separate and are never silently normalized.
+
+UM980 (Unicore N4) ASCII messages follow table 7-51 of the N4 commands manual:
+header fields are CPUIDle, TimeRef, TimeStatus, Wn, Ms (TOW in milliseconds),
+Version, Reserved, Leap sec and Output Delay, so the GPS time is Wn * 604800 +
+Ms / 1000.  The BESTNAV body (table 7-70) carries sol status, pos type, lat/lon/
+hgt, three sigmas, stn id, diff_age, sol_age, #SVs and #solnSVs.  Table 7-70 has
+no #solnMultiSVs field (body IDs 17-19 are Reserved), so ``multi`` is None for
+UM980 position frames and reports render it as not applicable.
 """
 from __future__ import annotations
 
@@ -63,7 +71,7 @@ class PosFrame:
     age: float
     svs: int
     soln: int
-    multi: int
+    multi: int | None
     source: str
     message_index: int
     start: int
@@ -224,6 +232,24 @@ def _gmf_time(hf: list[str]) -> float:
     return int(hf[6]) * 604800.0 + float(hf[7]) / 1000.0
 
 
+def _unicore_time(hf: list[str]) -> float:
+    # N4 ASCII header (table 7-51): name, CPUIDle, TimeRef, TimeStatus, Wn,
+    # Ms (GPS TOW in milliseconds), Version, Reserved, Leap sec, Output Delay.
+    return int(hf[4]) * 604800.0 + float(hf[5]) / 1000.0
+
+
+def _parse_beidou_body(bf: list[str]) -> tuple[str, str, str, float, int, int, int | None]:
+    # BESTNAV body (N4 table 7-70, one-based IDs): 2 p-sol status, 3 pos type,
+    # 4-6 lat/lon/hgt, 7 undulation, 8 datum id, 9-11 sigmas, 12 stn id,
+    # 13 diff_age, 14 sol_age, 15 #SVs, 16 #solnSVs, 17-19 Reserved.
+    # There is no #solnMultiSVs field; multi is reported as None (not
+    # applicable) instead of guessing the reserved fields.
+    if len(bf) < 15:
+        raise ValueError('short BESTNAVA body')
+    return (bf[0], bf[1], bf[10].strip('"'), float(bf[11]),
+            int(bf[13]), int(bf[14]), None)
+
+
 def parse_beiyun_positions(messages: Iterable[RecoveredMessage]) -> list[PosFrame]:
     rows: list[PosFrame] = []
     for idx, m in enumerate(messages):
@@ -277,6 +303,32 @@ def parse_huace_positions(messages: Iterable[RecoveredMessage]) -> dict[str, lis
     return candidates
 
 
+def parse_beidou_positions(messages: Iterable[RecoveredMessage]) -> list[PosFrame]:
+    """Parse UM980 (Unicore N4) BESTNAVA position frames.
+
+    Header layout is table 7-51 (Wn / Ms of the N4 ASCII header), body layout
+    is table 7-70.  UM980 cold starts can report a default GPS week (observed
+    week 1) before navigation data restores the true week, so frames keep the
+    receiver's recording byte order exactly like BeiYun/HUACE.
+    """
+    rows: list[PosFrame] = []
+    for idx, m in enumerate(messages):
+        if m.kind != 'hash' or m.hf is None or m.name != 'BESTNAVA':
+            continue
+        try:
+            if len(m.hf) < 10:
+                raise ValueError('short Unicore ASCII header')
+            t = _unicore_time(m.hf)
+            sol, pt, stn, age, svs, soln, multi = _parse_beidou_body(m.bf)
+        except (ValueError, IndexError):
+            continue
+        rows.append(PosFrame(t=t, ts=m.hf[3], sol=sol, pt=pt, stn=stn, age=age,
+                             svs=svs, soln=soln, multi=multi, source=m.name,
+                             message_index=idx, start=m.start, end=m.end))
+    rows.sort(key=lambda r: r.start)
+    return rows
+
+
 def positive_median_dt(times: list[float], default: float = 0.0) -> float:
     dts = [b - a for a, b in zip(times, times[1:]) if b > a]
     return float(statistics.median(dts)) if dts else default
@@ -313,9 +365,11 @@ def select_huace_positions(candidates: dict[str, list[PosFrame]]) -> tuple[str, 
 
 
 def detect_product_from_raw(raw: bytes) -> str | None:
-    """Detect BY/HUACE from checksum-valid protocol messages in a full file."""
+    """Detect BY/HUACE/BEIDOU from checksum-valid protocol messages in a full file."""
     recovered = recover_ascii_messages(raw)
     names = {m.name.split('_', 1)[0] for m in recovered.messages if m.kind == 'hash'}
+    if 'BESTNAVA' in names or names & {'SATSINFOA', 'BESTSATA', 'RTKSTATUSA'}:
+        return 'beidou'
     if 'BESTGNSSPOSA' in names or 'TRACKSTATA' in names:
         return 'beiyun'
     if names & {'BESTPA', 'BESTPOSA', 'RTKPA', 'RANGEA', 'ENVSTATUSA'}:

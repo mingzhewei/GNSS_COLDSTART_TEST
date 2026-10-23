@@ -63,6 +63,14 @@ PRODUCTS: dict[str, ProductConfig] = {
         enabled=True,
         forbid="",   # 北云文件同时含 BESTGNSSPOSA，用它区分
     ),
+    "beidou": ProductConfig(
+        key="beidou",
+        display_name="北斗 UM980（N4，BESTNAVA，混合二进制+ASCII）",
+        script="BEIDOU_coldstart.py",
+        filetypes=(("北斗 UM980 日志", "*.log;*.dat"), ("所有文件", "*.*")),
+        color="#1e8449",
+        enabled=True,
+    ),
 }
 
 
@@ -153,13 +161,13 @@ class ColdstartHMI:
         ttk.Checkbutton(ctrl, text="一次性录制了 N 次冷启动（自动切片）",
                         variable=self.split_var).pack(side=tk.RIGHT, padx=8)
 
-        # 场景：室外冷启动（默认）/ 室内冷启动（需北云+华测配对，对齐共同 t0，出联合报告）
+        # 场景：室外冷启动（默认）/ 室内冷启动（多产品配对，对齐共同 t0，出联合报告）
         self.scene_var = tk.StringVar(value="outdoor")
         scene_frame = ttk.LabelFrame(self.root, text="冷启动场景（必选）")
         scene_frame.pack(fill=tk.X, padx=20, pady=(0, 8))
         ttk.Radiobutton(scene_frame, text="室外冷启动（t=0 为启动时刻，全程计入）",
                         value="outdoor", variable=self.scene_var).pack(side=tk.LEFT, padx=12, pady=6)
-        ttk.Radiobutton(scene_frame, text="室内冷启动（北云+华测配对，取两家最早拿时标时刻为共同 t0，出联合报告）",
+        ttk.Radiobutton(scene_frame, text="室内冷启动（多产品配对，取各机最早拿时标时刻为共同 t0，出联合报告）",
                         value="indoor", variable=self.scene_var).pack(side=tk.LEFT, padx=12, pady=6)
 
         self.count_var = tk.StringVar(value="已选 0 个文件")
@@ -288,10 +296,10 @@ class ColdstartHMI:
         for path, key in self.files:
             groups.setdefault(key, []).append(path)
 
-        if indoor and not ("beiyun" in groups and "huace" in groups):
+        if indoor and len(groups) < 2:
             messagebox.showwarning(APP_TITLE,
-                "室内冷启动需要北云和华测的数据配对分析。\n"
-                "请先将下拉菜单分别切到北云、华测，各添加至少 1 个数据文件。")
+                "室内冷启动需要至少两种产品的数据配对分析（如 北斗×北云、北云+华测，或三产品联合）。\n"
+                "请用下拉菜单切换产品，各添加 1 个数据文件。")
             return
 
         self.running = True
@@ -311,18 +319,22 @@ class ColdstartHMI:
         reports = []
         try:
             if indoor:
-                by_files = groups.get("beiyun", [])
-                hc_files = groups.get("huace", [])
-                if len(by_files) != 1 or len(hc_files) != 1:
-                    self.ui_queue.put(("log", "室内模式当前要求北云、华测各选 1 个连续录制文件（各含 N 次冷启动，按序号配对）。\n", "error"))
+                # 可扩展多产品配对：每个产品 1 个文件，按注册表顺序传入，
+                # 由 indoor_coldstart.py 自动识别产品并按启动序号配对。
+                bad = [k for k, v in groups.items() if len(v) != 1]
+                if bad:
+                    names = "、".join(PRODUCTS[k].display_name.split("（")[0] for k in bad)
+                    self.ui_queue.put(("log", f"室内模式要求每个产品各选 1 个连续录制文件（各含 N 次冷启动，按序号配对）。{names} 文件数不为 1。\n", "error"))
                     self.ui_queue.put(("done", ""))
                     return
+                ordered = [(k, groups[k][0]) for k in PRODUCTS if k in groups]
                 script = BASE_DIR / "indoor_coldstart.py"
                 cmd = [sys.executable, "-X", "utf8", str(script), out_dir]
                 if split:
                     cmd.append("--split")
-                cmd.extend([by_files[0], hc_files[0]])
-                self.ui_queue.put(("log", f"--- 室内联合分析：北云 {os.path.basename(by_files[0])} + 华测 {os.path.basename(hc_files[0])} ---\n", "info"))
+                cmd.extend(f for _k, f in ordered)
+                joined = " + ".join(f"{PRODUCTS[k].display_name.split('（')[0]} {os.path.basename(f)}" for k, f in ordered)
+                self.ui_queue.put(("log", f"--- 室内联合分析：{joined} ---\n", "info"))
                 env = os.environ.copy()
                 env["PYTHONUNBUFFERED"] = "1"
                 env["PYTHONIOENCODING"] = "utf-8"
