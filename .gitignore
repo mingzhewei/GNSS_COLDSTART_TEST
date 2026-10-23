@@ -3,8 +3,10 @@ __pycache__/
 *.py[cod]
 .mypy_cache/
 
-# 本地环境与缓存
-.codebuddy/
+# 本地环境与缓存（memory 随仓库同步，其余 .codebuddy 内容不入库）
+.codebuddy/*
+!.codebuddy/memory/
+!.codebuddy/memory/**
 .vscode/
 .idea/
 
