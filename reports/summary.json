@@ -1,29 +1,19 @@
 [
  {
   "file": "北云_cold01",
-  "byte_offset": 0,
-  "span": 232.8,
-  "n": 1165,
+  "byte_offset": 573776,
+  "span": 149.8,
+  "n": 750,
   "rate": 5.0,
   "nominal": 0.2,
   "crc_bad": 0,
-  "counts": {
-   "BESTGNSSPOSA": 1485,
-   "HEADINGA": 1484,
-   "INSPVAXA": 2968,
-   "BESTPOSA": 1484
-  },
-  "other": {
-   "TRACKSTATA": 1484,
-   "GPIMU": 29683,
-   "GPGGA": 1484,
-   "GPGSV": 1690,
-   "GPGSA": 1484,
-   "GPGST": 1484,
-   "GLGSV": 988,
-   "GBGSV": 2167,
-   "GAGSV": 958,
-   "GQGSV": 627
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [
@@ -34,94 +24,94 @@
    }
   ],
   "tstat_dist": {
-   "UNKNOWN": 415,
    "COARSE": 450,
    "FINESTEERING": 280,
    "FREEWHEELING": 20
   },
   "ptype_dist": {
-   "NONE": 820,
+   "NONE": 405,
    "SINGLE": 75,
    "NARROW_FLOAT": 125,
    "NARROW_INT": 137,
    "PSRDIFF": 8
   },
   "cat_pct": {
-   "0": 70.4,
-   "1": 7.1,
-   "2": 10.7,
-   "3": 11.8
+   "0": 54.0,
+   "1": 11.1,
+   "2": 16.7,
+   "3": 18.3
   },
   "first": {
-   "valid": 83.0,
-   "coarse": 83.0,
-   "fine": 173.0,
-   "single": 159.2,
-   "float": 173.8,
-   "fixed": 198.8,
-   "stn": 160.6,
-   "sol": 159.2
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 90.0,
+   "single": 76.2,
+   "float": 90.8,
+   "fixed": 115.8,
+   "stn": 77.6,
+   "sol": 76.2
   },
   "stages": {
-   "no_time": 83.0,
+   "no_time": 0.0,
    "time_to_single": 76.2,
    "single_to_float": 14.6,
    "float_to_fixed": 25.0,
    "diff_wait": 77.6,
    "single_to_fixed": 39.6
   },
+  "stage_order_valid": true,
   "events": [
    [
-    83.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
     "#0ea5e9"
    ],
    [
-    147.0,
-    "冷启动 GPS 周重定标（按连续处理）",
-    "#dc2626"
-   ],
-   [
-    159.2,
-    "首次单点解 SINGLE",
+    76.2,
+    "首次单点类解",
     "#3b82f6"
    ],
    [
-    160.6,
+    77.6,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    173.0,
+    90.0,
     "时标进入 FINESTEERING",
     "#6b7280"
    ],
    [
-    173.8,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    90.8,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    198.8,
-    "首次 RTK 固定解 NARROW_INT",
+    115.8,
+    "首次 RTK 固定解",
     "#16a34a"
+   ],
+   [
+    147.0,
+    "GPS 时间轴跳变（按连续处理）",
+    "#dc2626"
    ]
   ],
   "segs": [
    [
     "NONE",
     0.0,
-    159.0,
-    159.2,
-    796,
-    7.0,
+    76.0,
+    76.2,
+    381,
+    14.6,
     0,
     0
    ],
    [
     "SINGLE",
-    159.2,
-    173.6,
+    76.2,
+    90.6,
     14.6,
     73,
     27.4,
@@ -130,8 +120,8 @@
    ],
    [
     "NARROW_FLOAT",
-    173.8,
-    198.6,
+    90.8,
+    115.6,
     25.0,
     125,
     33.4,
@@ -140,8 +130,8 @@
    ],
    [
     "NARROW_INT",
-    198.8,
-    226.0,
+    115.8,
+    143.0,
     27.4,
     137,
     36.4,
@@ -150,8 +140,8 @@
    ],
    [
     "PSRDIFF",
-    226.2,
-    227.6,
+    143.2,
+    144.6,
     1.6,
     8,
     30.8,
@@ -160,8 +150,8 @@
    ],
    [
     "SINGLE",
-    227.8,
-    228.0,
+    144.8,
+    145.0,
     0.4,
     2,
     20,
@@ -170,8 +160,8 @@
    ],
    [
     "NONE",
-    228.2,
-    232.8,
+    145.2,
+    149.8,
     4.8,
     24,
     4.6,
@@ -179,115 +169,111 @@
     0
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 76.2,
+   "single_to_float": 14.6,
+   "float_to_fixed": 25.0,
+   "single_to_fixed": null
+  },
   "svs": {
    "min": 0,
    "max": 38,
-   "mean": 14.7
+   "mean": 22.8
   },
   "product": "北云",
   "segment": {
    "index": 1,
-   "t0_shift": 63.86500000953674,
-   "by_off": 653812892.6,
-   "hc_off": 63.86500000953674
+   "t0_shift": 147.0,
+   "valid_offsets": {
+    "beiyun": 147.0,
+    "huace": 63.764999866485596
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 296.8,
+   "discontinuity_before": 0.2
   }
  },
  {
   "file": "华测_cold01",
-  "byte_offset": 0,
-  "span": 244.0,
-  "n": 245,
-  "rate": 1.0,
-  "nominal": 1.0,
+  "byte_offset": 233958,
+  "span": 244.7,
+  "n": 2448,
+  "rate": 10.0,
+  "nominal": 0.1,
   "crc_bad": 0,
-  "counts": {
-   "BESTPOSA": 310
-  },
-  "other": {
-   "BESTPA": 3079,
-   "GNGGA": 3079,
-   "BESTVA": 3079,
-   "RTKPA": 3079,
-   "RTKVA": 3079,
-   "RANGEA": 309,
-   "ENVSTATUSA": 2835,
-   "GPGSV": 4716,
-   "SATVIS2A": 2472,
-   "GNGSA": 8444,
-   "GNGST": 3079,
-   "BESTDOPSA": 3079,
-   "GLGSV": 1715,
-   "GBGSV": 4050,
-   "GQGSV": 2031,
-   "GAGSV": 1952,
-   "GIGSV": 948
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "COARSESTEERING": 124,
-   "FINESTEERING": 121
+   "COARSESTEERING": 1242,
+   "FINESTEERING": 1206
   },
   "ptype_dist": {
-   "NONE": 126,
-   "SINGLE": 1,
-   "PSRDIFF": 8,
-   "NARROW_FLOAT": 7,
-   "NARROW_INT": 103
+   "NONE": 1354,
+   "NARROW_FLOAT": 67,
+   "NARROW_INT": 1027
   },
   "cat_pct": {
-   "0": 51.4,
-   "1": 3.7,
-   "2": 2.9,
+   "0": 55.3,
+   "2": 2.7,
    "3": 42.0
   },
   "first": {
    "valid": 0.0,
-   "coarse": null,
-   "fine": 120.0,
-   "single": 126.0,
-   "float": 128.0,
-   "fixed": 142.0,
-   "stn": 127.0,
-   "sol": 126.0
+   "coarse": 0.0,
+   "fine": 120.1,
+   "single": null,
+   "float": 128.3,
+   "fixed": 142.1,
+   "stn": 128.3,
+   "sol": 128.3
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 126.0,
-   "single_to_float": 2.0,
-   "float_to_fixed": 14.0,
-   "diff_wait": 127.0,
-   "single_to_fixed": 16.0
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 13.8,
+   "diff_wait": 128.3,
+   "single_to_fixed": null
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "时标进入 COARSE系",
+    "#64748b"
+   ],
+   [
+    0.0,
+    "获得卫星时间（脱离 UNKNOWN/APPROXIMATE）",
     "#0ea5e9"
    ],
    [
-    120.0,
-    "时标进入 FINESTEERING",
+    120.1,
+    "时标进入 FINE系",
     "#6b7280"
    ],
    [
-    126.0,
-    "首次单点解 SINGLE",
-    "#3b82f6"
-   ],
-   [
-    127.0,
+    128.3,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    128.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    128.3,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    142.0,
-    "首次 RTK 固定解 NARROW_INT",
+    142.1,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -295,180 +281,383 @@
    [
     "NONE",
     0.0,
-    125.0,
-    126.0,
-    126,
-    4.6,
+    128.2,
+    128.3,
+    1283,
+    4.7,
     0,
     0
    ],
    [
-    "SINGLE",
-    126.0,
-    126.0,
-    1.0,
-    1,
+    "NARROW_FLOAT",
+    128.3,
+    128.4,
+    0.2,
+    2,
+    16,
     14,
-    13,
-    11
-   ],
-   [
-    "PSRDIFF",
-    127.0,
-    127.0,
-    1.0,
-    1,
-    14,
-    13,
     12
    ],
    [
+    "NONE",
+    128.5,
+    128.5,
+    0.1,
+    1,
+    16,
+    0,
+    0
+   ],
+   [
     "NARROW_FLOAT",
-    128.0,
-    130.0,
-    3.0,
-    3,
+    128.6,
+    131.6,
+    3.1,
+    31,
     16,
     14,
-    12.3
+    12.4
    ],
    [
-    "PSRDIFF",
-    131.0,
-    137.0,
-    7.0,
-    7,
-    17.6,
+    "NONE",
+    131.7,
+    131.8,
+    0.2,
+    2,
     16,
-    13.4
+    0,
+    0
    ],
    [
     "NARROW_FLOAT",
-    138.0,
-    141.0,
-    4.0,
+    131.9,
+    131.9,
+    0.1,
+    1,
+    17,
+    15,
+    13
+   ],
+   [
+    "NONE",
+    132.0,
+    132.1,
+    0.2,
+    2,
+    17,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    132.2,
+    132.4,
+    0.3,
+    3,
+    17,
+    15,
+    12.7
+   ],
+   [
+    "NONE",
+    132.5,
+    134.1,
+    1.7,
+    17,
+    16.5,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    134.2,
+    134.3,
+    0.2,
+    2,
+    16.5,
+    15.5,
+    14
+   ],
+   [
+    "NONE",
+    134.4,
+    136.0,
+    1.7,
+    17,
+    17.1,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    136.1,
+    136.1,
+    0.1,
+    1,
+    19,
+    17,
+    14
+   ],
+   [
+    "NONE",
+    136.2,
+    136.8,
+    0.7,
+    7,
+    19,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    136.9,
+    136.9,
+    0.1,
+    1,
+    19,
+    17,
+    14
+   ],
+   [
+    "NONE",
+    137.0,
+    138.6,
+    1.7,
+    17,
+    19.1,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    138.7,
+    138.7,
+    0.1,
+    1,
+    19,
+    17,
+    14
+   ],
+   [
+    "NONE",
+    138.8,
+    138.9,
+    0.2,
+    2,
+    19,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    139.0,
+    139.8,
+    0.9,
+    9,
+    19,
+    17,
+    15
+   ],
+   [
+    "NONE",
+    139.9,
+    139.9,
+    0.1,
+    1,
+    19,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    140.0,
+    140.3,
+    0.4,
     4,
     19.5,
     17.5,
-    15.2
+    15.5
+   ],
+   [
+    "NONE",
+    140.4,
+    140.5,
+    0.2,
+    2,
+    20,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    140.6,
+    140.8,
+    0.3,
+    3,
+    20,
+    18,
+    16
+   ],
+   [
+    "NONE",
+    140.9,
+    140.9,
+    0.1,
+    1,
+    20,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    141.0,
+    141.0,
+    0.1,
+    1,
+    20,
+    18,
+    16
+   ],
+   [
+    "NONE",
+    141.1,
+    141.2,
+    0.2,
+    2,
+    20,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    141.3,
+    142.0,
+    0.8,
+    8,
+    20,
+    18,
+    16
    ],
    [
     "NARROW_INT",
-    142.0,
-    244.0,
-    103.0,
-    103,
+    142.1,
+    244.7,
+    102.7,
+    1027,
     36.5,
-    30.9,
+    30.8,
     25.3
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 13.8,
+   "single_to_fixed": null
+  },
   "svs": {
-   "min": 4,
+   "min": 3,
    "max": 44,
    "mean": 18.8
   },
   "product": "华测",
   "segment": {
    "index": 1,
-   "t0_shift": 63.86500000953674,
-   "by_off": 653812892.6,
-   "hc_off": 63.86500000953674
+   "t0_shift": 63.764999866485596,
+   "valid_offsets": {
+    "beiyun": 147.0,
+    "huace": 63.764999866485596
+   },
+   "source": "RTKPA",
+   "span": 308.465,
+   "discontinuity_before": 11.435
   }
  },
  {
   "file": "北云_cold02",
-  "byte_offset": 0,
-  "span": 89.6,
-  "n": 449,
+  "byte_offset": 9882947,
+  "span": 111.6,
+  "n": 559,
   "rate": 5.0,
   "nominal": 0.2,
   "crc_bad": 0,
-  "counts": {
-   "BESTGNSSPOSA": 757,
-   "HEADINGA": 756,
-   "INSPVAXA": 1513,
-   "BESTPOSA": 756
-  },
-  "other": {
-   "TRACKSTATA": 756,
-   "GPIMU": 15132,
-   "GPGGA": 756,
-   "GPGSV": 1021,
-   "GPGSA": 756,
-   "GPGST": 756,
-   "GLGSV": 773,
-   "GAGSV": 820,
-   "GQGSV": 557,
-   "GBGSV": 1841
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "COARSE": 140,
+   "COARSE": 250,
    "FINESTEERING": 305,
    "FREEWHEELING": 4
   },
   "ptype_dist": {
-   "NONE": 90,
+   "NONE": 200,
    "SINGLE": 155,
    "NARROW_FLOAT": 90,
    "NARROW_INT": 103,
    "PSRDIFF": 11
   },
   "cat_pct": {
-   "0": 20.0,
-   "1": 37.0,
-   "2": 20.0,
-   "3": 22.9
+   "0": 35.8,
+   "1": 29.7,
+   "2": 16.1,
+   "3": 18.4
   },
   "first": {
    "valid": 0.0,
    "coarse": 0.0,
-   "fine": 28.0,
-   "single": 16.8,
-   "float": 47.8,
-   "fixed": 65.8,
-   "stn": 27.4,
-   "sol": 16.8
+   "fine": 50.0,
+   "single": 38.8,
+   "float": 69.8,
+   "fixed": 87.8,
+   "stn": 49.4,
+   "sol": 38.8
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 16.8,
+   "time_to_single": 38.8,
    "single_to_float": 31.0,
    "float_to_fixed": 18.0,
-   "diff_wait": 27.4,
+   "diff_wait": 49.4,
    "single_to_fixed": 49.0
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "获得卫星时间（时标脱离UNKNOWN）",
     "#0ea5e9"
    ],
    [
-    16.8,
-    "首次单点解 SINGLE",
+    38.8,
+    "首次单点类解",
     "#3b82f6"
    ],
    [
-    27.4,
+    49.4,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    28.0,
+    50.0,
     "时标进入 FINESTEERING",
     "#6b7280"
    ],
    [
-    47.8,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    69.8,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    65.8,
-    "首次 RTK 固定解 NARROW_INT",
+    87.8,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -476,17 +665,17 @@
    [
     "NONE",
     0.0,
-    16.6,
-    16.8,
-    84,
-    21.5,
+    38.6,
+    38.8,
+    194,
+    18.9,
     0,
     0
    ],
    [
     "SINGLE",
-    16.8,
-    47.6,
+    38.8,
+    69.6,
     31.0,
     155,
     27.7,
@@ -495,8 +684,8 @@
    ],
    [
     "NARROW_FLOAT",
-    47.8,
-    65.6,
+    69.8,
+    87.6,
     18.0,
     90,
     31.9,
@@ -505,8 +694,8 @@
    ],
    [
     "NARROW_INT",
-    65.8,
-    86.2,
+    87.8,
+    108.2,
     20.6,
     103,
     33.4,
@@ -515,8 +704,8 @@
    ],
    [
     "PSRDIFF",
-    86.4,
-    88.4,
+    108.4,
+    110.4,
     2.2,
     11,
     27.3,
@@ -525,8 +714,8 @@
    ],
    [
     "NONE",
-    88.6,
-    89.6,
+    110.6,
+    111.6,
     1.2,
     6,
     8.2,
@@ -534,115 +723,111 @@
     0
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 38.8,
+   "single_to_float": 31.0,
+   "float_to_fixed": 18.0,
+   "single_to_fixed": null
+  },
   "svs": {
-   "min": 3,
+   "min": 0,
    "max": 34,
-   "mean": 28.4
+   "mean": 26.2
   },
   "product": "北云",
   "segment": {
    "index": 2,
-   "t0_shift": 61.5,
-   "by_off": 653813277.2,
-   "hc_off": 61.5
+   "t0_shift": 39.60000002384186,
+   "valid_offsets": {
+    "beiyun": 39.60000002384186,
+    "huace": 61.59999990463257
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 151.2,
+   "discontinuity_before": 0.2
   }
  },
  {
   "file": "华测_cold02",
-  "byte_offset": 0,
-  "span": 122.0,
-  "n": 123,
-  "rate": 1.0,
-  "nominal": 1.0,
-  "crc_bad": 3,
-  "counts": {
-   "BESTPOSA": 184
-  },
-  "other": {
-   "BESTPA": 1835,
-   "GNGGA": 1835,
-   "BESTVA": 1835,
-   "RTKPA": 1835,
-   "RTKVA": 1835,
-   "RANGEA": 183,
-   "ENVSTATUSA": 1713,
-   "GPGSV": 3138,
-   "SATVIS2A": 1464,
-   "GNGSA": 6951,
-   "GNGST": 1835,
-   "BESTDOPSA": 1835,
-   "GLGSV": 1558,
-   "GBGSV": 3930,
-   "GAGSV": 1618,
-   "GQGSV": 1792,
-   "GIGSV": 1001
+  "byte_offset": 6821365,
+  "span": 122.9,
+  "n": 1230,
+  "rate": 10.0,
+  "nominal": 0.1,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "COARSESTEERING": 12,
-   "FINESTEERING": 111
+   "COARSESTEERING": 121,
+   "FINESTEERING": 1109
   },
   "ptype_dist": {
-   "NONE": 13,
-   "SINGLE": 1,
-   "PSRDIFF": 1,
-   "NARROW_FLOAT": 6,
-   "NARROW_INT": 102
+   "NONE": 161,
+   "NARROW_FLOAT": 52,
+   "NARROW_INT": 1017
   },
   "cat_pct": {
-   "0": 10.6,
-   "1": 1.6,
-   "2": 4.9,
-   "3": 82.9
+   "0": 13.1,
+   "2": 4.2,
+   "3": 82.7
   },
   "first": {
    "valid": 0.0,
-   "coarse": null,
-   "fine": 12.0,
-   "single": 12.0,
-   "float": 15.0,
-   "fixed": 21.0,
-   "stn": 14.0,
-   "sol": 12.0
+   "coarse": 0.0,
+   "fine": 12.1,
+   "single": null,
+   "float": 15.4,
+   "fixed": 21.2,
+   "stn": 15.4,
+   "sol": 15.4
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 12.0,
-   "single_to_float": 3.0,
-   "float_to_fixed": 6.0,
-   "diff_wait": 14.0,
-   "single_to_fixed": 9.0
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 5.8,
+   "diff_wait": 15.4,
+   "single_to_fixed": null
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "时标进入 COARSE系",
+    "#64748b"
+   ],
+   [
+    0.0,
+    "获得卫星时间（脱离 UNKNOWN/APPROXIMATE）",
     "#0ea5e9"
    ],
    [
-    12.0,
-    "时标进入 FINESTEERING",
+    12.1,
+    "时标进入 FINE系",
     "#6b7280"
    ],
    [
-    12.0,
-    "首次单点解 SINGLE",
-    "#3b82f6"
-   ],
-   [
-    14.0,
+    15.4,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    15.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    15.4,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    21.0,
-    "首次 RTK 固定解 NARROW_INT",
+    21.2,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -650,167 +835,240 @@
    [
     "NONE",
     0.0,
-    11.0,
-    12.0,
-    12,
-    4.2,
+    15.3,
+    15.4,
+    154,
+    6.2,
     0,
     0
-   ],
-   [
-    "SINGLE",
-    12.0,
-    12.0,
-    1.0,
-    1,
-    13,
-    12,
-    9
-   ],
-   [
-    "NONE",
-    13.0,
-    13.0,
-    1.0,
-    1,
-    14,
-    0,
-    0
-   ],
-   [
-    "PSRDIFF",
-    14.0,
-    14.0,
-    1.0,
-    1,
-    14,
-    12,
-    11
    ],
    [
     "NARROW_FLOAT",
-    15.0,
-    20.0,
-    6.0,
-    6,
-    19.3,
+    15.4,
+    15.8,
+    0.5,
+    5,
+    15.2,
+    12.2,
+    11
+   ],
+   [
+    "NONE",
+    15.9,
+    15.9,
+    0.1,
+    1,
+    16,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    16.0,
     16.3,
-    12.5
+    0.4,
+    4,
+    17.5,
+    14.5,
+    12
+   ],
+   [
+    "NONE",
+    16.4,
+    16.6,
+    0.3,
+    3,
+    18,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    16.7,
+    16.7,
+    0.1,
+    1,
+    18,
+    15,
+    12
+   ],
+   [
+    "NONE",
+    16.8,
+    16.8,
+    0.1,
+    1,
+    18,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    16.9,
+    17.0,
+    0.2,
+    2,
+    18,
+    15,
+    12
+   ],
+   [
+    "NONE",
+    17.1,
+    17.2,
+    0.2,
+    2,
+    18.5,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    17.3,
+    21.1,
+    3.9,
+    39,
+    20.4,
+    17.4,
+    12.9
    ],
    [
     "NARROW_INT",
-    21.0,
-    122.0,
-    102.0,
-    102,
-    34.7,
-    28.3,
-    22.5
+    21.2,
+    67.2,
+    46.1,
+    461,
+    28.7,
+    23.6,
+    18.4
+   ],
+   [
+    "NARROW_FLOAT",
+    67.3,
+    67.3,
+    0.1,
+    1,
+    34,
+    27,
+    21
+   ],
+   [
+    "NARROW_INT",
+    67.4,
+    122.9,
+    55.6,
+    556,
+    39.7,
+    32.1,
+    25.9
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 5.8,
+   "single_to_fixed": null
+  },
   "svs": {
    "min": 3,
    "max": 43,
-   "mean": 30.5
+   "mean": 30.4
   },
   "product": "华测",
   "segment": {
    "index": 2,
-   "t0_shift": 61.5,
-   "by_off": 653813277.2,
-   "hc_off": 61.5
+   "t0_shift": 61.59999990463257,
+   "valid_offsets": {
+    "beiyun": 39.60000002384186,
+    "huace": 61.59999990463257
+   },
+   "source": "RTKPA",
+   "span": 184.5,
+   "discontinuity_before": 167.7
   }
  },
  {
   "file": "北云_cold03",
-  "byte_offset": 0,
-  "span": 95.2,
-  "n": 477,
+  "byte_offset": 15737752,
+  "span": 97.2,
+  "n": 487,
   "rate": 5.0,
   "nominal": 0.2,
   "crc_bad": 0,
-  "counts": {
-   "BESTGNSSPOSA": 675,
-   "HEADINGA": 674,
-   "INSPVAXA": 1347,
-   "BESTPOSA": 674
-  },
-  "other": {
-   "TRACKSTATA": 674,
-   "GPIMU": 13478,
-   "GPGGA": 674,
-   "GPGSV": 860,
-   "GPGSA": 674,
-   "GPGST": 674,
-   "GLGSV": 786,
-   "GBGSV": 1417,
-   "GAGSV": 551,
-   "GQGSV": 460
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "COARSE": 126,
+   "COARSE": 136,
    "FINESTEERING": 351
   },
   "ptype_dist": {
-   "NONE": 69,
+   "NONE": 79,
    "SINGLE": 16,
    "NARROW_FLOAT": 35,
    "NARROW_INT": 357
   },
   "cat_pct": {
-   "0": 14.5,
-   "1": 3.4,
-   "2": 7.3,
-   "3": 74.8
+   "0": 16.2,
+   "1": 3.3,
+   "2": 7.2,
+   "3": 73.3
   },
   "first": {
    "valid": 0.0,
    "coarse": 0.0,
-   "fine": 25.2,
-   "single": 13.8,
-   "float": 17.0,
-   "fixed": 24.0,
-   "stn": 15.8,
-   "sol": 13.8
+   "fine": 27.2,
+   "single": 15.8,
+   "float": 19.0,
+   "fixed": 26.0,
+   "stn": 17.8,
+   "sol": 15.8
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 13.8,
+   "time_to_single": 15.8,
    "single_to_float": 3.2,
    "float_to_fixed": 7.0,
-   "diff_wait": 15.8,
+   "diff_wait": 17.8,
    "single_to_fixed": 10.2
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "获得卫星时间（时标脱离UNKNOWN）",
     "#0ea5e9"
    ],
    [
-    13.8,
-    "首次单点解 SINGLE",
+    15.8,
+    "首次单点类解",
     "#3b82f6"
    ],
    [
-    15.8,
+    17.8,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    17.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    19.0,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    24.0,
-    "首次 RTK 固定解 NARROW_INT",
+    26.0,
+    "首次 RTK 固定解",
     "#16a34a"
    ],
    [
-    25.2,
+    27.2,
     "时标进入 FINESTEERING",
     "#6b7280"
    ]
@@ -819,17 +1077,17 @@
    [
     "NONE",
     0.0,
-    13.6,
-    13.8,
-    69,
-    11.6,
+    15.6,
+    15.8,
+    79,
+    10.8,
     0,
     0
    ],
    [
     "SINGLE",
-    13.8,
-    16.8,
+    15.8,
+    18.8,
     3.2,
     16,
     18.2,
@@ -838,8 +1096,8 @@
    ],
    [
     "NARROW_FLOAT",
-    17.0,
-    23.8,
+    19.0,
+    25.8,
     7.0,
     35,
     20,
@@ -848,8 +1106,8 @@
    ],
    [
     "NARROW_INT",
-    24.0,
-    95.2,
+    26.0,
+    97.2,
     71.4,
     357,
     26.3,
@@ -857,273 +1115,254 @@
     16.4
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 15.8,
+   "single_to_float": 3.2,
+   "float_to_fixed": 7.0,
+   "single_to_fixed": null
+  },
   "svs": {
-   "min": 5,
+   "min": 4,
    "max": 33,
-   "mean": 23.4
+   "mean": 23.0
   },
   "product": "北云",
   "segment": {
    "index": 3,
-   "t0_shift": 39.5,
-   "by_off": 653813655.0,
-   "hc_off": 39.5
+   "t0_shift": 37.60000002384186,
+   "valid_offsets": {
+    "beiyun": 37.60000002384186,
+    "huace": 39.59999990463257
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 134.8,
+   "discontinuity_before": 0.2
   }
  },
  {
   "file": "华测_cold03",
-  "byte_offset": 0,
-  "span": 96.0,
-  "n": 97,
-  "rate": 1.0,
-  "nominal": 1.0,
-  "crc_bad": 1,
-  "counts": {
-   "BESTPOSA": 136
-  },
-  "other": {
-   "BESTPA": 1355,
-   "GNGGA": 1355,
-   "BESTVA": 1355,
-   "RTKPA": 1355,
-   "RTKVA": 1355,
-   "RANGEA": 135,
-   "ENVSTATUSA": 1258,
-   "GPGSV": 2515,
-   "SATVIS2A": 1080,
-   "GNGSA": 5280,
-   "GNGST": 1355,
-   "BESTDOPSA": 1355,
-   "GLGSV": 1319,
-   "GAGSV": 1327,
-   "GBGSV": 3072,
-   "GQGSV": 1451,
-   "GIGSV": 821
+  "byte_offset": 11613062,
+  "span": 97.2,
+  "n": 973,
+  "rate": 10.0,
+  "nominal": 0.1,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "FINESTEERING": 97
+   "FINESTEERING": 972,
+   "COARSESTEERING": 1
   },
   "ptype_dist": {
-   "PSRDIFF": 2,
-   "NONE": 8,
-   "NARROW_FLOAT": 2,
-   "NARROW_INT": 85
+   "NONE": 103,
+   "NARROW_FLOAT": 20,
+   "NARROW_INT": 850
   },
   "cat_pct": {
-   "1": 2.1,
-   "0": 8.2,
+   "0": 10.6,
    "2": 2.1,
-   "3": 87.6
+   "3": 87.4
   },
   "first": {
    "valid": 0.0,
-   "coarse": null,
+   "coarse": 0.4,
    "fine": 0.0,
-   "single": 0.0,
-   "float": 10.0,
-   "fixed": 12.0,
-   "stn": 0.0,
-   "sol": 0.0
+   "single": null,
+   "float": 10.3,
+   "fixed": 12.3,
+   "stn": 10.3,
+   "sol": 10.3
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 0.0,
-   "single_to_float": 10.0,
+   "time_to_single": null,
+   "single_to_float": null,
    "float_to_fixed": 2.0,
-   "diff_wait": 0.0,
-   "single_to_fixed": 12.0
+   "diff_wait": 10.3,
+   "single_to_fixed": null
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "差分改正可用（基站 1793）",
-    "#7c3aed"
-   ],
-   [
-    0.0,
-    "时标进入 FINESTEERING",
+    "时标进入 FINE系",
     "#6b7280"
    ],
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "获得卫星时间（脱离 UNKNOWN/APPROXIMATE）",
     "#0ea5e9"
    ],
    [
-    0.0,
-    "首次单点解 SINGLE",
-    "#3b82f6"
+    0.4,
+    "时标进入 COARSE系",
+    "#64748b"
    ],
    [
-    10.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    10.3,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    10.3,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    12.0,
-    "首次 RTK 固定解 NARROW_INT",
+    12.3,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
   "segs": [
    [
-    "PSRDIFF",
-    0.0,
-    0.0,
-    1.0,
-    1,
-    13,
-    11,
-    8
-   ],
-   [
     "NONE",
-    1.0,
-    8.0,
-    8.0,
-    8,
+    0.0,
+    10.2,
+    10.3,
+    103,
     16.5,
     0,
     0
    ],
    [
-    "PSRDIFF",
-    9.0,
-    9.0,
-    1.0,
-    1,
-    20,
-    17,
-    12
-   ],
-   [
     "NARROW_FLOAT",
-    10.0,
-    11.0,
+    10.3,
+    12.2,
     2.0,
-    2,
+    20,
     21,
     17,
     12
    ],
    [
     "NARROW_INT",
-    12.0,
-    96.0,
+    12.3,
+    97.2,
     85.0,
-    85,
+    850,
     32.8,
     26.8,
     21.3
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 2.0,
+   "single_to_fixed": null
+  },
   "svs": {
-   "min": 13,
+   "min": 10,
    "max": 40,
-   "mean": 30.9
+   "mean": 30.8
   },
   "product": "华测",
   "segment": {
    "index": 3,
-   "t0_shift": 39.5,
-   "by_off": 653813655.0,
-   "hc_off": 39.5
+   "t0_shift": 39.59999990463257,
+   "valid_offsets": {
+    "beiyun": 37.60000002384186,
+    "huace": 39.59999990463257
+   },
+   "source": "RTKPA",
+   "span": 136.8,
+   "discontinuity_before": 227.5
   }
  },
  {
   "file": "北云_cold04",
-  "byte_offset": 0,
-  "span": 89.8,
-  "n": 450,
+  "byte_offset": 20632755,
+  "span": 94.6,
+  "n": 474,
   "rate": 5.0,
   "nominal": 0.2,
   "crc_bad": 0,
-  "counts": {
-   "BESTGNSSPOSA": 609,
-   "HEADINGA": 608,
-   "INSPVAXA": 1216,
-   "BESTPOSA": 608
-  },
-  "other": {
-   "TRACKSTATA": 608,
-   "GPIMU": 12152,
-   "GPGGA": 608,
-   "GPGSV": 756,
-   "GPGSA": 608,
-   "GPGST": 608,
-   "GLGSV": 694,
-   "GAGSV": 580,
-   "GBGSV": 1342,
-   "GQGSV": 413
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "COARSE": 146,
+   "COARSE": 170,
    "FINESTEERING": 304
   },
   "ptype_dist": {
-   "NONE": 76,
+   "NONE": 100,
    "SINGLE": 14,
    "NARROW_FLOAT": 324,
    "PSRDIFF": 1,
    "NARROW_INT": 35
   },
   "cat_pct": {
-   "0": 16.9,
-   "1": 3.3,
-   "2": 72.0,
-   "3": 7.8
+   "0": 21.1,
+   "1": 3.2,
+   "2": 68.4,
+   "3": 7.4
   },
   "first": {
    "valid": 0.0,
    "coarse": 0.0,
-   "fine": 29.2,
-   "single": 15.2,
-   "float": 18.0,
-   "fixed": 83.0,
-   "stn": 16.8,
-   "sol": 15.2
+   "fine": 34.0,
+   "single": 20.0,
+   "float": 22.8,
+   "fixed": 87.8,
+   "stn": 21.6,
+   "sol": 20.0
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 15.2,
+   "time_to_single": 20.0,
    "single_to_float": 2.8,
    "float_to_fixed": 65.0,
-   "diff_wait": 16.8,
+   "diff_wait": 21.6,
    "single_to_fixed": 67.8
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "获得卫星时间（时标脱离UNKNOWN）",
     "#0ea5e9"
    ],
    [
-    15.2,
-    "首次单点解 SINGLE",
+    20.0,
+    "首次单点类解",
     "#3b82f6"
    ],
    [
-    16.8,
+    21.6,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    18.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    22.8,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    29.2,
+    34.0,
     "时标进入 FINESTEERING",
     "#6b7280"
    ],
    [
-    83.0,
-    "首次 RTK 固定解 NARROW_INT",
+    87.8,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -1131,17 +1370,17 @@
    [
     "NONE",
     0.0,
-    15.0,
-    15.2,
-    76,
-    14.0,
+    19.8,
+    20.0,
+    100,
+    12.6,
     0,
     0
    ],
    [
     "SINGLE",
-    15.2,
-    17.8,
+    20.0,
+    22.6,
     2.8,
     14,
     19.9,
@@ -1150,8 +1389,8 @@
    ],
    [
     "NARROW_FLOAT",
-    18.0,
-    29.4,
+    22.8,
+    34.2,
     11.6,
     58,
     21.1,
@@ -1160,8 +1399,8 @@
    ],
    [
     "PSRDIFF",
-    29.6,
-    29.6,
+    34.4,
+    34.4,
     0.2,
     1,
     22,
@@ -1170,8 +1409,8 @@
    ],
    [
     "NARROW_FLOAT",
-    29.8,
-    82.8,
+    34.6,
+    87.6,
     53.2,
     266,
     26.9,
@@ -1180,8 +1419,8 @@
    ],
    [
     "NARROW_INT",
-    83.0,
-    89.8,
+    87.8,
+    94.6,
     7.0,
     35,
     33.7,
@@ -1189,115 +1428,111 @@
     19.5
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 20.0,
+   "single_to_float": 2.8,
+   "float_to_fixed": 65.0,
+   "single_to_fixed": null
+  },
   "svs": {
-   "min": 10,
+   "min": 0,
    "max": 34,
-   "mean": 24.3
+   "mean": 23.5
   },
   "product": "北云",
   "segment": {
    "index": 4,
-   "t0_shift": 31.61400008201599,
-   "by_off": 653813942.8000001,
-   "hc_off": 31.61400008201599
+   "t0_shift": 27.00000011920929,
+   "valid_offsets": {
+    "beiyun": 27.00000011920929,
+    "huace": 31.313999891281128
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 121.6,
+   "discontinuity_before": 0.2
   }
  },
  {
   "file": "华测_cold04",
-  "byte_offset": 0,
-  "span": 97.0,
-  "n": 98,
-  "rate": 1.0,
-  "nominal": 1.0,
-  "crc_bad": 2,
-  "counts": {
-   "BESTPOSA": 130
-  },
-  "other": {
-   "BESTPA": 1287,
-   "GNGGA": 1287,
-   "BESTVA": 1287,
-   "RTKPA": 1287,
-   "RTKVA": 1287,
-   "RANGEA": 129,
-   "ENVSTATUSA": 1190,
-   "GPGSV": 2508,
-   "SATVIS2A": 1032,
-   "GNGSA": 5363,
-   "GNGST": 1287,
-   "BESTDOPSA": 1287,
-   "GBGSV": 2971,
-   "GLGSV": 1270,
-   "GAGSV": 1208,
-   "GQGSV": 1465,
-   "GIGSV": 818
+  "byte_offset": 15307734,
+  "span": 98.8,
+  "n": 989,
+  "rate": 10.0,
+  "nominal": 0.1,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "COARSESTEERING": 4,
-   "FINESTEERING": 94
+   "COARSESTEERING": 43,
+   "FINESTEERING": 946
   },
   "ptype_dist": {
-   "NONE": 5,
-   "SINGLE": 1,
-   "PSRDIFF": 8,
-   "NARROW_FLOAT": 4,
-   "NARROW_INT": 80
+   "NONE": 142,
+   "NARROW_FLOAT": 44,
+   "NARROW_INT": 803
   },
   "cat_pct": {
-   "0": 5.1,
-   "1": 9.2,
-   "2": 4.1,
-   "3": 81.6
+   "0": 14.4,
+   "2": 4.4,
+   "3": 81.2
   },
   "first": {
    "valid": 0.0,
-   "coarse": null,
-   "fine": 4.0,
-   "single": 4.0,
-   "float": 14.0,
-   "fixed": 18.0,
-   "stn": 6.0,
-   "sol": 4.0
+   "coarse": 0.0,
+   "fine": 4.3,
+   "single": null,
+   "float": 11.3,
+   "fixed": 18.6,
+   "stn": 11.3,
+   "sol": 11.3
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 4.0,
-   "single_to_float": 10.0,
-   "float_to_fixed": 4.0,
-   "diff_wait": 6.0,
-   "single_to_fixed": 14.0
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 7.3,
+   "diff_wait": 11.3,
+   "single_to_fixed": null
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "时标进入 COARSE系",
+    "#64748b"
+   ],
+   [
+    0.0,
+    "获得卫星时间（脱离 UNKNOWN/APPROXIMATE）",
     "#0ea5e9"
    ],
    [
-    4.0,
-    "时标进入 FINESTEERING",
+    4.3,
+    "时标进入 FINE系",
     "#6b7280"
    ],
    [
-    4.0,
-    "首次单点解 SINGLE",
-    "#3b82f6"
-   ],
-   [
-    6.0,
+    11.3,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    14.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    11.3,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    18.0,
-    "首次 RTK 固定解 NARROW_INT",
+    18.6,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -1305,180 +1540,301 @@
    [
     "NONE",
     0.0,
-    3.0,
-    4.0,
-    4,
-    5.2,
+    11.2,
+    11.3,
+    113,
+    12.0,
     0,
     0
-   ],
-   [
-    "SINGLE",
-    4.0,
-    4.0,
-    1.0,
-    1,
-    14,
-    11,
-    8
-   ],
-   [
-    "NONE",
-    5.0,
-    5.0,
-    1.0,
-    1,
-    16,
-    0,
-    0
-   ],
-   [
-    "PSRDIFF",
-    6.0,
-    13.0,
-    8.0,
-    8,
-    17.8,
-    14.8,
-    10.4
    ],
    [
     "NARROW_FLOAT",
-    14.0,
-    17.0,
-    4.0,
+    11.3,
+    11.3,
+    0.1,
+    1,
+    18,
+    15,
+    12
+   ],
+   [
+    "NONE",
+    11.4,
+    11.4,
+    0.1,
+    1,
+    19,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    11.5,
+    11.5,
+    0.1,
+    1,
+    19,
+    16,
+    11
+   ],
+   [
+    "NONE",
+    11.6,
+    11.6,
+    0.1,
+    1,
+    18,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    11.7,
+    11.7,
+    0.1,
+    1,
+    19,
+    16,
+    12
+   ],
+   [
+    "NONE",
+    11.8,
+    12.1,
+    0.4,
     4,
-    19.8,
+    18.8,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    12.2,
+    12.4,
+    0.3,
+    3,
+    18.7,
+    15.7,
+    11
+   ],
+   [
+    "NONE",
+    12.5,
+    14.3,
+    1.9,
+    19,
+    19,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    14.4,
+    14.5,
+    0.2,
+    2,
+    19,
+    16,
+    11
+   ],
+   [
+    "NONE",
+    14.6,
+    14.6,
+    0.1,
+    1,
+    19,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    14.7,
+    15.1,
+    0.5,
+    5,
+    19,
+    16,
+    11
+   ],
+   [
+    "NONE",
+    15.2,
+    15.2,
+    0.1,
+    1,
+    19,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    15.3,
     16.2,
+    1.0,
+    10,
+    19.2,
+    16,
+    11
+   ],
+   [
+    "NONE",
+    16.3,
+    16.3,
+    0.1,
+    1,
+    20,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    16.4,
+    17.5,
+    1.2,
+    12,
+    20.4,
+    16.4,
+    11
+   ],
+   [
+    "NONE",
+    17.6,
+    17.6,
+    0.1,
+    1,
+    21,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    17.7,
+    18.5,
+    0.9,
+    9,
+    21,
+    17,
     11
    ],
    [
     "NARROW_INT",
-    18.0,
-    97.0,
-    80.0,
-    80,
-    33.3,
+    18.6,
+    98.8,
+    80.3,
+    803,
+    33.4,
     26.7,
-    20.4
+    20.5
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 7.3,
+   "single_to_fixed": null
+  },
   "svs": {
-   "min": 4,
+   "min": 2,
    "max": 41,
-   "mean": 30.0
+   "mean": 29.9
   },
   "product": "华测",
   "segment": {
    "index": 4,
-   "t0_shift": 31.61400008201599,
-   "by_off": 653813942.8000001,
-   "hc_off": 31.61400008201599
+   "t0_shift": 31.313999891281128,
+   "valid_offsets": {
+    "beiyun": 27.00000011920929,
+    "huace": 31.313999891281128
+   },
+   "source": "RTKPA",
+   "span": 130.114,
+   "discontinuity_before": 162.286
   }
  },
  {
   "file": "北云_cold05",
-  "byte_offset": 0,
-  "span": 107.6,
-  "n": 539,
+  "byte_offset": 25163196,
+  "span": 103.8,
+  "n": 520,
   "rate": 5.0,
   "nominal": 0.2,
   "crc_bad": 0,
-  "counts": {
-   "BESTGNSSPOSA": 675,
-   "HEADINGA": 674,
-   "BESTPOSA": 674,
-   "INSPVAXA": 1345
-  },
-  "other": {
-   "TRACKSTATA": 674,
-   "GPGGA": 674,
-   "GPGSV": 850,
-   "GPGSA": 674,
-   "GPGST": 674,
-   "GPIMU": 13466,
-   "GLGSV": 838,
-   "GAGSV": 688,
-   "GBGSV": 1569,
-   "GQGSV": 459
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
-  "rebases": [
-   {
-    "idx": 155,
-    "elapsed": 31.0,
-    "dt": 653814244.0
-   }
-  ],
+  "rebases": [],
   "tstat_dist": {
-   "UNKNOWN": 19,
    "COARSE": 160,
    "FINESTEERING": 360
   },
   "ptype_dist": {
-   "NONE": 113,
+   "NONE": 94,
    "SINGLE": 25,
    "NARROW_FLOAT": 110,
    "NARROW_INT": 291
   },
   "cat_pct": {
-   "0": 21.0,
-   "1": 4.6,
-   "2": 20.4,
-   "3": 54.0
+   "0": 18.1,
+   "1": 4.8,
+   "2": 21.2,
+   "3": 56.0
   },
   "first": {
-   "valid": 3.8,
-   "coarse": 3.8,
-   "fine": 35.8,
-   "single": 22.6,
-   "float": 27.6,
-   "fixed": 49.6,
-   "stn": 26.2,
-   "sol": 22.6
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 32.0,
+   "single": 18.8,
+   "float": 23.8,
+   "fixed": 45.8,
+   "stn": 22.4,
+   "sol": 18.8
   },
   "stages": {
-   "no_time": 3.8,
+   "no_time": 0.0,
    "time_to_single": 18.8,
    "single_to_float": 5.0,
    "float_to_fixed": 22.0,
    "diff_wait": 22.4,
    "single_to_fixed": 27.0
   },
+  "stage_order_valid": true,
   "events": [
    [
-    3.8,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
     "#0ea5e9"
    ],
    [
-    22.6,
-    "首次单点解 SINGLE",
+    18.8,
+    "首次单点类解",
     "#3b82f6"
    ],
    [
-    26.2,
+    22.4,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    27.6,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    23.8,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    31.0,
-    "冷启动 GPS 周重定标（按连续处理）",
-    "#dc2626"
-   ],
-   [
-    35.8,
+    32.0,
     "时标进入 FINESTEERING",
     "#6b7280"
    ],
    [
-    49.6,
-    "首次 RTK 固定解 NARROW_INT",
+    45.8,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -1486,17 +1842,17 @@
    [
     "NONE",
     0.0,
-    22.4,
-    22.6,
-    113,
-    9.0,
+    18.6,
+    18.8,
+    94,
+    10.8,
     0,
     0
    ],
    [
     "SINGLE",
-    22.6,
-    27.4,
+    18.8,
+    23.6,
     5.0,
     25,
     17.2,
@@ -1505,8 +1861,8 @@
    ],
    [
     "NARROW_FLOAT",
-    27.6,
-    49.4,
+    23.8,
+    45.6,
     22.0,
     110,
     21.3,
@@ -1515,8 +1871,8 @@
    ],
    [
     "NARROW_INT",
-    49.6,
-    107.6,
+    45.8,
+    103.8,
     58.2,
     291,
     30.2,
@@ -1524,114 +1880,111 @@
     19.1
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 18.8,
+   "single_to_float": 5.0,
+   "float_to_fixed": 22.0,
+   "single_to_fixed": null
+  },
   "svs": {
    "min": 0,
    "max": 36,
-   "mean": 23.3
+   "mean": 24.2
   },
   "product": "北云",
   "segment": {
    "index": 5,
-   "t0_shift": 27.091000080108643,
-   "by_off": 653814274.8000001,
-   "hc_off": 27.091000080108643
+   "t0_shift": 31.00000011920929,
+   "valid_offsets": {
+    "beiyun": 31.00000011920929,
+    "huace": 27.29099988937378
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 134.8,
+   "discontinuity_before": 0.2
   }
  },
  {
   "file": "华测_cold05",
-  "byte_offset": 0,
-  "span": 109.0,
-  "n": 110,
-  "rate": 1.0,
-  "nominal": 1.0,
-  "crc_bad": 1,
-  "counts": {
-   "BESTPOSA": 138
-  },
-  "other": {
-   "BESTPA": 1361,
-   "GNGGA": 1361,
-   "BESTVA": 1361,
-   "RTKPA": 1361,
-   "RTKVA": 1361,
-   "RANGEA": 137,
-   "ENVSTATUSA": 1251,
-   "GPGSV": 2790,
-   "SATVIS2A": 1096,
-   "GNGSA": 6147,
-   "GNGST": 1361,
-   "BESTDOPSA": 1361,
-   "GLGSV": 1481,
-   "GAGSV": 1523,
-   "GBGSV": 3526,
-   "GQGSV": 1636,
-   "GIGSV": 881
+  "byte_offset": 18867930,
+  "span": 109.7,
+  "n": 1098,
+  "rate": 10.0,
+  "nominal": 0.1,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "FINESTEERING": 110
+   "FINESTEERING": 1093,
+   "COARSESTEERING": 5
   },
   "ptype_dist": {
-   "NONE": 3,
-   "SINGLE": 1,
-   "PSRDIFF": 6,
-   "NARROW_FLOAT": 18,
-   "NARROW_INT": 82
+   "NONE": 98,
+   "NARROW_FLOAT": 186,
+   "NARROW_INT": 814
   },
   "cat_pct": {
-   "0": 2.7,
-   "1": 6.4,
-   "2": 16.4,
-   "3": 74.5
+   "0": 8.9,
+   "2": 16.9,
+   "3": 74.1
   },
   "first": {
    "valid": 0.0,
-   "coarse": null,
+   "coarse": 0.1,
    "fine": 0.0,
-   "single": 3.0,
-   "float": 9.0,
-   "fixed": 28.0,
-   "stn": 4.0,
-   "sol": 3.0
+   "single": null,
+   "float": 8.5,
+   "fixed": 28.4,
+   "stn": 8.5,
+   "sol": 8.5
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 3.0,
-   "single_to_float": 6.0,
-   "float_to_fixed": 19.0,
-   "diff_wait": 4.0,
-   "single_to_fixed": 25.0
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 19.9,
+   "diff_wait": 8.5,
+   "single_to_fixed": null
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "时标进入 FINESTEERING",
+    "时标进入 FINE系",
     "#6b7280"
    ],
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "获得卫星时间（脱离 UNKNOWN/APPROXIMATE）",
     "#0ea5e9"
    ],
    [
-    3.0,
-    "首次单点解 SINGLE",
-    "#3b82f6"
+    0.1,
+    "时标进入 COARSE系",
+    "#64748b"
    ],
    [
-    4.0,
+    8.5,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    9.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    8.5,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    28.0,
-    "首次 RTK 固定解 NARROW_INT",
+    28.4,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -1639,74 +1992,281 @@
    [
     "NONE",
     0.0,
-    2.0,
-    3.0,
-    3,
-    12.7,
+    8.4,
+    8.5,
+    85,
+    14.9,
     0,
     0
    ],
    [
-    "SINGLE",
-    3.0,
-    3.0,
-    1.0,
-    1,
-    14,
-    11,
-    9
-   ],
-   [
-    "PSRDIFF",
-    4.0,
-    8.0,
-    5.0,
-    5,
-    16.2,
-    12.6,
-    9.2
-   ],
-   [
     "NARROW_FLOAT",
-    9.0,
-    9.0,
-    1.0,
-    1,
-    18,
-    14,
-    10
-   ],
-   [
-    "PSRDIFF",
-    10.0,
-    10.0,
-    1.0,
+    8.5,
+    8.5,
+    0.1,
     1,
     17,
     13,
     10
    ],
    [
+    "NONE",
+    8.6,
+    8.7,
+    0.2,
+    2,
+    17.5,
+    0,
+    0
+   ],
+   [
     "NARROW_FLOAT",
-    11.0,
-    27.0,
-    17.0,
+    8.8,
+    8.8,
+    0.1,
+    1,
     17,
-    21.2,
-    16.3,
-    12.2
+    13,
+    10
+   ],
+   [
+    "NONE",
+    8.9,
+    8.9,
+    0.1,
+    1,
+    17,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    9.0,
+    9.5,
+    0.6,
+    6,
+    17.8,
+    13.8,
+    10
+   ],
+   [
+    "NONE",
+    9.6,
+    9.6,
+    0.1,
+    1,
+    18,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    9.7,
+    10.3,
+    0.7,
+    7,
+    17.7,
+    13.7,
+    10
+   ],
+   [
+    "NONE",
+    10.4,
+    10.4,
+    0.1,
+    1,
+    17,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    10.5,
+    10.6,
+    0.2,
+    2,
+    17.5,
+    13.5,
+    10
+   ],
+   [
+    "NONE",
+    10.7,
+    10.7,
+    0.1,
+    1,
+    17,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    10.8,
+    11.7,
+    1.0,
+    10,
+    17,
+    13,
+    10
+   ],
+   [
+    "NONE",
+    11.8,
+    11.8,
+    0.1,
+    1,
+    17,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    11.9,
+    12.5,
+    0.7,
+    7,
+    17,
+    13,
+    10
+   ],
+   [
+    "NONE",
+    12.6,
+    12.6,
+    0.1,
+    1,
+    17,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    12.7,
+    13.0,
+    0.4,
+    4,
+    17.2,
+    13.2,
+    10.2
+   ],
+   [
+    "NONE",
+    13.1,
+    13.1,
+    0.1,
+    1,
+    18,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    13.2,
+    17.8,
+    4.7,
+    47,
+    18.4,
+    14.4,
+    11.1
+   ],
+   [
+    "NONE",
+    17.9,
+    17.9,
+    0.1,
+    1,
+    19,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    18.0,
+    22.2,
+    4.3,
+    43,
+    20.9,
+    16.1,
+    11.4
+   ],
+   [
+    "NONE",
+    22.3,
+    22.3,
+    0.1,
+    1,
+    23,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    22.4,
+    26.5,
+    4.2,
+    42,
+    24,
+    18,
+    13.9
+   ],
+   [
+    "NONE",
+    26.6,
+    26.6,
+    0.1,
+    1,
+    24,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    26.7,
+    28.0,
+    1.4,
+    14,
+    26.3,
+    20.3,
+    15.9
+   ],
+   [
+    "NONE",
+    28.1,
+    28.1,
+    0.1,
+    1,
+    27,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    28.2,
+    28.3,
+    0.2,
+    2,
+    27,
+    21,
+    17
    ],
    [
     "NARROW_INT",
-    28.0,
-    109.0,
-    82.0,
-    82,
+    28.4,
+    109.7,
+    81.4,
+    814,
     35.7,
     29.2,
-    23.3
+    23.2
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 19.9,
+   "single_to_fixed": null
+  },
   "svs": {
    "min": 8,
    "max": 43,
@@ -1715,102 +2275,98 @@
   "product": "华测",
   "segment": {
    "index": 5,
-   "t0_shift": 27.091000080108643,
-   "by_off": 653814274.8000001,
-   "hc_off": 27.091000080108643
+   "t0_shift": 27.29099988937378,
+   "valid_offsets": {
+    "beiyun": 31.00000011920929,
+    "huace": 27.29099988937378
+   },
+   "source": "RTKPA",
+   "span": 136.991,
+   "discontinuity_before": 201.109
   }
  },
  {
   "file": "北云_cold06",
-  "byte_offset": 0,
-  "span": 88.6,
-  "n": 444,
+  "byte_offset": 30229788,
+  "span": 94.6,
+  "n": 474,
   "rate": 5.0,
   "nominal": 0.2,
   "crc_bad": 0,
-  "counts": {
-   "BESTGNSSPOSA": 560,
-   "HEADINGA": 559,
-   "INSPVAXA": 1117,
-   "BESTPOSA": 559
-  },
-  "other": {
-   "TRACKSTATA": 559,
-   "GPIMU": 11172,
-   "GPGGA": 559,
-   "GPGSV": 699,
-   "GPGSA": 559,
-   "GPGST": 559,
-   "GLGSV": 853,
-   "GBGSV": 1453,
-   "GAGSV": 636,
-   "GQGSV": 439
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "COARSE": 119,
+   "COARSE": 149,
    "FINESTEERING": 325
   },
   "ptype_dist": {
-   "NONE": 28,
+   "NONE": 58,
    "SINGLE": 40,
    "NARROW_FLOAT": 95,
    "NARROW_INT": 281
   },
   "cat_pct": {
-   "0": 6.3,
-   "1": 9.0,
-   "2": 21.4,
-   "3": 63.3
+   "0": 12.2,
+   "1": 8.4,
+   "2": 20.0,
+   "3": 59.3
   },
   "first": {
    "valid": 0.0,
    "coarse": 0.0,
-   "fine": 23.8,
-   "single": 5.6,
-   "float": 13.6,
-   "fixed": 32.6,
-   "stn": 12.4,
-   "sol": 5.6
+   "fine": 29.8,
+   "single": 11.6,
+   "float": 19.6,
+   "fixed": 38.6,
+   "stn": 18.4,
+   "sol": 11.6
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 5.6,
+   "time_to_single": 11.6,
    "single_to_float": 8.0,
    "float_to_fixed": 19.0,
-   "diff_wait": 12.4,
+   "diff_wait": 18.4,
    "single_to_fixed": 27.0
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "获得卫星时间（时标脱离UNKNOWN）",
     "#0ea5e9"
    ],
    [
-    5.6,
-    "首次单点解 SINGLE",
+    11.6,
+    "首次单点类解",
     "#3b82f6"
    ],
    [
-    12.4,
+    18.4,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    13.6,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    19.6,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    23.8,
+    29.8,
     "时标进入 FINESTEERING",
     "#6b7280"
    ],
    [
-    32.6,
-    "首次 RTK 固定解 NARROW_INT",
+    38.6,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -1818,17 +2374,17 @@
    [
     "NONE",
     0.0,
-    5.4,
-    5.6,
-    28,
-    11.1,
+    11.4,
+    11.6,
+    58,
+    8.1,
     0,
     0
    ],
    [
     "SINGLE",
-    5.6,
-    13.4,
+    11.6,
+    19.4,
     8.0,
     40,
     18.1,
@@ -1837,8 +2393,8 @@
    ],
    [
     "NARROW_FLOAT",
-    13.6,
-    32.4,
+    19.6,
+    38.4,
     19.0,
     95,
     23.6,
@@ -1847,8 +2403,8 @@
    ],
    [
     "NARROW_INT",
-    32.6,
-    88.6,
+    38.6,
+    94.6,
     56.2,
     281,
     29.8,
@@ -1856,114 +2412,111 @@
     18.8
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 11.6,
+   "single_to_float": 8.0,
+   "float_to_fixed": 19.0,
+   "single_to_fixed": null
+  },
   "svs": {
-   "min": 9,
+   "min": 0,
    "max": 33,
-   "mean": 26.2
+   "mean": 24.9
   },
   "product": "北云",
   "segment": {
    "index": 6,
-   "t0_shift": 23.09999990463257,
-   "by_off": 653814557.2,
-   "hc_off": 23.09999990463257
+   "t0_shift": 17.200000047683716,
+   "valid_offsets": {
+    "beiyun": 17.200000047683716,
+    "huace": 22.199999809265137
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 111.8,
+   "discontinuity_before": 0.2
   }
  },
  {
   "file": "华测_cold06",
-  "byte_offset": 0,
-  "span": 98.0,
-  "n": 99,
-  "rate": 1.0,
-  "nominal": 1.0,
-  "crc_bad": 2,
-  "counts": {
-   "BESTPOSA": 122
-  },
-  "other": {
-   "BESTPA": 1211,
-   "GNGGA": 1211,
-   "BESTVA": 1211,
-   "RTKPA": 1211,
-   "RTKVA": 1211,
-   "RANGEA": 121,
-   "ENVSTATUSA": 1113,
-   "GPGSV": 2432,
-   "SATVIS2A": 967,
-   "GNGSA": 5065,
-   "GNGST": 1211,
-   "BESTDOPSA": 1211,
-   "GBGSV": 3026,
-   "GLGSV": 1319,
-   "GAGSV": 1333,
-   "GQGSV": 1403,
-   "GIGSV": 791
+  "byte_offset": 22832093,
+  "span": 98.9,
+  "n": 990,
+  "rate": 10.0,
+  "nominal": 0.1,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "COARSESTEERING": 8,
-   "FINESTEERING": 91
+   "COARSESTEERING": 80,
+   "FINESTEERING": 910
   },
   "ptype_dist": {
-   "NONE": 13,
-   "SINGLE": 1,
-   "NARROW_FLOAT": 2,
-   "NARROW_INT": 83
+   "NONE": 148,
+   "NARROW_FLOAT": 8,
+   "NARROW_INT": 834
   },
   "cat_pct": {
-   "0": 13.1,
-   "1": 1.0,
-   "2": 2.0,
-   "3": 83.8
+   "0": 14.9,
+   "2": 0.8,
+   "3": 84.2
   },
   "first": {
    "valid": 0.0,
-   "coarse": null,
+   "coarse": 0.0,
    "fine": 8.0,
-   "single": 13.0,
-   "float": 14.0,
-   "fixed": 15.0,
-   "stn": 14.0,
-   "sol": 13.0
+   "single": null,
+   "float": 14.7,
+   "fixed": 15.4,
+   "stn": 14.7,
+   "sol": 14.7
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 13.0,
-   "single_to_float": 1.0,
-   "float_to_fixed": 1.0,
-   "diff_wait": 14.0,
-   "single_to_fixed": 2.0
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 0.7,
+   "diff_wait": 14.7,
+   "single_to_fixed": null
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "时标进入 COARSE系",
+    "#64748b"
+   ],
+   [
+    0.0,
+    "获得卫星时间（脱离 UNKNOWN/APPROXIMATE）",
     "#0ea5e9"
    ],
    [
     8.0,
-    "时标进入 FINESTEERING",
+    "时标进入 FINE系",
     "#6b7280"
    ],
    [
-    13.0,
-    "首次单点解 SINGLE",
-    "#3b82f6"
-   ],
-   [
-    14.0,
+    14.7,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    14.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    14.7,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    15.0,
-    "首次 RTK 固定解 NARROW_INT",
+    15.4,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -1971,48 +2524,58 @@
    [
     "NONE",
     0.0,
-    12.0,
-    13.0,
-    13,
-    8.7,
+    14.6,
+    14.7,
+    147,
+    9.4,
     0,
     0
    ],
    [
-    "SINGLE",
-    13.0,
-    13.0,
-    1.0,
-    1,
-    18,
-    15,
-    11
-   ],
-   [
     "NARROW_FLOAT",
-    14.0,
-    14.0,
-    1.0,
-    1,
-    17,
-    14,
+    14.7,
+    15.3,
+    0.7,
+    7,
+    18.4,
+    14.9,
     11
    ],
    [
     "NARROW_INT",
-    15.0,
-    34.0,
-    20.0,
-    20,
-    24.6,
+    15.4,
+    15.5,
+    0.2,
+    2,
+    19,
+    15,
+    11
+   ],
+   [
+    "NONE",
+    15.6,
+    15.6,
+    0.1,
+    1,
+    19,
+    0,
+    0
+   ],
+   [
+    "NARROW_INT",
+    15.7,
+    35.8,
+    20.2,
+    202,
+    24.7,
     19.4,
-    14.1
+    14.2
    ],
    [
     "NARROW_FLOAT",
-    35.0,
-    35.0,
-    1.0,
+    35.9,
+    35.9,
+    0.1,
     1,
     27,
     22,
@@ -2021,118 +2584,132 @@
    [
     "NARROW_INT",
     36.0,
-    98.0,
+    98.9,
     63.0,
-    63,
-    37.9,
-    30.7,
-    24.5
+    630,
+    37.8,
+    30.6,
+    24.4
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 0.7,
+   "single_to_fixed": null
+  },
   "svs": {
    "min": 2,
    "max": 43,
-   "mean": 30.8
+   "mean": 30.7
   },
   "product": "华测",
   "segment": {
    "index": 6,
-   "t0_shift": 23.09999990463257,
-   "by_off": 653814557.2,
-   "hc_off": 23.09999990463257
+   "t0_shift": 22.199999809265137,
+   "valid_offsets": {
+    "beiyun": 17.200000047683716,
+    "huace": 22.199999809265137
+   },
+   "source": "RTKPA",
+   "span": 121.1,
+   "discontinuity_before": 155.9
   }
  },
  {
   "file": "北云_cold07",
-  "byte_offset": 0,
-  "span": 90.2,
-  "n": 452,
+  "byte_offset": 34664096,
+  "span": 99.4,
+  "n": 498,
   "rate": 5.0,
   "nominal": 0.2,
   "crc_bad": 0,
-  "counts": {
-   "BESTGNSSPOSA": 603,
-   "HEADINGA": 602,
-   "INSPVAXA": 1205,
-   "BESTPOSA": 602
-  },
-  "other": {
-   "TRACKSTATA": 602,
-   "GPIMU": 12051,
-   "GPGGA": 602,
-   "GPGSV": 774,
-   "GPGSA": 602,
-   "GPGST": 602,
-   "GBGSV": 1418,
-   "GAGSV": 610,
-   "GLGSV": 828,
-   "GQGSV": 408
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
-  "rebases": [],
+  "rebases": [
+   {
+    "idx": 105,
+    "elapsed": 21.0,
+    "dt": 653814809.0
+   }
+  ],
   "tstat_dist": {
-   "COARSE": 103,
+   "COARSE": 149,
    "FINESTEERING": 349
   },
   "ptype_dist": {
-   "NONE": 10,
+   "NONE": 56,
    "SINGLE": 87,
    "NARROW_FLOAT": 170,
    "NARROW_INT": 185
   },
   "cat_pct": {
-   "0": 2.2,
-   "1": 19.2,
-   "2": 37.6,
-   "3": 40.9
+   "0": 11.2,
+   "1": 17.5,
+   "2": 34.1,
+   "3": 37.1
   },
   "first": {
    "valid": 0.0,
    "coarse": 0.0,
-   "fine": 20.6,
-   "single": 2.0,
-   "float": 19.4,
-   "fixed": 53.4,
-   "stn": 8.4,
-   "sol": 2.0
+   "fine": 29.8,
+   "single": 11.2,
+   "float": 28.6,
+   "fixed": 62.6,
+   "stn": 17.6,
+   "sol": 11.2
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 2.0,
+   "time_to_single": 11.2,
    "single_to_float": 17.4,
    "float_to_fixed": 34.0,
-   "diff_wait": 8.4,
+   "diff_wait": 17.6,
    "single_to_fixed": 51.4
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "获得卫星时间（时标脱离UNKNOWN）",
     "#0ea5e9"
    ],
    [
-    2.0,
-    "首次单点解 SINGLE",
+    11.2,
+    "首次单点类解",
     "#3b82f6"
    ],
    [
-    8.4,
+    17.6,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    19.4,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    21.0,
+    "GPS 时间轴跳变（按连续处理）",
+    "#dc2626"
+   ],
+   [
+    28.6,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    20.6,
+    29.8,
     "时标进入 FINESTEERING",
     "#6b7280"
    ],
    [
-    53.4,
-    "首次 RTK 固定解 NARROW_INT",
+    62.6,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -2140,17 +2717,17 @@
    [
     "NONE",
     0.0,
-    1.8,
-    2.0,
-    10,
-    10.1,
+    11.0,
+    11.2,
+    56,
+    6.6,
     0,
     0
    ],
    [
     "SINGLE",
-    2.0,
-    19.2,
+    11.2,
+    28.4,
     17.4,
     87,
     17.6,
@@ -2159,8 +2736,8 @@
    ],
    [
     "NARROW_FLOAT",
-    19.4,
-    53.2,
+    28.6,
+    62.4,
     34.0,
     170,
     22.4,
@@ -2169,8 +2746,8 @@
    ],
    [
     "NARROW_INT",
-    53.4,
-    90.2,
+    62.6,
+    99.4,
     37.0,
     185,
     31.2,
@@ -2178,115 +2755,111 @@
     18.1
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 11.2,
+   "single_to_float": 17.4,
+   "float_to_fixed": 34.0,
+   "single_to_fixed": null
+  },
   "svs": {
-   "min": 9,
+   "min": 2,
    "max": 34,
-   "mean": 24.8
+   "mean": 23.0
   },
   "product": "北云",
   "segment": {
    "index": 7,
-   "t0_shift": 30.015000104904175,
-   "by_off": 653814829.8000001,
-   "hc_off": 30.015000104904175
+   "t0_shift": 21.0,
+   "valid_offsets": {
+    "beiyun": 21.0,
+    "huace": 30.014999866485596
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 120.4,
+   "discontinuity_before": 0.2
   }
  },
  {
   "file": "华测_cold07",
-  "byte_offset": 0,
-  "span": 99.0,
-  "n": 100,
-  "rate": 1.0,
-  "nominal": 1.0,
+  "byte_offset": 26276083,
+  "span": 100.3,
+  "n": 1004,
+  "rate": 10.0,
+  "nominal": 0.1,
   "crc_bad": 0,
-  "counts": {
-   "BESTPOSA": 131
-  },
-  "other": {
-   "BESTPA": 1291,
-   "GNGGA": 1291,
-   "BESTVA": 1291,
-   "RTKPA": 1291,
-   "RTKVA": 1291,
-   "RANGEA": 130,
-   "ENVSTATUSA": 1191,
-   "GPGSV": 2543,
-   "SATVIS2A": 1040,
-   "GNGSA": 5569,
-   "GNGST": 1291,
-   "BESTDOPSA": 1291,
-   "GLGSV": 1337,
-   "GBGSV": 3218,
-   "GAGSV": 1260,
-   "GQGSV": 1700,
-   "GIGSV": 760
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "COARSESTEERING": 1,
-   "FINESTEERING": 99
+   "COARSESTEERING": 12,
+   "FINESTEERING": 992
   },
   "ptype_dist": {
-   "NONE": 4,
-   "SINGLE": 1,
-   "PSRDIFF": 7,
-   "NARROW_FLOAT": 10,
-   "NARROW_INT": 78
+   "NONE": 116,
+   "NARROW_FLOAT": 110,
+   "NARROW_INT": 778
   },
   "cat_pct": {
-   "0": 4.0,
-   "1": 8.0,
-   "2": 10.0,
-   "3": 78.0
+   "0": 11.6,
+   "2": 11.0,
+   "3": 77.5
   },
   "first": {
    "valid": 0.0,
-   "coarse": null,
-   "fine": 1.0,
-   "single": 4.0,
-   "float": 7.0,
-   "fixed": 22.0,
-   "stn": 5.0,
-   "sol": 4.0
+   "coarse": 0.0,
+   "fine": 0.1,
+   "single": null,
+   "float": 7.6,
+   "fixed": 22.5,
+   "stn": 7.6,
+   "sol": 7.6
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 4.0,
-   "single_to_float": 3.0,
-   "float_to_fixed": 15.0,
-   "diff_wait": 5.0,
-   "single_to_fixed": 18.0
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 14.9,
+   "diff_wait": 7.6,
+   "single_to_fixed": null
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "时标进入 COARSE系",
+    "#64748b"
+   ],
+   [
+    0.0,
+    "获得卫星时间（脱离 UNKNOWN/APPROXIMATE）",
     "#0ea5e9"
    ],
    [
-    1.0,
-    "时标进入 FINESTEERING",
+    0.1,
+    "时标进入 FINE系",
     "#6b7280"
    ],
    [
-    4.0,
-    "首次单点解 SINGLE",
-    "#3b82f6"
-   ],
-   [
-    5.0,
+    7.6,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    7.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    7.6,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    22.0,
-    "首次 RTK 固定解 NARROW_INT",
+    22.5,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -2294,198 +2867,441 @@
    [
     "NONE",
     0.0,
-    3.0,
-    4.0,
-    4,
-    13.2,
+    7.5,
+    7.6,
+    76,
+    14.3,
     0,
     0
    ],
    [
-    "SINGLE",
-    4.0,
-    4.0,
-    1.0,
-    1,
-    16,
-    12,
-    10
+    "NARROW_FLOAT",
+    7.6,
+    8.4,
+    0.9,
+    9,
+    18,
+    14,
+    11
    ],
    [
-    "PSRDIFF",
-    5.0,
-    6.0,
-    2.0,
+    "NONE",
+    8.5,
+    8.6,
+    0.2,
     2,
-    17.5,
-    13.5,
-    11
+    18,
+    0,
+    0
    ],
    [
     "NARROW_FLOAT",
-    7.0,
-    7.0,
-    1.0,
-    1,
+    8.7,
+    8.8,
+    0.2,
+    2,
     18,
     14,
     11
    ],
    [
-    "PSRDIFF",
-    8.0,
-    8.0,
-    1.0,
-    1,
+    "NONE",
+    8.9,
+    9.0,
+    0.2,
+    2,
+    18,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    9.1,
+    9.3,
+    0.3,
+    3,
     18,
     14,
     11
    ],
    [
+    "NONE",
+    9.4,
+    9.8,
+    0.5,
+    5,
+    18,
+    0,
+    0
+   ],
+   [
     "NARROW_FLOAT",
-    9.0,
-    9.0,
-    1.0,
+    9.9,
+    9.9,
+    0.1,
     1,
     19,
     15,
     11
    ],
    [
-    "PSRDIFF",
+    "NONE",
     10.0,
-    13.0,
-    4.0,
-    4,
-    20.2,
-    16.2,
-    11.2
+    10.0,
+    0.1,
+    1,
+    19,
+    0,
+    0
    ],
    [
     "NARROW_FLOAT",
+    10.1,
+    10.5,
+    0.5,
+    5,
+    18.8,
+    14.8,
+    10.6
+   ],
+   [
+    "NONE",
+    10.6,
+    11.4,
+    0.9,
+    9,
+    19.7,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    11.5,
+    11.5,
+    0.1,
+    1,
+    20,
+    16,
+    10
+   ],
+   [
+    "NONE",
+    11.6,
+    11.6,
+    0.1,
+    1,
+    20,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    11.7,
+    11.7,
+    0.1,
+    1,
+    20,
+    16,
+    11
+   ],
+   [
+    "NONE",
+    11.8,
+    12.0,
+    0.3,
+    3,
+    20,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    12.1,
+    12.1,
+    0.1,
+    1,
+    20,
+    16,
+    11
+   ],
+   [
+    "NONE",
+    12.2,
+    12.2,
+    0.1,
+    1,
+    20,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    12.3,
+    12.3,
+    0.1,
+    1,
+    20,
+    16,
+    11
+   ],
+   [
+    "NONE",
+    12.4,
+    12.4,
+    0.1,
+    1,
+    20,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    12.5,
+    12.5,
+    0.1,
+    1,
+    20,
+    16,
+    11
+   ],
+   [
+    "NONE",
+    12.6,
+    12.6,
+    0.1,
+    1,
+    20,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    12.7,
+    12.7,
+    0.1,
+    1,
+    20,
+    16,
+    12
+   ],
+   [
+    "NONE",
+    12.8,
+    12.9,
+    0.2,
+    2,
+    20.5,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    13.0,
+    13.0,
+    0.1,
+    1,
+    21,
+    17,
+    12
+   ],
+   [
+    "NONE",
+    13.1,
     14.0,
-    21.0,
-    8.0,
-    8,
-    22.5,
-    18.5,
+    1.0,
+    10,
+    20,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    14.1,
+    16.9,
+    2.9,
+    29,
+    21.4,
+    17.4,
+    13.0
+   ],
+   [
+    "NONE",
+    17.0,
+    17.0,
+    0.1,
+    1,
+    22,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    17.1,
+    17.4,
+    0.4,
+    4,
+    22,
+    18,
+    13
+   ],
+   [
+    "NONE",
+    17.5,
+    17.5,
+    0.1,
+    1,
+    23,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    17.6,
+    22.4,
+    4.9,
+    49,
+    23.5,
+    19.5,
     13
    ],
    [
     "NARROW_INT",
-    22.0,
-    99.0,
-    78.0,
-    78,
-    35.1,
-    29.6,
-    22.1
+    22.5,
+    65.7,
+    43.3,
+    433,
+    30.8,
+    25.8,
+    18.6
+   ],
+   [
+    "NARROW_FLOAT",
+    65.8,
+    65.8,
+    0.1,
+    1,
+    35,
+    31,
+    22
+   ],
+   [
+    "NARROW_INT",
+    65.9,
+    100.3,
+    34.5,
+    345,
+    40.5,
+    34.3,
+    26.5
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 14.9,
+   "single_to_fixed": null
+  },
   "svs": {
-   "min": 8,
+   "min": 3,
    "max": 44,
-   "mean": 31.6
+   "mean": 31.5
   },
   "product": "华测",
   "segment": {
    "index": 7,
-   "t0_shift": 30.015000104904175,
-   "by_off": 653814829.8000001,
-   "hc_off": 30.015000104904175
+   "t0_shift": 30.014999866485596,
+   "valid_offsets": {
+    "beiyun": 21.0,
+    "huace": 30.014999866485596
+   },
+   "source": "RTKPA",
+   "span": 130.315,
+   "discontinuity_before": 147.085
   }
  },
  {
   "file": "北云_cold08",
-  "byte_offset": 0,
-  "span": 87.4,
-  "n": 438,
+  "byte_offset": 39196273,
+  "span": 93.8,
+  "n": 470,
   "rate": 5.0,
   "nominal": 0.2,
   "crc_bad": 0,
-  "counts": {
-   "BESTGNSSPOSA": 604,
-   "HEADINGA": 603,
-   "INSPVAXA": 1206,
-   "BESTPOSA": 603
-  },
-  "other": {
-   "TRACKSTATA": 603,
-   "GPIMU": 12052,
-   "GPGGA": 603,
-   "GPGSV": 791,
-   "GPGSA": 603,
-   "GPGST": 603,
-   "GLGSV": 882,
-   "GBGSV": 1442,
-   "GQGSV": 438,
-   "GAGSV": 485
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "COARSE": 146,
+   "COARSE": 178,
    "FINESTEERING": 292
   },
   "ptype_dist": {
-   "NONE": 27,
+   "NONE": 59,
    "SINGLE": 113,
    "NARROW_FLOAT": 135,
    "NARROW_INT": 163
   },
   "cat_pct": {
-   "0": 6.2,
-   "1": 25.8,
-   "2": 30.8,
-   "3": 37.2
+   "0": 12.6,
+   "1": 24.0,
+   "2": 28.7,
+   "3": 34.7
   },
   "first": {
    "valid": 0.0,
    "coarse": 0.0,
-   "fine": 29.2,
-   "single": 5.4,
-   "float": 28.0,
-   "fixed": 55.0,
-   "stn": 26.6,
-   "sol": 5.4
+   "fine": 35.6,
+   "single": 11.8,
+   "float": 34.4,
+   "fixed": 61.4,
+   "stn": 33.0,
+   "sol": 11.8
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 5.4,
+   "time_to_single": 11.8,
    "single_to_float": 22.6,
    "float_to_fixed": 27.0,
-   "diff_wait": 26.6,
+   "diff_wait": 33.0,
    "single_to_fixed": 49.6
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "获得卫星时间（时标脱离UNKNOWN）",
     "#0ea5e9"
    ],
    [
-    5.4,
-    "首次单点解 SINGLE",
+    11.8,
+    "首次单点类解",
     "#3b82f6"
    ],
    [
-    26.6,
+    33.0,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    28.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    34.4,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    29.2,
+    35.6,
     "时标进入 FINESTEERING",
     "#6b7280"
    ],
    [
-    55.0,
-    "首次 RTK 固定解 NARROW_INT",
+    61.4,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -2493,17 +3309,17 @@
    [
     "NONE",
     0.0,
-    5.2,
-    5.4,
-    27,
-    10.9,
+    11.6,
+    11.8,
+    59,
+    8.2,
     0,
     0
    ],
    [
     "SINGLE",
-    5.4,
-    27.8,
+    11.8,
+    34.2,
     22.6,
     113,
     19.8,
@@ -2512,8 +3328,8 @@
    ],
    [
     "NARROW_FLOAT",
-    28.0,
-    54.8,
+    34.4,
+    61.2,
     27.0,
     135,
     25.4,
@@ -2522,8 +3338,8 @@
    ],
    [
     "NARROW_INT",
-    55.0,
-    87.4,
+    61.4,
+    93.8,
     32.6,
     163,
     34.0,
@@ -2531,115 +3347,111 @@
     20.2
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 11.8,
+   "single_to_float": 22.6,
+   "float_to_fixed": 27.0,
+   "single_to_fixed": null
+  },
   "svs": {
-   "min": 9,
+   "min": 0,
    "max": 36,
-   "mean": 26.3
+   "mean": 24.9
   },
   "product": "北云",
   "segment": {
    "index": 8,
-   "t0_shift": 33.08400011062622,
-   "by_off": 653815125.9999999,
-   "hc_off": 33.08400011062622
+   "t0_shift": 26.800000071525574,
+   "valid_offsets": {
+    "beiyun": 26.800000071525574,
+    "huace": 33.28399991989136
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 120.6,
+   "discontinuity_before": 0.2
   }
  },
  {
   "file": "华测_cold08",
-  "byte_offset": 0,
-  "span": 95.0,
-  "n": 96,
-  "rate": 1.0,
-  "nominal": 1.0,
+  "byte_offset": 29948405,
+  "span": 95.7,
+  "n": 958,
+  "rate": 10.0,
+  "nominal": 0.1,
   "crc_bad": 0,
-  "counts": {
-   "BESTPOSA": 130
-  },
-  "other": {
-   "BESTPA": 1281,
-   "GNGGA": 1281,
-   "BESTVA": 1281,
-   "RTKPA": 1281,
-   "RTKVA": 1281,
-   "RANGEA": 129,
-   "ENVSTATUSA": 1185,
-   "GPGSV": 2731,
-   "SATVIS2A": 1032,
-   "GNGSA": 5549,
-   "GNGST": 1281,
-   "BESTDOPSA": 1281,
-   "GLGSV": 1450,
-   "GAGSV": 1251,
-   "GBGSV": 3210,
-   "GQGSV": 941,
-   "GIGSV": 814
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "COARSESTEERING": 1,
-   "FINESTEERING": 95
+   "COARSESTEERING": 16,
+   "FINESTEERING": 942
   },
   "ptype_dist": {
-   "NONE": 4,
-   "SINGLE": 1,
-   "PSRDIFF": 2,
-   "NARROW_FLOAT": 3,
-   "NARROW_INT": 86
+   "NONE": 73,
+   "NARROW_FLOAT": 29,
+   "NARROW_INT": 856
   },
   "cat_pct": {
-   "0": 4.2,
-   "1": 3.1,
-   "2": 3.1,
-   "3": 89.6
+   "0": 7.6,
+   "2": 3.0,
+   "3": 89.4
   },
   "first": {
    "valid": 0.0,
-   "coarse": null,
-   "fine": 1.0,
-   "single": 4.0,
-   "float": 7.0,
-   "fixed": 10.0,
-   "stn": 5.0,
-   "sol": 4.0
+   "coarse": 0.0,
+   "fine": 1.6,
+   "single": null,
+   "float": 6.3,
+   "fixed": 10.2,
+   "stn": 6.3,
+   "sol": 6.3
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 4.0,
-   "single_to_float": 3.0,
-   "float_to_fixed": 3.0,
-   "diff_wait": 5.0,
-   "single_to_fixed": 6.0
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 3.9,
+   "diff_wait": 6.3,
+   "single_to_fixed": null
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "时标进入 COARSE系",
+    "#64748b"
+   ],
+   [
+    0.0,
+    "获得卫星时间（脱离 UNKNOWN/APPROXIMATE）",
     "#0ea5e9"
    ],
    [
-    1.0,
-    "时标进入 FINESTEERING",
+    1.6,
+    "时标进入 FINE系",
     "#6b7280"
    ],
    [
-    4.0,
-    "首次单点解 SINGLE",
-    "#3b82f6"
-   ],
-   [
-    5.0,
+    6.3,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    7.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    6.3,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    10.0,
-    "首次 RTK 固定解 NARROW_INT",
+    10.2,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -2647,158 +3459,241 @@
    [
     "NONE",
     0.0,
-    3.0,
-    4.0,
-    4,
-    11.5,
+    6.2,
+    6.3,
+    63,
+    12.8,
     0,
     0
    ],
    [
-    "SINGLE",
-    4.0,
-    4.0,
-    1.0,
+    "NARROW_FLOAT",
+    6.3,
+    6.3,
+    0.1,
     1,
-    16,
-    14,
-    9
-   ],
-   [
-    "PSRDIFF",
-    5.0,
-    6.0,
-    2.0,
-    2,
     17,
     15,
-    9.5
+    10
+   ],
+   [
+    "NONE",
+    6.4,
+    6.5,
+    0.2,
+    2,
+    17,
+    0,
+    0
    ],
    [
     "NARROW_FLOAT",
-    7.0,
-    9.0,
-    3.0,
-    3,
-    19.3,
-    16.7,
-    11.3
+    6.6,
+    6.6,
+    0.1,
+    1,
+    17,
+    15,
+    10
+   ],
+   [
+    "NONE",
+    6.7,
+    6.7,
+    0.1,
+    1,
+    17,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    6.8,
+    6.8,
+    0.1,
+    1,
+    17,
+    15,
+    10
+   ],
+   [
+    "NONE",
+    6.9,
+    7.3,
+    0.5,
+    5,
+    17,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    7.4,
+    9.3,
+    2.0,
+    20,
+    19.4,
+    16.6,
+    10.9
+   ],
+   [
+    "NONE",
+    9.4,
+    9.4,
+    0.1,
+    1,
+    20,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    9.5,
+    9.8,
+    0.4,
+    4,
+    20,
+    17,
+    11.8
+   ],
+   [
+    "NONE",
+    9.9,
+    9.9,
+    0.1,
+    1,
+    20,
+    0,
+    0
+   ],
+   [
+    "NARROW_FLOAT",
+    10.0,
+    10.1,
+    0.2,
+    2,
+    20,
+    17,
+    12
    ],
    [
     "NARROW_INT",
-    10.0,
-    95.0,
-    86.0,
-    86,
+    10.2,
+    95.7,
+    85.6,
+    856,
     34.8,
-    29.6,
+    29.5,
     22.2
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 3.9,
+   "single_to_fixed": null
+  },
   "svs": {
    "min": 6,
    "max": 43,
-   "mean": 32.8
+   "mean": 32.7
   },
   "product": "华测",
   "segment": {
    "index": 8,
-   "t0_shift": 33.08400011062622,
-   "by_off": 653815125.9999999,
-   "hc_off": 33.08400011062622
+   "t0_shift": 33.28399991989136,
+   "valid_offsets": {
+    "beiyun": 26.800000071525574,
+    "huace": 33.28399991989136
+   },
+   "source": "RTKPA",
+   "span": 128.984,
+   "discontinuity_before": 160.616
   }
  },
  {
   "file": "北云_cold09",
-  "byte_offset": 0,
-  "span": 90.4,
-  "n": 453,
+  "byte_offset": 43784038,
+  "span": 99.6,
+  "n": 499,
   "rate": 5.0,
   "nominal": 0.2,
   "crc_bad": 0,
-  "counts": {
-   "BESTGNSSPOSA": 651,
-   "HEADINGA": 650,
-   "INSPVAXA": 1300,
-   "BESTPOSA": 650
-  },
-  "other": {
-   "TRACKSTATA": 650,
-   "GPIMU": 13000,
-   "GPGGA": 650,
-   "GPGSV": 920,
-   "GPGSA": 650,
-   "GPGST": 650,
-   "GBGSV": 1510,
-   "GLGSV": 934,
-   "GQGSV": 461,
-   "GAGSV": 558
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "COARSE": 81,
+   "COARSE": 127,
    "FINESTEERING": 372
   },
   "ptype_dist": {
-   "NONE": 1,
+   "NONE": 47,
    "SINGLE": 74,
    "NARROW_FLOAT": 250,
    "NARROW_INT": 128
   },
   "cat_pct": {
-   "0": 0.2,
-   "1": 16.3,
-   "2": 55.2,
-   "3": 28.3
+   "0": 9.4,
+   "1": 14.8,
+   "2": 50.1,
+   "3": 25.7
   },
   "first": {
    "valid": 0.0,
    "coarse": 0.0,
-   "fine": 16.2,
-   "single": 0.2,
-   "float": 15.0,
-   "fixed": 65.0,
-   "stn": 1.6,
-   "sol": 0.2
+   "fine": 25.4,
+   "single": 9.4,
+   "float": 24.2,
+   "fixed": 74.2,
+   "stn": 10.8,
+   "sol": 9.4
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 0.2,
+   "time_to_single": 9.4,
    "single_to_float": 14.8,
    "float_to_fixed": 50.0,
-   "diff_wait": 1.6,
+   "diff_wait": 10.8,
    "single_to_fixed": 64.8
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "获得卫星时间（时标脱离UNKNOWN）",
     "#0ea5e9"
    ],
    [
-    0.2,
-    "首次单点解 SINGLE",
+    9.4,
+    "首次单点类解",
     "#3b82f6"
    ],
    [
-    1.6,
+    10.8,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    15.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    24.2,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    16.2,
+    25.4,
     "时标进入 FINESTEERING",
     "#6b7280"
    ],
    [
-    65.0,
-    "首次 RTK 固定解 NARROW_INT",
+    74.2,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -2806,17 +3701,17 @@
    [
     "NONE",
     0.0,
-    0.0,
-    0.2,
-    1,
-    12,
+    9.2,
+    9.4,
+    47,
+    7.7,
     0,
     0
    ],
    [
     "SINGLE",
-    0.2,
-    14.8,
+    9.4,
+    24.0,
     14.8,
     74,
     17.3,
@@ -2825,8 +3720,8 @@
    ],
    [
     "NARROW_FLOAT",
-    15.0,
-    64.8,
+    24.2,
+    74.0,
     50.0,
     250,
     25.3,
@@ -2835,8 +3730,8 @@
    ],
    [
     "NARROW_INT",
-    65.0,
-    90.4,
+    74.2,
+    99.6,
     25.6,
     128,
     34.3,
@@ -2844,115 +3739,111 @@
     19.0
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 9.4,
+   "single_to_float": 14.8,
+   "float_to_fixed": 50.0,
+   "single_to_fixed": null
+  },
   "svs": {
-   "min": 12,
+   "min": 0,
    "max": 36,
-   "mean": 26.5
+   "mean": 24.8
   },
   "product": "北云",
   "segment": {
    "index": 9,
-   "t0_shift": 39.431999921798706,
-   "by_off": 653815401.4,
-   "hc_off": 39.431999921798706
+   "t0_shift": 30.40000009536743,
+   "valid_offsets": {
+    "beiyun": 30.40000009536743,
+    "huace": 39.03200006484985
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 130.0,
+   "discontinuity_before": 0.2
   }
  },
  {
   "file": "华测_cold09",
-  "byte_offset": 0,
-  "span": 106.0,
-  "n": 107,
-  "rate": 1.0,
-  "nominal": 1.0,
-  "crc_bad": 1,
-  "counts": {
-   "BESTPOSA": 147
-  },
-  "other": {
-   "BESTPA": 1455,
-   "GNGGA": 1455,
-   "BESTVA": 1455,
-   "RTKPA": 1455,
-   "RTKVA": 1455,
-   "RANGEA": 146,
-   "ENVSTATUSA": 1349,
-   "GPGSV": 2816,
-   "SATVIS2A": 1168,
-   "GNGSA": 6013,
-   "GNGST": 1455,
-   "BESTDOPSA": 1455,
-   "GBGSV": 3490,
-   "GQGSV": 1007,
-   "GLGSV": 1619,
-   "GAGSV": 1360,
-   "GIGSV": 913
+  "byte_offset": 33573751,
+  "span": 106.7,
+  "n": 1068,
+  "rate": 10.0,
+  "nominal": 0.1,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
   },
   "gaps": [],
   "rebases": [],
   "tstat_dist": {
-   "COARSESTEERING": 6,
-   "FINESTEERING": 101
+   "COARSESTEERING": 60,
+   "FINESTEERING": 1008
   },
   "ptype_dist": {
-   "NONE": 9,
-   "SINGLE": 1,
-   "PSRDIFF": 6,
-   "NARROW_FLOAT": 5,
-   "NARROW_INT": 86
+   "NONE": 160,
+   "NARROW_FLOAT": 53,
+   "NARROW_INT": 855
   },
   "cat_pct": {
-   "0": 8.4,
-   "1": 6.5,
-   "2": 4.7,
-   "3": 80.4
+   "0": 15.0,
+   "2": 5.0,
+   "3": 80.1
   },
   "first": {
    "valid": 0.0,
-   "coarse": null,
+   "coarse": 0.0,
    "fine": 6.0,
-   "single": 9.0,
-   "float": 14.0,
-   "fixed": 21.0,
-   "stn": 10.0,
-   "sol": 9.0
+   "single": null,
+   "float": 14.4,
+   "fixed": 21.3,
+   "stn": 14.4,
+   "sol": 14.4
   },
   "stages": {
    "no_time": 0.0,
-   "time_to_single": 9.0,
-   "single_to_float": 5.0,
-   "float_to_fixed": 7.0,
-   "diff_wait": 10.0,
-   "single_to_fixed": 12.0
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 6.9,
+   "diff_wait": 14.4,
+   "single_to_fixed": null
   },
+  "stage_order_valid": true,
   "events": [
    [
     0.0,
-    "获得卫星时间（时标脱离UNKNOWN→COARSE）",
+    "时标进入 COARSE系",
+    "#64748b"
+   ],
+   [
+    0.0,
+    "获得卫星时间（脱离 UNKNOWN/APPROXIMATE）",
     "#0ea5e9"
    ],
    [
     6.0,
-    "时标进入 FINESTEERING",
+    "时标进入 FINE系",
     "#6b7280"
    ],
    [
-    9.0,
-    "首次单点解 SINGLE",
-    "#3b82f6"
-   ],
-   [
-    10.0,
+    14.4,
     "差分改正可用（基站 1793）",
     "#7c3aed"
    ],
    [
-    14.0,
-    "首次 RTK 浮点解 NARROW_FLOAT",
+    14.4,
+    "首次 RTK 浮点解",
     "#f59e0b"
    ],
    [
-    21.0,
-    "首次 RTK 固定解 NARROW_INT",
+    21.3,
+    "首次 RTK 固定解",
     "#16a34a"
    ]
   ],
@@ -2960,85 +3851,97 @@
    [
     "NONE",
     0.0,
-    8.0,
-    9.0,
-    9,
-    7.3,
+    14.3,
+    14.4,
+    144,
+    10.5,
     0,
     0
    ],
    [
-    "SINGLE",
-    9.0,
-    9.0,
-    1.0,
-    1,
+    "NARROW_FLOAT",
+    14.4,
+    15.2,
+    0.9,
+    9,
+    18.4,
+    16.4,
+    10.8
+   ],
+   [
+    "NONE",
+    15.3,
+    16.7,
+    1.5,
     15,
-    13,
-    9
-   ],
-   [
-    "PSRDIFF",
-    10.0,
-    13.0,
-    4.0,
-    4,
-    15.5,
-    13.5,
-    10.2
+    20.1,
+    0,
+    0
    ],
    [
     "NARROW_FLOAT",
-    14.0,
-    14.0,
-    1.0,
-    1,
-    18,
-    16,
-    10
-   ],
-   [
-    "PSRDIFF",
-    15.0,
-    16.0,
-    2.0,
-    2,
-    20.5,
+    16.8,
     17.5,
-    12.5
+    0.8,
+    8,
+    21,
+    18,
+    13
+   ],
+   [
+    "NONE",
+    17.6,
+    17.6,
+    0.1,
+    1,
+    21,
+    0,
+    0
    ],
    [
     "NARROW_FLOAT",
-    17.0,
-    20.0,
-    4.0,
-    4,
-    22,
-    19,
-    13.5
+    17.7,
+    21.2,
+    3.6,
+    36,
+    22.1,
+    19.1,
+    13.6
    ],
    [
     "NARROW_INT",
-    21.0,
-    106.0,
-    86.0,
-    86,
+    21.3,
+    106.7,
+    85.5,
+    855,
     35.5,
     30.8,
     23.7
    ]
   ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": null,
+   "single_to_float": null,
+   "float_to_fixed": 6.9,
+   "single_to_fixed": null
+  },
   "svs": {
-   "min": 4,
+   "min": 3,
    "max": 42,
-   "mean": 31.3
+   "mean": 31.2
   },
   "product": "华测",
   "segment": {
    "index": 9,
-   "t0_shift": 39.431999921798706,
-   "by_off": 653815401.4,
-   "hc_off": 39.431999921798706
+   "t0_shift": 39.03200006484985,
+   "valid_offsets": {
+    "beiyun": 30.40000009536743,
+    "huace": 39.03200006484985
+   },
+   "source": "RTKPA",
+   "span": 145.732,
+   "discontinuity_before": 141.268
   }
  }
 ]

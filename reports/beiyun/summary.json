@@ -1,0 +1,1516 @@
+[
+ {
+  "file": "0921户外冷启动-开阔场景-北云.dat_cold01",
+  "byte_offset": 2330855,
+  "span": 86.8,
+  "n": 435,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "INSPVAXA": 10486,
+   "BESTPOSA": 5243,
+   "BESTGNSSPOSA": 5243,
+   "HEADINGA": 5243,
+   "TRACKSTATA": 5244
+  },
+  "other": {
+   "GPIMU": 104872,
+   "GPGGA": 5243,
+   "GPGSV": 14079,
+   "GLGSV": 10308,
+   "GAGSV": 9316,
+   "GQGSV": 5242,
+   "GBGSV": 24842,
+   "GPGSA": 5163,
+   "GPGST": 5243
+  },
+  "recovery": {
+   "valid_messages": 215767,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 147,
+   "FINESTEERING": 288
+  },
+  "ptype_dist": {
+   "NONE": 78,
+   "SINGLE": 123,
+   "NARROW_INT": 234
+  },
+  "cat_pct": {
+   "0": 17.9,
+   "1": 28.3,
+   "3": 53.8
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 29.4,
+   "single": 15.6,
+   "float": null,
+   "fixed": 40.2,
+   "stn": 38.8,
+   "sol": 15.6
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 15.6,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": 38.8,
+   "single_to_fixed": 24.6
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    15.6,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    29.4,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    38.8,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    40.2,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    15.4,
+    15.6,
+    78,
+    31.4,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    15.6,
+    40.0,
+    24.6,
+    123,
+    38.8,
+    22.6,
+    22.6
+   ],
+   [
+    "NARROW_INT",
+    40.2,
+    86.8,
+    46.8,
+    234,
+    39.8,
+    37.6,
+    37.6
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 15.6,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 24.6
+  },
+  "svs": {
+   "min": 28,
+   "max": 40,
+   "mean": 38.0
+  },
+  "segment": {
+   "index": 1,
+   "frames": 435,
+   "start_week": 0,
+   "start_tstat": "COARSE",
+   "start_pos_type": "NONE",
+   "byte_offset": 2330855,
+   "end_offset": 7263988,
+   "t0_shift": 0.0,
+   "source": "BESTGNSSPOSA",
+   "span": 86.8,
+   "discontinuity_before": 28.2,
+   "start_elapsed": 66.0,
+   "end_elapsed": 152.8,
+   "is_coldstart": true
+  }
+ },
+ {
+  "file": "0921户外冷启动-开阔场景-北云.dat_cold02",
+  "byte_offset": 7277445,
+  "span": 87.4,
+  "n": 438,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "INSPVAXA": 10486,
+   "BESTPOSA": 5243,
+   "BESTGNSSPOSA": 5243,
+   "HEADINGA": 5243,
+   "TRACKSTATA": 5244
+  },
+  "other": {
+   "GPIMU": 104872,
+   "GPGGA": 5243,
+   "GPGSV": 14079,
+   "GLGSV": 10308,
+   "GAGSV": 9316,
+   "GQGSV": 5242,
+   "GBGSV": 24842,
+   "GPGSA": 5163,
+   "GPGST": 5243
+  },
+  "recovery": {
+   "valid_messages": 215767,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 36,
+   "FINESTEERING": 402
+  },
+  "ptype_dist": {
+   "SINGLE": 180,
+   "NARROW_INT": 258
+  },
+  "cat_pct": {
+   "1": 41.1,
+   "3": 58.9
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 7.2,
+   "single": 0.0,
+   "float": null,
+   "fixed": 36.0,
+   "stn": 34.8,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": 34.8,
+   "single_to_fixed": 36.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    0.0,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    7.2,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    34.8,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    36.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    35.8,
+    36.0,
+    180,
+    39.9,
+    35.5,
+    35.5
+   ],
+   [
+    "NARROW_INT",
+    36.0,
+    87.4,
+    51.6,
+    258,
+    40.0,
+    39.8,
+    39.8
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 36.0
+  },
+  "svs": {
+   "min": 39,
+   "max": 40,
+   "mean": 39.9
+  },
+  "segment": {
+   "index": 2,
+   "frames": 438,
+   "start_week": 0,
+   "start_tstat": "COARSE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 7277445,
+   "end_offset": 12438189,
+   "t0_shift": 0.0,
+   "source": "BESTGNSSPOSA",
+   "span": 87.4,
+   "discontinuity_before": 42.4,
+   "start_elapsed": 195.2,
+   "end_elapsed": 282.6,
+   "is_coldstart": true
+  }
+ },
+ {
+  "file": "0921户外冷启动-开阔场景-北云.dat_cold03",
+  "byte_offset": 12449275,
+  "span": 83.4,
+  "n": 418,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "INSPVAXA": 10486,
+   "BESTPOSA": 5243,
+   "BESTGNSSPOSA": 5243,
+   "HEADINGA": 5243,
+   "TRACKSTATA": 5244
+  },
+  "other": {
+   "GPIMU": 104872,
+   "GPGGA": 5243,
+   "GPGSV": 14079,
+   "GLGSV": 10308,
+   "GAGSV": 9316,
+   "GQGSV": 5242,
+   "GBGSV": 24842,
+   "GPGSA": 5163,
+   "GPGST": 5243
+  },
+  "recovery": {
+   "valid_messages": 215767,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 63,
+   "FINESTEERING": 355
+  },
+  "ptype_dist": {
+   "SINGLE": 207,
+   "NONE": 5,
+   "NARROW_INT": 206
+  },
+  "cat_pct": {
+   "1": 49.5,
+   "0": 1.2,
+   "3": 49.3
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 12.6,
+   "single": 0.0,
+   "float": null,
+   "fixed": 42.4,
+   "stn": 41.2,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": 41.2,
+   "single_to_fixed": 42.4
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    0.0,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    12.6,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    41.2,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    42.4,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    0.2,
+    0.4,
+    2,
+    22,
+    21,
+    21
+   ],
+   [
+    "NONE",
+    0.4,
+    1.2,
+    1.0,
+    5,
+    18.6,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    1.4,
+    42.2,
+    41.0,
+    205,
+    39.9,
+    36.3,
+    36.3
+   ],
+   [
+    "NARROW_INT",
+    42.4,
+    83.4,
+    41.2,
+    206,
+    41.6,
+    40.8,
+    40.8
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 42.4
+  },
+  "svs": {
+   "min": 0,
+   "max": 42,
+   "mean": 40.4
+  },
+  "segment": {
+   "index": 3,
+   "frames": 418,
+   "start_week": 0,
+   "start_tstat": "COARSE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 12449275,
+   "end_offset": 17395959,
+   "t0_shift": 0.0,
+   "source": "BESTGNSSPOSA",
+   "span": 83.4,
+   "discontinuity_before": 28.2,
+   "start_elapsed": 310.8,
+   "end_elapsed": 394.2,
+   "is_coldstart": true
+  }
+ },
+ {
+  "file": "0921户外冷启动-开阔场景-北云.dat_cold04",
+  "byte_offset": 17407873,
+  "span": 102.0,
+  "n": 511,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "INSPVAXA": 10486,
+   "BESTPOSA": 5243,
+   "BESTGNSSPOSA": 5243,
+   "HEADINGA": 5243,
+   "TRACKSTATA": 5244
+  },
+  "other": {
+   "GPIMU": 104872,
+   "GPGGA": 5243,
+   "GPGSV": 14079,
+   "GLGSV": 10308,
+   "GAGSV": 9316,
+   "GQGSV": 5242,
+   "GBGSV": 24842,
+   "GPGSA": 5163,
+   "GPGST": 5243
+  },
+  "recovery": {
+   "valid_messages": 215767,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 120,
+   "FINESTEERING": 391
+  },
+  "ptype_dist": {
+   "SINGLE": 209,
+   "NARROW_INT": 302
+  },
+  "cat_pct": {
+   "1": 40.9,
+   "3": 59.1
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 24.0,
+   "single": 0.0,
+   "float": null,
+   "fixed": 41.8,
+   "stn": 40.4,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": 40.4,
+   "single_to_fixed": 41.8
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    0.0,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    24.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    40.4,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    41.8,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    41.6,
+    41.8,
+    209,
+    38.2,
+    35.8,
+    35.8
+   ],
+   [
+    "NARROW_INT",
+    41.8,
+    102.0,
+    60.4,
+    302,
+    39.6,
+    39.6,
+    39.6
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 41.8
+  },
+  "svs": {
+   "min": 31,
+   "max": 40,
+   "mean": 39.0
+  },
+  "segment": {
+   "index": 4,
+   "frames": 511,
+   "start_week": 0,
+   "start_tstat": "COARSE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 17407873,
+   "end_offset": 23359973,
+   "t0_shift": 0.0,
+   "source": "BESTGNSSPOSA",
+   "span": 102.0,
+   "discontinuity_before": 42.2,
+   "start_elapsed": 436.4,
+   "end_elapsed": 538.4,
+   "is_coldstart": true
+  }
+ },
+ {
+  "file": "0921户外冷启动-开阔场景-北云.dat_cold05",
+  "byte_offset": 23374038,
+  "span": 174.6,
+  "n": 874,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "INSPVAXA": 10486,
+   "BESTPOSA": 5243,
+   "BESTGNSSPOSA": 5243,
+   "HEADINGA": 5243,
+   "TRACKSTATA": 5244
+  },
+  "other": {
+   "GPIMU": 104872,
+   "GPGGA": 5243,
+   "GPGSV": 14079,
+   "GLGSV": 10308,
+   "GAGSV": 9316,
+   "GQGSV": 5242,
+   "GBGSV": 24842,
+   "GPGSA": 5163,
+   "GPGST": 5243
+  },
+  "recovery": {
+   "valid_messages": 215767,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 53,
+   "FINESTEERING": 821
+  },
+  "ptype_dist": {
+   "SINGLE": 207,
+   "NARROW_INT": 667
+  },
+  "cat_pct": {
+   "1": 23.7,
+   "3": 76.3
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 10.6,
+   "single": 0.0,
+   "float": null,
+   "fixed": 41.4,
+   "stn": 40.2,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": 40.2,
+   "single_to_fixed": 41.4
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    0.0,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    10.6,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    40.2,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    41.4,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    41.2,
+    41.4,
+    207,
+    36.8,
+    32.9,
+    32.9
+   ],
+   [
+    "NARROW_INT",
+    41.4,
+    174.6,
+    133.4,
+    667,
+    39.7,
+    39.7,
+    39.7
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 41.4
+  },
+  "svs": {
+   "min": 30,
+   "max": 41,
+   "mean": 39.0
+  },
+  "segment": {
+   "index": 5,
+   "frames": 874,
+   "start_week": 0,
+   "start_tstat": "COARSE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 23374038,
+   "end_offset": 33419511,
+   "t0_shift": 0.0,
+   "source": "BESTGNSSPOSA",
+   "span": 174.6,
+   "discontinuity_before": 42.4,
+   "start_elapsed": 580.8,
+   "end_elapsed": 755.4,
+   "is_coldstart": true
+  }
+ },
+ {
+  "file": "0921户外冷启动-开阔场景-北云.dat_cold06",
+  "byte_offset": 33429793,
+  "span": 109.6,
+  "n": 549,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "INSPVAXA": 10486,
+   "BESTPOSA": 5243,
+   "BESTGNSSPOSA": 5243,
+   "HEADINGA": 5243,
+   "TRACKSTATA": 5244
+  },
+  "other": {
+   "GPIMU": 104872,
+   "GPGGA": 5243,
+   "GPGSV": 14079,
+   "GLGSV": 10308,
+   "GAGSV": 9316,
+   "GQGSV": 5242,
+   "GBGSV": 24842,
+   "GPGSA": 5163,
+   "GPGST": 5243
+  },
+  "recovery": {
+   "valid_messages": 215767,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 44,
+   "FINESTEERING": 505
+  },
+  "ptype_dist": {
+   "SINGLE": 208,
+   "NARROW_INT": 341
+  },
+  "cat_pct": {
+   "1": 37.9,
+   "3": 62.1
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 8.8,
+   "single": 0.0,
+   "float": null,
+   "fixed": 41.6,
+   "stn": 40.4,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": 40.4,
+   "single_to_fixed": 41.6
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    0.0,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    8.8,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    40.4,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    41.6,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    41.4,
+    41.6,
+    208,
+    37.1,
+    33.5,
+    33.5
+   ],
+   [
+    "NARROW_INT",
+    41.6,
+    109.6,
+    68.2,
+    341,
+    38.5,
+    37.3,
+    37.3
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 41.6
+  },
+  "svs": {
+   "min": 28,
+   "max": 39,
+   "mean": 38.0
+  },
+  "segment": {
+   "index": 6,
+   "frames": 549,
+   "start_week": 0,
+   "start_tstat": "COARSE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 33429793,
+   "end_offset": 39687930,
+   "t0_shift": 0.0,
+   "source": "BESTGNSSPOSA",
+   "span": 109.6,
+   "discontinuity_before": 98.2,
+   "start_elapsed": 853.6,
+   "end_elapsed": 963.2,
+   "is_coldstart": true
+  }
+ },
+ {
+  "file": "0921户外冷启动-开阔场景-北云.dat_cold07",
+  "byte_offset": 39700452,
+  "span": 91.2,
+  "n": 457,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "INSPVAXA": 10486,
+   "BESTPOSA": 5243,
+   "BESTGNSSPOSA": 5243,
+   "HEADINGA": 5243,
+   "TRACKSTATA": 5244
+  },
+  "other": {
+   "GPIMU": 104872,
+   "GPGGA": 5243,
+   "GPGSV": 14079,
+   "GLGSV": 10308,
+   "GAGSV": 9316,
+   "GQGSV": 5242,
+   "GBGSV": 24842,
+   "GPGSA": 5163,
+   "GPGST": 5243
+  },
+  "recovery": {
+   "valid_messages": 215767,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 89,
+   "FINESTEERING": 368
+  },
+  "ptype_dist": {
+   "SINGLE": 203,
+   "NARROW_INT": 248,
+   "PSRDIFF": 6
+  },
+  "cat_pct": {
+   "1": 45.7,
+   "3": 54.3
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 17.8,
+   "single": 0.0,
+   "float": null,
+   "fixed": 40.6,
+   "stn": 39.6,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": 39.6,
+   "single_to_fixed": 40.6
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    0.0,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    17.8,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    39.6,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    40.6,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    40.4,
+    40.6,
+    203,
+    35.7,
+    33.3,
+    33.3
+   ],
+   [
+    "NARROW_INT",
+    40.6,
+    90.0,
+    49.6,
+    248,
+    39.7,
+    37.7,
+    37.7
+   ],
+   [
+    "PSRDIFF",
+    90.2,
+    91.2,
+    1.2,
+    6,
+    37,
+    32.8,
+    32.8
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 40.6
+  },
+  "svs": {
+   "min": 31,
+   "max": 41,
+   "mean": 37.9
+  },
+  "segment": {
+   "index": 7,
+   "frames": 457,
+   "start_week": 0,
+   "start_tstat": "COARSE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 39700452,
+   "end_offset": 44925335,
+   "t0_shift": 0.0,
+   "source": "BESTGNSSPOSA",
+   "span": 91.2,
+   "discontinuity_before": 182.4,
+   "start_elapsed": 1145.6,
+   "end_elapsed": 1236.8,
+   "is_coldstart": true
+  }
+ },
+ {
+  "file": "0921户外冷启动-开阔场景-北云.dat_cold08",
+  "byte_offset": 44933667,
+  "span": 76.8,
+  "n": 385,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "INSPVAXA": 10486,
+   "BESTPOSA": 5243,
+   "BESTGNSSPOSA": 5243,
+   "HEADINGA": 5243,
+   "TRACKSTATA": 5244
+  },
+  "other": {
+   "GPIMU": 104872,
+   "GPGGA": 5243,
+   "GPGSV": 14079,
+   "GLGSV": 10308,
+   "GAGSV": 9316,
+   "GQGSV": 5242,
+   "GBGSV": 24842,
+   "GPGSA": 5163,
+   "GPGST": 5243
+  },
+  "recovery": {
+   "valid_messages": 215767,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 37,
+   "FINESTEERING": 348
+  },
+  "ptype_dist": {
+   "SINGLE": 181,
+   "NARROW_INT": 202,
+   "PSRDIFF": 2
+  },
+  "cat_pct": {
+   "1": 47.5,
+   "3": 52.5
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 7.4,
+   "single": 0.0,
+   "float": null,
+   "fixed": 36.2,
+   "stn": 35.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": 35.0,
+   "single_to_fixed": 36.2
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    0.0,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    7.4,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    35.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    36.2,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    36.0,
+    36.2,
+    181,
+    39.5,
+    32.9,
+    32.9
+   ],
+   [
+    "NARROW_INT",
+    36.2,
+    76.4,
+    40.4,
+    202,
+    41.7,
+    39.9,
+    39.9
+   ],
+   [
+    "PSRDIFF",
+    76.6,
+    76.8,
+    0.4,
+    2,
+    41.5,
+    39.5,
+    39.5
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 36.2
+  },
+  "svs": {
+   "min": 36,
+   "max": 42,
+   "mean": 40.7
+  },
+  "segment": {
+   "index": 8,
+   "frames": 385,
+   "start_week": 0,
+   "start_tstat": "COARSE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 44933667,
+   "end_offset": 49431760,
+   "t0_shift": 0.0,
+   "source": "BESTGNSSPOSA",
+   "span": 76.8,
+   "discontinuity_before": 84.2,
+   "start_elapsed": 1321.0,
+   "end_elapsed": 1397.8,
+   "is_coldstart": true
+  }
+ },
+ {
+  "file": "0921户外冷启动-开阔场景-北云.dat_cold09",
+  "byte_offset": 49451124,
+  "span": 88.4,
+  "n": 443,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "INSPVAXA": 10486,
+   "BESTPOSA": 5243,
+   "BESTGNSSPOSA": 5243,
+   "HEADINGA": 5243,
+   "TRACKSTATA": 5244
+  },
+  "other": {
+   "GPIMU": 104872,
+   "GPGGA": 5243,
+   "GPGSV": 14079,
+   "GLGSV": 10308,
+   "GAGSV": 9316,
+   "GQGSV": 5242,
+   "GBGSV": 24842,
+   "GPGSA": 5163,
+   "GPGST": 5243
+  },
+  "recovery": {
+   "valid_messages": 215767,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 61,
+   "FINESTEERING": 382
+  },
+  "ptype_dist": {
+   "SINGLE": 170,
+   "NARROW_FLOAT": 5,
+   "NARROW_INT": 264,
+   "PSRDIFF": 4
+  },
+  "cat_pct": {
+   "1": 39.3,
+   "2": 1.1,
+   "3": 59.6
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 12.2,
+   "single": 0.0,
+   "float": 34.0,
+   "fixed": 35.0,
+   "stn": 32.8,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": 34.0,
+   "float_to_fixed": 1.0,
+   "diff_wait": 32.8,
+   "single_to_fixed": 35.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    0.0,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    12.2,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    32.8,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    34.0,
+    "首次 RTK 浮点解",
+    "#f59e0b"
+   ],
+   [
+    35.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    33.8,
+    34.0,
+    170,
+    36.3,
+    31.4,
+    31.4
+   ],
+   [
+    "NARROW_FLOAT",
+    34.0,
+    34.8,
+    1.0,
+    5,
+    37,
+    36,
+    36
+   ],
+   [
+    "NARROW_INT",
+    35.0,
+    87.6,
+    52.8,
+    264,
+    37.0,
+    36.0,
+    36.0
+   ],
+   [
+    "PSRDIFF",
+    87.8,
+    88.4,
+    0.8,
+    4,
+    35.5,
+    30.2,
+    30.2
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": 34.0,
+   "float_to_fixed": 1.0,
+   "single_to_fixed": null
+  },
+  "svs": {
+   "min": 31,
+   "max": 38,
+   "mean": 36.7
+  },
+  "segment": {
+   "index": 9,
+   "frames": 443,
+   "start_week": 0,
+   "start_tstat": "COARSE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 49451124,
+   "end_offset": 54320125,
+   "t0_shift": 0.0,
+   "source": "BESTGNSSPOSA",
+   "span": 88.4,
+   "discontinuity_before": 98.4,
+   "start_elapsed": 1496.2,
+   "end_elapsed": 1584.6,
+   "is_coldstart": true
+  }
+ },
+ {
+  "file": "0921户外冷启动-开阔场景-北云.dat_cold10",
+  "byte_offset": 54329695,
+  "span": 108.4,
+  "n": 543,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {
+   "INSPVAXA": 10486,
+   "BESTPOSA": 5243,
+   "BESTGNSSPOSA": 5243,
+   "HEADINGA": 5243,
+   "TRACKSTATA": 5244
+  },
+  "other": {
+   "GPIMU": 104872,
+   "GPGGA": 5243,
+   "GPGSV": 14079,
+   "GLGSV": 10308,
+   "GAGSV": 9316,
+   "GQGSV": 5242,
+   "GBGSV": 24842,
+   "GPGSA": 5163,
+   "GPGST": 5243
+  },
+  "recovery": {
+   "valid_messages": 215767,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 108,
+   "FINESTEERING": 435
+  },
+  "ptype_dist": {
+   "SINGLE": 202,
+   "NARROW_INT": 341
+  },
+  "cat_pct": {
+   "1": 37.2,
+   "3": 62.8
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 21.6,
+   "single": 0.0,
+   "float": null,
+   "fixed": 40.4,
+   "stn": 39.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": 39.0,
+   "single_to_fixed": 40.4
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    0.0,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    21.6,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    39.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    40.4,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    40.2,
+    40.4,
+    202,
+    36.6,
+    31.0,
+    31.0
+   ],
+   [
+    "NARROW_INT",
+    40.4,
+    108.4,
+    68.2,
+    341,
+    39.3,
+    37.1,
+    37.1
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 40.4
+  },
+  "svs": {
+   "min": 32,
+   "max": 41,
+   "mean": 38.3
+  },
+  "segment": {
+   "index": 10,
+   "frames": 543,
+   "start_week": 0,
+   "start_tstat": "COARSE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 54329695,
+   "end_offset": 60528672,
+   "t0_shift": 0.0,
+   "source": "BESTGNSSPOSA",
+   "span": 108.4,
+   "discontinuity_before": 84.2,
+   "start_elapsed": 1668.8,
+   "end_elapsed": 1777.2,
+   "is_coldstart": true
+  }
+ }
+]

@@ -1,0 +1,2754 @@
+[
+ {
+  "file": "北云_cold01",
+  "byte_offset": 344,
+  "span": 117.0,
+  "n": 586,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 454,
+   "FINESTEERING": 132
+  },
+  "ptype_dist": {
+   "NONE": 385,
+   "SINGLE": 16,
+   "NARROW_FLOAT": 120,
+   "NARROW_INT": 60,
+   "PSRDIFF": 5
+  },
+  "cat_pct": {
+   "0": 65.7,
+   "1": 3.6,
+   "2": 20.5,
+   "3": 10.2
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 90.8,
+   "single": 77.0,
+   "float": 79.6,
+   "fixed": 103.6,
+   "stn": 78.6,
+   "sol": 77.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 77.0,
+   "single_to_float": 2.6,
+   "float_to_fixed": 24.0,
+   "diff_wait": 78.6,
+   "single_to_fixed": 26.6
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    77.0,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    78.6,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    79.6,
+    "首次 RTK 浮点解",
+    "#f59e0b"
+   ],
+   [
+    90.8,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    103.6,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    76.8,
+    77.0,
+    385,
+    16.9,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    77.0,
+    79.4,
+    2.6,
+    13,
+    26.9,
+    10.1,
+    10.1
+   ],
+   [
+    "NARROW_FLOAT",
+    79.6,
+    103.4,
+    24.0,
+    120,
+    29.2,
+    14.2,
+    14.2
+   ],
+   [
+    "NARROW_INT",
+    103.6,
+    115.4,
+    12.0,
+    60,
+    32.7,
+    18.1,
+    18.1
+   ],
+   [
+    "PSRDIFF",
+    115.6,
+    116.4,
+    1.0,
+    5,
+    34,
+    15.8,
+    15.8
+   ],
+   [
+    "SINGLE",
+    116.6,
+    117.0,
+    0.6,
+    3,
+    27.7,
+    9.3,
+    9.3
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 77.0,
+   "single_to_float": 2.6,
+   "float_to_fixed": 24.0,
+   "single_to_fixed": null
+  },
+  "svs": {
+   "min": 0,
+   "max": 35,
+   "mean": 21.5
+  },
+  "product": "北云",
+  "segment": {
+   "index": 1,
+   "t0_shift": 28.800000071525574,
+   "valid_offsets": {
+    "beidou": 49.0,
+    "beiyun": 28.800000071525574
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 145.8,
+   "discontinuity_before": 0.0
+  }
+ },
+ {
+  "file": "北斗_cold01",
+  "byte_offset": 22,
+  "span": 101.0,
+  "n": 102,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [
+   {
+    "idx": 49,
+    "elapsed": 49.0,
+    "dt": 1475712001.0
+   }
+  ],
+  "time_status_retained": false,
+  "tstat_dist": {
+   "FINE": 102
+  },
+  "ptype_dist": {
+   "NONE": 44,
+   "SINGLE": 11,
+   "PSRDIFF": 5,
+   "NARROW_INT": 42
+  },
+  "cat_pct": {
+   "0": 43.1,
+   "1": 15.7,
+   "3": 41.2
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": null,
+   "fine": 0.0,
+   "single": 44.0,
+   "float": null,
+   "fixed": 60.0,
+   "stn": 54.0,
+   "sol": 44.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 44.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": 54.0,
+   "single_to_fixed": 16.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离 UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    44.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    49.0,
+    "GPS 时间轴跳变（按连续处理）",
+    "#dc2626"
+   ],
+   [
+    54.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    60.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    43.0,
+    44.0,
+    44,
+    15.3,
+    0,
+    null
+   ],
+   [
+    "SINGLE",
+    44.0,
+    53.0,
+    10.0,
+    10,
+    23.8,
+    9.5,
+    null
+   ],
+   [
+    "PSRDIFF",
+    54.0,
+    56.0,
+    3.0,
+    3,
+    27,
+    10.3,
+    null
+   ],
+   [
+    "SINGLE",
+    57.0,
+    57.0,
+    1.0,
+    1,
+    26,
+    10,
+    null
+   ],
+   [
+    "PSRDIFF",
+    58.0,
+    59.0,
+    2.0,
+    2,
+    25.5,
+    14,
+    null
+   ],
+   [
+    "NARROW_INT",
+    60.0,
+    101.0,
+    42.0,
+    42,
+    31.4,
+    23.1,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 44.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 16.0
+  },
+  "svs": {
+   "min": 2,
+   "max": 37,
+   "mean": 23.4
+  },
+  "product": "北斗",
+  "segment": {
+   "index": 1,
+   "t0_shift": 49.0,
+   "valid_offsets": {
+    "beidou": 49.0,
+    "beiyun": 28.800000071525574
+   },
+   "source": "BESTNAVA",
+   "span": 150.0,
+   "discontinuity_before": 0.0
+  }
+ },
+ {
+  "file": "北云_cold02",
+  "byte_offset": 5431516,
+  "span": 166.4,
+  "n": 833,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 407,
+   "FINESTEERING": 426
+  },
+  "ptype_dist": {
+   "NONE": 338,
+   "SINGLE": 48,
+   "NARROW_FLOAT": 200,
+   "NARROW_INT": 239,
+   "PSRDIFF": 8
+  },
+  "cat_pct": {
+   "0": 40.6,
+   "1": 6.7,
+   "2": 24.0,
+   "3": 28.7
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 81.4,
+   "single": 67.6,
+   "float": 77.2,
+   "fixed": 117.2,
+   "stn": 69.2,
+   "sol": 67.6
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 67.6,
+   "single_to_float": 9.6,
+   "float_to_fixed": 40.0,
+   "diff_wait": 69.2,
+   "single_to_fixed": 49.6
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    67.6,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    69.2,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    77.2,
+    "首次 RTK 浮点解",
+    "#f59e0b"
+   ],
+   [
+    81.4,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    117.2,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    67.4,
+    67.6,
+    338,
+    12.3,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    67.6,
+    77.0,
+    9.6,
+    48,
+    24.2,
+    9.9,
+    9.9
+   ],
+   [
+    "NARROW_FLOAT",
+    77.2,
+    117.0,
+    40.0,
+    200,
+    29.9,
+    15.1,
+    15.1
+   ],
+   [
+    "NARROW_INT",
+    117.2,
+    164.8,
+    47.8,
+    239,
+    32.9,
+    24.9,
+    24.9
+   ],
+   [
+    "PSRDIFF",
+    165.0,
+    166.4,
+    1.6,
+    8,
+    30.1,
+    25.8,
+    25.8
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 67.6,
+   "single_to_float": 9.6,
+   "float_to_fixed": 40.0,
+   "single_to_fixed": null
+  },
+  "svs": {
+   "min": 0,
+   "max": 34,
+   "mean": 23.3
+  },
+  "product": "北云",
+  "segment": {
+   "index": 2,
+   "t0_shift": 23.600000143051147,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 23.600000143051147
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 190.0,
+   "discontinuity_before": 0.2
+  }
+ },
+ {
+  "file": "北斗_cold02",
+  "byte_offset": 1327467,
+  "span": 194.0,
+  "n": 195,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 195
+  },
+  "ptype_dist": {
+   "NONE": 65,
+   "SINGLE": 10,
+   "NARROW_INT": 120
+  },
+  "cat_pct": {
+   "0": 33.3,
+   "1": 5.1,
+   "3": 61.5
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 65.0,
+   "float": null,
+   "fixed": 75.0,
+   "stn": 75.0,
+   "sol": 65.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 65.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 10.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    65.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    75.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    75.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    64.0,
+    65.0,
+    65,
+    4.2,
+    0,
+    null
+   ],
+   [
+    "SINGLE",
+    65.0,
+    74.0,
+    10.0,
+    10,
+    15.8,
+    11.2,
+    null
+   ],
+   [
+    "NARROW_INT",
+    75.0,
+    194.0,
+    120.0,
+    120,
+    31.5,
+    26.6,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 65.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 10.0
+  },
+  "svs": {
+   "min": 0,
+   "max": 37,
+   "mean": 21.6
+  },
+  "product": "北斗",
+  "segment": {
+   "index": 2,
+   "t0_shift": 0.0,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 23.600000143051147
+   },
+   "source": "BESTNAVA",
+   "span": 194.0,
+   "discontinuity_before": 195.0
+  }
+ },
+ {
+  "file": "北云_cold03",
+  "byte_offset": 13063190,
+  "span": 139.6,
+  "n": 699,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 104,
+   "FINESTEERING": 595
+  },
+  "ptype_dist": {
+   "NONE": 35,
+   "SINGLE": 88,
+   "NARROW_FLOAT": 300,
+   "NARROW_INT": 268,
+   "PSRDIFF": 8
+  },
+  "cat_pct": {
+   "0": 5.0,
+   "1": 13.7,
+   "2": 42.9,
+   "3": 38.3
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 20.8,
+   "single": 7.0,
+   "float": 24.6,
+   "fixed": 84.6,
+   "stn": 17.4,
+   "sol": 7.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 7.0,
+   "single_to_float": 17.6,
+   "float_to_fixed": 60.0,
+   "diff_wait": 17.4,
+   "single_to_fixed": 77.6
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    7.0,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    17.4,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    20.8,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    24.6,
+    "首次 RTK 浮点解",
+    "#f59e0b"
+   ],
+   [
+    84.6,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    6.8,
+    7.0,
+    35,
+    10.9,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    7.0,
+    24.4,
+    17.6,
+    88,
+    16.7,
+    10.1,
+    10.1
+   ],
+   [
+    "NARROW_FLOAT",
+    24.6,
+    84.4,
+    60.0,
+    300,
+    26.5,
+    15.3,
+    15.3
+   ],
+   [
+    "NARROW_INT",
+    84.6,
+    138.0,
+    53.6,
+    268,
+    34.4,
+    28.1,
+    28.1
+   ],
+   [
+    "PSRDIFF",
+    138.2,
+    139.6,
+    1.6,
+    8,
+    30.5,
+    24.9,
+    24.9
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 7.0,
+   "single_to_float": 17.6,
+   "float_to_fixed": 60.0,
+   "single_to_fixed": null
+  },
+  "svs": {
+   "min": 0,
+   "max": 35,
+   "mean": 27.5
+  },
+  "product": "北云",
+  "segment": {
+   "index": 3,
+   "t0_shift": 20.00000011920929,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 20.00000011920929
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 159.6,
+   "discontinuity_before": 0.2
+  }
+ },
+ {
+  "file": "北斗_cold03",
+  "byte_offset": 3985324,
+  "span": 167.0,
+  "n": 168,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 168
+  },
+  "ptype_dist": {
+   "NONE": 30,
+   "SINGLE": 17,
+   "PSRDIFF": 5,
+   "NARROW_INT": 116
+  },
+  "cat_pct": {
+   "0": 17.9,
+   "1": 13.1,
+   "3": 69.0
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 30.0,
+   "float": null,
+   "fixed": 52.0,
+   "stn": 47.0,
+   "sol": 31.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 30.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 22.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    30.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    47.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    52.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    29.0,
+    30.0,
+    30,
+    1.7,
+    0,
+    null
+   ],
+   [
+    "SINGLE",
+    30.0,
+    46.0,
+    17.0,
+    17,
+    12.6,
+    8.4,
+    null
+   ],
+   [
+    "PSRDIFF",
+    47.0,
+    51.0,
+    5.0,
+    5,
+    16.6,
+    14.2,
+    null
+   ],
+   [
+    "NARROW_INT",
+    52.0,
+    167.0,
+    116.0,
+    116,
+    32.0,
+    27.7,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 30.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 22.0
+  },
+  "svs": {
+   "min": 0,
+   "max": 38,
+   "mean": 24.1
+  },
+  "product": "北斗",
+  "segment": {
+   "index": 3,
+   "t0_shift": 0.0,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 20.00000011920929
+   },
+   "source": "BESTNAVA",
+   "span": 167.0,
+   "discontinuity_before": 181.0
+  }
+ },
+ {
+  "file": "北云_cold04",
+  "byte_offset": 20078032,
+  "span": 195.6,
+  "n": 979,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 239,
+   "FINESTEERING": 740
+  },
+  "ptype_dist": {
+   "NONE": 171,
+   "SINGLE": 42,
+   "NARROW_FLOAT": 80,
+   "NARROW_INT": 678,
+   "PSRDIFF": 8
+  },
+  "cat_pct": {
+   "0": 17.5,
+   "1": 5.1,
+   "2": 8.2,
+   "3": 69.3
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 47.8,
+   "single": 34.2,
+   "float": 42.6,
+   "fixed": 58.6,
+   "stn": 41.6,
+   "sol": 34.2
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 34.2,
+   "single_to_float": 8.4,
+   "float_to_fixed": 16.0,
+   "diff_wait": 41.6,
+   "single_to_fixed": 24.4
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    34.2,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    41.6,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    42.6,
+    "首次 RTK 浮点解",
+    "#f59e0b"
+   ],
+   [
+    47.8,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    58.6,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    34.0,
+    34.2,
+    171,
+    10.7,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    34.2,
+    42.4,
+    8.4,
+    42,
+    19.8,
+    10.9,
+    10.9
+   ],
+   [
+    "NARROW_FLOAT",
+    42.6,
+    58.4,
+    16.0,
+    80,
+    22.9,
+    13.1,
+    13.1
+   ],
+   [
+    "NARROW_INT",
+    58.6,
+    194.0,
+    135.6,
+    678,
+    30.7,
+    23.2,
+    23.2
+   ],
+   [
+    "PSRDIFF",
+    194.2,
+    195.6,
+    1.6,
+    8,
+    28.1,
+    22.9,
+    22.9
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 34.2,
+   "single_to_float": 8.4,
+   "float_to_fixed": 16.0,
+   "single_to_fixed": null
+  },
+  "svs": {
+   "min": 0,
+   "max": 34,
+   "mean": 26.1
+  },
+  "product": "北云",
+  "segment": {
+   "index": 4,
+   "t0_shift": 20.40000009536743,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 20.40000009536743
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 216.0,
+   "discontinuity_before": 0.2
+  }
+ },
+ {
+  "file": "北斗_cold04",
+  "byte_offset": 6677787,
+  "span": 224.0,
+  "n": 225,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 225
+  },
+  "ptype_dist": {
+   "NONE": 42,
+   "SINGLE": 10,
+   "PSRDIFF": 15,
+   "NARROW_INT": 158
+  },
+  "cat_pct": {
+   "0": 18.7,
+   "1": 11.1,
+   "3": 70.2
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 42.0,
+   "float": null,
+   "fixed": 67.0,
+   "stn": 52.0,
+   "sol": 42.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 42.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 25.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    42.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    52.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    67.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    41.0,
+    42.0,
+    42,
+    1.7,
+    0,
+    null
+   ],
+   [
+    "SINGLE",
+    42.0,
+    51.0,
+    10.0,
+    10,
+    11,
+    8.3,
+    null
+   ],
+   [
+    "PSRDIFF",
+    52.0,
+    66.0,
+    15.0,
+    15,
+    17.1,
+    13.3,
+    null
+   ],
+   [
+    "NARROW_INT",
+    67.0,
+    224.0,
+    158.0,
+    158,
+    33.4,
+    28.0,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 42.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 25.0
+  },
+  "svs": {
+   "min": 0,
+   "max": 39,
+   "mean": 25.4
+  },
+  "product": "北斗",
+  "segment": {
+   "index": 4,
+   "t0_shift": 0.0,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 20.40000009536743
+   },
+   "source": "BESTNAVA",
+   "span": 224.0,
+   "discontinuity_before": 180.0
+  }
+ },
+ {
+  "file": "北云_cold05",
+  "byte_offset": 29407227,
+  "span": 106.6,
+  "n": 534,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 200,
+   "FINESTEERING": 334
+  },
+  "ptype_dist": {
+   "NONE": 43,
+   "SINGLE": 21,
+   "NARROW_FLOAT": 50,
+   "NARROW_INT": 412,
+   "PSRDIFF": 8
+  },
+  "cat_pct": {
+   "0": 8.1,
+   "1": 5.4,
+   "2": 9.4,
+   "3": 77.2
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 40.0,
+   "single": 8.6,
+   "float": 12.8,
+   "fixed": 22.8,
+   "stn": 10.0,
+   "sol": 8.6
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 8.6,
+   "single_to_float": 4.2,
+   "float_to_fixed": 10.0,
+   "diff_wait": 10.0,
+   "single_to_fixed": 14.2
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    8.6,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    10.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    12.8,
+    "首次 RTK 浮点解",
+    "#f59e0b"
+   ],
+   [
+    22.8,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ],
+   [
+    40.0,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    8.4,
+    8.6,
+    43,
+    8.0,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    8.6,
+    12.6,
+    4.2,
+    21,
+    14.7,
+    11.7,
+    11.7
+   ],
+   [
+    "NARROW_FLOAT",
+    12.8,
+    22.6,
+    10.0,
+    50,
+    19.2,
+    17.6,
+    17.6
+   ],
+   [
+    "NARROW_INT",
+    22.8,
+    105.0,
+    82.4,
+    412,
+    29.5,
+    23.6,
+    23.6
+   ],
+   [
+    "PSRDIFF",
+    105.2,
+    106.6,
+    1.6,
+    8,
+    28.9,
+    21.4,
+    21.4
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 8.6,
+   "single_to_float": 4.2,
+   "float_to_fixed": 10.0,
+   "single_to_fixed": null
+  },
+  "svs": {
+   "min": 0,
+   "max": 35,
+   "mean": 26.2
+  },
+  "product": "北云",
+  "segment": {
+   "index": 5,
+   "t0_shift": 31.40000009536743,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 31.40000009536743
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 138.0,
+   "discontinuity_before": 0.2
+  }
+ },
+ {
+  "file": "北斗_cold05",
+  "byte_offset": 10370310,
+  "span": 144.0,
+  "n": 145,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 145
+  },
+  "ptype_dist": {
+   "NONE": 41,
+   "SINGLE": 6,
+   "PSRDIFF": 12,
+   "NARROW_FLOAT": 5,
+   "NARROW_INT": 81
+  },
+  "cat_pct": {
+   "0": 28.3,
+   "1": 12.4,
+   "2": 3.4,
+   "3": 55.9
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 41.0,
+   "float": 59.0,
+   "fixed": 64.0,
+   "stn": 47.0,
+   "sol": 41.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 41.0,
+   "single_to_float": 18.0,
+   "float_to_fixed": 5.0,
+   "diff_wait": null,
+   "single_to_fixed": 23.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    41.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    47.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    59.0,
+    "首次 RTK 浮点解",
+    "#f59e0b"
+   ],
+   [
+    64.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    40.0,
+    41.0,
+    41,
+    2.8,
+    0,
+    null
+   ],
+   [
+    "SINGLE",
+    41.0,
+    46.0,
+    6.0,
+    6,
+    14,
+    10.7,
+    null
+   ],
+   [
+    "PSRDIFF",
+    47.0,
+    58.0,
+    12.0,
+    12,
+    15.2,
+    9.6,
+    null
+   ],
+   [
+    "NARROW_FLOAT",
+    59.0,
+    63.0,
+    5.0,
+    5,
+    18.8,
+    15.8,
+    null
+   ],
+   [
+    "NARROW_INT",
+    64.0,
+    144.0,
+    81.0,
+    81,
+    31.0,
+    25.7,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 41.0,
+   "single_to_float": 18.0,
+   "float_to_fixed": 5.0,
+   "single_to_fixed": null
+  },
+  "svs": {
+   "min": 0,
+   "max": 36,
+   "mean": 20.6
+  },
+  "product": "北斗",
+  "segment": {
+   "index": 5,
+   "t0_shift": 0.0,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 31.40000009536743
+   },
+   "source": "BESTNAVA",
+   "span": 144.0,
+   "discontinuity_before": 160.0
+  }
+ },
+ {
+  "file": "北云_cold06",
+  "byte_offset": 34904134,
+  "span": 158.6,
+  "n": 794,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 139,
+   "FINESTEERING": 655
+  },
+  "ptype_dist": {
+   "NONE": 51,
+   "SINGLE": 22,
+   "NARROW_FLOAT": 55,
+   "NARROW_INT": 658,
+   "PSRDIFF": 8
+  },
+  "cat_pct": {
+   "0": 6.4,
+   "1": 3.8,
+   "2": 6.9,
+   "3": 82.9
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 27.8,
+   "single": 10.2,
+   "float": 14.6,
+   "fixed": 25.6,
+   "stn": 11.6,
+   "sol": 10.2
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 10.2,
+   "single_to_float": 4.4,
+   "float_to_fixed": 11.0,
+   "diff_wait": 11.6,
+   "single_to_fixed": 15.4
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    10.2,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    11.6,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    14.6,
+    "首次 RTK 浮点解",
+    "#f59e0b"
+   ],
+   [
+    25.6,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ],
+   [
+    27.8,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    10.0,
+    10.2,
+    51,
+    6.6,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    10.2,
+    14.4,
+    4.4,
+    22,
+    14.7,
+    12.2,
+    12.2
+   ],
+   [
+    "NARROW_FLOAT",
+    14.6,
+    25.4,
+    11.0,
+    55,
+    19,
+    18,
+    18
+   ],
+   [
+    "NARROW_INT",
+    25.6,
+    157.0,
+    131.6,
+    658,
+    29.4,
+    26.2,
+    26.2
+   ],
+   [
+    "PSRDIFF",
+    157.2,
+    158.6,
+    1.6,
+    8,
+    27.2,
+    24.9,
+    24.9
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 10.2,
+   "single_to_float": 4.4,
+   "float_to_fixed": 11.0,
+   "single_to_fixed": null
+  },
+  "svs": {
+   "min": 0,
+   "max": 33,
+   "mean": 26.7
+  },
+  "product": "北云",
+  "segment": {
+   "index": 6,
+   "t0_shift": 35.60000014305115,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 35.60000014305115
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 194.2,
+   "discontinuity_before": 0.2
+  }
+ },
+ {
+  "file": "北斗_cold06",
+  "byte_offset": 12377127,
+  "span": 203.0,
+  "n": 204,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 204
+  },
+  "ptype_dist": {
+   "NONE": 56,
+   "SINGLE": 3,
+   "PSRDIFF": 8,
+   "NARROW_INT": 137
+  },
+  "cat_pct": {
+   "0": 27.5,
+   "1": 5.4,
+   "3": 67.2
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 56.0,
+   "float": null,
+   "fixed": 67.0,
+   "stn": 59.0,
+   "sol": 56.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 56.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 11.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    56.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    59.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    67.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    55.0,
+    56.0,
+    56,
+    2.4,
+    0,
+    null
+   ],
+   [
+    "SINGLE",
+    56.0,
+    58.0,
+    3.0,
+    3,
+    10.7,
+    6,
+    null
+   ],
+   [
+    "PSRDIFF",
+    59.0,
+    66.0,
+    8.0,
+    8,
+    15.1,
+    10.4,
+    null
+   ],
+   [
+    "NARROW_INT",
+    67.0,
+    203.0,
+    137.0,
+    137,
+    31.5,
+    27.1,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 56.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 11.0
+  },
+  "svs": {
+   "min": 0,
+   "max": 36,
+   "mean": 22.5
+  },
+  "product": "北斗",
+  "segment": {
+   "index": 6,
+   "t0_shift": 0.0,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 35.60000014305115
+   },
+   "source": "BESTNAVA",
+   "span": 203.0,
+   "discontinuity_before": 212.0
+  }
+ },
+ {
+  "file": "北云_cold07",
+  "byte_offset": 43029524,
+  "span": 174.4,
+  "n": 873,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 193,
+   "FINESTEERING": 680
+  },
+  "ptype_dist": {
+   "NONE": 95,
+   "SINGLE": 32,
+   "NARROW_FLOAT": 40,
+   "NARROW_INT": 699,
+   "PSRDIFF": 7
+  },
+  "cat_pct": {
+   "0": 10.9,
+   "1": 4.5,
+   "2": 4.6,
+   "3": 80.1
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 38.6,
+   "single": 19.0,
+   "float": 25.4,
+   "fixed": 33.4,
+   "stn": 20.4,
+   "sol": 19.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 19.0,
+   "single_to_float": 6.4,
+   "float_to_fixed": 8.0,
+   "diff_wait": 20.4,
+   "single_to_fixed": 14.4
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    19.0,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    20.4,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    25.4,
+    "首次 RTK 浮点解",
+    "#f59e0b"
+   ],
+   [
+    33.4,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ],
+   [
+    38.6,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    18.8,
+    19.0,
+    95,
+    5.1,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    19.0,
+    25.2,
+    6.4,
+    32,
+    18.6,
+    14.1,
+    14.1
+   ],
+   [
+    "NARROW_FLOAT",
+    25.4,
+    33.2,
+    8.0,
+    40,
+    22,
+    21,
+    21
+   ],
+   [
+    "NARROW_INT",
+    33.4,
+    173.0,
+    139.8,
+    699,
+    29.2,
+    27.7,
+    27.7
+   ],
+   [
+    "PSRDIFF",
+    173.2,
+    174.4,
+    1.4,
+    7,
+    27,
+    23.9,
+    23.9
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 19.0,
+   "single_to_float": 6.4,
+   "float_to_fixed": 8.0,
+   "single_to_fixed": null
+  },
+  "svs": {
+   "min": 0,
+   "max": 32,
+   "mean": 25.8
+  },
+  "product": "北云",
+  "segment": {
+   "index": 7,
+   "t0_shift": 18.600000143051147,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 18.600000143051147
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 193.0,
+   "discontinuity_before": 0.2
+  }
+ },
+ {
+  "file": "北斗_cold07",
+  "byte_offset": 15418237,
+  "span": 201.0,
+  "n": 202,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 202
+  },
+  "ptype_dist": {
+   "NONE": 44,
+   "SINGLE": 5,
+   "PSRDIFF": 15,
+   "NARROW_INT": 138
+  },
+  "cat_pct": {
+   "0": 21.8,
+   "1": 9.9,
+   "3": 68.3
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 44.0,
+   "float": null,
+   "fixed": 64.0,
+   "stn": 48.0,
+   "sol": 44.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 44.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 20.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    44.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    48.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    64.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    43.0,
+    44.0,
+    44,
+    2.8,
+    0,
+    null
+   ],
+   [
+    "SINGLE",
+    44.0,
+    47.0,
+    4.0,
+    4,
+    9.2,
+    7,
+    null
+   ],
+   [
+    "PSRDIFF",
+    48.0,
+    53.0,
+    6.0,
+    6,
+    10.7,
+    6.5,
+    null
+   ],
+   [
+    "SINGLE",
+    54.0,
+    54.0,
+    1.0,
+    1,
+    16,
+    8,
+    null
+   ],
+   [
+    "PSRDIFF",
+    55.0,
+    63.0,
+    9.0,
+    9,
+    18.6,
+    13.4,
+    null
+   ],
+   [
+    "NARROW_INT",
+    64.0,
+    201.0,
+    138.0,
+    138,
+    32.7,
+    28.6,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 44.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 20.0
+  },
+  "svs": {
+   "min": 0,
+   "max": 37,
+   "mean": 24.3
+  },
+  "product": "北斗",
+  "segment": {
+   "index": 7,
+   "t0_shift": 0.0,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 18.600000143051147
+   },
+   "source": "BESTNAVA",
+   "span": 201.0,
+   "discontinuity_before": 192.0
+  }
+ },
+ {
+  "file": "北云_cold08",
+  "byte_offset": 51450817,
+  "span": 145.2,
+  "n": 727,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 94,
+   "FINESTEERING": 633
+  },
+  "ptype_dist": {
+   "NONE": 35,
+   "SINGLE": 28,
+   "NARROW_FLOAT": 35,
+   "NARROW_INT": 622,
+   "PSRDIFF": 7
+  },
+  "cat_pct": {
+   "0": 4.8,
+   "1": 4.8,
+   "2": 4.8,
+   "3": 85.6
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 18.8,
+   "single": 7.0,
+   "float": 12.6,
+   "fixed": 19.6,
+   "stn": 10.6,
+   "sol": 7.0
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 7.0,
+   "single_to_float": 5.6,
+   "float_to_fixed": 7.0,
+   "diff_wait": 10.6,
+   "single_to_fixed": 12.6
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    7.0,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    10.6,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    12.6,
+    "首次 RTK 浮点解",
+    "#f59e0b"
+   ],
+   [
+    18.8,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ],
+   [
+    19.6,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    6.8,
+    7.0,
+    35,
+    9.1,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    7.0,
+    12.4,
+    5.6,
+    28,
+    16.4,
+    13.2,
+    13.2
+   ],
+   [
+    "NARROW_FLOAT",
+    12.6,
+    19.4,
+    7.0,
+    35,
+    20.2,
+    18.2,
+    18.2
+   ],
+   [
+    "NARROW_INT",
+    19.6,
+    143.8,
+    124.4,
+    622,
+    29.5,
+    27.6,
+    27.6
+   ],
+   [
+    "PSRDIFF",
+    144.0,
+    145.2,
+    1.4,
+    7,
+    27.7,
+    25.9,
+    25.9
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 7.0,
+   "single_to_float": 5.6,
+   "float_to_fixed": 7.0,
+   "single_to_fixed": null
+  },
+  "svs": {
+   "min": 0,
+   "max": 33,
+   "mean": 27.6
+  },
+  "product": "北云",
+  "segment": {
+   "index": 8,
+   "t0_shift": 30.600000143051147,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 30.600000143051147
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 175.8,
+   "discontinuity_before": 0.2
+  }
+ },
+ {
+  "file": "北斗_cold08",
+  "byte_offset": 18822578,
+  "span": 181.0,
+  "n": 182,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 182
+  },
+  "ptype_dist": {
+   "NONE": 38,
+   "SINGLE": 9,
+   "PSRDIFF": 5,
+   "NARROW_INT": 130
+  },
+  "cat_pct": {
+   "0": 20.9,
+   "1": 7.7,
+   "3": 71.4
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 38.0,
+   "float": null,
+   "fixed": 52.0,
+   "stn": 47.0,
+   "sol": 39.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 38.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 14.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    38.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    47.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    52.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    37.0,
+    38.0,
+    38,
+    1.2,
+    0,
+    null
+   ],
+   [
+    "SINGLE",
+    38.0,
+    46.0,
+    9.0,
+    9,
+    12.6,
+    8.7,
+    null
+   ],
+   [
+    "PSRDIFF",
+    47.0,
+    51.0,
+    5.0,
+    5,
+    16.2,
+    13,
+    null
+   ],
+   [
+    "NARROW_INT",
+    52.0,
+    181.0,
+    130.0,
+    130,
+    32.3,
+    28.4,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 38.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 14.0
+  },
+  "svs": {
+   "min": 0,
+   "max": 37,
+   "mean": 24.4
+  },
+  "product": "北斗",
+  "segment": {
+   "index": 8,
+   "t0_shift": 0.0,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 30.600000143051147
+   },
+   "source": "BESTNAVA",
+   "span": 181.0,
+   "discontinuity_before": 183.0
+  }
+ },
+ {
+  "file": "北云_cold09",
+  "byte_offset": 59046544,
+  "span": 175.0,
+  "n": 876,
+  "rate": 5.0,
+  "nominal": 0.2,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "tstat_dist": {
+   "COARSE": 108,
+   "FINESTEERING": 768
+  },
+  "ptype_dist": {
+   "NONE": 14,
+   "SINGLE": 53,
+   "NARROW_FLOAT": 10,
+   "NARROW_INT": 799
+  },
+  "cat_pct": {
+   "0": 1.6,
+   "1": 6.1,
+   "2": 1.1,
+   "3": 91.2
+  },
+  "first": {
+   "valid": 0.0,
+   "coarse": 0.0,
+   "fine": 21.6,
+   "single": 2.8,
+   "float": 13.4,
+   "fixed": 15.4,
+   "stn": 12.0,
+   "sol": 2.6
+  },
+  "stages": {
+   "no_time": 0.0,
+   "time_to_single": 2.8,
+   "single_to_float": 10.6,
+   "float_to_fixed": 2.0,
+   "diff_wait": 12.0,
+   "single_to_fixed": 12.6
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "获得卫星时间（时标脱离UNKNOWN）",
+    "#0ea5e9"
+   ],
+   [
+    2.8,
+    "首次单点类解",
+    "#3b82f6"
+   ],
+   [
+    12.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    13.4,
+    "首次 RTK 浮点解",
+    "#f59e0b"
+   ],
+   [
+    15.4,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ],
+   [
+    21.6,
+    "时标进入 FINESTEERING",
+    "#6b7280"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    2.6,
+    2.8,
+    14,
+    9.4,
+    0,
+    0
+   ],
+   [
+    "SINGLE",
+    2.8,
+    13.2,
+    10.6,
+    53,
+    18.1,
+    15.8,
+    15.8
+   ],
+   [
+    "NARROW_FLOAT",
+    13.4,
+    15.2,
+    2.0,
+    10,
+    20.6,
+    19,
+    19
+   ],
+   [
+    "NARROW_INT",
+    15.4,
+    175.0,
+    159.8,
+    799,
+    31.8,
+    29.2,
+    29.2
+   ]
+  ],
+  "stages_express": {
+   "no_time": 0.0,
+   "time_to_single": 2.8,
+   "single_to_float": 10.6,
+   "float_to_fixed": 2.0,
+   "single_to_fixed": null
+  },
+  "svs": {
+   "min": 0,
+   "max": 35,
+   "mean": 30.4
+  },
+  "product": "北云",
+  "segment": {
+   "index": 9,
+   "t0_shift": 30.800000071525574,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 30.800000071525574
+   },
+   "source": "BESTGNSSPOSA",
+   "span": 205.8,
+   "discontinuity_before": 0.2
+  }
+ },
+ {
+  "file": "北斗_cold09",
+  "byte_offset": 21927581,
+  "span": 216.0,
+  "n": 217,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 0,
+  "counts": {},
+  "other": {},
+  "recovery": {
+   "valid_messages": 0,
+   "embedded": 0,
+   "checksum_failed": 0,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 217
+  },
+  "ptype_dist": {
+   "NONE": 39,
+   "SINGLE": 8,
+   "PSRDIFF": 2,
+   "NARROW_INT": 168
+  },
+  "cat_pct": {
+   "0": 18.0,
+   "1": 4.6,
+   "3": 77.4
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 39.0,
+   "float": null,
+   "fixed": 49.0,
+   "stn": 47.0,
+   "sol": 40.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 39.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 10.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    39.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    47.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    49.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "NONE",
+    0.0,
+    38.0,
+    39.0,
+    39,
+    2.2,
+    0,
+    null
+   ],
+   [
+    "SINGLE",
+    39.0,
+    46.0,
+    8.0,
+    8,
+    13.5,
+    9.9,
+    null
+   ],
+   [
+    "PSRDIFF",
+    47.0,
+    48.0,
+    2.0,
+    2,
+    15,
+    14.5,
+    null
+   ],
+   [
+    "NARROW_INT",
+    49.0,
+    216.0,
+    168.0,
+    168,
+    33.6,
+    29.6,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 39.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 10.0
+  },
+  "svs": {
+   "min": 0,
+   "max": 39,
+   "mean": 27.0
+  },
+  "product": "北斗",
+  "segment": {
+   "index": 9,
+   "t0_shift": 0.0,
+   "valid_offsets": {
+    "beidou": 0.0,
+    "beiyun": 30.800000071525574
+   },
+   "source": "BESTNAVA",
+   "span": 216.0,
+   "discontinuity_before": 164.0
+  }
+ }
+]
