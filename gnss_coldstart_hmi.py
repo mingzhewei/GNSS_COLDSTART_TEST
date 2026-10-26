@@ -327,6 +327,48 @@ class ColdstartHMI:
                     self.ui_queue.put(("log", f"室内模式要求每个产品各选 1 个连续录制文件（各含 N 次冷启动，按序号配对）。{names} 文件数不为 1。\n", "error"))
                     self.ui_queue.put(("done", ""))
                     return
+                # 北斗×北云室内配对：使用北斗专用北云基准模式；北云+华测
+                # 仍走原 indoor_coldstart.py 序号配对路径，不引入新逻辑。
+                if split and set(groups) == {"beidou", "beiyun"}:
+                    beidou_path = groups["beidou"][0]
+                    reference_path = groups["beiyun"][0]
+                    sub_out = os.path.join(out_dir, "beidou")
+                    os.makedirs(sub_out, exist_ok=True)
+                    script = BASE_DIR / PRODUCTS["beidou"].script
+                    cmd = [sys.executable, "-X", "utf8", str(script), sub_out,
+                           "--split", "--reference-beiyun", reference_path,
+                           beidou_path]
+                    self.ui_queue.put(
+                        ("log", f"--- 室内北斗×北云（北云基准）：{os.path.basename(beidou_path)} + "
+                                f"{os.path.basename(reference_path)} → {sub_out} ---\n", "info"))
+                    env = os.environ.copy()
+                    env["PYTHONUNBUFFERED"] = "1"
+                    env["PYTHONIOENCODING"] = "utf-8"
+                    creationflags = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
+                    try:
+                        process = subprocess.Popen(
+                            cmd, cwd=str(BASE_DIR), stdout=subprocess.PIPE,
+                            stderr=subprocess.STDOUT, text=True, encoding="utf-8",
+                            errors="replace", env=env,
+                            creationflags=creationflags, bufsize=1)
+                    except Exception as exc:
+                        self.ui_queue.put(("log", f"启动分析进程失败：{exc}\n", "error"))
+                        self.ui_queue.put(("done", ""))
+                        return
+                    assert process.stdout is not None
+                    for line in process.stdout:
+                        self.ui_queue.put(("log", line, "info"))
+                    rc = process.wait()
+                    report = os.path.join(sub_out, "report.html")
+                    if rc == 0 and os.path.isfile(report):
+                        self.ui_queue.put(("log", f"分析完成：{report}\n", "success"))
+                        reports.append(report)
+                        if auto_open:
+                            open_path(report)
+                    else:
+                        self.ui_queue.put(("log", "室内北斗×北云分析失败。\n", "error"))
+                    self.ui_queue.put(("done", reports[-1] if reports else ""))
+                    return
                 ordered = [(k, groups[k][0]) for k in PRODUCTS if k in groups]
                 script = BASE_DIR / "indoor_coldstart.py"
                 cmd = [sys.executable, "-X", "utf8", str(script), out_dir]

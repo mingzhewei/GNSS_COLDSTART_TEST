@@ -45,11 +45,17 @@ import json
 import base64
 import collections
 import statistics
+from pathlib import Path
 import webbrowser
 
-from coldstart_split import split_beidou
+from coldstart_split import split_beidou, split_beiyun
 from gnss_recovery import (RecoveryResult, recover_ascii_messages,
                            parse_beidou_positions)
+
+# Paired UM980/BeiYun matching tolerances.  These are engineering thresholds
+# for this synchronized cold-start workflow, not vendor protocol constants.
+PAIRED_MATCH_S = 30.0
+PAIRED_MATCH_EXTENDED_S = 90.0
 
 # ----------------------------------------------------------------------
 # 路径与常量（相对脚本所在目录解析，便于迁移）
@@ -533,7 +539,9 @@ __STAGEBAR__
 <div class="note">"无时间"= 0 到时标脱离 UNKNOWN（时标未丢失的段为 0）；"时间→单点"= 有卫星时间到第一个单点解（时标未丢失段自启动起算，即星历捕获时间）；"单点→浮点"= 到第一个 RTK 浮点解；"浮点→固定"= 到第一个 RTK 固定解。条宽按时长比例。</div>
 <div class="imgcard"><img src="__IMG2__" alt="冷启动耗时分解"></div>
 
-<h2>四、定位类型分段统计</h2>
+<h2>四、北斗-北云配对审计</h2>
+__PAIRAUDIT__
+<h2>五、定位类型分段统计</h2>
 __SAMP__
 <div class="imgcard"><img src="__IMG3__" alt="卫星数量时间轴"></div>
 
@@ -619,8 +627,44 @@ def build_outputs(data, imgs, src_desc=None):
                             f"<td>{svs}</td><td>{soln}</td><td>{MV(multi)}</td></tr>")
         samp_html.append(f"<h3>{d['file']}</h3>"
                          f"<div class='card'><table>{''.join(seg_rows)}</table></div>")
+
     samp = ''.join(samp_html)
 
+    audits = [d['paired_match'] for d in data if 'paired_match' in d]
+    if audits:
+        pair_rows = ['<tr><th>北云段</th><th>北云首帧时间</th><th>北斗候选段</th>'
+                     '<th>北斗首帧时间</th><th>时间差(s)</th><th>匹配类型</th></tr>']
+        for a in audits:
+            pair_rows.append(
+                f"<tr><td>{a['reference_index']}</td><td class='mono'>{a['reference_start_time']}</td>"
+                f"<td>{a.get('beidou_segment_index')}</td>"
+                f"<td class='mono'>{a.get('beidou_start_time')}</td>"
+                f"<td class='mono'>{a.get('time_delta_s')}</td>"
+                f"<td>{a['match_type']}</td></tr>")
+        pair_note = ('北云 cold 段为主切割/编号基准；±30s 为普通匹配，±90s 为扩展匹配；'
+                     '北云时间重置段使用段内首个有效 GPS 时间或后续段有效时间做工程重建。'
+                     '边界仍取北斗 BESTNAVA 自身首末帧。卫星数骤降阈值'
+                     '（下降≥10颗或首帧≤上一段末尾70%）为工程判据，不是厂商协议常数。')
+        pair_audit_html = ('<div class="card"><table>' + ''.join(pair_rows) +
+                           '</table></div><div class="note">' + pair_note + '</div>')
+    else:
+        pair_audit_html = ''
+
+    if audits:
+        pair_md = ['| 北云段 | 北云首帧时间 | 北斗候选段 | 北斗首帧时间 | 时间差(s) | 匹配类型 |',
+                   '|---:|---:|---:|---:|---:|---|']
+        for a in audits:
+            pair_md.append(f"| {a['reference_index']} | {a['reference_start_time']} "
+                           f"| {a.get('beidou_segment_index')} | {a.get('beidou_start_time')} "
+                           f"| {a.get('time_delta_s')} | {a['match_type']} |")
+        pair_md.append('')
+        pair_md.append('> 北云 cold 段为主切割/编号基准；±30s 为普通匹配，±90s 为扩展匹配；'
+                       '北云时间重置段使用段内首个有效 GPS 时间或后续段有效时间做工程重建。'
+                       '边界仍取北斗 BESTNAVA 自身首末帧。卫星数骤降阈值'
+                       '（下降≥10颗或首帧≤上一段末尾70%）为工程判据，不是厂商协议常数。')
+        pair_audit_md = '\n'.join(pair_md)
+    else:
+        pair_audit_md = ''
 
     html = (HTML.replace('__CSS__', CSS)
             .replace('__MANUAL__', MANUAL)
@@ -629,6 +673,7 @@ def build_outputs(data, imgs, src_desc=None):
             .replace('__KEYTIME__', keytime)
             .replace('__STAGEBAR__', stagebar)
             .replace('__SAMP__', samp)
+            .replace('__PAIRAUDIT__', pair_audit_html)
             .replace('__IMG1__', img64(imgs['keytime']))
             .replace('__IMG2__', img64(imgs['stages']))
             .replace('__IMG3__', img64(imgs['svs']))
@@ -714,7 +759,11 @@ def build_outputs(data, imgs, src_desc=None):
     md.append('')
     md.append(f"![冷启动耗时分解]({os.path.basename(imgs['stages'])})")
     md.append('')
-    md.append('## 四、定位类型分段统计')
+    md.append('## 四、北斗-北云配对审计')
+    md.append('')
+    md.append('__PAIRAUDIT_MD__')
+    md.append('')
+    md.append('## 五、定位类型分段统计')
     md.append('')
     for d in data:
         md.append(f"### `{d['file']}`")
@@ -739,11 +788,162 @@ def build_outputs(data, imgs, src_desc=None):
     md.append('| 无解段解算状态 | Sol Status = INSUFFICIENT_OBS / NO_CONVERGENCE / COV_TRACE / VARIANCE | 表 0-6 | 观测数据不足 / 无法收敛 / 协方差迹超限 / 方差超限；SOL_COMPUTED=已解出 |')
     md.append('| 跟踪星 / 解算星 | #SVs / #solnSVs | 表 7-70 字段 15/16 | 跟踪卫星数 / 解算卫星数 |')
     md.append('| 多频解算 | 不适用（输出“—”） | 表 7-70 字段 17-19 | BESTNAV 无 #solnMultiSVs，17-19 为 Reserved，不解析保留字段 |')
-    md.append('| 冷启动段判定 | 解状态≠SOL_COMPUTED + 定位类型 NONE/单点类 + 无基站 | 表 0-5/0-6/7-70 | UM980 断电后时标可由内部电池保持（FINE/真实周），时标不作启动必要条件（用户确认口径 2026-10-23） |')
+    md.append('| 冷启动段判定 | 无基站 + 定位类型 NONE/单点类 + 差分/固定尾段 + 卫星数骤降 | 表 0-5/0-6/7-70 | UM980 可保持 FINE 时标并很快输出 SINGLE，因此 SOL_COMPUTED 不作为排除条件。卫星数骤降为工程判据；同步北云日志另提供主切割/编号基准 |')
     md.append('')
     md.append('> 时间轴为录制经过时间（t=0 为各日志首条记录）；若出现冷启动 GPS 周重定标（相邻两条报头时间差 >3600s），按时间连续处理（间隔按标称周期计）。')
-    return html, '\n'.join(md)
+    md_text = '\n'.join(md).replace('__PAIRAUDIT_MD__', pair_audit_md)
+    return html, md_text
 
+
+
+def _valid_absolute_time(value: float) -> bool:
+    """Reject protocol/default-week timestamps far outside the true GPS epoch."""
+    return 1_400_000_000.0 <= value < 1_500_000_000.0
+
+
+def _segment_frames(rows, segment):
+    return [r for r in rows if segment.start <= r.start < segment.end]
+
+
+def _first_valid_time(frames):
+    return next((r.t for r in frames if _valid_absolute_time(r.t)), None)
+
+
+def _beidou_startup_evidence(frames, previous_frames):
+    """Evaluate UM980 restart evidence without changing shared segmentation.
+
+    The evidence is based on N4 tables 0-5, 0-6 and 7-70.  SOL_COMPUTED is
+    allowed because UM980 can retain its battery-backed clock and produce a
+    SINGLE solution immediately after a power cycle.  The satellite-drop rule
+    is an engineering threshold from synchronized 1026 data, not a protocol
+    constant.
+    """
+    if not frames:
+        return False, {}
+    first = frames[0]
+    if first.pt not in ('NONE', 'SINGLE', 'PSRDIFF', 'SPPDIFF'):
+        return False, {}
+    if first.stn not in ('', '0'):
+        return False, {}
+    has_differential_tail = any(
+        r.pt in ('NARROW_INT', 'WIDE_INT', 'L1_INT', 'NARROW_FLOAT',
+                 'L1_FLOAT', 'PSRDIFF', 'SPPDIFF') or r.stn not in ('', '0')
+        for r in frames
+    )
+    prior_svs = previous_frames[-1].svs if previous_frames else None
+    svs_drop = None if prior_svs is None else prior_svs - first.svs
+    svs_evidence = svs_drop is not None and (
+        svs_drop >= 10 or first.svs <= 0.70 * prior_svs
+    )
+    evidence = dict(
+        first_sol=first.sol,
+        first_pos_type=first.pt,
+        first_stn=first.stn,
+        first_svs=first.svs,
+        previous_svs=prior_svs,
+        svs_drop=svs_drop,
+        has_differential_tail=has_differential_tail,
+    )
+    return (has_differential_tail and svs_evidence), evidence
+
+
+def _beidou_candidate_segments(segments, rows, min_frames, min_duration_s):
+    """Return UM980 restart candidates in recording order."""
+    candidates = []
+    previous = None
+    for seg in segments:
+        frames = _segment_frames(rows, seg)
+        evidence_ok, evidence = _beidou_startup_evidence(frames, previous)
+        if (seg.discontinuity_before > 0 and len(frames) >= min_frames and
+                seg.span >= min_duration_s and evidence_ok):
+            candidates.append((seg, frames, evidence))
+        if frames:
+            previous = frames
+    return candidates
+
+
+def _paired_beidou_segments(raw, reference_path, min_frames,
+                            min_duration_s, include_unmatched_reference):
+    """Pair UM980 candidates to BeiYun cold-start segments."""
+    reference_segments, _source, reference_rows, _nominal, _recovery = split_beiyun(
+        Path(reference_path).read_bytes(), min_frames=min_frames,
+        min_duration_s=min_duration_s
+    )
+    reference_cold = [s for s in reference_segments if s.is_coldstart]
+    segments, source, rows, _nominal, recovery = split_beidou(
+        raw, min_frames=min_frames, min_duration_s=min_duration_s
+    )
+    candidates = _beidou_candidate_segments(
+        segments, rows, min_frames, min_duration_s
+    )
+    used = set()
+    matched = []
+    audit = []
+    for ref_index, ref_seg in enumerate(reference_cold, 1):
+        ref_frames = _segment_frames(reference_rows, ref_seg)
+        ref_time = _first_valid_time(ref_frames)
+        time_reconstructed = ref_time is None
+        if time_reconstructed:
+            next_times = [
+                _first_valid_time(_segment_frames(reference_rows, s))
+                for s in reference_cold[ref_index:]
+            ]
+            next_times = [t for t in next_times if t is not None]
+            if next_times:
+                ref_time = min(next_times) - 1.0
+        if ref_time is None:
+            audit.append(dict(
+                reference_index=ref_index,
+                reference_start_time=None,
+                match_status='reference_time_unavailable',
+                match_type='unmatched',
+            ))
+            if include_unmatched_reference:
+                matched.append(None)
+            continue
+
+        local = []
+        for idx, (c_seg, c_frames, c_evidence) in enumerate(candidates):
+            if idx in used or not _valid_absolute_time(c_frames[0].t):
+                continue
+            delta = abs(c_frames[0].t - ref_time)
+            local.append((delta, idx, c_seg, c_frames, c_evidence))
+        normal = [x for x in local if x[0] <= PAIRED_MATCH_S]
+        expanded = [x for x in local if x[0] <= PAIRED_MATCH_EXTENDED_S]
+        chosen = None
+        if normal:
+            chosen = min(normal, key=lambda x: (x[0], x[1]))
+            match_type = ('normal' if not time_reconstructed
+                          else 'time_reconstructed')
+        elif expanded:
+            chosen = min(expanded, key=lambda x: (x[0], x[1]))
+            match_type = ('expanded' if not time_reconstructed
+                          else 'expanded_time_reconstructed')
+        if chosen is None:
+            audit.append(dict(
+                reference_index=ref_index,
+                reference_start_time=round(ref_time, 3),
+                match_status='beidou_segment_not_found',
+                match_type='unmatched',
+            ))
+            if include_unmatched_reference:
+                matched.append(None)
+            continue
+
+        _delta, candidate_index, segment, frames, evidence = chosen
+        used.add(candidate_index)
+        matched.append((ref_index, segment, frames, evidence))
+        audit.append(dict(
+            reference_index=ref_index,
+            reference_start_time=round(ref_time, 3),
+            beidou_segment_index=segment.index,
+            beidou_start_time=round(frames[0].t, 3),
+            time_delta_s=round(frames[0].t - ref_time, 3),
+            match_status='matched',
+            match_type=match_type,
+            beidou_start_evidence=evidence,
+        ))
+    return matched, audit, segments, source, rows, recovery, reference_segments
 
 
 def split_segments(path, min_frames=50, min_duration_s=20.0):
@@ -756,19 +956,52 @@ def split_segments(path, min_frames=50, min_duration_s=20.0):
             for n, s in enumerate(cold, 1)]
 
 
-def analyze_file(path, split=False, min_frames=50, indoor_t0=None, min_duration_s=20.0):
+def analyze_file(path, split=False, min_frames=50, indoor_t0=None, min_duration_s=20.0,
+                         reference_path=None, include_unmatched_reference=False):
     """分析一个日志文件。
 
     split=False：按独立冷启动包逐文件分析；
     split=True：动态识别 N 次冷启动段。边界由“状态丢失+动态间断”给出，
     不依赖固定时长、固定 GPS 周回落或固定 5×周期阈值。
-    UM980 启动判据为解算状态失效（时标可由内部电池保持），见 coldstart_split。
+    reference_path 提供同步北云日志时，以北云 cold 段为主基准匹配北斗候选段。
     """
     with open(path, 'rb') as fp:
         raw = fp.read()
     base = os.path.basename(path)
     if not split:
         return [build_raw(raw, base, 0)]
+
+    if reference_path is not None:
+        paired, audit, segs, source, rows, recovery, _reference_segments = _paired_beidou_segments(
+            raw, reference_path, min_frames, min_duration_s,
+            include_unmatched_reference
+        )
+        out = []
+        for item in paired:
+            if item is None:
+                continue
+            n, s, selected, evidence = item
+            shift = 0.0
+            if indoor_t0 is not None and n <= len(indoor_t0):
+                shift = indoor_t0[n - 1] or 0.0
+            d = build_raw(raw, f'{base}_cold{n:02d}', s.start, t0_shift=shift,
+                          frames=selected, recovery=recovery)
+            d['segment'] = dict(
+                index=n, frames=s.frames, start_week=s.start_week,
+                start_tstat=s.start_tstat, start_pos_type=s.start_pos_type,
+                byte_offset=s.start, end_offset=s.end, t0_shift=shift,
+                source=source, span=s.span,
+                discontinuity_before=s.discontinuity_before,
+                start_elapsed=s.start_elapsed, end_elapsed=s.end_elapsed,
+                is_coldstart=True,
+                reference_product='北云',
+                reference_index=n,
+                start_evidence=evidence,
+            )
+            d['paired_match'] = next(a for a in audit
+                                      if a['reference_index'] == n)
+            out.append(d)
+        return out, audit
 
     segs, source, rows, nominal, recovery = split_beidou(raw, min_frames=min_frames, min_duration_s=min_duration_s)
     cold = [s for s in segs if s.is_coldstart]
@@ -796,7 +1029,7 @@ def analyze_file(path, split=False, min_frames=50, indoor_t0=None, min_duration_
     return out
 
 
-def run(paths, out_dir=None, open_browser=False, split=False):
+def run(paths, out_dir=None, open_browser=False, split=False, reference_path=None):
     """分析一组北斗 UM980 日志（#BESTNAVA），输出 HTML/MD/PNG/JSON 到 out_dir。
     返回 (html_path, md_path)。"""
     if not paths:
@@ -805,8 +1038,15 @@ def run(paths, out_dir=None, open_browser=False, split=False):
         out_dir = DEFAULT_OUT
     os.makedirs(out_dir, exist_ok=True)
     data = []
+    paired_audits = {}
     for p in sorted(paths):
-        data.extend(analyze_file(p, split=split))
+        result = analyze_file(p, split=split, reference_path=reference_path)
+        if reference_path is None:
+            data.extend(result)
+        else:
+            rows, audit = result
+            data.extend(rows)
+            paired_audits[os.path.basename(p)] = audit
     imgs = make_images(data, out_dir)
     html, md = build_outputs(data, imgs)
 
@@ -818,8 +1058,10 @@ def run(paths, out_dir=None, open_browser=False, split=False):
         fp.write(md)
     js_path = os.path.join(out_dir, 'summary.json')
     with open(js_path, 'w', encoding='utf-8') as fp:
-        json.dump([{k: v for k, v in d.items() if k != 'series'} for d in data],
-                  fp, ensure_ascii=False, indent=1)
+        payload = [{k: v for k, v in d.items() if k != 'series'} for d in data]
+        if paired_audits:
+            payload.append({'paired_matching_audit': paired_audits})
+        json.dump(payload, fp, ensure_ascii=False, indent=1)
 
     print('生成 HTML:', h_path, f'{len(html)/1024:.0f} KB')
     print('生成 MD  :', m_path)
@@ -833,15 +1075,23 @@ def run(paths, out_dir=None, open_browser=False, split=False):
 def main():
     args = [a for a in sys.argv[1:]]
     split = '--split' in args
+    reference_path = None
+    if '--reference-beiyun' in args:
+        pos = args.index('--reference-beiyun')
+        if pos + 1 >= len(args):
+            raise SystemExit('--reference-beiyun 需要一个北云日志路径')
+        reference_path = args[pos + 1]
+        args = args[:pos] + args[pos + 2:]
     args = [a for a in args if a != '--split']
     if len(args) < 2:
         print(__doc__)
         print('用法: python BEIDOU_coldstart.py <输出目录> [--split] <日志1> [日志2 ...]')
         print('  --split  一次性录制了 N 次冷启动：自动识别启动次数并切片后逐段分析')
+        print('  --reference-beiyun <file>  同步北云基准日志；北云 cold 段作为主切割/编号基准')
         raise SystemExit(2)
     out_dir = args[0]
     paths = [a for a in args[1:] if os.path.isfile(a)]
-    run(paths, out_dir, open_browser=False, split=split)
+    run(paths, out_dir, open_browser=False, split=split, reference_path=reference_path)
 
 
 if __name__ == '__main__':
