@@ -13,3 +13,7 @@ __pycache__/
 # 临时文件
 *.tmp
 ~$*
+
+# Generated analysis reports; regenerate on demand
+reports/
+reports_tmp_debug/
