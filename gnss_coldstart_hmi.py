@@ -431,6 +431,8 @@ class ColdstartHMI:
                 if by_rc == 0 and os.path.isfile(by_report):
                     self.ui_queue.put(("log", f"分析完成：{by_report}\n", "success"))
                     reports.append(by_report)
+                    if auto_open:
+                        open_path(by_report)
                 else:
                     self.ui_queue.put(("log", "室外北云基准报告失败。\n", "error"))
                     self.ui_queue.put(("done", reports[-1] if reports else ""))
