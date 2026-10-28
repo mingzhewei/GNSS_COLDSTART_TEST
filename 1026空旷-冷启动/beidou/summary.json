@@ -1,0 +1,2239 @@
+[
+ {
+  "file": "1026空旷-冷启动-北斗.log_cold01",
+  "byte_offset": 813078,
+  "span": 123.0,
+  "n": 124,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTNAVA": 1280,
+   "SATSINFOA": 1280,
+   "BESTSATA": 1280,
+   "RTKSTATUSA": 1280
+  },
+  "other": {
+   "GNGGA": 12728,
+   "GNGSA": 70669,
+   "GPGSV": 9373,
+   "GLGSV": 3990,
+   "GBGSV": 18292,
+   "GAGSV": 8638,
+   "GQGSV": 5378,
+   "GNGST": 1273,
+   "GNGRS": 234885,
+   "GBGGA": 83,
+   "GBGSA": 87,
+   "GBGRS": 111,
+   "GBGST": 7,
+   "GPGSA": 2,
+   "GPGRS": 2
+  },
+  "recovery": {
+   "valid_messages": 370638,
+   "embedded": 1275,
+   "checksum_failed": 2,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 124
+  },
+  "ptype_dist": {
+   "SINGLE": 47,
+   "NARROW_INT": 77
+  },
+  "cat_pct": {
+   "1": 37.9,
+   "3": 62.1
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 0.0,
+   "float": null,
+   "fixed": 47.0,
+   "stn": 47.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 47.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    47.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    47.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    46.0,
+    47.0,
+    47,
+    36.3,
+    34.6,
+    null
+   ],
+   [
+    "NARROW_INT",
+    47.0,
+    123.0,
+    77.0,
+    77,
+    40.8,
+    37.9,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 47.0
+  },
+  "svs": {
+   "min": 21,
+   "max": 42,
+   "mean": 39.1
+  },
+  "segment": {
+   "index": 1,
+   "frames": 124,
+   "start_week": 0,
+   "start_tstat": "FINE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 813078,
+   "end_offset": 3765902,
+   "t0_shift": 0.0,
+   "source": "BESTNAVA",
+   "span": 123.0,
+   "discontinuity_before": 39.0,
+   "start_elapsed": 69.0,
+   "end_elapsed": 192.0,
+   "is_coldstart": true,
+   "reference_product": "北云",
+   "reference_index": 1,
+   "start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 21,
+    "previous_svs": 41,
+    "svs_drop": 20,
+    "has_differential_tail": true
+   }
+  },
+  "paired_match": {
+   "reference_index": 1,
+   "reference_start_time": 1477017009.4,
+   "beidou_segment_index": 2,
+   "beidou_start_time": 1477016991.0,
+   "time_delta_s": -18.4,
+   "match_status": "matched",
+   "match_type": "normal",
+   "beidou_start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 21,
+    "previous_svs": 41,
+    "svs_drop": 20,
+    "has_differential_tail": true
+   }
+  }
+ },
+ {
+  "file": "1026空旷-冷启动-北斗.log_cold02",
+  "byte_offset": 3790531,
+  "span": 131.0,
+  "n": 132,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTNAVA": 1280,
+   "SATSINFOA": 1280,
+   "BESTSATA": 1280,
+   "RTKSTATUSA": 1280
+  },
+  "other": {
+   "GNGGA": 12728,
+   "GNGSA": 70669,
+   "GPGSV": 9373,
+   "GLGSV": 3990,
+   "GBGSV": 18292,
+   "GAGSV": 8638,
+   "GQGSV": 5378,
+   "GNGST": 1273,
+   "GNGRS": 234885,
+   "GBGGA": 83,
+   "GBGSA": 87,
+   "GBGRS": 111,
+   "GBGST": 7,
+   "GPGSA": 2,
+   "GPGRS": 2
+  },
+  "recovery": {
+   "valid_messages": 370638,
+   "embedded": 1275,
+   "checksum_failed": 2,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 132
+  },
+  "ptype_dist": {
+   "SINGLE": 47,
+   "NARROW_INT": 85
+  },
+  "cat_pct": {
+   "1": 35.6,
+   "3": 64.4
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 0.0,
+   "float": null,
+   "fixed": 47.0,
+   "stn": 47.0,
+   "sol": 1.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 47.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    47.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    47.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    46.0,
+    47.0,
+    47,
+    34.8,
+    33.7,
+    null
+   ],
+   [
+    "NARROW_INT",
+    47.0,
+    131.0,
+    85.0,
+    85,
+    39.3,
+    36.6,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 47.0
+  },
+  "svs": {
+   "min": 8,
+   "max": 42,
+   "mean": 37.7
+  },
+  "segment": {
+   "index": 2,
+   "frames": 132,
+   "start_week": 0,
+   "start_tstat": "FINE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 3790531,
+   "end_offset": 6737009,
+   "t0_shift": 0.0,
+   "source": "BESTNAVA",
+   "span": 131.0,
+   "discontinuity_before": 47.0,
+   "start_elapsed": 239.0,
+   "end_elapsed": 370.0,
+   "is_coldstart": true,
+   "reference_product": "北云",
+   "reference_index": 2,
+   "start_evidence": {
+    "first_sol": "VARIANCE",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 8,
+    "previous_svs": 42,
+    "svs_drop": 34,
+    "has_differential_tail": true
+   }
+  },
+  "paired_match": {
+   "reference_index": 2,
+   "reference_start_time": 1477017171.8,
+   "beidou_segment_index": 3,
+   "beidou_start_time": 1477017161.0,
+   "time_delta_s": -10.8,
+   "match_status": "matched",
+   "match_type": "normal",
+   "beidou_start_evidence": {
+    "first_sol": "VARIANCE",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 8,
+    "previous_svs": 42,
+    "svs_drop": 34,
+    "has_differential_tail": true
+   }
+  }
+ },
+ {
+  "file": "1026空旷-冷启动-北斗.log_cold03",
+  "byte_offset": 6761475,
+  "span": 65.0,
+  "n": 66,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTNAVA": 1280,
+   "SATSINFOA": 1280,
+   "BESTSATA": 1280,
+   "RTKSTATUSA": 1280
+  },
+  "other": {
+   "GNGGA": 12728,
+   "GNGSA": 70669,
+   "GPGSV": 9373,
+   "GLGSV": 3990,
+   "GBGSV": 18292,
+   "GAGSV": 8638,
+   "GQGSV": 5378,
+   "GNGST": 1273,
+   "GNGRS": 234885,
+   "GBGGA": 83,
+   "GBGSA": 87,
+   "GBGRS": 111,
+   "GBGST": 7,
+   "GPGSA": 2,
+   "GPGRS": 2
+  },
+  "recovery": {
+   "valid_messages": 370638,
+   "embedded": 1275,
+   "checksum_failed": 2,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 66
+  },
+  "ptype_dist": {
+   "SINGLE": 57,
+   "WIDE_INT": 1,
+   "NARROW_INT": 8
+  },
+  "cat_pct": {
+   "1": 86.4,
+   "3": 13.6
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 0.0,
+   "float": null,
+   "fixed": 57.0,
+   "stn": 57.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 57.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    57.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    57.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    56.0,
+    57.0,
+    57,
+    37.5,
+    36.2,
+    null
+   ],
+   [
+    "WIDE_INT",
+    57.0,
+    57.0,
+    1.0,
+    1,
+    39,
+    38,
+    null
+   ],
+   [
+    "NARROW_INT",
+    58.0,
+    65.0,
+    8.0,
+    8,
+    39.5,
+    38,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 57.0
+  },
+  "svs": {
+   "min": 19,
+   "max": 41,
+   "mean": 37.7
+  },
+  "segment": {
+   "index": 3,
+   "frames": 66,
+   "start_week": 0,
+   "start_tstat": "FINE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 6761475,
+   "end_offset": 8214638,
+   "t0_shift": 0.0,
+   "source": "BESTNAVA",
+   "span": 65.0,
+   "discontinuity_before": 137.0,
+   "start_elapsed": 507.0,
+   "end_elapsed": 572.0,
+   "is_coldstart": true,
+   "reference_product": "北云",
+   "reference_index": 3,
+   "start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 19,
+    "previous_svs": 41,
+    "svs_drop": 22,
+    "has_differential_tail": true
+   }
+  },
+  "paired_match": {
+   "reference_index": 3,
+   "reference_start_time": 1477017439.2,
+   "beidou_segment_index": 4,
+   "beidou_start_time": 1477017429.0,
+   "time_delta_s": -10.2,
+   "match_status": "matched",
+   "match_type": "normal",
+   "beidou_start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 19,
+    "previous_svs": 41,
+    "svs_drop": 22,
+    "has_differential_tail": true
+   }
+  }
+ },
+ {
+  "file": "1026空旷-冷启动-北斗.log_cold04",
+  "byte_offset": 8233018,
+  "span": 119.0,
+  "n": 120,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTNAVA": 1280,
+   "SATSINFOA": 1280,
+   "BESTSATA": 1280,
+   "RTKSTATUSA": 1280
+  },
+  "other": {
+   "GNGGA": 12728,
+   "GNGSA": 70669,
+   "GPGSV": 9373,
+   "GLGSV": 3990,
+   "GBGSV": 18292,
+   "GAGSV": 8638,
+   "GQGSV": 5378,
+   "GNGST": 1273,
+   "GNGRS": 234885,
+   "GBGGA": 83,
+   "GBGSA": 87,
+   "GBGRS": 111,
+   "GBGST": 7,
+   "GPGSA": 2,
+   "GPGRS": 2
+  },
+  "recovery": {
+   "valid_messages": 370638,
+   "embedded": 1275,
+   "checksum_failed": 2,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 120
+  },
+  "ptype_dist": {
+   "SINGLE": 48,
+   "NARROW_INT": 72
+  },
+  "cat_pct": {
+   "1": 40.0,
+   "3": 60.0
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 0.0,
+   "float": null,
+   "fixed": 48.0,
+   "stn": 48.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 48.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    48.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    48.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    47.0,
+    48.0,
+    48,
+    36.9,
+    34.5,
+    null
+   ],
+   [
+    "NARROW_INT",
+    48.0,
+    119.0,
+    72.0,
+    72,
+    39.7,
+    38.4,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 48.0
+  },
+  "svs": {
+   "min": 21,
+   "max": 42,
+   "mean": 38.6
+  },
+  "segment": {
+   "index": 4,
+   "frames": 120,
+   "start_week": 0,
+   "start_tstat": "FINE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 8233018,
+   "end_offset": 10990107,
+   "t0_shift": 0.0,
+   "source": "BESTNAVA",
+   "span": 119.0,
+   "discontinuity_before": 35.0,
+   "start_elapsed": 607.0,
+   "end_elapsed": 726.0,
+   "is_coldstart": true,
+   "reference_product": "北云",
+   "reference_index": 4,
+   "start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 21,
+    "previous_svs": 40,
+    "svs_drop": 19,
+    "has_differential_tail": true
+   }
+  },
+  "paired_match": {
+   "reference_index": 4,
+   "reference_start_time": 1477017540.2,
+   "beidou_segment_index": 5,
+   "beidou_start_time": 1477017529.0,
+   "time_delta_s": -11.2,
+   "match_status": "matched",
+   "match_type": "normal",
+   "beidou_start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 21,
+    "previous_svs": 40,
+    "svs_drop": 19,
+    "has_differential_tail": true
+   }
+  }
+ },
+ {
+  "file": "1026空旷-冷启动-北斗.log_cold05",
+  "byte_offset": 11006954,
+  "span": 152.0,
+  "n": 152,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTNAVA": 1280,
+   "SATSINFOA": 1280,
+   "BESTSATA": 1280,
+   "RTKSTATUSA": 1280
+  },
+  "other": {
+   "GNGGA": 12728,
+   "GNGSA": 70669,
+   "GPGSV": 9373,
+   "GLGSV": 3990,
+   "GBGSV": 18292,
+   "GAGSV": 8638,
+   "GQGSV": 5378,
+   "GNGST": 1273,
+   "GNGRS": 234885,
+   "GBGGA": 83,
+   "GBGSA": 87,
+   "GBGRS": 111,
+   "GBGST": 7,
+   "GPGSA": 2,
+   "GPGRS": 2
+  },
+  "recovery": {
+   "valid_messages": 370638,
+   "embedded": 1275,
+   "checksum_failed": 2,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 152
+  },
+  "ptype_dist": {
+   "SINGLE": 46,
+   "NARROW_INT": 106
+  },
+  "cat_pct": {
+   "1": 30.3,
+   "3": 69.7
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 0.0,
+   "float": null,
+   "fixed": 46.0,
+   "stn": 46.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 46.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    46.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    46.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    45.0,
+    46.0,
+    46,
+    36.7,
+    33.9,
+    null
+   ],
+   [
+    "NARROW_INT",
+    46.0,
+    152.0,
+    106.0,
+    106,
+    41.2,
+    39,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 46.0
+  },
+  "svs": {
+   "min": 9,
+   "max": 43,
+   "mean": 39.9
+  },
+  "segment": {
+   "index": 5,
+   "frames": 152,
+   "start_week": 0,
+   "start_tstat": "FINE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 11006954,
+   "end_offset": 14836948,
+   "t0_shift": 0.0,
+   "source": "BESTNAVA",
+   "span": 152.0,
+   "discontinuity_before": 36.0,
+   "start_elapsed": 762.0,
+   "end_elapsed": 914.0,
+   "is_coldstart": true,
+   "reference_product": "北云",
+   "reference_index": 5,
+   "start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 9,
+    "previous_svs": 42,
+    "svs_drop": 33,
+    "has_differential_tail": true
+   }
+  },
+  "paired_match": {
+   "reference_index": 5,
+   "reference_start_time": 1477017694.0,
+   "beidou_segment_index": 6,
+   "beidou_start_time": 1477017684.0,
+   "time_delta_s": -10.0,
+   "match_status": "matched",
+   "match_type": "normal",
+   "beidou_start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 9,
+    "previous_svs": 42,
+    "svs_drop": 33,
+    "has_differential_tail": true
+   }
+  }
+ },
+ {
+  "file": "1026空旷-冷启动-北斗.log_cold06",
+  "byte_offset": 14860180,
+  "span": 89.0,
+  "n": 90,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTNAVA": 1280,
+   "SATSINFOA": 1280,
+   "BESTSATA": 1280,
+   "RTKSTATUSA": 1280
+  },
+  "other": {
+   "GNGGA": 12728,
+   "GNGSA": 70669,
+   "GPGSV": 9373,
+   "GLGSV": 3990,
+   "GBGSV": 18292,
+   "GAGSV": 8638,
+   "GQGSV": 5378,
+   "GNGST": 1273,
+   "GNGRS": 234885,
+   "GBGGA": 83,
+   "GBGSA": 87,
+   "GBGRS": 111,
+   "GBGST": 7,
+   "GPGSA": 2,
+   "GPGRS": 2
+  },
+  "recovery": {
+   "valid_messages": 370638,
+   "embedded": 1275,
+   "checksum_failed": 2,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 90
+  },
+  "ptype_dist": {
+   "SINGLE": 46,
+   "NARROW_INT": 44
+  },
+  "cat_pct": {
+   "1": 51.1,
+   "3": 48.9
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 0.0,
+   "float": null,
+   "fixed": 46.0,
+   "stn": 46.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 46.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    46.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    46.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    45.0,
+    46.0,
+    46,
+    38.2,
+    35.6,
+    null
+   ],
+   [
+    "NARROW_INT",
+    46.0,
+    89.0,
+    44.0,
+    44,
+    41.1,
+    39,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 46.0
+  },
+  "svs": {
+   "min": 11,
+   "max": 42,
+   "mean": 39.6
+  },
+  "segment": {
+   "index": 6,
+   "frames": 90,
+   "start_week": 0,
+   "start_tstat": "FINE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 14860180,
+   "end_offset": 17118093,
+   "t0_shift": 0.0,
+   "source": "BESTNAVA",
+   "span": 89.0,
+   "discontinuity_before": 72.0,
+   "start_elapsed": 986.0,
+   "end_elapsed": 1075.0,
+   "is_coldstart": true,
+   "reference_product": "北云",
+   "reference_index": 6,
+   "start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 11,
+    "previous_svs": 42,
+    "svs_drop": 31,
+    "has_differential_tail": true
+   }
+  },
+  "paired_match": {
+   "reference_index": 6,
+   "reference_start_time": 1477017915.8,
+   "beidou_segment_index": 7,
+   "beidou_start_time": 1477017908.0,
+   "time_delta_s": -7.8,
+   "match_status": "matched",
+   "match_type": "normal",
+   "beidou_start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 11,
+    "previous_svs": 42,
+    "svs_drop": 31,
+    "has_differential_tail": true
+   }
+  }
+ },
+ {
+  "file": "1026空旷-冷启动-北斗.log_cold07",
+  "byte_offset": 17905156,
+  "span": 73.0,
+  "n": 74,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTNAVA": 1280,
+   "SATSINFOA": 1280,
+   "BESTSATA": 1280,
+   "RTKSTATUSA": 1280
+  },
+  "other": {
+   "GNGGA": 12728,
+   "GNGSA": 70669,
+   "GPGSV": 9373,
+   "GLGSV": 3990,
+   "GBGSV": 18292,
+   "GAGSV": 8638,
+   "GQGSV": 5378,
+   "GNGST": 1273,
+   "GNGRS": 234885,
+   "GBGGA": 83,
+   "GBGSA": 87,
+   "GBGRS": 111,
+   "GBGST": 7,
+   "GPGSA": 2,
+   "GPGRS": 2
+  },
+  "recovery": {
+   "valid_messages": 370638,
+   "embedded": 1275,
+   "checksum_failed": 2,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 74
+  },
+  "ptype_dist": {
+   "SINGLE": 58,
+   "NARROW_INT": 16
+  },
+  "cat_pct": {
+   "1": 78.4,
+   "3": 21.6
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 0.0,
+   "float": null,
+   "fixed": 58.0,
+   "stn": 58.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 58.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    58.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    58.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    57.0,
+    58.0,
+    58,
+    38.6,
+    36.7,
+    null
+   ],
+   [
+    "NARROW_INT",
+    58.0,
+    73.0,
+    16.0,
+    16,
+    39.7,
+    39,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 58.0
+  },
+  "svs": {
+   "min": 21,
+   "max": 40,
+   "mean": 38.8
+  },
+  "segment": {
+   "index": 7,
+   "frames": 74,
+   "start_week": 0,
+   "start_tstat": "FINE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 17905156,
+   "end_offset": 19647570,
+   "t0_shift": 0.0,
+   "source": "BESTNAVA",
+   "span": 73.0,
+   "discontinuity_before": 11.0,
+   "start_elapsed": 1153.0,
+   "end_elapsed": 1226.0,
+   "is_coldstart": true,
+   "reference_product": "北云",
+   "reference_index": 7,
+   "start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 21,
+    "previous_svs": 39,
+    "svs_drop": 18,
+    "has_differential_tail": true
+   }
+  },
+  "paired_match": {
+   "reference_index": 7,
+   "reference_start_time": 1477018087.8,
+   "beidou_segment_index": 9,
+   "beidou_start_time": 1477018075.0,
+   "time_delta_s": -12.8,
+   "match_status": "matched",
+   "match_type": "normal",
+   "beidou_start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 21,
+    "previous_svs": 39,
+    "svs_drop": 18,
+    "has_differential_tail": true
+   }
+  }
+ },
+ {
+  "file": "1026空旷-冷启动-北斗.log_cold08",
+  "byte_offset": 19662470,
+  "span": 93.0,
+  "n": 94,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTNAVA": 1280,
+   "SATSINFOA": 1280,
+   "BESTSATA": 1280,
+   "RTKSTATUSA": 1280
+  },
+  "other": {
+   "GNGGA": 12728,
+   "GNGSA": 70669,
+   "GPGSV": 9373,
+   "GLGSV": 3990,
+   "GBGSV": 18292,
+   "GAGSV": 8638,
+   "GQGSV": 5378,
+   "GNGST": 1273,
+   "GNGRS": 234885,
+   "GBGGA": 83,
+   "GBGSA": 87,
+   "GBGRS": 111,
+   "GBGST": 7,
+   "GPGSA": 2,
+   "GPGRS": 2
+  },
+  "recovery": {
+   "valid_messages": 370638,
+   "embedded": 1275,
+   "checksum_failed": 2,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 94
+  },
+  "ptype_dist": {
+   "SINGLE": 45,
+   "NARROW_INT": 49
+  },
+  "cat_pct": {
+   "1": 47.9,
+   "3": 52.1
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 0.0,
+   "float": null,
+   "fixed": 45.0,
+   "stn": 45.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 45.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    45.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    45.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    44.0,
+    45.0,
+    45,
+    38.5,
+    35.9,
+    null
+   ],
+   [
+    "NARROW_INT",
+    45.0,
+    93.0,
+    49.0,
+    49,
+    41.3,
+    40.6,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 45.0
+  },
+  "svs": {
+   "min": 21,
+   "max": 43,
+   "mean": 40.0
+  },
+  "segment": {
+   "index": 8,
+   "frames": 94,
+   "start_week": 0,
+   "start_tstat": "FINE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 19662470,
+   "end_offset": 21992115,
+   "t0_shift": 0.0,
+   "source": "BESTNAVA",
+   "span": 93.0,
+   "discontinuity_before": 35.0,
+   "start_elapsed": 1261.0,
+   "end_elapsed": 1354.0,
+   "is_coldstart": true,
+   "reference_product": "北云",
+   "reference_index": 8,
+   "start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 21,
+    "previous_svs": 40,
+    "svs_drop": 19,
+    "has_differential_tail": true
+   }
+  },
+  "paired_match": {
+   "reference_index": 8,
+   "reference_start_time": 1477018193.8,
+   "beidou_segment_index": 10,
+   "beidou_start_time": 1477018183.0,
+   "time_delta_s": -10.8,
+   "match_status": "matched",
+   "match_type": "normal",
+   "beidou_start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 21,
+    "previous_svs": 40,
+    "svs_drop": 19,
+    "has_differential_tail": true
+   }
+  }
+ },
+ {
+  "file": "1026空旷-冷启动-北斗.log_cold09",
+  "byte_offset": 22008482,
+  "span": 75.0,
+  "n": 76,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTNAVA": 1280,
+   "SATSINFOA": 1280,
+   "BESTSATA": 1280,
+   "RTKSTATUSA": 1280
+  },
+  "other": {
+   "GNGGA": 12728,
+   "GNGSA": 70669,
+   "GPGSV": 9373,
+   "GLGSV": 3990,
+   "GBGSV": 18292,
+   "GAGSV": 8638,
+   "GQGSV": 5378,
+   "GNGST": 1273,
+   "GNGRS": 234885,
+   "GBGGA": 83,
+   "GBGSA": 87,
+   "GBGRS": 111,
+   "GBGST": 7,
+   "GPGSA": 2,
+   "GPGRS": 2
+  },
+  "recovery": {
+   "valid_messages": 370638,
+   "embedded": 1275,
+   "checksum_failed": 2,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 76
+  },
+  "ptype_dist": {
+   "SINGLE": 47,
+   "NARROW_INT": 29
+  },
+  "cat_pct": {
+   "1": 61.8,
+   "3": 38.2
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 0.0,
+   "float": null,
+   "fixed": 47.0,
+   "stn": 47.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 47.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    47.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    47.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    46.0,
+    47.0,
+    47,
+    38.4,
+    35.7,
+    null
+   ],
+   [
+    "NARROW_INT",
+    47.0,
+    75.0,
+    29.0,
+    29,
+    41.1,
+    40.6,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 47.0
+  },
+  "svs": {
+   "min": 10,
+   "max": 43,
+   "mean": 39.4
+  },
+  "segment": {
+   "index": 9,
+   "frames": 76,
+   "start_week": 0,
+   "start_tstat": "FINE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 22008482,
+   "end_offset": 23844066,
+   "t0_shift": 0.0,
+   "source": "BESTNAVA",
+   "span": 75.0,
+   "discontinuity_before": 70.0,
+   "start_elapsed": 1424.0,
+   "end_elapsed": 1499.0,
+   "is_coldstart": true,
+   "reference_product": "北云",
+   "reference_index": 9,
+   "start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 10,
+    "previous_svs": 43,
+    "svs_drop": 33,
+    "has_differential_tail": true
+   }
+  },
+  "paired_match": {
+   "reference_index": 9,
+   "reference_start_time": 1477018355.0,
+   "beidou_segment_index": 11,
+   "beidou_start_time": 1477018346.0,
+   "time_delta_s": -9.0,
+   "match_status": "matched",
+   "match_type": "normal",
+   "beidou_start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 10,
+    "previous_svs": 43,
+    "svs_drop": 33,
+    "has_differential_tail": true
+   }
+  }
+ },
+ {
+  "file": "1026空旷-冷启动-北斗.log_cold10",
+  "byte_offset": 23866103,
+  "span": 75.0,
+  "n": 76,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTNAVA": 1280,
+   "SATSINFOA": 1280,
+   "BESTSATA": 1280,
+   "RTKSTATUSA": 1280
+  },
+  "other": {
+   "GNGGA": 12728,
+   "GNGSA": 70669,
+   "GPGSV": 9373,
+   "GLGSV": 3990,
+   "GBGSV": 18292,
+   "GAGSV": 8638,
+   "GQGSV": 5378,
+   "GNGST": 1273,
+   "GNGRS": 234885,
+   "GBGGA": 83,
+   "GBGSA": 87,
+   "GBGRS": 111,
+   "GBGST": 7,
+   "GPGSA": 2,
+   "GPGRS": 2
+  },
+  "recovery": {
+   "valid_messages": 370638,
+   "embedded": 1275,
+   "checksum_failed": 2,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 76
+  },
+  "ptype_dist": {
+   "SINGLE": 67,
+   "NARROW_INT": 9
+  },
+  "cat_pct": {
+   "1": 88.2,
+   "3": 11.8
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 0.0,
+   "float": null,
+   "fixed": 67.0,
+   "stn": 67.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 67.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    67.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    67.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    66.0,
+    67.0,
+    67,
+    40.3,
+    38.1,
+    null
+   ],
+   [
+    "NARROW_INT",
+    67.0,
+    75.0,
+    9.0,
+    9,
+    42,
+    40.1,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 67.0
+  },
+  "svs": {
+   "min": 9,
+   "max": 42,
+   "mean": 40.5
+  },
+  "segment": {
+   "index": 10,
+   "frames": 76,
+   "start_week": 0,
+   "start_tstat": "FINE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 23866103,
+   "end_offset": 25756988,
+   "t0_shift": 0.0,
+   "source": "BESTNAVA",
+   "span": 75.0,
+   "discontinuity_before": 43.0,
+   "start_elapsed": 1542.0,
+   "end_elapsed": 1617.0,
+   "is_coldstart": true,
+   "reference_product": "北云",
+   "reference_index": 10,
+   "start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 9,
+    "previous_svs": 43,
+    "svs_drop": 34,
+    "has_differential_tail": true
+   }
+  },
+  "paired_match": {
+   "reference_index": 10,
+   "reference_start_time": 1477018478.6,
+   "beidou_segment_index": 12,
+   "beidou_start_time": 1477018464.0,
+   "time_delta_s": -14.6,
+   "match_status": "matched",
+   "match_type": "normal",
+   "beidou_start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 9,
+    "previous_svs": 43,
+    "svs_drop": 34,
+    "has_differential_tail": true
+   }
+  }
+ },
+ {
+  "file": "1026空旷-冷启动-北斗.log_cold11",
+  "byte_offset": 25774954,
+  "span": 88.0,
+  "n": 89,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTNAVA": 1280,
+   "SATSINFOA": 1280,
+   "BESTSATA": 1280,
+   "RTKSTATUSA": 1280
+  },
+  "other": {
+   "GNGGA": 12728,
+   "GNGSA": 70669,
+   "GPGSV": 9373,
+   "GLGSV": 3990,
+   "GBGSV": 18292,
+   "GAGSV": 8638,
+   "GQGSV": 5378,
+   "GNGST": 1273,
+   "GNGRS": 234885,
+   "GBGGA": 83,
+   "GBGSA": 87,
+   "GBGRS": 111,
+   "GBGST": 7,
+   "GPGSA": 2,
+   "GPGRS": 2
+  },
+  "recovery": {
+   "valid_messages": 370638,
+   "embedded": 1275,
+   "checksum_failed": 2,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 89
+  },
+  "ptype_dist": {
+   "SINGLE": 45,
+   "NARROW_INT": 44
+  },
+  "cat_pct": {
+   "1": 50.6,
+   "3": 49.4
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 0.0,
+   "float": null,
+   "fixed": 45.0,
+   "stn": 45.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 45.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    45.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    45.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    44.0,
+    45.0,
+    45,
+    38.9,
+    36.7,
+    null
+   ],
+   [
+    "NARROW_INT",
+    45.0,
+    88.0,
+    44.0,
+    44,
+    41.2,
+    39.7,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 45.0
+  },
+  "svs": {
+   "min": 23,
+   "max": 43,
+   "mean": 40.0
+  },
+  "segment": {
+   "index": 11,
+   "frames": 89,
+   "start_week": 0,
+   "start_tstat": "FINE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 25774954,
+   "end_offset": 27991428,
+   "t0_shift": 0.0,
+   "source": "BESTNAVA",
+   "span": 88.0,
+   "discontinuity_before": 36.0,
+   "start_elapsed": 1653.0,
+   "end_elapsed": 1741.0,
+   "is_coldstart": true,
+   "reference_product": "北云",
+   "reference_index": 11,
+   "start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 23,
+    "previous_svs": 42,
+    "svs_drop": 19,
+    "has_differential_tail": true
+   }
+  },
+  "paired_match": {
+   "reference_index": 11,
+   "reference_start_time": 1477018585.0,
+   "beidou_segment_index": 13,
+   "beidou_start_time": 1477018575.0,
+   "time_delta_s": -10.0,
+   "match_status": "matched",
+   "match_type": "normal",
+   "beidou_start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 23,
+    "previous_svs": 42,
+    "svs_drop": 19,
+    "has_differential_tail": true
+   }
+  }
+ },
+ {
+  "file": "1026空旷-冷启动-北斗.log_cold12",
+  "byte_offset": 28009004,
+  "span": 122.0,
+  "n": 123,
+  "rate": 1.0,
+  "nominal": 1.0,
+  "crc_bad": 2,
+  "counts": {
+   "BESTNAVA": 1280,
+   "SATSINFOA": 1280,
+   "BESTSATA": 1280,
+   "RTKSTATUSA": 1280
+  },
+  "other": {
+   "GNGGA": 12728,
+   "GNGSA": 70669,
+   "GPGSV": 9373,
+   "GLGSV": 3990,
+   "GBGSV": 18292,
+   "GAGSV": 8638,
+   "GQGSV": 5378,
+   "GNGST": 1273,
+   "GNGRS": 234885,
+   "GBGGA": 83,
+   "GBGSA": 87,
+   "GBGRS": 111,
+   "GBGST": 7,
+   "GPGSA": 2,
+   "GPGRS": 2
+  },
+  "recovery": {
+   "valid_messages": 370638,
+   "embedded": 1275,
+   "checksum_failed": 2,
+   "method": "byte-anchor+checksum"
+  },
+  "gaps": [],
+  "rebases": [],
+  "time_status_retained": true,
+  "tstat_dist": {
+   "FINE": 123
+  },
+  "ptype_dist": {
+   "SINGLE": 46,
+   "NARROW_INT": 77
+  },
+  "cat_pct": {
+   "1": 37.4,
+   "3": 62.6
+  },
+  "first": {
+   "valid": null,
+   "coarse": null,
+   "fine": null,
+   "single": 0.0,
+   "float": null,
+   "fixed": 46.0,
+   "stn": 46.0,
+   "sol": 0.0
+  },
+  "stages": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "diff_wait": null,
+   "single_to_fixed": 46.0
+  },
+  "stage_order_valid": true,
+  "events": [
+   [
+    0.0,
+    "首次单点/伪距差分解",
+    "#3b82f6"
+   ],
+   [
+    46.0,
+    "差分改正可用（基站 1793）",
+    "#7c3aed"
+   ],
+   [
+    46.0,
+    "首次 RTK 固定解",
+    "#16a34a"
+   ]
+  ],
+  "segs": [
+   [
+    "SINGLE",
+    0.0,
+    45.0,
+    46.0,
+    46,
+    39.1,
+    36.7,
+    null
+   ],
+   [
+    "NARROW_INT",
+    46.0,
+    122.0,
+    77.0,
+    77,
+    41.7,
+    40.3,
+    null
+   ]
+  ],
+  "stages_express": {
+   "no_time": null,
+   "time_to_single": 0.0,
+   "single_to_float": null,
+   "float_to_fixed": null,
+   "single_to_fixed": 46.0
+  },
+  "svs": {
+   "min": 21,
+   "max": 42,
+   "mean": 40.7
+  },
+  "segment": {
+   "index": 12,
+   "frames": 123,
+   "start_week": 0,
+   "start_tstat": "FINE",
+   "start_pos_type": "SINGLE",
+   "byte_offset": 28009004,
+   "end_offset": 31173981,
+   "t0_shift": 0.0,
+   "source": "BESTNAVA",
+   "span": 122.0,
+   "discontinuity_before": 109.0,
+   "start_elapsed": 1850.0,
+   "end_elapsed": 1972.0,
+   "is_coldstart": true,
+   "reference_product": "北云",
+   "reference_index": 12,
+   "start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 21,
+    "previous_svs": 43,
+    "svs_drop": 22,
+    "has_differential_tail": true
+   }
+  },
+  "paired_match": {
+   "reference_index": 12,
+   "reference_start_time": 1477018775.4,
+   "beidou_segment_index": 14,
+   "beidou_start_time": 1477018772.0,
+   "time_delta_s": -3.4,
+   "match_status": "matched",
+   "match_type": "normal",
+   "beidou_start_evidence": {
+    "first_sol": "SOL_COMPUTED",
+    "first_pos_type": "SINGLE",
+    "first_stn": "",
+    "first_svs": 21,
+    "previous_svs": 43,
+    "svs_drop": 22,
+    "has_differential_tail": true
+   }
+  }
+ },
+ {
+  "paired_matching_audit": {
+   "1026空旷-冷启动-北斗.log": [
+    {
+     "reference_index": 1,
+     "reference_start_time": 1477017009.4,
+     "beidou_segment_index": 2,
+     "beidou_start_time": 1477016991.0,
+     "time_delta_s": -18.4,
+     "match_status": "matched",
+     "match_type": "normal",
+     "beidou_start_evidence": {
+      "first_sol": "SOL_COMPUTED",
+      "first_pos_type": "SINGLE",
+      "first_stn": "",
+      "first_svs": 21,
+      "previous_svs": 41,
+      "svs_drop": 20,
+      "has_differential_tail": true
+     }
+    },
+    {
+     "reference_index": 2,
+     "reference_start_time": 1477017171.8,
+     "beidou_segment_index": 3,
+     "beidou_start_time": 1477017161.0,
+     "time_delta_s": -10.8,
+     "match_status": "matched",
+     "match_type": "normal",
+     "beidou_start_evidence": {
+      "first_sol": "VARIANCE",
+      "first_pos_type": "SINGLE",
+      "first_stn": "",
+      "first_svs": 8,
+      "previous_svs": 42,
+      "svs_drop": 34,
+      "has_differential_tail": true
+     }
+    },
+    {
+     "reference_index": 3,
+     "reference_start_time": 1477017439.2,
+     "beidou_segment_index": 4,
+     "beidou_start_time": 1477017429.0,
+     "time_delta_s": -10.2,
+     "match_status": "matched",
+     "match_type": "normal",
+     "beidou_start_evidence": {
+      "first_sol": "SOL_COMPUTED",
+      "first_pos_type": "SINGLE",
+      "first_stn": "",
+      "first_svs": 19,
+      "previous_svs": 41,
+      "svs_drop": 22,
+      "has_differential_tail": true
+     }
+    },
+    {
+     "reference_index": 4,
+     "reference_start_time": 1477017540.2,
+     "beidou_segment_index": 5,
+     "beidou_start_time": 1477017529.0,
+     "time_delta_s": -11.2,
+     "match_status": "matched",
+     "match_type": "normal",
+     "beidou_start_evidence": {
+      "first_sol": "SOL_COMPUTED",
+      "first_pos_type": "SINGLE",
+      "first_stn": "",
+      "first_svs": 21,
+      "previous_svs": 40,
+      "svs_drop": 19,
+      "has_differential_tail": true
+     }
+    },
+    {
+     "reference_index": 5,
+     "reference_start_time": 1477017694.0,
+     "beidou_segment_index": 6,
+     "beidou_start_time": 1477017684.0,
+     "time_delta_s": -10.0,
+     "match_status": "matched",
+     "match_type": "normal",
+     "beidou_start_evidence": {
+      "first_sol": "SOL_COMPUTED",
+      "first_pos_type": "SINGLE",
+      "first_stn": "",
+      "first_svs": 9,
+      "previous_svs": 42,
+      "svs_drop": 33,
+      "has_differential_tail": true
+     }
+    },
+    {
+     "reference_index": 6,
+     "reference_start_time": 1477017915.8,
+     "beidou_segment_index": 7,
+     "beidou_start_time": 1477017908.0,
+     "time_delta_s": -7.8,
+     "match_status": "matched",
+     "match_type": "normal",
+     "beidou_start_evidence": {
+      "first_sol": "SOL_COMPUTED",
+      "first_pos_type": "SINGLE",
+      "first_stn": "",
+      "first_svs": 11,
+      "previous_svs": 42,
+      "svs_drop": 31,
+      "has_differential_tail": true
+     }
+    },
+    {
+     "reference_index": 7,
+     "reference_start_time": 1477018087.8,
+     "beidou_segment_index": 9,
+     "beidou_start_time": 1477018075.0,
+     "time_delta_s": -12.8,
+     "match_status": "matched",
+     "match_type": "normal",
+     "beidou_start_evidence": {
+      "first_sol": "SOL_COMPUTED",
+      "first_pos_type": "SINGLE",
+      "first_stn": "",
+      "first_svs": 21,
+      "previous_svs": 39,
+      "svs_drop": 18,
+      "has_differential_tail": true
+     }
+    },
+    {
+     "reference_index": 8,
+     "reference_start_time": 1477018193.8,
+     "beidou_segment_index": 10,
+     "beidou_start_time": 1477018183.0,
+     "time_delta_s": -10.8,
+     "match_status": "matched",
+     "match_type": "normal",
+     "beidou_start_evidence": {
+      "first_sol": "SOL_COMPUTED",
+      "first_pos_type": "SINGLE",
+      "first_stn": "",
+      "first_svs": 21,
+      "previous_svs": 40,
+      "svs_drop": 19,
+      "has_differential_tail": true
+     }
+    },
+    {
+     "reference_index": 9,
+     "reference_start_time": 1477018355.0,
+     "beidou_segment_index": 11,
+     "beidou_start_time": 1477018346.0,
+     "time_delta_s": -9.0,
+     "match_status": "matched",
+     "match_type": "normal",
+     "beidou_start_evidence": {
+      "first_sol": "SOL_COMPUTED",
+      "first_pos_type": "SINGLE",
+      "first_stn": "",
+      "first_svs": 10,
+      "previous_svs": 43,
+      "svs_drop": 33,
+      "has_differential_tail": true
+     }
+    },
+    {
+     "reference_index": 10,
+     "reference_start_time": 1477018478.6,
+     "beidou_segment_index": 12,
+     "beidou_start_time": 1477018464.0,
+     "time_delta_s": -14.6,
+     "match_status": "matched",
+     "match_type": "normal",
+     "beidou_start_evidence": {
+      "first_sol": "SOL_COMPUTED",
+      "first_pos_type": "SINGLE",
+      "first_stn": "",
+      "first_svs": 9,
+      "previous_svs": 43,
+      "svs_drop": 34,
+      "has_differential_tail": true
+     }
+    },
+    {
+     "reference_index": 11,
+     "reference_start_time": 1477018585.0,
+     "beidou_segment_index": 13,
+     "beidou_start_time": 1477018575.0,
+     "time_delta_s": -10.0,
+     "match_status": "matched",
+     "match_type": "normal",
+     "beidou_start_evidence": {
+      "first_sol": "SOL_COMPUTED",
+      "first_pos_type": "SINGLE",
+      "first_stn": "",
+      "first_svs": 23,
+      "previous_svs": 42,
+      "svs_drop": 19,
+      "has_differential_tail": true
+     }
+    },
+    {
+     "reference_index": 12,
+     "reference_start_time": 1477018775.4,
+     "beidou_segment_index": 14,
+     "beidou_start_time": 1477018772.0,
+     "time_delta_s": -3.4,
+     "match_status": "matched",
+     "match_type": "normal",
+     "beidou_start_evidence": {
+      "first_sol": "SOL_COMPUTED",
+      "first_pos_type": "SINGLE",
+      "first_stn": "",
+      "first_svs": 21,
+      "previous_svs": 43,
+      "svs_drop": 22,
+      "has_differential_tail": true
+     }
+    }
+   ]
+  }
+ }
+]
